@@ -65,10 +65,9 @@ class Menu extends AbstractHelper
         $result .= '<span class="icon-bar"></span>';
         $result .= '</button>';
         $result .= '<a class="navbar-brand" ';
-        $result .= 'href="<?= $this->url(\'home\') ?>">';
-        $result .= '<img src="' . $this->basePath('img/bubble.png') . '" ';
-        $result .= 'height="28" alt="Policy Bubble ';
-        $result .= '<?= \Application\Module::VERSION ?>"/>&nbsp;Policy Bubble';
+        $result .= 'href="/">';
+        $result .= '<img src="/img/bubble.png" height="28" alt="Policy Bubble ';
+        $result .=  \Application\Module::VERSION . '"/>&nbsp;Policy Bubble';
         $result .= '</a>';
         $result .= '</div>';
         
