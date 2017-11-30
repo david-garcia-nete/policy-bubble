@@ -14,6 +14,9 @@ return [
     'DoctrineModule',
     'DoctrineORMModule',
     'Zend\Paginator',
+    'Zend\InputFilter',
+    'Zend\Filter',
+    'Zend\Hydrator',
     'Zend\Session',
     'Zend\Mvc\Plugin\Prg',
     'Zend\Mvc\Plugin\Identity',
@@ -25,4 +28,5 @@ return [
     'Zend\Router',
     'Zend\Validator',
     'Application',
+    'User'
 ];
