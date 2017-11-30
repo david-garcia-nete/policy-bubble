@@ -62,6 +62,21 @@ return [
             ],
         ]
     ],
+    'service_manager' => [
+        'factories' => [
+            Service\NavManager::class => Service\Factory\NavManagerFactory::class,
+        ],
+    ],
+    'view_helpers' => [
+        'factories' => [
+            View\Helper\Menu::class => View\Helper\Factory\MenuFactory::class,
+            View\Helper\Breadcrumbs::class => InvokableFactory::class,
+        ],
+        'aliases' => [
+            'mainMenu' => View\Helper\Menu::class,
+            'pageBreadcrumbs' => View\Helper\Breadcrumbs::class,
+        ],
+    ],
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,
@@ -78,4 +93,12 @@ return [
             __DIR__ . '/../view',
         ],
     ],
+    // The following key allows to define custom styling for FlashMessenger view helper.
+    'view_helper_config' => [
+        'flashmessenger' => [
+            'message_open_format'      => '<div%s><ul><li>',
+            'message_close_string'     => '</li></ul></div>',
+            'message_separator_string' => '</li><li>'
+        ]
+    ],   
 ];
