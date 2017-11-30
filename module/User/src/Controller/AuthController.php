@@ -128,4 +128,14 @@ class AuthController extends AbstractActionController
 
         return $this->redirect()->toRoute('login');
     }
+
+    /**
+     * Displays the "Not Authorized" page.
+     */
+    public function notAuthorizedAction()
+    {
+        $this->getResponse()->setStatusCode(403);
+
+        return new ViewModel();
+    }
 }

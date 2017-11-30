@@ -27,10 +27,14 @@ return [
             'application' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action]',
+                    'route'    => '/application[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+'
+                    ],
                     'defaults' => [
-                        'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'index',
                     ],
                 ],
             ],
@@ -62,9 +66,14 @@ return [
             ],
         ]
     ],
+    // This key stores configuration for RBAC manager.
+    'rbac_manager' => [
+        'assertions' => [Service\RbacAssertionManager::class],
+    ],
     'service_manager' => [
         'factories' => [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
+            Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
         ],
     ],
     'view_helpers' => [

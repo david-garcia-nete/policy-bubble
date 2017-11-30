@@ -2,6 +2,7 @@
 namespace Application\Service\Factory;
 use Interop\Container\ContainerInterface;
 use Application\Service\NavManager;
+use User\Service\RbacManager;
 /**
  * This is the factory class for NavManager service. The purpose of the factory
  * is to instantiate the service and pass it dependencies (inject dependencies).
@@ -17,7 +18,8 @@ class NavManagerFactory
         
         $viewHelperManager = $container->get('ViewHelperManager');
         $urlHelper = $viewHelperManager->get('url');
+        $rbacManager = $container->get(RbacManager::class);
         
-        return new NavManager($authService, $urlHelper);
+        return new NavManager($authService, $urlHelper, $rbacManager);
     }
 }
