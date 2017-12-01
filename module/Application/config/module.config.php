@@ -56,7 +56,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
-            Controller\RegistrationController::class => Controller\Factory\RegistrationControllerFactory::class,
+            Controller\RegistrationController::class => InvokableFactory::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -80,7 +80,7 @@ return [
             ],
             Controller\RegistrationController::class => [
                 // Allow anyone to visit "index" and "about" actions
-                ['actions' => ['index', 'review'], 'allow' => '*']
+                ['actions' => ['index', 'success'], 'allow' => '*']
             ],
         ]
     ],
@@ -93,9 +93,6 @@ return [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
         ],
-    ],
-    'session_containers' => [
-        'UserRegistration'
     ],
     'view_helpers' => [
         'factories' => [

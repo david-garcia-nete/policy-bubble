@@ -3,7 +3,6 @@ namespace User\Service\Factory;
 
 use Interop\Container\ContainerInterface;
 use User\Service\RbacManager;
-use Zend\Authentication\AuthenticationService;
 
 /**
  * This is the factory class for RbacManager service. The purpose of the factory

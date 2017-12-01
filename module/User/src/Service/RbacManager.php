@@ -2,13 +2,11 @@
 namespace User\Service;
 
 use Zend\Permissions\Rbac\Rbac;
-use Zend\Permissions\Rbac\Role as RbacRole;
 use User\Entity\User;
 use User\Entity\Role;
-use User\Entity\Permission;
 
 /**
- * This service is responsible for initialzing RBAC (Role-Based Access Control).
+ * This service is responsible for initializing RBAC (Role-Based Access Control).
  */
 class RbacManager 
 {
