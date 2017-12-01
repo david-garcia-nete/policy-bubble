@@ -46,5 +46,7 @@ $form->get('password')->setAttributes([
             <?= $this->formElement($form->get('csrf')) ?>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
+        <br>
+        <a href="<?php echo $this->url('registration', ['action'=>'index']); ?>">User Registration</a>
     </div>
 </div>

@@ -38,11 +38,25 @@ return [
                     ],
                 ],
             ],
+            'registration' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/registration[/:action]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\RegistrationController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\RegistrationController::class => Controller\Factory\RegistrationControllerFactory::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -64,6 +78,10 @@ return [
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
             ],
+            Controller\RegistrationController::class => [
+                // Allow anyone to visit "index" and "about" actions
+                ['actions' => ['index', 'review'], 'allow' => '*']
+            ],
         ]
     ],
     // This key stores configuration for RBAC manager.
@@ -75,6 +93,9 @@ return [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
         ],
+    ],
+    'session_containers' => [
+        'UserRegistration'
     ],
     'view_helpers' => [
         'factories' => [
