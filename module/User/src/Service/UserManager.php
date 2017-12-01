@@ -202,7 +202,7 @@ class UserManager
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
         $passwordResetUrl = 'http://' . $httpHost . '/set-password?token=' . $token;
         
-        $body = 'Please follow the link below to reset your password:\n';
+        $body = "Please follow the link below to reset your password:\n";
         $body .= "$passwordResetUrl\n";
         $body .= "If you haven't asked to reset your password, please ignore this message.\n";
         
