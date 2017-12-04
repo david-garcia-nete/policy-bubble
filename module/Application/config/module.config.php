@@ -38,25 +38,11 @@ return [
                     ],
                 ],
             ],
-            'registration' => [
-                'type'    => Segment::class,
-                'options' => [
-                    'route'    => '/registration[/:action]',
-                    'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
-                    ],
-                    'defaults' => [
-                        'controller'    => Controller\RegistrationController::class,
-                        'action'        => 'index',
-                    ],
-                ],
-            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
-            Controller\RegistrationController::class => InvokableFactory::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -77,10 +63,6 @@ return [
                 ['actions' => ['index'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
-            ],
-            Controller\RegistrationController::class => [
-                // Allow anyone to visit "index" and "about" actions
-                ['actions' => ['index', 'success'], 'allow' => '*']
             ],
         ]
     ],

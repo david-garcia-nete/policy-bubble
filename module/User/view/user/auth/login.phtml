@@ -47,6 +47,8 @@ $form->get('password')->setAttributes([
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         </form>
         <br>
-        <a href="<?php echo $this->url('registration', ['action'=>'index']); ?>">User Registration</a>
+        <a href="<?php echo $this->url('registration', ['action'=>'register']); ?>">User Registration</a> |
+        <a href="<?php echo $this->url('reset-password', ['action'=>'resetPassword']); ?>">Forgot Password</a>
+          
     </div>
 </div>

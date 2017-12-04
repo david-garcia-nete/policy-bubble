@@ -8,6 +8,7 @@ use User\Entity\Role;
 use User\Form\UserForm;
 use User\Form\PasswordChangeForm;
 use User\Form\PasswordResetForm;
+use User\Form\RegistrationForm;
 
 /**
  * This controller is responsible for user management (adding, editing, 
@@ -100,6 +101,55 @@ class UserController extends AbstractActionController
         return new ViewModel([
                 'form' => $form
             ]);
+    }
+    
+    /**
+     * This is the default "index" action of the controller. It displays the 
+     * User Registration page.
+     */
+    public function registerAction() 
+    {             
+        $form = new RegistrationForm();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                
+                // Add user.
+                $user = $this->userManager->registerUser($data);
+                
+                
+                // Send user to success page.
+                return $this->redirect()->toRoute('registration', 
+                            ['action'=>'success']);
+                
+            }
+        }
+        
+        $viewModel = new ViewModel([
+            'form' => $form
+        ]);
+        
+        return $viewModel;
+    }
+    
+    /**
+     * The "success" action shows a page letting the user know that registration
+     * was successful.
+     */
+    public function successAction()
+    {
+        return new ViewModel();
     }
     
     /**
