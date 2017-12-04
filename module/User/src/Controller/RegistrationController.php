@@ -55,15 +55,26 @@ class RegistrationController extends AbstractActionController
                 // Get filtered and validated data
                 $data = $form->getData();
                 
-                // Register user.
-                $user = $this->registrationManager->registerUser($data);
-                
-                $this->registrationManager->generateRegistrationConfiramtionToken($user);
-                
-                // Send user to success page.
-                return $this->redirect()->toRoute('registration', 
-                            ['action'=>'message', 'id'=>'sent']);
-                
+                $user = $this->entityManager->getRepository(User::class)
+                ->findOneByEmail($data['email']);
+                if($user == null) {
+                   $user = $this->registrationManager->registerUser($data);
+                   $this->registrationManager->generateRegistrationConfiramtionToken($user);
+                    return $this->redirect()->toRoute('registration', 
+                                ['action'=>'message', 'id'=>'sent']);
+                }
+                $status = $user->getStatus();
+                if ($status == 1){
+                    // This user is already registered.
+                    return $this->redirect()->toRoute('registration', 
+                                ['action'=>'message', 'id'=>'exists']);   
+                }
+                if ($status == 2){
+                    // This user is retired.  Send another confirmation.
+                    $this->registrationManager->generateRegistrationConfiramtionToken($user);
+                    return $this->redirect()->toRoute('registration', 
+                                ['action'=>'message', 'id'=>'sent']); 
+                }   
             }
         }
         
@@ -84,7 +95,7 @@ class RegistrationController extends AbstractActionController
         $id = (string)$this->params()->fromRoute('id');
         
         // Validate input argument.
-        if($id!='sent' && $id!='confirmed' && $id!='failed') {
+        if($id!='sent' && $id!='confirmed' && $id!='failed' && $id!='exists') {
             throw new \Exception('Invalid message ID specified');
         }
         

@@ -25,6 +25,16 @@ $this->pageBreadcrumbs()->setItems([
 <p>
     Return to <a href="<?= $this->url('login'); ?>">login page</a>.
 </p>
+
+<?php elseif ($id=='exists'): ?>
+<p>
+    A user with that email already exists.
+</p>
+<p>
+    Please return <a href="<?= $this->url('registration', ['action'=>'index']); ?>">here</a> 
+    and try to register again with a different email.
+</p>
+
 <?php elseif ($id=='failed'): ?>
 
     Invalid reset key or it may have expired. Please return 

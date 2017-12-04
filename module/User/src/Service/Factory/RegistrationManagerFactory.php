@@ -3,7 +3,6 @@ namespace User\Service\Factory;
 
 use Interop\Container\ContainerInterface;
 use User\Service\RegistrationManager;
-use User\Service\UserManager;
 
 /**
  * This is the factory class for RegistrationManager service. The purpose of the factory
@@ -17,8 +16,7 @@ class RegistrationManagerFactory
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {        
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
-        $userManager = $container->get(UserManager::class);
-        
-        return new RegistrationManager($entityManager, $userManager);
+
+        return new RegistrationManager($entityManager);
     }
 }
