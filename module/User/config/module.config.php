@@ -140,7 +140,7 @@ return [
             Controller\RegistrationController::class => [
                 // Give access to "resetPassword", "message" and "setPassword" actions
                 // to anyone.
-                ['actions' => ['register', 'message', 'confirmRegistration'], 'allow' => '*']
+                ['actions' => ['index', 'message', 'confirmRegistration'], 'allow' => '*']
             ],
             Controller\RoleController::class => [
                 // Allow access to authenticated users having the "role.manage" permission.

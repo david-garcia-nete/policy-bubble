@@ -2,6 +2,8 @@
 namespace User\Service;
 
 use User\Entity\User;
+use User\Entity\Role;
+use Zend\Crypt\Password\Bcrypt;
 use Zend\Math\Rand;
 
 /**
@@ -14,13 +16,20 @@ class RegistrationManager
      * @var Doctrine\ORM\EntityManager
      */
     private $entityManager;  
+    
+    /**
+     * User manager.
+     * @var User\Service\UserManager
+     */
+    private $userManager;
 
     /**
      * Constructs the service.
      */
-    public function __construct($entityManager) 
+    public function __construct($entityManager, $userManager) 
     {
         $this->entityManager = $entityManager;
+        $this->userManager = $userManager;
 
     }
     
@@ -30,7 +39,7 @@ class RegistrationManager
     public function registerUser($data) 
     {
         // Do not allow several users with the same email address.
-        if($this->checkUserExists($data['email'])) {
+        if($this->userManager->checkUserExists($data['email'])) {
             throw new \Exception("User with email address " . $data['$email'] . " already exists");
         }
         
@@ -53,7 +62,7 @@ class RegistrationManager
         $roleList['Guest'] = 2;
         
         // Assign roles to user.
-        $this->assignRoles($user, $roleList);        
+        $this->userManager->assignRoles($user, $roleList);        
         
         // Add the entity to the entity manager.
         $this->entityManager->persist($user);
@@ -62,17 +71,6 @@ class RegistrationManager
         $this->entityManager->flush();
         
         return $user;
-    }
-    
-    /**
-     * Checks whether a user with given email address already exists in the database.     
-     */
-    public function checkUserExists($email) {
-        
-        $user = $this->entityManager->getRepository(User::class)
-                ->findOneByEmail($email);
-        
-        return $user !== null;
     }
 
     /**

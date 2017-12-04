@@ -10,7 +10,7 @@ use User\Service\RegistrationManager;
  * This is the factory for RegistrationController. Its purpose is to instantiate the
  * controller and inject dependencies into it.
  */
-class UserControllerFactory implements FactoryInterface
+class RegistrationControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
