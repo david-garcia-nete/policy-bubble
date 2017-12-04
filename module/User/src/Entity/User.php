@@ -58,6 +58,16 @@ class User
     protected $passwordResetTokenCreationDate;
     
     /**
+     * @ORM\Column(name="reg_conf_token")  
+     */
+    protected $registrationConfirmationToken;
+    
+    /**
+     * @ORM\Column(name="reg_conf_token_creation_date")  
+     */
+    protected $registrationConfirmationTokenCreationDate;
+    
+    /**
      * @ORM\ManyToMany(targetEntity="User\Entity\Role")
      * @ORM\JoinTable(name="user_role",
      *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
@@ -241,6 +251,42 @@ class User
     public function setPasswordResetTokenCreationDate($date) 
     {
         $this->passwordResetTokenCreationDate = $date;
+    }
+    
+     /**
+     * Returns registration confirmation token.
+     * @return string
+     */
+    public function getRegistrationConfirmationToken()
+    {
+        return $this->registrationConfirmationToken;
+    }
+    
+    /**
+     * Sets registration confirmation token.
+     * @param string $token
+     */
+    public function setRegistrationConfirmationToken($token) 
+    {
+        $this->registrationConfirmationToken = $token;
+    }
+    
+    /**
+     * Returns registration confirmation token's creation date.
+     * @return string
+     */
+    public function getRegistrationConfirmationTokenCreationDate()
+    {
+        return $this->registrationConfirmationTokenCreationDate;
+    }
+    
+    /**
+     * Sets registration confirmation token's creation date.
+     * @param string $date
+     */
+    public function setRegistrationConfirmationTokenCreationDate($date) 
+    {
+        $this->registrationConfirmationTokenCreationDate = $date;
     }
     
     /**

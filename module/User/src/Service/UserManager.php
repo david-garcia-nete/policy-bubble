@@ -251,6 +251,35 @@ class UserManager
     }
     
     /**
+     * Generates a registration confirmation token for the user. This token is then stored in database and 
+     * sent to the user's E-mail address. When the user clicks the link in E-mail message, he is 
+     * directed to the registration success page.
+     */
+    public function generateRegistrationConfiramtionToken($user)
+    {
+        // Generate a token.
+        $token = Rand::getString(32, '0123456789abcdefghijklmnopqrstuvwxyz', true);
+        $user->setRegistrationConfiramtionToken($token);
+        
+        $currentDate = date('Y-m-d H:i:s');
+        $user->setRegistrationConfiramtionCreationDate($currentDate);  
+        
+        $this->entityManager->flush();
+        
+        $subject = 'Registration';
+            
+        $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
+        $registrationConfirmationUrl = 'http://' . $httpHost . '/users/confirm-registration?token=' . $token;
+        
+        $body = "Please follow the link below to confirm your registration:\n";
+        $body .= "$registrationConfirmationUrl\n";
+        $body .= "If you haven't asked to register your email, please ignore this message.\n";
+        
+        // Send email to user.
+        mail($user->getEmail(), $subject, $body);
+    }
+    
+    /**
      * Checks whether the given password reset token is a valid one.
      */
     public function validatePasswordResetToken($passwordResetToken)
@@ -263,6 +292,46 @@ class UserManager
         }
         
         $tokenCreationDate = $user->getPasswordResetTokenCreationDate();
+        $tokenCreationDate = strtotime($tokenCreationDate);
+        
+        $currentDate = strtotime('now');
+        
+        if ($currentDate - $tokenCreationDate > 24*60*60) {
+            return false; // expired
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Confirms the user's reset token.
+     */
+    public function confirmRegistration($passwordResetToken)
+    {
+        $user = $this->entityManager->getRepository(User::class)
+                ->findOneByPasswordResetToken($passwordResetToken);
+        
+        if($user==null) {
+            return false;
+        }
+        
+        $user->setStatus(1);
+        
+    }
+    
+    /**
+     * Checks whether the given registration confirmation token is a valid one.
+     */
+    public function validateRegistrationConfirmationToken($registrationConfirmationToken)
+    {
+        $user = $this->entityManager->getRepository(User::class)
+                ->findOneByRegistrationConfirmationToken($registrationConfirmationToken);
+        
+        if($user==null) {
+            return false;
+        }
+        
+        $tokenCreationDate = $user->getRegistrationConfirmationTokenCreationDate();
         $tokenCreationDate = strtotime($tokenCreationDate);
         
         $currentDate = strtotime('now');

@@ -104,8 +104,8 @@ class UserController extends AbstractActionController
     }
     
     /**
-     * This is the default "index" action of the controller. It displays the 
-     * User Registration page.
+     * This is the default action of the controller. It displays the 
+     * User Registration page and handles form submission.
      */
     public function registerAction() 
     {             
@@ -131,7 +131,7 @@ class UserController extends AbstractActionController
                 
                 // Send user to success page.
                 return $this->redirect()->toRoute('registration', 
-                            ['action'=>'success']);
+                            ['action'=>'registrationStatus', 'id'=>'failed']);
                 
             }
         }
@@ -144,12 +144,22 @@ class UserController extends AbstractActionController
     }
     
     /**
-     * The "success" action shows a page letting the user know that registration
-     * was successful.
+     * The "registration status" action shows a page letting the user know the registration
+     * status.
      */
-    public function successAction()
+    public function registrationStatusAction()
     {
-        return new ViewModel();
+        // Get message ID from route.
+        $id = (string)$this->params()->fromRoute('id');
+        
+        // Validate input argument.
+        if($id!='sent' && $id!='confirmed' && $id!='failed') {
+            throw new \Exception('Invalid message ID specified');
+        }
+        
+        return new ViewModel([
+            'id' => $id
+        ]);
     }
     
     /**
@@ -420,6 +430,32 @@ class UserController extends AbstractActionController
         return new ViewModel([                    
             'form' => $form
         ]);
+    }
+    
+    /**
+     * This action displays the "Reset Password" page. 
+     */
+    public function confirmRegistrationAction()
+    {
+        $token = $this->params()->fromQuery('token', null);
+        
+        // Validate token length
+        if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
+            throw new \Exception('Invalid token type or length');
+        }
+        
+        if($token===null || 
+           !$this->userManager->validateRegistrationConfirmationToken($token)) {
+            return $this->redirect()->toRoute('users', 
+                    ['action'=>'registrationStatus', 'id'=>'failed']);
+        }
+                       
+        //Set the user to active
+        $this->userManager->confirmRegistration($token);
+        
+        return $this->redirect()->toRoute('users', 
+                    ['action'=>'registrationStatus', 'id'=>'failed']);
+        
     }
 }
 
