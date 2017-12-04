@@ -93,9 +93,10 @@ return [
             'registration' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/registration[/:action]',
+                    'route'    => '/registration[/:action[/:id]]',
                     'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[a-zA-Z0-9_-]*',
                     ],
                     'defaults' => [
                         'controller'    => Controller\UserController::class,
@@ -131,7 +132,7 @@ return [
             Controller\UserController::class => [
                 // Give access to "resetPassword", "message" and "setPassword" actions
                 // to anyone.
-                ['actions' => ['resetPassword', 'message', 'setPassword', 'register', 'registrationStatus'], 'allow' => '*'],
+                ['actions' => ['resetPassword', 'message', 'setPassword', 'register', 'registrationStatus', 'confirmRegistration'], 'allow' => '*'],
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to users having the "user.manage" permission.
                 ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '+user.manage']
             ],

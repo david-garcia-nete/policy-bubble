@@ -97,7 +97,7 @@ class UserManager
         $passwordHash = $bcrypt->create($data['password']);        
         $user->setPassword($passwordHash);
         
-        $user->setStatus(1);
+        $user->setStatus(2);
         
         $currentDate = date('Y-m-d H:i:s');
         $user->setDateCreated($currentDate);        
@@ -196,7 +196,7 @@ class UserManager
     }
     
     /**
-     * Checks whether an active user with given email address already exists in the database.     
+     * Checks whether a user with given email address already exists in the database.     
      */
     public function checkUserExists($email) {
         
@@ -205,7 +205,7 @@ class UserManager
         
         return $user !== null;
     }
-    
+        
     /**
      * Checks that the given password is correct.
      */
@@ -259,17 +259,17 @@ class UserManager
     {
         // Generate a token.
         $token = Rand::getString(32, '0123456789abcdefghijklmnopqrstuvwxyz', true);
-        $user->setRegistrationConfiramtionToken($token);
+        $user->setRegistrationConfirmationToken($token);
         
         $currentDate = date('Y-m-d H:i:s');
-        $user->setRegistrationConfiramtionCreationDate($currentDate);  
+        $user->setRegistrationConfirmationTokenCreationDate($currentDate);  
         
         $this->entityManager->flush();
         
         $subject = 'Registration';
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
-        $registrationConfirmationUrl = 'http://' . $httpHost . '/users/confirm-registration?token=' . $token;
+        $registrationConfirmationUrl = 'http://' . $httpHost . '/registration/confirm-registration?token=' . $token;
         
         $body = "Please follow the link below to confirm your registration:\n";
         $body .= "$registrationConfirmationUrl\n";
@@ -306,16 +306,21 @@ class UserManager
     /**
      * Confirms the user's reset token.
      */
-    public function confirmRegistration($passwordResetToken)
+    public function confirmRegistration($registrationConfirmationToken)
     {
         $user = $this->entityManager->getRepository(User::class)
-                ->findOneByPasswordResetToken($passwordResetToken);
+                ->findOneByRegistrationConfirmationToken($registrationConfirmationToken);
         
         if($user==null) {
             return false;
         }
         
         $user->setStatus(1);
+        
+        // Apply changes
+        $this->entityManager->flush();
+
+        return true;
         
     }
     

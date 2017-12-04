@@ -128,10 +128,11 @@ class UserController extends AbstractActionController
                 // Add user.
                 $user = $this->userManager->registerUser($data);
                 
+                $this->userManager->generateRegistrationConfiramtionToken($user);
                 
                 // Send user to success page.
                 return $this->redirect()->toRoute('registration', 
-                            ['action'=>'registrationStatus', 'id'=>'failed']);
+                            ['action'=>'registrationStatus', 'id'=>'sent']);
                 
             }
         }
@@ -433,7 +434,7 @@ class UserController extends AbstractActionController
     }
     
     /**
-     * This action displays the "Reset Password" page. 
+     * This action confirmed the user's registration through their email. 
      */
     public function confirmRegistrationAction()
     {
@@ -446,15 +447,15 @@ class UserController extends AbstractActionController
         
         if($token===null || 
            !$this->userManager->validateRegistrationConfirmationToken($token)) {
-            return $this->redirect()->toRoute('users', 
+            return $this->redirect()->toRoute('registration', 
                     ['action'=>'registrationStatus', 'id'=>'failed']);
         }
                        
         //Set the user to active
         $this->userManager->confirmRegistration($token);
         
-        return $this->redirect()->toRoute('users', 
-                    ['action'=>'registrationStatus', 'id'=>'failed']);
+        return $this->redirect()->toRoute('registration', 
+                    ['action'=>'registrationStatus', 'id'=>'confirmed']);
         
     }
 }
