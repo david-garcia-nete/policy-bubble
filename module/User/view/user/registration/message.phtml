@@ -28,7 +28,7 @@ $this->pageBreadcrumbs()->setItems([
 <?php elseif ($id=='failed'): ?>
 
     Invalid reset key or it may have expired. Please return 
-    <a href="<?= $this->url('registration', ['action'=>'register']); ?>">here</a> and try to register again.
+    <a href="<?= $this->url('registration', ['action'=>'index']); ?>">here</a> and try to register again.
 </p>
 <?php endif; ?>
 </div>

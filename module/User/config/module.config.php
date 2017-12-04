@@ -99,8 +99,8 @@ return [
                         'id' => '[a-zA-Z0-9_-]*',
                     ],
                     'defaults' => [
-                        'controller'    => Controller\UserController::class,
-                        'action'        => 'register',
+                        'controller'    => Controller\RegistrationController::class,
+                        'action'        => 'index',
                     ],
                 ],
             ],
@@ -112,7 +112,8 @@ return [
             Controller\PermissionController::class => Controller\Factory\PermissionControllerFactory::class,
             Controller\RoleController::class => Controller\Factory\RoleControllerFactory::class,    
             Controller\UserController::class => Controller\Factory\UserControllerFactory::class, 
-        ],
+            Controller\RegistrationController::class => Controller\Factory\RegistrationControllerFactory::class,    
+            ],
     ],
     // We register module-provided controller plugins under this key.
     'controller_plugins' => [
@@ -136,6 +137,11 @@ return [
                 // Give access to "index", "add", "edit", "view", "changePassword" actions to users having the "user.manage" permission.
                 ['actions' => ['index', 'add', 'edit', 'view', 'changePassword'], 'allow' => '+user.manage']
             ],
+            Controller\RegistrationController::class => [
+                // Give access to "resetPassword", "message" and "setPassword" actions
+                // to anyone.
+                ['actions' => ['register', 'message', 'confirmRegistration'], 'allow' => '*']
+            ],
             Controller\RoleController::class => [
                 // Allow access to authenticated users having the "role.manage" permission.
                 ['actions' => '*', 'allow' => '+role.manage']
@@ -155,6 +161,7 @@ return [
             Service\RbacManager::class => Service\Factory\RbacManagerFactory::class,
             Service\RoleManager::class => Service\Factory\RoleManagerFactory::class,
             Service\UserManager::class => Service\Factory\UserManagerFactory::class,
+            Service\RegistrationManager::class => Service\Factory\RegistrationManagerFactory::class,
         ],
     ],
     'view_manager' => [
