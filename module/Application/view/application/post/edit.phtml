@@ -1,9 +1,10 @@
 <?php
 $this->headTitle('New Post');
-$this->mainMenu()->setActiveItemId('home');
+$this->mainMenu()->setActiveItemId('blog');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Edit Post'=>$this->url('posts', ['action'=>'edit'])
+            'Blog'=>$this->url('blog'),
+            'Edit Post'=>''
             ]);
 $form = $this->form;
 $form->get('title')->setAttributes([

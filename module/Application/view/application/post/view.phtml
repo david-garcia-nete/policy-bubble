@@ -1,8 +1,10 @@
 <?php
 $this->headTitle('View Post - ' . $post->getTitle());
-$this->mainMenu()->setActiveItemId('home');
+$this->mainMenu()->setActiveItemId('blog');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home')
+            'Home'=>$this->url('home'),
+            'Blog'=>$this->url('blog'),
+            'View Post'=>''
             ]);
         
 $form = $this->form;
@@ -20,7 +22,7 @@ $form->prepare();
 ?>
 
 <a href="
-    <?= $this->url('application', ['action'=>'index']); ?>">
+    <?= $this->url('blog', ['action'=>'index']); ?>">
     &lt;&lt; Back to list of posts
 </a>
 
