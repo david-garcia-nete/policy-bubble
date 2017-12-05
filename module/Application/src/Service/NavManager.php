@@ -65,10 +65,24 @@ class NavManager
             ];
         } else {
             
+            $blogDropdownItems = [];
+            
+            $blogDropdownItems[] = [
+                            'id' => 'blog',
+                            'label' => 'Read All Posts',
+                            'link' => $url('blog')
+                        ];
+            
+            $blogDropdownItems[] = [
+                            'id' => 'admin',
+                            'label' => 'Manage My Posts',
+                            'link' => $url('posts')
+                        ];
+            
             $items[] = [
-            'id' => 'posts',
-            'label' => 'Post',
-            'link'  => $url('posts')
+            'id' => 'blog',
+            'label' => 'Blog',
+            'dropdown' => $blogDropdownItems
             ];
             
             // Determine which items must be displayed in Admin dropdown.

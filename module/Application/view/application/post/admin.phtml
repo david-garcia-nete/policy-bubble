@@ -1,13 +1,14 @@
 <?php
 $this->headTitle('Manage Posts');
-$this->mainMenu()->setActiveItemId('posts');
+$this->mainMenu()->setActiveItemId('blog');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Post'=>$this->url('posts'),
+            'Blog'=>$this->url('blog'),
+            'Manage My Posts'=>$this->url('posts'),
             ]);
 ?>
 
-<h1>Manage Posts</h1>
+<h1>Manage My Posts</h1>
 
 <p>
 <a class="btn btn-default" href="
