@@ -52,12 +52,24 @@ class NavManager
         // display "Admin" and "Logout" menu items only for authorized users.
         if (!$this->authService->hasIdentity()) {
             $items[] = [
+                'id' => 'register',
+                'label' => 'Register',
+                'link'  => $url('registration'),
+                'float' => 'right'
+            ];
+            $items[] = [
                 'id' => 'login',
                 'label' => 'Sign in',
                 'link'  => $url('login'),
                 'float' => 'right'
             ];
         } else {
+            
+            $items[] = [
+            'id' => 'posts',
+            'label' => 'Post',
+            'link'  => $url('posts')
+            ];
             
             // Determine which items must be displayed in Admin dropdown.
             $adminDropdownItems = [];
@@ -93,7 +105,7 @@ class NavManager
                     'dropdown' => $adminDropdownItems
                 ];
             }
-            
+                
             $items[] = [
                 'id' => 'logout',
                 'label' => $this->authService->getIdentity(),

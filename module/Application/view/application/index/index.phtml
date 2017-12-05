@@ -1,3 +1,7 @@
+<?php
+$this->mainMenu()->setActiveItemId('home');
+?>
+
 <div class="jumbotron">
     <h1>Welcome to <span class= "pb-blue">Policy Bubble</span></h1>
 
@@ -12,14 +16,19 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">Blogs</h3>
+                <h3 class="panel-title">Blog</h3>
             </div>
             <div class="panel-body">
                 <p>
                     Write about policies affecting your area.
                 </p>
 
-                <span><a class="btn btn-info pull-right" href="/blogs" target="_blank">Read &raquo;</a></span>
+                <p>
+                    <a class="btn btn-info pull-right" 
+                         href="<?php echo $this->url('blog'); ?>" 
+                         target="_blank">Read &raquo;
+                    </a>
+                </p>
 
             </div>
         </div>
@@ -35,7 +44,12 @@
                     Show how policies are affecting your area.
                 </p>
 
-                <p><a class="btn btn-info pull-right" href="/photos" target="_blank">See &raquo;</a></p>
+                <p>
+                    <a class="btn btn-info pull-right" 
+                      href="/photos" 
+                      target="_blank">See &raquo;
+                    </a>
+                </p>
             </div>
         </div>
     </div>
@@ -50,7 +64,12 @@
                     Let us know what you think.
                 </p>
 
-                <p><a class="btn btn-info pull-right" href="/feedback" target="_blank">Talk &raquo;</a></p>
+                <p>
+                    <a class="btn btn-info pull-right" 
+                      href="/feedback" 
+                      target="_blank">Talk &raquo;
+                    </a>
+                </p>
             </div>
         </div>
     </div>

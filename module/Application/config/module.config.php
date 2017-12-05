@@ -10,6 +10,7 @@ namespace Application;
 use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
+use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 
 return [
     'router' => [
@@ -38,11 +39,37 @@ return [
                     ],
                 ],
             ],
+            'blog' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/blog[/:action]',
+                    'defaults' => [
+                        'controller'    => Controller\BlogController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
+            'posts' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/posts[/:action[/:id]]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\PostController::class,
+                        'action'        => 'admin',
+                    ],
+                ],
+            ],
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\BlogController::class => Controller\Factory\BlogControllerFactory::class,
+            Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -59,10 +86,17 @@ return [
         ],
         'controllers' => [
             Controller\IndexController::class => [
-                // Allow anyone to visit "index" and "about" actions
+                // Allow anyone to visit "index" action
                 ['actions' => ['index'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
+            ],
+            Controller\BlogController::class => [
+                // Allow anyone to visit "index" action
+                ['actions' => ['index'], 'allow' => '*']
+            ],
+            Controller\PostController::class => [
+                ['actions' => ['add', 'view', 'edit', 'delete', 'admin'], 'allow' => '@']
             ],
         ]
     ],
@@ -74,6 +108,7 @@ return [
         'factories' => [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
+            Service\PostManager::class => Service\Factory\PostManagerFactory::class,
         ],
     ],
     'view_helpers' => [
@@ -109,5 +144,19 @@ return [
             'message_close_string'     => '</li></ul></div>',
             'message_separator_string' => '</li><li>'
         ]
-    ],   
+    ],
+    'doctrine' => [
+        'driver' => [
+            __NAMESPACE__ . '_driver' => [
+                'class' => AnnotationDriver::class,
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../src/Entity']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    __NAMESPACE__ . '\Entity' => __NAMESPACE__ . '_driver'
+                ]
+            ]
+        ]
+    ],
 ];
