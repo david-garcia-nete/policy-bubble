@@ -11,6 +11,8 @@
  * credentials from accidentally being committed into version control.
  */
 
+use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
+
 return [
     'doctrine' => [
         'connection' => [
