@@ -55,7 +55,7 @@ $this->pageBreadcrumbs()->setItems([
             <div class="panel-body">
                 <?php foreach($this->tagCloud as $tagName=>$frequency): ?>
                 
-                <a href="<?= $this->url('application', ['action'=>'index'],
+                <a href="<?= $this->url('blog', ['action'=>'index'],
                     ['query'=>['tag'=>$tagName]]); ?>">                   
         
                     <span style="font-size:<?= $this->escapeHtml(0.9+$frequency*3) ?>em">

@@ -46,7 +46,14 @@ class NavManager
             'id' => 'home',
             'label' => 'Home',
             'link'  => $url('home')
+            
         ];
+        
+        $items[] = [
+            'id' => 'blog',
+            'label' => 'Blog',
+            'link'  => $url('blog')
+            ];
                 
         // Display "Login" menu item for not authorized user only. On the other hand,
         // display "Admin" and "Logout" menu items only for authorized users.
