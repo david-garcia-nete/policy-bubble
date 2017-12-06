@@ -1,9 +1,9 @@
 <?php
 $this->headTitle('View Post - ' . $post->getTitle());
-$this->mainMenu()->setActiveItemId('blog');
+$this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Blog'=>$this->url('blog'),
+            'Posts'=>$this->url('posts'),
             'View Post'=>''
             ]);
         

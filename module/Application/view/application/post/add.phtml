@@ -1,9 +1,9 @@
 <?php
 $this->headTitle('New Post');
-$this->mainMenu()->setActiveItemId('blog');
+$this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Blog'=>$this->url('blog'),
+            'Posts'=>$this->url('posts'),
             'Add Post'=>$this->url('posts', ['action'=>'add'])
             ]);
 $form = $this->form;
