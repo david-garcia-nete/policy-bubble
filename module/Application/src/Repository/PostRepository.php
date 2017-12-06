@@ -69,5 +69,25 @@ class PostRepository extends EntityRepository
             ->setParameter('2', $tagName);
         
         return $queryBuilder->getQuery();
-    }        
+    }   
+    
+    /**
+     * Finds all published posts having the given user.
+     * @param \Application\Entity\User $user
+     * @return Query
+     */
+    public function findPostsByUser($user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')
+            ->from(Post::class, 'p')
+            ->where('p.user = ?1')
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', $user);
+        
+        return $queryBuilder->getQuery();
+    }   
 }

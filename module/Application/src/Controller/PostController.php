@@ -221,8 +221,9 @@ class PostController extends AbstractActionController
     public function adminAction()
     {
         // Get recent posts
-        $posts = $this->entityManager->getRepository(Post::class)
-                ->findBy([], ['dateCreated'=>'DESC']);
+        $user = $this->currentUser();
+        $query = $this->entityManager->getRepository(Post::class)
+                ->findPostsByUser($user);
         
         // Render the view template
         return new ViewModel([

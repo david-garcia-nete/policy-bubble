@@ -76,6 +76,12 @@ class User
      */
     private $roles;
     
+     /**
+     * @ORM\OneToMany(targetEntity="\Application\Entity\Post", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id")
+     */
+    protected $posts;
+    
     /**
      * Constructor.
      */
@@ -323,6 +329,24 @@ class User
     public function addRole($role)
     {
         $this->roles->add($role);
+    }
+    
+    /**
+     * Returns posts for this user.
+     * @return array
+     */
+    public function getPosts() 
+    {
+        return $this->posts;
+    }
+    
+    /**
+     * Adds a new post to this user.
+     * @param $post
+     */
+    public function addPost($post) 
+    {
+        $this->posts[] = $post;
     }
 }
 

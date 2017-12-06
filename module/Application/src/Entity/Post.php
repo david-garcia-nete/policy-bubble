@@ -58,6 +58,12 @@ class Post
     protected $tags;
     
     /**
+     * @ORM\ManyToOne(targetEntity="User\Entity\User", inversedBy="posts")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    protected $user;
+    
+    /**
      * Constructor.
      */
     public function __construct() 
@@ -198,6 +204,25 @@ class Post
     public function removeTagAssociation($tag) 
     {
         $this->tags->removeElement($tag);
+    }
+    
+     /*
+     * Returns associated user.
+     * @return \Application\Entity\User
+     */
+    public function getUser() 
+    {
+        return $this->user;
+    }
+    
+    /**
+     * Sets associated user.
+     * @param \Application\Entity\User $user
+     */
+    public function setUser($user) 
+    {
+        $this->user = $user;
+        $user->addPost($this);
     }
 }
 
