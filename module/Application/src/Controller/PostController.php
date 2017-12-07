@@ -55,8 +55,9 @@ class PostController extends AbstractActionController
                 // Get validated form data.
                 $data = $form->getData();
                 
+                $user = $this->currentUser();
                 // Use post manager service to add new post to database.                
-                $this->postManager->addNewPost($data);
+                $this->postManager->addNewPost($data, $user);
                 
                 // Redirect the user to "index" page.
                 return $this->redirect()->toRoute('blog');
@@ -222,7 +223,7 @@ class PostController extends AbstractActionController
     {
         // Get recent posts
         $user = $this->currentUser();
-        $query = $this->entityManager->getRepository(Post::class)
+        $posts = $this->entityManager->getRepository(Post::class)
                 ->findPostsByUser($user);
         
         // Render the view template

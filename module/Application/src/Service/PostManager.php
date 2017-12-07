@@ -1,7 +1,5 @@
 <?php
 namespace Application\Service;
-use Zend\ServiceManager\ServiceManager;
-use Zend\ServiceManager\ServiceManagerAwareInterface;
 use Application\Entity\Post;
 use Application\Entity\Comment;
 use Application\Entity\Tag;
@@ -28,14 +26,16 @@ class PostManager
     
     /**
      * This method adds a new post.
+     * @param \Application\Entity\User $user
      */
-    public function addNewPost($data) 
+    public function addNewPost($data, $user) 
     {
         // Create new Post entity.
         $post = new Post();
         $post->setTitle($data['title']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
+        $post->setUser($user);
         $currentDate = date('Y-m-d H:i:s');
         $post->setDateCreated($currentDate);        
         
