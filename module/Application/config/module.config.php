@@ -63,6 +63,16 @@ return [
                     ],
                 ],
             ],
+            'contactus' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/contactus',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'contactUs',
+                    ],
+                ],
+            ],    
         ],
     ],
     'controllers' => [
@@ -87,7 +97,7 @@ return [
         'controllers' => [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
-                ['actions' => ['index'], 'allow' => '*'],
+                ['actions' => ['index', 'contactUs', 'thankYou', 'sendError'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
             ],
@@ -111,6 +121,7 @@ return [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
+            Service\MailSender::class => InvokableFactory::class,
         ],
     ],
     'view_helpers' => [

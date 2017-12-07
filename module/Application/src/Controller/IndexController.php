@@ -10,6 +10,8 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\User;
+use Application\Form\ContactForm;
+use Application\Service\MailSender;
 
 class IndexController extends AbstractActionController
 {
@@ -20,11 +22,18 @@ class IndexController extends AbstractActionController
     private $entityManager;
     
     /**
+     * Mail sender.
+     * @var Application\Service\MailSender
+     */
+    private $mailSender;
+    
+    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager) 
+    public function __construct($entityManager, $mailSender) 
     {
        $this->entityManager = $entityManager;
+       $this->mailSender = $mailSender;
     }
     
     
@@ -60,5 +69,68 @@ class IndexController extends AbstractActionController
         return new ViewModel([
             'user' => $user
         ]);
+    }
+    
+    /**
+     * This action displays the Contact Us page.
+     */
+    public function contactUsAction() 
+    {   
+        // Create Contact Us form
+        $form = new ContactForm();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                $email = $data['email'];
+                $subject = $data['subject'];
+                $body = $data['body'];
+                
+                // Send E-mail
+                if(!$this->mailSender->sendMail('david.garcia.nete@gmail.com', $email, 
+                        $subject, $body)) {
+                    // In case of error, redirect to "Error Sending Email" page
+                    return $this->redirect()->toRoute('application', 
+                            ['action'=>'sendError']);
+                }
+                
+                // Redirect to "Thank You" page
+                return $this->redirect()->toRoute('application', 
+                        ['action'=>'thankYou']);
+            }               
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
+    }
+    
+    /**
+     * This action displays the Thank You page. The user is redirected to this
+     * page on successful mail delivery.
+     */
+    public function thankYouAction() 
+    {
+        return new ViewModel();
+    }
+    
+    /**
+     * This action displays the Send Error page. The user is redirected to this
+     * page on mail delivery error.
+     */
+    public function sendErrorAction() 
+    {
+        return new ViewModel();
     }
 }

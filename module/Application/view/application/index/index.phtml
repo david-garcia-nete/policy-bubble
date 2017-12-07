@@ -51,6 +51,25 @@ $this->mainMenu()->setActiveItemId('home');
             </div>
         </div>
     </div>
+    
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Visualization</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    See how policies are affecting your area.
+                </p>
+
+                <p>
+                    <a class="btn btn-info pull-right" 
+                       href="/visualization">See &raquo;
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
 
     <div class="col-md-4">
         <div class="panel panel-default">
@@ -64,7 +83,7 @@ $this->mainMenu()->setActiveItemId('home');
 
                 <p>
                     <a class="btn btn-info pull-right" 
-                       href="/feedback">Talk &raquo;
+                       href="<?php echo $this->url('contactus'); ?>">Talk &raquo;
                     </a>
                 </p>
             </div>
