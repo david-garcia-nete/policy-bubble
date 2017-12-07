@@ -96,7 +96,9 @@ return [
                 ['actions' => ['index'], 'allow' => '*']
             ],
             Controller\PostController::class => [
-                ['actions' => ['add', 'view', 'edit', 'delete', 'admin'], 'allow' => '@']
+                ['actions' => ['add', 'view', 'delete', 'admin'], 'allow' => '@'],
+                ['actions' => ['edit'], 'allow' => '+post.own.edit']
+                
             ],
         ]
     ],
