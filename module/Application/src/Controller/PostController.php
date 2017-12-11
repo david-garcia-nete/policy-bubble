@@ -181,6 +181,10 @@ class PostController extends AbstractActionController
             $form->setData($data);
         }
         
+        if (!$this->access('post.own.view', ['post'=>$post])) {
+            return $this->redirect()->toRoute('not-authorized');
+        }
+        
         // Render the view template.
         return new ViewModel([
             'form' => $form,
@@ -206,7 +210,11 @@ class PostController extends AbstractActionController
         if ($post == null) {
             $this->getResponse()->setStatusCode(404);
             return;                        
-        }        
+        }
+        
+        if (!$this->access('post.own.delete', ['post'=>$post])) {
+            return $this->redirect()->toRoute('not-authorized');
+        }
         
         $this->postManager->removePost($post);
         
