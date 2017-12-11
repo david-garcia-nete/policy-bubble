@@ -181,7 +181,7 @@ class PostController extends AbstractActionController
             $form->setData($data);
         }
         
-        if (!$this->access('post.own.view', ['post'=>$post])) {
+        if (!$this->access('post.own.edit', ['post'=>$post])) {
             return $this->redirect()->toRoute('not-authorized');
         }
         
