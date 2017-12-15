@@ -23,13 +23,20 @@ class PostController extends AbstractActionController
      */
     private $postManager;
     
+   /**
+     * Image manager.
+     * @var Application\Service\ImageManager;
+     */
+    private $imageManager;
+    
     /**
      * Constructor is used for injecting dependencies into the controller.
      */
-    public function __construct($entityManager, $postManager) 
+    public function __construct($entityManager, $postManager, $imageManager) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
+        $this->imageManager = $imageManager;
     }
     
     /**
@@ -45,8 +52,12 @@ class PostController extends AbstractActionController
         // Check whether this post is a POST request.
         if ($this->getRequest()->isPost()) {
             
-            // Get POST data.
-            $data = $this->params()->fromPost();
+            // Make certain to merge the files info!
+            $request = $this->getRequest();
+            $data = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
             
             // Fill form with data.
             $form->setData($data);
@@ -60,7 +71,7 @@ class PostController extends AbstractActionController
                 $this->postManager->addNewPost($data, $user);
                 
                 // Redirect the user to "index" page.
-                return $this->redirect()->toRoute('blog');
+                return $this->redirect()->toRoute('posts');
             }
         }
         
@@ -118,8 +129,12 @@ class PostController extends AbstractActionController
             }
         }
         
+        // Get the list of already saved files.
+        $files = $this->imageManager->getSavedFiles();
+        
         // Render the view template.
         return new ViewModel([
+            'files'=>$files,
             'post' => $post,
             'form' => $form,
             'postManager' => $this->postManager
@@ -154,8 +169,12 @@ class PostController extends AbstractActionController
         // Check whether this post is a POST request.
         if ($this->getRequest()->isPost()) {
             
-            // Get POST data.
-            $data = $this->params()->fromPost();
+            // Make certain to merge the files info!
+            $request = $this->getRequest();
+            $data = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
             
             // Fill form with data.
             $form->setData($data);

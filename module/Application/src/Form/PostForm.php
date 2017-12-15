@@ -18,6 +18,9 @@ class PostForm extends Form
      
         // Set POST method for this form
         $this->setAttribute('method', 'post');
+        
+        // Set binary content encoding.
+        $this->setAttribute('enctype', 'multipart/form-data');
                 
         $this->addElements();
         $this->addInputFilter();  
@@ -65,6 +68,18 @@ class PostForm extends Form
                 'label' => 'Tags',
             ],
         ]);
+        
+        // Add "file" field.
+        $this->add([
+            'type'  => 'file',
+            'name' => 'file',
+            'attributes' => [                
+                'id' => 'file'
+            ],
+            'options' => [
+                'label' => 'Image file',
+            ],
+        ]);        
         
         // Add "status" field
         $this->add([
@@ -156,5 +171,43 @@ class PostForm extends Form
                     ],
                 ],
             ]);
+        
+        // Add validation rules for the "file" field.	 
+        $inputFilter->add([
+                'type'     => 'Zend\InputFilter\FileInput',
+                'name'     => 'file',
+                'required' => true,   
+                'validators' => [
+                    ['name'    => 'FileUploadFile'],
+                    [
+                        'name'    => 'FileMimeType',                        
+                        'options' => [                            
+                            'mimeType'  => ['image/jpeg', 'image/png']
+                        ]
+                    ],
+                    ['name'    => 'FileIsImage'],
+                    [
+                        'name'    => 'FileImageSize',
+                        'options' => [
+                            'minWidth'  => 128,
+                            'minHeight' => 128,
+                            'maxWidth'  => 4096,
+                            'maxHeight' => 4096
+                        ]
+                    ],
+                ],
+                'filters'  => [                    
+                    [
+                        'name' => 'FileRenameUpload',
+                        'options' => [  
+                            'target'=>'./data/upload',
+                            'useUploadName'=>true,
+                            'useUploadExtension'=>true,
+                            'overwrite'=>true,
+                            'randomize'=>false
+                        ]
+                    ]
+                ],   
+            ]);                
     }
 }

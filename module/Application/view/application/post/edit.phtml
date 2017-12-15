@@ -56,6 +56,13 @@ $form->prepare();
             <?= $this->formElementErrors($form->get('tags')); ?>                  
             <p class="help-block">Separate tags with comma.</p>
         </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('file')); ?>
+            <?= $this->formElement($form->get('file')); ?>
+            <?= $this->formElementErrors($form->get('file')); ?> 
+            <div class="hint">(PNG and JPG formats are allowed)</div>
+        </div>
 
         <div class="form-group">
             <?= $this->formLabel($form->get('status')); ?>
