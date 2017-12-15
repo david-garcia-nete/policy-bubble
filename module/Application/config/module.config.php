@@ -63,6 +63,19 @@ return [
                     ],
                 ],
             ],
+            'images' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/images[/:action]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\ImageController::class,
+                        'action'        => 'index',
+                    ],
+                ],
+            ],
             'contactus' => [
                 'type'    => Literal::class,
                 'options' => [
@@ -80,6 +93,7 @@ return [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
             Controller\BlogController::class => Controller\Factory\BlogControllerFactory::class,
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
+            Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -110,6 +124,9 @@ return [
                 ['actions' => ['edit'], 'allow' => '+post.own.edit'],
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
+            Controller\ImageController::class => [
+                ['actions' => ['index', 'upload', 'file'], 'allow' => '*']
+            ],
         ]
     ],
     // This key stores configuration for RBAC manager.
@@ -122,6 +139,7 @@ return [
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
             Service\MailSender::class => InvokableFactory::class,
+            Service\ImageManager::class => InvokableFactory::class,
         ],
     ],
     'view_helpers' => [
