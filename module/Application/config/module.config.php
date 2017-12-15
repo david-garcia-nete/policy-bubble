@@ -125,7 +125,7 @@ return [
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
             Controller\ImageController::class => [
-                ['actions' => ['index', 'upload', 'file'], 'allow' => '*']
+                ['actions' => ['index', 'upload', 'file'], 'allow' => '@']
             ],
         ]
     ],
