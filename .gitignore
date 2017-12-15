@@ -6,3 +6,4 @@ data/cache/*
 phpunit.xml
 /nbproject/private/
 public/img/captcha/*
+data/upload/*
