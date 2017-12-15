@@ -198,14 +198,19 @@ class PostController extends AbstractActionController
             ];
             
             $form->setData($data);
+  
         }
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
             return $this->redirect()->toRoute('not-authorized');
         }
         
+        // Get the list of already saved files.
+        $files = $this->imageManager->getSavedFiles();
+        
         // Render the view template.
         return new ViewModel([
+            'files'=>$files,
             'form' => $form,
             'post' => $post
         ]);  
