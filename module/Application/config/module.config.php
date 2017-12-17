@@ -120,7 +120,7 @@ return [
                 ['actions' => ['index'], 'allow' => '*']
             ],
             Controller\PostController::class => [
-                ['actions' => ['add', 'view', 'admin'], 'allow' => '@'],
+                ['actions' => ['add', 'view', 'admin', 'uploadImage'], 'allow' => '@'],
                 ['actions' => ['edit'], 'allow' => '+post.own.edit'],
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],

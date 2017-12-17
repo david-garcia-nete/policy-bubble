@@ -3,6 +3,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Form\PostForm;
+use Application\Form\ImagetForm;
 use Application\Entity\Post;
 use Application\Form\CommentForm;
 /**
@@ -259,6 +260,44 @@ class PostController extends AbstractActionController
             'form' => $form,
             'post' => $post
         ]);  
+    }
+    
+     /**
+     * This action allows to upload a single image and return to the post form.
+     */
+    public function uploadImageAction() 
+    {
+        // Create the form model
+        $form = new ImageForm();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Make certain to merge the files info!
+            $request = $this->getRequest();
+            $data = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
+            
+            // Pass data to form
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Move uploaded file to its destination directory.
+                $data = $form->getData();
+                                
+                // Redirect the user to post form.
+                return $this->redirect()->toRoute('posts', ['action'=>'edit']);
+            }                        
+        } 
+        
+        // Render the page
+        return new ViewModel([
+            'form' => $form
+        ]);
     }
     
     /**
