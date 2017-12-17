@@ -30,13 +30,21 @@ class PostController extends AbstractActionController
     private $imageManager;
     
     /**
+     * Session container.
+     * @var Zend\Session\Container
+     */
+    private $sessionContainer;
+
+    
+    /**
      * Constructor is used for injecting dependencies into the controller.
      */
-    public function __construct($entityManager, $postManager, $imageManager) 
+    public function __construct($entityManager, $postManager, $imageManager, $sessionContainer) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
         $this->imageManager = $imageManager;
+        $this->sessionContainer = $sessionContainer;
     }
     
     /**
@@ -146,8 +154,26 @@ class PostController extends AbstractActionController
      */
     public function editAction() 
     {
+        // Determine the current step.
+        $step = 1;
+        if (isset($this->sessionContainer->step)) {
+            $step = $this->sessionContainer->step;            
+        }
+        
+        // Ensure the step is correct (between 1 and 3).
+        if ($step<1 || $step>3)
+            $step = 1;
+        
+        if ($step==1) {
+            // Init user choices.
+            $this->sessionContainer->userChoices = [];
+        }
+
         // Create form.
-        $form = new PostForm();
+        $form = new PostForm($step);
+        
+        // Create image holder.
+        $files = null;
         
         // Get post ID.
         $postId = (int)$this->params()->fromRoute('id', -1);
@@ -183,21 +209,43 @@ class PostController extends AbstractActionController
                 // Get validated form data.
                 $data = $form->getData();
                 
-                // Use post manager service update existing post.                
-                $this->postManager->updatePost($post, $data);
+                // Save user choices in session.
+                $this->sessionContainer->userChoices["step$step"] = $data;
+
+                // Increase step
+                $step ++;
+                $this->sessionContainer->step = $step;
                 
-                // Redirect the user to "admin" page.
-                return $this->redirect()->toRoute('posts', ['action'=>'admin']);
+                // If we completed all 3 steps.
+                if ($step>3) {
+                    // Use post manager service update existing post.                
+                    $this->postManager->updatePost($post, $data);
+                    
+                    // Redirect the user to "admin" page.
+                    return $this->redirect()->toRoute('posts', ['action'=>'admin']);
+                }
+                
+                 // Go to the next step.
+                return $this->redirect()->toRoute('posts', ['action'=>'edit']);
+
             }
         } else {
-            $data = [
-                'title' => $post->getTitle(),
-                'content' => $post->getContent(),
-                'tags' => $this->postManager->convertTagsToString($post),
-                'status' => $post->getStatus()
-            ];
             
+            if ($step==1) {
+                $data = [
+                    'title' => $post->getTitle(),
+                    'content' => $post->getContent(),
+                    'tags' => $this->postManager->convertTagsToString($post),
+                    'status' => $post->getStatus()
+                ];
             $form->setData($data);
+            }
+            
+            if ($step==2) {
+                // Get the list of already saved files.
+                $files = $this->imageManager->getSavedFiles();
+                
+            }
   
         }
         
@@ -205,12 +253,9 @@ class PostController extends AbstractActionController
             return $this->redirect()->toRoute('not-authorized');
         }
         
-        // Get the list of already saved files.
-        $files = $this->imageManager->getSavedFiles();
-        
         // Render the view template.
         return new ViewModel([
-            'files'=>$files,
+            'files' => $files,
             'form' => $form,
             'post' => $post
         ]);  

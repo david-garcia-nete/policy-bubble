@@ -142,6 +142,10 @@ return [
             Service\ImageManager::class => InvokableFactory::class,
         ],
     ],
+    'session_containers' => [
+        'Posts'
+    ],
+
     'view_helpers' => [
         'factories' => [
             View\Helper\Menu::class => View\Helper\Factory\MenuFactory::class,

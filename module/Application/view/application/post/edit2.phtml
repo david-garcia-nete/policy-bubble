@@ -1,0 +1,145 @@
+<?php
+$this->headTitle('Edit Post');
+$this->mainMenu()->setActiveItemId('posts');
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Posts'=>$this->url('posts'),    
+            'Edit Post'=>''
+            ]);
+$form = $this->form;
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+
+$form->prepare();
+
+?>
+
+
+
+<h1>Upload a New Image</h1>
+
+
+
+<p>
+
+    Please fill out the following form and press the <i>Upload</i> button.
+
+</p>
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <?= $this->form()->openTag($form); ?>
+
+        
+
+        <div class="form-group">
+
+            <?= $this->formLabel($form->get('file')); ?>
+
+            <?= $this->formElement($form->get('file')); ?>
+
+            <?= $this->formElementErrors($form->get('file')); ?>
+
+            <div class="hint">(PNG and JPG formats are allowed)</div>
+
+        </div>
+
+                
+
+        <?= $this->formElement($form->get('submit')); ?>
+
+        
+
+        <?= $this->form()->closeTag(); ?>
+
+    </div>    
+
+</div>    
+
+<p>
+
+    <a href="<?= $this->url('images', ['action'=>'upload']); ?>" 
+
+       class="btn btn-primary" role="button">Upload More</a>
+
+</p>
+
+
+
+<hr/>
+
+
+
+<?php if(count($files)==0): ?>
+
+
+
+<p>
+
+    <i>There are no files to display.</i>
+
+</p>
+
+
+
+<?php else: ?>
+
+
+
+<div class="row">
+
+    <div class="col-sm-6 col-md-12">
+
+
+
+        <?php foreach($files as $file): ?>  
+
+
+
+        <div class="img-thumbnail">
+
+            
+
+            <img src="<?= $this->url('images', ['action'=>'file'], 
+
+                    ['query'=>['name'=>$file, 'thumbnail'=>true]]); ?>">
+
+            
+
+            <div class="caption">
+
+                <h3><?php echo $file; ?></h3>                    
+
+                <p>
+
+                    <a target="_blank" href="<?= $this->url('images',  
+
+                            ['action'=>'file'], ['query'=>['name'=>$file]]); ?>" 
+
+                            class="btn btn-default" role="button">Show in Natural Size</a>
+
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <?php endforeach; ?>
+
+    </div>
+
+</div>
+
+
+
+<hr/>
+
+
+
+<?php endif; ?>
