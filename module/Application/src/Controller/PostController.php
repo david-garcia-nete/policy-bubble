@@ -161,23 +161,23 @@ class PostController extends AbstractActionController
             $step = $this->sessionContainer->step;            
         }
         
-        // Ensure the step is correct (between 1 and 3).
+        // Ensure the step is correct (between 1 and 2).
         if ($step<1 || $step>2)
             $step = 1;
         
         if ($step==1) {
             // Init user choices.
-            $this->sessionContainer->userChoices = [];
+            $this->sessionContainer->userChoices['step2dirty'] = false;
         }
-
-        // Create form.
-        $form = new PostForm($step);
         
         // Create image holder.
         $files = null;
         
         // Get post ID.
         $postId = (int)$this->params()->fromRoute('id', -1);
+        
+        // Create form.
+        $form = new PostForm($step, $postId);
         
         // Validate input parameter
         if ($postId<0) {
@@ -221,11 +221,12 @@ class PostController extends AbstractActionController
                     $this->sessionContainer->step = $step;
                 }
                 
-                // If we completed all 3 steps.
+                // If we completed both steps.
                 if ($step>2) {
                     // Use post manager service update existing post.
                     $this->postManager->updatePost($post, 
                             $this->sessionContainer->userChoices['step1']);
+                    $this->imageManager->saveTempFiles($postId);
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -233,7 +234,7 @@ class PostController extends AbstractActionController
                 
                  // Go to the next step.
                 return $this->redirect()->toRoute('posts', ['action'=>'edit',
-                    'id'=>$post->getId()]);
+                    'id'=>$postId]);
 
             }
         } else {
@@ -249,9 +250,11 @@ class PostController extends AbstractActionController
             }
             
             if ($step==2) {
-                // Get the list of already saved files.
-                $files = $this->imageManager->getSavedFiles();
                 
+                // Get the list of already saved files.
+                $files = $this->imageManager->getTempFiles($postId, 
+                        $this->sessionContainer->userChoices['step2dirty']);
+                $this->sessionContainer->userChoices['step2dirty'] = true;  
             }
   
         }
@@ -270,45 +273,7 @@ class PostController extends AbstractActionController
         
         return $viewModel;
     }
-    
-     /**
-     * This action allows to upload a single image and return to the post form.
-     */
-    public function uploadImageAction() 
-    {
-        // Create the form model
-        $form = new ImageForm();
-        
-        // Check if user has submitted the form
-        if($this->getRequest()->isPost()) {
-            
-            // Make certain to merge the files info!
-            $request = $this->getRequest();
-            $data = array_merge_recursive(
-                $request->getPost()->toArray(),
-                $request->getFiles()->toArray()
-            );
-            
-            // Pass data to form
-            $form->setData($data);
-            
-            // Validate form
-            if($form->isValid()) {
-                
-                // Move uploaded file to its destination directory.
-                $data = $form->getData();
-                                
-                // Redirect the user to post form.
-                return $this->redirect()->toRoute('posts', ['action'=>'edit']);
-            }                        
-        } 
-        
-        // Render the page
-        return new ViewModel([
-            'form' => $form
-        ]);
-    }
-    
+       
     /**
      * This "delete" action deletes the given post.
      */

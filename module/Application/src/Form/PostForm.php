@@ -11,7 +11,7 @@ class PostForm extends Form
     /**
      * Constructor.     
      */
-    public function __construct($step)
+    public function __construct($step, $id)
     {
         
         // Check input.
@@ -30,7 +30,7 @@ class PostForm extends Form
         $this->setAttribute('enctype', 'multipart/form-data');
                 
         $this->addElements($step);
-        $this->addInputFilter($step);  
+        $this->addInputFilter($step, $id);  
         
     }
     
@@ -123,7 +123,7 @@ class PostForm extends Form
     /**
      * This method creates input filter (used for form filtering/validation).
      */
-    private function addInputFilter($step) 
+    private function addInputFilter($step, $id) 
     {
         
         $inputFilter = new InputFilter();        
@@ -217,7 +217,7 @@ class PostForm extends Form
                         [
                             'name' => 'FileRenameUpload',
                             'options' => [  
-                                'target'=>'./data/upload',
+                                'target'=>'./data/upload/post/' . $id . '/temp',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,

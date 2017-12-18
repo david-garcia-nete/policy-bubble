@@ -96,7 +96,8 @@ $form->prepare();
 
             <img src="<?= $this->url('images', ['action'=>'file'], 
 
-                    ['query'=>['name'=>$file, 'thumbnail'=>true]]); ?>">
+                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 
+                        'thumbnail'=>true]]); ?>">
 
             
 
