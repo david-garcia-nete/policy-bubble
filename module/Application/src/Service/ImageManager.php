@@ -37,7 +37,7 @@ class ImageManager
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
                 
         // Return concatenated directory name and file name.
-        return $this->saveToDir . 'post/' . $id . '/temp/';                
+        return $this->saveToDir . 'post/' . $id . '/temp/' . $fileName;                
     }
 
 
