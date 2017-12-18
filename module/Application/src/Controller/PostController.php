@@ -162,7 +162,7 @@ class PostController extends AbstractActionController
         }
         
         // Ensure the step is correct (between 1 and 3).
-        if ($step<1 || $step>3)
+        if ($step<1 || $step>2)
             $step = 1;
         
         if ($step==1) {
@@ -213,21 +213,27 @@ class PostController extends AbstractActionController
                 // Save user choices in session.
                 $this->sessionContainer->userChoices["step$step"] = $data;
 
-                // Increase step
-                $step ++;
-                $this->sessionContainer->step = $step;
+                // Increase step if photo has not been selected.
+                $fileExists = $this->postManager->checkFileExists($data);                
+                
+                if($fileExists == false){
+                    $step ++;
+                    $this->sessionContainer->step = $step;
+                }
                 
                 // If we completed all 3 steps.
-                if ($step>3) {
-                    // Use post manager service update existing post.                
-                    $this->postManager->updatePost($post, $data);
+                if ($step>2) {
+                    // Use post manager service update existing post.
+                    $this->postManager->updatePost($post, 
+                            $this->sessionContainer->userChoices['step1']);
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
                 }
                 
                  // Go to the next step.
-                return $this->redirect()->toRoute('posts', ['action'=>'edit']);
+                return $this->redirect()->toRoute('posts', ['action'=>'edit',
+                    'id'=>$post->getId()]);
 
             }
         } else {
@@ -255,11 +261,14 @@ class PostController extends AbstractActionController
         }
         
         // Render the view template.
-        return new ViewModel([
+        $viewModel = new ViewModel([
             'files' => $files,
             'form' => $form,
             'post' => $post
-        ]);  
+        ]);
+        $viewModel->setTemplate("application/post/edit$step");
+        
+        return $viewModel;
     }
     
      /**

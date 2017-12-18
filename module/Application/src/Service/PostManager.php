@@ -216,4 +216,18 @@ class PostManager
         
         return $normalizedTagCloud;
     }
+    
+    /**
+     * Checks if file exists.
+     */
+    public function checkfileExists($data) 
+    {
+        $fileExists = false;
+        if (array_key_exists('file', $data)) {
+            if ($data[file][size] > 0) {
+                $fileExists = true;
+            }
+        }
+        return $fileExists;
+    }
 }

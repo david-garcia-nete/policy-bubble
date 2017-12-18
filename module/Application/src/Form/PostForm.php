@@ -108,20 +108,7 @@ class PostForm extends Form
                 ],
             ]);      
         }
-        
-        // Add the CSRF field
-        $this->add([
-            'type'  => 'csrf',
-            'name' => 'csrf',
-            'attributes' => [],
-            'options' => [                
-                'csrf_options' => [
-                     'timeout' => 600
-                ]
-            ],
-        ]);
-
-        
+                
         // Add the submit button
         $this->add([
             'type'  => 'submit',
@@ -206,7 +193,7 @@ class PostForm extends Form
             $inputFilter->add([
                     'type'     => 'Zend\InputFilter\FileInput',
                     'name'     => 'file',
-                    'required' => true,   
+                    'required' => false,   
                     'validators' => [
                         ['name'    => 'FileUploadFile'],
                         [
