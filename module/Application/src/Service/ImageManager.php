@@ -30,14 +30,14 @@ class ImageManager
      * @param string $fileName Image file name (without path part).
      * @return string Path to image file.
      */
-    public function getImagePathByName($fileName, $id) 
+    public function getImagePathByName($fileName, $id, $loc)
     {
         // Take some precautions to make file name secure
         $fileName = str_replace("/", "", $fileName);  // Remove slashes
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
                 
         // Return concatenated directory name and file name.
-        return $this->saveToDir . 'post/' . $id . '/temp/' . $fileName;                
+        return $this->saveToDir . 'post/' . $id . "/$loc/" . $fileName;                
     }
 
 
@@ -45,21 +45,22 @@ class ImageManager
      * Returns the array of saved file names.
      * @return array List of uploaded file names.
      */
-    public function getSavedFiles() 
+    public function getSavedFiles($id) 
     {
         // The directory where we plan to save uploaded files.
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        if(!is_dir($this->saveToDir)) {
-            if(!mkdir($this->saveToDir)) {
+        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
+        if(!is_dir($permDir)) {
+            if(!mkdir($permDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
             }
         }
-        
+
         // Scan the directory and create the list of uploaded files.
         $files = array();        
-        $handle  = opendir($this->saveToDir);
+        $handle  = opendir($permDir);
         while (false !== ($entry = readdir($handle))) {
             
             if($entry=='.' || $entry=='..')
@@ -162,8 +163,12 @@ class ImageManager
             if (( $file != '.' ) && ( $file != '..' )) {      
                 copy($tempDir . $file, $permDir . $file); 
             } 
-        } 
-        closedir($dir); 
+        }  
+        closedir($dir);
+
+        // Remove temp dir
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
     }
     
     /**

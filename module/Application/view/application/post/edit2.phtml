@@ -9,6 +9,7 @@ $this->pageBreadcrumbs()->setItems([
 $form = $this->form;
 
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+$form->get('submit')->setValue('Continue');
 
 $form->prepare();
 
@@ -16,13 +17,14 @@ $form->prepare();
 
 
 
-<h1>Upload a New Image</h1>
+<h1>Edit Post - Step 2</h1>
 
 
 
 <p>
 
-    Please fill out the following form and press the <i>Upload</i> button.
+    Please fill out the following form and press the <i>Continue</i> button.  
+    To finish, do not select a file.
 
 </p>
 
@@ -96,7 +98,7 @@ $form->prepare();
 
             <img src="<?= $this->url('images', ['action'=>'file'], 
 
-                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 
+                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'perm',  
                         'thumbnail'=>true]]); ?>">
 
             
@@ -110,7 +112,7 @@ $form->prepare();
                     <a target="_blank" href="<?= $this->url('images',  
 
                             ['action'=>'file'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId()]]); ?>" 
+                                'id'=>$post->getId(), 'loc'=>'perm']]); ?>" 
 
                             class="btn btn-default" role="button">Show in Natural Size</a>
 

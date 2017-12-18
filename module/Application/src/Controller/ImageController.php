@@ -88,6 +88,8 @@ class ImageController extends AbstractActionController
         $fileName = $this->params()->fromQuery('name', '');
         
         $postId = $this->params()->fromQuery('id', '');
+        
+        $loc = $this->params()->fromQuery('loc', '');
                 
         // Check whether the user needs a thumbnail or a full-size image
         $isThumbnail = (bool)$this->params()->fromQuery('thumbnail', false);
@@ -98,7 +100,7 @@ class ImageController extends AbstractActionController
         }
         
         // Get path to image file
-        $fileName = $this->imageManager->getImagePathByName($fileName, $postId);
+        $fileName = $this->imageManager->getImagePathByName($fileName, $postId, $loc);
                 
         if($isThumbnail) {        
             // Resize the image
