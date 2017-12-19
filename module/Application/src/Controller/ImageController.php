@@ -106,6 +106,26 @@ class ImageController extends AbstractActionController
             'id'=>$postId, 'step'=>2]);
     }    
     
+    public function removeAddTempAction() 
+    {
+        // Get the file name from GET variable
+        $fileName = $this->params()->fromQuery('name', '');
+        
+        $userId = $this->params()->fromQuery('id', '');
+        
+        // Validate input parameters
+        if (empty($fileName) || strlen($fileName)>128) {
+            throw new \Exception('File name is empty or too long');
+        }
+        
+        // Get path to image file
+        $this->imageManager->removeAddTemp($fileName, $userId);
+                
+       // Go to the next step.
+        return $this->redirect()->toRoute('posts', ['action'=>'add',
+            'step'=>2]);
+    }    
+    
     
     /**
      * This is the 'file' action that is invoked when a user wants to 

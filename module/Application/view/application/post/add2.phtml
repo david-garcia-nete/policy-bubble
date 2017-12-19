@@ -108,6 +108,13 @@ $form->prepare();
                 <h3><?php echo $file; ?></h3>                    
 
                 <p>
+                    
+                     <a href="<?= $this->url('images',  
+
+                            ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$user->getId()]]); ?>" 
+
+                            class="btn btn-default" role="button">Remove</a>
 
                     <a target="_blank" href="<?= $this->url('images',  
 
