@@ -86,6 +86,27 @@ class ImageController extends AbstractActionController
         return $this->getResponse();
     }    
     
+    public function removeTempAction() 
+    {
+        // Get the file name from GET variable
+        $fileName = $this->params()->fromQuery('name', '');
+        
+        $postId = $this->params()->fromQuery('id', '');
+        
+        // Validate input parameters
+        if (empty($fileName) || strlen($fileName)>128) {
+            throw new \Exception('File name is empty or too long');
+        }
+        
+        // Get path to image file
+        $this->imageManager->removeTemp($fileName, $postId);
+                
+       // Go to the next step.
+        return $this->redirect()->toRoute('posts', ['action'=>'edit',
+            'id'=>$postId, 'step'=>2]);
+    }    
+    
+    
     /**
      * This is the 'file' action that is invoked when a user wants to 
      * open the image file in a web browser or generate a thumbnail.        

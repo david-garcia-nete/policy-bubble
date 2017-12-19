@@ -107,6 +107,17 @@ $form->prepare();
 
                 <h3><?php echo $file; ?></h3>                    
 
+                
+                <p>
+
+                    <a target="_blank" href="<?= $this->url('images',  
+                            ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$post->getId()]]); ?>" 
+
+                            class="btn btn-default" role="button">Remove</a>
+
+                </p>
+                
                 <p>
 
                     <a target="_blank" href="<?= $this->url('images',  
@@ -117,6 +128,7 @@ $form->prepare();
                             class="btn btn-default" role="button">Show in Natural Size</a>
 
                 </p>
+                
 
             </div>
 

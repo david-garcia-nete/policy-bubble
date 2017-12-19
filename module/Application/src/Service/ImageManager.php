@@ -307,6 +307,21 @@ class ImageManager
     }
     
     /**
+     * Saves the temp file to the permanent folder
+     */
+    public function removeTemp($fileName, $postId) 
+    {
+        // Take some precautions to make file name secure
+        $fileName = str_replace("/", "", $fileName);  // Remove slashes
+        $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
+        //
+        // The directory where we plan to save uploaded files.
+        $temp = $this->saveToDir . 'post/' . $postId . '/temp/' . $fileName;
+
+        unlink($temp); // delete file
+    }
+    
+    /**
      * Retrieves the file information (size, MIME type) by image path.
      * @param string $filePath Path to the image file.
      * @return array File information.
