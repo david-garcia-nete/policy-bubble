@@ -73,7 +73,7 @@ return [
                     ],
                     'defaults' => [
                         'controller'    => Controller\ImageController::class,
-                        'action'        => 'index',
+                        'action'        => 'file',
                     ],
                 ],
             ],
@@ -126,7 +126,7 @@ return [
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
             Controller\ImageController::class => [
-                ['actions' => ['index', 'upload', 'file', 'addFile'], 'allow' => '@']
+                ['actions' => ['file', 'addFile'], 'allow' => '@']
             ],
         ]
     ],

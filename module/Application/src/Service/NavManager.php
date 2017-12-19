@@ -78,12 +78,6 @@ class NavManager
             'link' => $url('posts')
             ];
             
-            $items[] = [
-            'id' => 'images',
-            'label' => 'Images',
-            'link'  => $url('images')
-            ];
-            
             // Determine which items must be displayed in Admin dropdown.
             $adminDropdownItems = [];
             

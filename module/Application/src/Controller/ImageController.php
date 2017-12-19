@@ -3,7 +3,6 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
-use Application\Form\ImageForm;
 
 /**
  * This controller is designed for managing image file uploads.
@@ -23,60 +22,7 @@ class ImageController extends AbstractActionController
     {
         $this->imageManager = $imageManager;
     }
-    
-    /**
-     * This is the default "index" action of the controller. It displays the 
-     * Image Gallery page which contains the list of uploaded images.
-     */
-    public function indexAction() 
-    {
-        // Get the list of already saved files.
-        $files = $this->imageManager->getSavedFiles();
-        
-        // Render the view template
-        return new ViewModel([
-            'files'=>$files
-        ]);
-    }
-    
-    /**
-     * This action shows the image upload form. This page allows to upload 
-     * a single file.
-     */
-    public function uploadAction() 
-    {
-        // Create the form model
-        $form = new ImageForm();
-        
-        // Check if user has submitted the form
-        if($this->getRequest()->isPost()) {
-            
-            // Make certain to merge the files info!
-            $request = $this->getRequest();
-            $data = array_merge_recursive(
-                $request->getPost()->toArray(),
-                $request->getFiles()->toArray()
-            );
-            
-            // Pass data to form
-            $form->setData($data);
-            
-            // Validate form
-            if($form->isValid()) {
-                
-                // Move uploaded file to its destination directory.
-                $data = $form->getData();
-                
-                // Redirect the user to "Image Gallery" page
-                return $this->redirect()->toRoute('images', ['action'=>'index']);
-            }                        
-        } 
-        
-        // Render the page
-        return new ViewModel([
-            'form' => $form
-        ]);
-    }
+       
     
     /**
      * This is the 'file' action that is invoked when a user wants to 
