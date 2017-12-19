@@ -3,7 +3,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Application\Form\PostForm;
-use Application\Form\ImagetForm;
+use Application\Form\AddPostForm;
 use Application\Entity\Post;
 use Application\Form\CommentForm;
 /**
@@ -55,8 +55,29 @@ class PostController extends AbstractActionController
      */
     public function addAction() 
     {     
+        $stepParam = $this->params()->fromRoute('id', 1);
+        // Determine the current step.
+        $step = 1;
+        if ((isset($this->sessionContainer->step))&&($stepParam==2)) {
+            $step = $this->sessionContainer->addStep;            
+        }
+        
+        // Ensure the step is correct (between 1 and 2).
+        if ($step<1 || $step>2)
+            $step = 1;
+        
+        if ($step==1) {
+            // Init user choices.
+            $this->sessionContainer->userChoices['addStep2Dirty'] = false;
+        }
+        
+        // Create image holder.
+        $files = null;
+        
+        $user = $this->currentUser();
+               
         // Create the form.
-        $form = new PostForm();
+        $form = new AddPostForm($step, $user->getId());
         
         // Check whether this post is a POST request.
         if ($this->getRequest()->isPost()) {
@@ -75,19 +96,62 @@ class PostController extends AbstractActionController
                 // Get validated form data.
                 $data = $form->getData();
                 
-                $user = $this->currentUser();
-                // Use post manager service to add new post to database.                
-                $this->postManager->addNewPost($data, $user);
+                // Save user choices in session.
+                $this->sessionContainer->userChoices["addStep$step"] = $data;
                 
-                // Redirect the user to "index" page.
-                return $this->redirect()->toRoute('posts');
+                //$check = $this->sessionContainer->userChoices["step$step"];
+                
+                //$check = $this->sessionContainer->userChoices["step$step"];
+
+                // Increase step if photo has not been selected.
+                $fileExists = $this->postManager->checkFileExists($data);                
+                
+                if($fileExists == false){
+                    $step ++;
+                    $this->sessionContainer->addStep = $step;
+                }
+                
+                if ($step>2) {
+                    
+                    // Use post manager service to add new post to database.
+                    $data = $this->sessionContainer->userChoices['addStep1'];
+                    $this->postManager->addNewPost(
+                            $data, $user);
+                    $posts = $this->entityManager->getRepository(Post::class)
+                        ->findPostsByUser($user);
+                    $post = $posts[0];
+                    $postId = $post->getId();
+                    $this->imageManager->saveAddTempFiles($postId, $user->getId());
+                    
+                    // Redirect the user to "admin" page.
+                    return $this->redirect()->toRoute('posts', ['action'=>'admin']);
+                }
+                
+                // Go to the next step.
+                return $this->redirect()->toRoute('posts', ['action'=>'add', 
+                    'id'=>2]);
             }
+        }   else {
+
+            if ($step==2) {
+                
+                // Get the list of already saved files.
+                $files = $this->imageManager->getAddTempFiles($user->getId(), 
+                        $this->sessionContainer->userChoices['addStep2Dirty']);
+                $this->sessionContainer->userChoices['addStep2Dirty'] = true;  
+            }
+  
         }
         
         // Render the view template.
-        return new ViewModel([
-            'form' => $form
+        $viewModel = new ViewModel([
+            'files' => $files,
+            'form' => $form,
+            'user' => $user
         ]);
+        $viewModel->setTemplate("application/post/add$step");
+        
+        return $viewModel;
     }    
     
     /**
@@ -155,9 +219,10 @@ class PostController extends AbstractActionController
      */
     public function editAction() 
     {
+        $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if (isset($this->sessionContainer->step)) {
+        if ((isset($this->sessionContainer->step))&&($stepParam==2)) {
             $step = $this->sessionContainer->step;            
         }
         
@@ -234,7 +299,7 @@ class PostController extends AbstractActionController
                 
                  // Go to the next step.
                 return $this->redirect()->toRoute('posts', ['action'=>'edit',
-                    'id'=>$postId]);
+                    'id'=>$postId, 'step'=>2]);
 
             }
         } else {

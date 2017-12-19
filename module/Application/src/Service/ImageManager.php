@@ -39,6 +39,21 @@ class ImageManager
         // Return concatenated directory name and file name.
         return $this->saveToDir . 'post/' . $id . "/$loc/" . $fileName;                
     }
+    
+    /**
+     * Returns the path to the saved image file.
+     * @param string $fileName Image file name (without path part).
+     * @return string Path to image file.
+     */
+    public function getAddImagePathByName($fileName, $id)
+    {
+        // Take some precautions to make file name secure
+        $fileName = str_replace("/", "", $fileName);  // Remove slashes
+        $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
+                
+        // Return concatenated directory name and file name.
+        return $this->saveToDir . 'user/' . $id . "/" . $fileName;                
+    }
 
 
     /**
@@ -158,6 +173,85 @@ class ImageManager
         
         // Copy all files
         $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $dir = opendir($tempDir);  
+        while(false !== ( $file = readdir($dir)) ) { 
+            if (( $file != '.' ) && ( $file != '..' )) {      
+                copy($tempDir . $file, $permDir . $file); 
+            } 
+        }  
+        closedir($dir);
+
+        // Remove temp dir
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
+    }
+    
+    /**
+     * Returns the array of temp file names.
+     * @return array List of uploaded file names.
+     */
+    public function getAddTempFiles($id, $dirty) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $tempDir = $this->saveToDir . 'user/' . $id . '/';
+        if(!is_dir($tempDir)) {
+            if(!mkdir($tempDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+                
+        if (!$dirty){
+            // Delete all files
+            $paths = glob($tempDir . '*'); // get all file names
+            foreach($paths as $file){ // iterate files
+                if(is_file($file))
+                unlink($file); // delete file
+            }    
+         }
+        
+        // Scan the directory and create the list of uploaded files.
+        $files = array();        
+        $handle  = opendir($tempDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            
+            $files[] = $entry;
+        }
+        
+        // Return the list of uploaded files.
+        return $files;
+    }
+    
+    /**
+     * Saves the temp file to the permanent folder
+     */
+    public function saveAddTempFiles($postId, $userId) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
+        if(!is_dir($permDir)) {
+            if(!mkdir($permDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+        
+        // Delete all files
+        $paths = glob($permDir . '*'); // get all file names
+        foreach($paths as $file){ // iterate files
+            if(is_file($file))
+            unlink($file); // delete file
+        }
+        
+        // Copy all files
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/';
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      

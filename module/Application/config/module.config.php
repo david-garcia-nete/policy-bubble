@@ -52,10 +52,11 @@ return [
             'posts' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/posts[/:action[/:id]]',
+                    'route'    => '/posts[/:action[/:id][/:step]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]*'
+                        'id' => '[0-9]*',
+                        'step' => '[2]'
                     ],
                     'defaults' => [
                         'controller'    => Controller\PostController::class,
@@ -125,7 +126,7 @@ return [
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
             Controller\ImageController::class => [
-                ['actions' => ['index', 'upload', 'file'], 'allow' => '@']
+                ['actions' => ['index', 'upload', 'file', 'addFile'], 'allow' => '@']
             ],
         ]
     ],

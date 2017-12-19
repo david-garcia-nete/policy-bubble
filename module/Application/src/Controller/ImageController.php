@@ -139,6 +139,66 @@ class ImageController extends AbstractActionController
         // Return Response to avoid default view rendering.
         return $this->getResponse();
     }    
+    
+    /**
+     * This is the 'file' action that is invoked when a user wants to 
+     * open the image file in a web browser or generate a thumbnail.        
+     */
+    public function addFileAction() 
+    {
+        // Get the file name from GET variable
+        $fileName = $this->params()->fromQuery('name', '');
+        
+        $userId = $this->params()->fromQuery('id', '');
+                        
+        // Check whether the user needs a thumbnail or a full-size image
+        $isThumbnail = (bool)$this->params()->fromQuery('thumbnail', false);
+        
+        // Validate input parameters
+        if (empty($fileName) || strlen($fileName)>128) {
+            throw new \Exception('File name is empty or too long');
+        }
+        
+        // Get path to image file
+        $fileName = $this->imageManager->getAddImagePathByName($fileName, $userId);
+                
+        if($isThumbnail) {        
+            // Resize the image
+            $fileName = $this->imageManager->resizeImage($fileName);
+        }
+                
+        // Get image file info (size and MIME type).
+        $fileInfo = $this->imageManager->getImageFileInfo($fileName);        
+        if ($fileInfo===false) {
+            // Set 404 Not Found status code
+            $this->getResponse()->setStatusCode(404);            
+            return;
+        }
+                
+        // Write HTTP headers.
+        $response = $this->getResponse();
+        $headers = $response->getHeaders();
+        $headers->addHeaderLine("Content-type: " . $fileInfo['type']);        
+        $headers->addHeaderLine("Content-length: " . $fileInfo['size']);
+            
+        // Write file content        
+        $fileContent = $this->imageManager->getImageFileContent($fileName);
+        if($fileContent!==false) {                
+            $response->setContent($fileContent);
+        } else {        
+            // Set 500 Server Error status code
+            $this->getResponse()->setStatusCode(500);
+            return;
+        }
+        
+        if($isThumbnail) {
+            // Remove temporary thumbnail image file.
+            unlink($fileName);
+        }
+        
+        // Return Response to avoid default view rendering.
+        return $this->getResponse();
+    }    
 }
 
 
