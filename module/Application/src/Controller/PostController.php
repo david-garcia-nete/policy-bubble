@@ -364,6 +364,7 @@ class PostController extends AbstractActionController
         }
         
         $this->postManager->removePost($post);
+        $this->imageManager->removePost($postId);
         
         // Redirect the user to "admin" page.
         return $this->redirect()->toRoute('posts', ['action'=>'admin']);        

@@ -266,6 +266,47 @@ class ImageManager
     }
     
     /**
+     * Saves the temp file to the permanent folder
+     */
+    public function removePost($postId) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
+        if(!is_dir($permDir)) {
+            if(!mkdir($permDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+        
+        // Delete all files
+        $paths = glob($permDir . '*'); // get all file names
+        foreach($paths as $file){ // iterate files
+            if(is_file($file))
+            unlink($file); // delete file
+        }
+        rmdir($permDir);
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $tempDir = $this->saveToDir . 'post/' . $postId . '/temp/';
+        if(!is_dir($tempDir)) {
+            if(!mkdir($tempDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+    
+        // Remove temp dir
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
+        
+        $postDir = $this->saveToDir . 'post/' . $postId . '/';
+        rmdir($postDir);
+    }
+    
+    /**
      * Retrieves the file information (size, MIME type) by image path.
      * @param string $filePath Path to the image file.
      * @return array File information.
