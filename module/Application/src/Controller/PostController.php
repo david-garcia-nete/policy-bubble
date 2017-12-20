@@ -58,8 +58,8 @@ class PostController extends AbstractActionController
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if ((isset($this->sessionContainer->userChoices['addStepCount']))&&($stepParam==2)) {
-            $step = $this->sessionContainer->userChoices['addStepCount'];            
+        if ((isset($this->sessionContainer->addUserChoices['addStepCount']))) {
+            $step = $this->sessionContainer->addUserChoices['addStepCount'];            
         }
         
         // Ensure the step is correct (between 1 and 2).
@@ -68,7 +68,8 @@ class PostController extends AbstractActionController
         
         if ($step==1) {
             // Init user choices.
-            $this->sessionContainer->userChoices['addStep2Dirty'] = false;
+            $this->sessionContainer->addUserChoices = [];
+            $this->sessionContainer->addUserChoices['addStep2Dirty'] = false;
         }
         
         // Create image holder.
@@ -97,7 +98,7 @@ class PostController extends AbstractActionController
                 $data = $form->getData();
                 
                 // Save user choices in session.
-                $this->sessionContainer->userChoices["addStep$step"] = $data;
+                $this->sessionContainer->addUserChoices["addStep$step"] = $data;
                 
                 //$check = $this->sessionContainer->userChoices["step$step"];
                 
@@ -108,13 +109,13 @@ class PostController extends AbstractActionController
                 
                 if($fileExists == false){
                     $step ++;
-                    $this->sessionContainer->userChoices['addStepCount'] = $step;
+                    $this->sessionContainer->addUserChoices['addStepCount'] = $step;
                 }
                 
                 if ($step>2) {
                     
                     // Use post manager service to add new post to database.
-                    $data = $this->sessionContainer->userChoices['addStep1'];
+                    $data = $this->sessionContainer->addUserChoices['addStep1'];
                     $this->postManager->addNewPost(
                             $data, $user);
                     $posts = $this->entityManager->getRepository(Post::class)
@@ -137,8 +138,8 @@ class PostController extends AbstractActionController
                 
                 // Get the list of already saved files.
                 $files = $this->imageManager->getAddTempFiles($user->getId(), 
-                        $this->sessionContainer->userChoices['addStep2Dirty']);
-                $this->sessionContainer->userChoices['addStep2Dirty'] = true;  
+                        $this->sessionContainer->addUserChoices['addStep2Dirty']);
+                $this->sessionContainer->addUserChoices['addStep2Dirty'] = true;  
             }
   
         }
@@ -222,8 +223,8 @@ class PostController extends AbstractActionController
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if ((isset($this->sessionContainer->step))&&($stepParam==2)) {
-            $step = $this->sessionContainer->step;            
+        if ((isset($this->sessionContainer->userChoices["step"]))) {
+            $step = $this->sessionContainer->userChoices["step"];            
         }
         
         // Ensure the step is correct (between 1 and 2).
@@ -232,6 +233,7 @@ class PostController extends AbstractActionController
         
         if ($step==1) {
             // Init user choices.
+            $this->sessionContainer->userChoices = [];
             $this->sessionContainer->userChoices['step2dirty'] = false;
         }
         
@@ -283,7 +285,7 @@ class PostController extends AbstractActionController
                 
                 if($fileExists == false){
                     $step ++;
-                    $this->sessionContainer->step = $step;
+                    $this->sessionContainer->userChoices["step"] = $step;
                 }
                 
                 // If we completed both steps.
