@@ -58,7 +58,7 @@ class PostController extends AbstractActionController
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if ((isset($this->sessionContainer->addUserChoices['addStepCount']))) {
+        if ((isset($this->sessionContainer->addUserChoices['addStepCount']))&&($stepParam==2)) {
             $step = $this->sessionContainer->addUserChoices['addStepCount'];            
         }
         
@@ -223,7 +223,7 @@ class PostController extends AbstractActionController
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if ((isset($this->sessionContainer->userChoices["step"]))) {
+        if ((isset($this->sessionContainer->userChoices["step"]))&&($stepParam==2)) {
             $step = $this->sessionContainer->userChoices["step"];            
         }
         
