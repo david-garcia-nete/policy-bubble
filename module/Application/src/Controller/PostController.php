@@ -55,11 +55,11 @@ class PostController extends AbstractActionController
      */
     public function addAction() 
     {     
-        $stepParam = $this->params()->fromRoute('id', 1);
+        $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
-        if ((isset($this->sessionContainer->addstep))&&($stepParam==2)) {
-            $step = $this->sessionContainer->addStep;            
+        if ((isset($this->sessionContainer->userChoices['addStepCount']))&&($stepParam==2)) {
+            $step = $this->sessionContainer->userChoices['addStepCount'];            
         }
         
         // Ensure the step is correct (between 1 and 2).
@@ -108,7 +108,7 @@ class PostController extends AbstractActionController
                 
                 if($fileExists == false){
                     $step ++;
-                    $this->sessionContainer->addStep = $step;
+                    $this->sessionContainer->userChoices['addStepCount'] = $step;
                 }
                 
                 if ($step>2) {
@@ -129,7 +129,7 @@ class PostController extends AbstractActionController
                 
                 // Go to the next step.
                 return $this->redirect()->toRoute('posts', ['action'=>'add', 
-                    'id'=>2]);
+                    'id'=>0, 'step'=>2]);
             }
         }   else {
 

@@ -123,7 +123,7 @@ class ImageController extends AbstractActionController
                 
        // Go to the next step.
         return $this->redirect()->toRoute('posts', ['action'=>'add',
-            'step'=>2]);
+            'id'=>0, 'step'=>2]);
     }    
     
     
