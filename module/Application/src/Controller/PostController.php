@@ -100,10 +100,6 @@ class PostController extends AbstractActionController
                 // Save user choices in session.
                 $this->sessionContainer->addUserChoices["addStep$step"] = $data;
                 
-                //$check = $this->sessionContainer->userChoices["step$step"];
-                
-                //$check = $this->sessionContainer->userChoices["step$step"];
-
                 // Increase step if photo has not been selected.
                 $fileExists = $this->postManager->checkFileExists($data);                
                 
