@@ -15,6 +15,12 @@ class MaxFileValidator extends AbstractValidator
     const ID = null; // Local phone format "333-7777" 
     
     /**
+     * The directory where we save image files.
+     * @var string
+     */
+    private $saveToDir = './data/upload/';
+    
+    /**
      * Available validator options.
      * @var array
      */
@@ -120,8 +126,12 @@ class MaxFileValidator extends AbstractValidator
             }
         }
         
-        $fi = new FilesystemIterator($tempDir, FilesystemIterator::SKIP_DOTS);
-        if(iterator_count($fi)<$correctMax)
+        $$filecount = 0;
+        $files = glob($tempDir . "*");
+        if ($files){
+         $filecount = count($files);
+        }
+        if($filecount<$correctMax)
         $isValid = true;
         
                
