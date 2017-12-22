@@ -86,32 +86,53 @@ $form->prepare();
 
     <div class="col-sm-6 col-md-12">
 
+
+
         <?php foreach($files as $file): ?>  
-        
+
+
         <div class="img-thumbnail">
 
-            <a target="_blank" href="<?= $this->url('images',  
+            
+
+            <img src="<?= $this->url('images', ['action'=>'addFile'], 
+
+                    ['query'=>['name'=>$file, 'id'=>$user->getId(),  
+                        'thumbnail'=>true]]); ?>">
+
+            
+
+            <div class="caption">
+
+                <br>
+                
+                 <span>
+                    
+                     <a href="<?= $this->url('images',  
+
+                            ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$user->getId()]]); ?>" 
+
+                            class="btn btn-default" role="button">Remove</a>
+                            
+                </span>
+                
+                <span>            
+
+                    <a target="_blank" href="<?= $this->url('images',  
 
                             ['action'=>'addFile'], ['query'=>['name'=>$file, 
                                 'id'=>$user->getId()]]); ?>" 
 
-                            class="btn btn-default" role="button">
+                            class="btn btn-default" role="button">View</a>
 
-                <img src="<?= $this->url('images', ['action'=>'addFile'], 
+                </span>
 
-                        ['query'=>['name'=>$file, 'id'=>$user->getId(),  
-                            'thumbnail'=>true]]); ?>">
-            </a>
-           
-             <br><br>
-                    
-            <a href="<?= $this->url('images',  
-                   ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
-                       'id'=>$user->getId()]]); ?>" 
-                   class="btn btn-default" role="button">Remove
-            </a>
-        
+            </div>
+
         </div>
+
+
 
         <?php endforeach; ?>
 
