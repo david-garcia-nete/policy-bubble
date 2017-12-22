@@ -3,6 +3,7 @@ namespace Application\Form;
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Application\Entity\Post;
+use Application\Validator\MaxFileValidator;
 /**
  * This form is used to collect post data.
  */
@@ -212,6 +213,13 @@ class PostForm extends Form
                                 'maxWidth'  => 4096,
                                 'maxHeight' => 4096
                             ]
+                        ],
+                        [
+                            'name' => MaxFileValidator::class,
+                            'options' => [
+                              'max' => 100,
+                              'id'  => $id
+                            ]                        
                         ],
                     ],
                     'filters'  => [                    
