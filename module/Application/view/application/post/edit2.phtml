@@ -86,55 +86,33 @@ $form->prepare();
 
     <div class="col-sm-6 col-md-12">
 
-
-
         <?php foreach($files as $file): ?>  
 
+       <div class="img-thumbnail">
 
+             <a target="_blank" href="<?= $this->url('images',  
 
-        <div class="img-thumbnail">
+                            ['action'=>'file'], ['query'=>['name'=>$file, 
+                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 
 
-            
+                            class="btn btn-default" role="button">
 
             <img src="<?= $this->url('images', ['action'=>'file'], 
 
                     ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'temp',  
                         'thumbnail'=>true]]); ?>">
 
-            
+            </a>
+                            
+            <br><br>
 
-            <div class="caption">
+            <a href="<?= $this->url('images',  
+                    ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
+                        'id'=>$post->getId()]]); ?>" 
 
-                <h3><?php echo $file; ?></h3>                    
+                    class="btn btn-default" role="button">Remove</a>
 
-                
-                <p>
-
-                    <a href="<?= $this->url('images',  
-                            ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId()]]); ?>" 
-
-                            class="btn btn-default" role="button">Remove</a>
-
-                </p>
-                
-                <p>
-
-                    <a target="_blank" href="<?= $this->url('images',  
-
-                            ['action'=>'file'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 
-
-                            class="btn btn-default" role="button">Show in Natural Size</a>
-
-                </p>
-                
-
-            </div>
-
-        </div>
-
-
+           </div >        
 
         <?php endforeach; ?>
 
