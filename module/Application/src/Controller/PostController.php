@@ -101,8 +101,8 @@ class PostController extends AbstractActionController
                 $this->sessionContainer->addUserChoices["addStep$step"] = $data;
                 
                 // Increase step if photo has not been selected.
-                $fileExists = $this->postManager->checkFileExists($data);                
-                
+                $fileExists = $this->postManager->checkFileExists($data);      
+               
                 if($fileExists == false){
                     $step ++;
                     $this->sessionContainer->addUserChoices['addStepCount'] = $step;
@@ -181,8 +181,12 @@ class PostController extends AbstractActionController
         // Check whether this post is a POST request.
         if($this->getRequest()->isPost()) {
             
-            // Get POST data.
-            $data = $this->params()->fromPost();
+            // Make certain to merge the files info!
+            $request = $this->getRequest();
+            $data = array_merge_recursive(
+                $request->getPost()->toArray(),
+                $request->getFiles()->toArray()
+            );
             
             // Fill form with data.
             $form->setData($data);
@@ -193,6 +197,15 @@ class PostController extends AbstractActionController
                 
                 // Use post manager service to add new comment to post.
                 $this->postManager->addCommentToPost($post, $data);
+                
+                // Get a single entry of the $_FILES array.
+                $file = $this->params()->fromFiles('file');
+                
+                $comments = $this->entityManager->getRepository(Post::class)
+                        ->findCommentsByPost($post);
+                    $comment = $comments[0];
+                    $commentId = $comment->getId();
+                    $this->imageManager->saveCommentFile($commentId, $post->getId());
                 
                 // Redirect the user again to "view" page.
                 return $this->redirect()->toRoute('posts', ['action'=>'view', 'id'=>$postId]);
@@ -274,11 +287,11 @@ class PostController extends AbstractActionController
                 $data = $form->getData();
                 
                 // Save user choices in session.
-                $this->sessionContainer->userChoices["step$step"] = $data;
-
+                $this->sessionContainer->userChoices["step$step"] = $data;   
+                   
                 // Increase step if photo has not been selected.
-                $fileExists = $this->postManager->checkFileExists($data);                
-                
+                $fileExists = $this->postManager->checkFileExists($data);      
+               
                 if($fileExists == false){
                     $step ++;
                     $this->sessionContainer->userChoices["step"] = $step;

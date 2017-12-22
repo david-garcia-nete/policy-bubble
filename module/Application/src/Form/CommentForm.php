@@ -51,6 +51,18 @@ class CommentForm extends Form
                 'label' => 'Comment',
             ],
         ]);
+        
+        // Add "file" field.
+            $this->add([
+                'type'  => 'file',
+                'name' => 'file',
+                'attributes' => [                
+                    'id' => 'file'
+                ],
+                'options' => [
+                    'label' => 'Image file',
+                ],
+            ]);      
                 
         // Add the submit button
         $this->add([
@@ -104,6 +116,32 @@ class CommentForm extends Form
                         ],
                     ],
                 ],
-            ]);   
+            ]); 
+        
+        // Add validation rules for the "file" field.	 
+            $inputFilter->add([
+                    'type'     => 'Zend\InputFilter\FileInput',
+                    'name'     => 'file',
+                    'required' => false,   
+                    'validators' => [
+                        ['name'    => 'FileUploadFile'],
+                        [
+                            'name'    => 'FileMimeType',                        
+                            'options' => [                            
+                                'mimeType'  => ['image/jpeg', 'image/png']
+                            ]
+                        ],
+                        ['name'    => 'FileIsImage'],
+                        [
+                            'name'    => 'FileImageSize',
+                            'options' => [
+                                'minWidth'  => 128,
+                                'minHeight' => 128,
+                                'maxWidth'  => 4096,
+                                'maxHeight' => 4096
+                            ]
+                        ],
+                    ],
+                ]); 
     }
 }

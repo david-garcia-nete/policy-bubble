@@ -268,6 +268,29 @@ class ImageManager
     /**
      * Saves the temp file to the permanent folder
      */
+    public function saveCommentFile($commentId, $postId, $file) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $commentDir = $this->saveToDir . 'post/' . $postId . '/comment/';
+        if(!is_dir($permDir)) {
+            if(!mkdir($permDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+        
+       $result = move_uploaded_file($file['tmp_name'], $commentDir);
+        if(!$result) {
+          throw new \Exception('Could not save file for comment: '. error_get_last());
+       
+        }
+    }
+    
+    /**
+     * Saves the temp file to the permanent folder
+     */
     public function removePost($postId) 
     {
         // The directory where we plan to save uploaded files.

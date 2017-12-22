@@ -101,7 +101,8 @@ class AddPostForm extends Form
                 'type'  => 'file',
                 'name' => 'file',
                 'attributes' => [                
-                    'id' => 'file'
+                    'id' => 'file',
+                    'multiple' => 'true'
                 ],
                 'options' => [
                     'label' => 'Image file',
