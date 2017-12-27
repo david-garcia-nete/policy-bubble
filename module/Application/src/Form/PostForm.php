@@ -217,8 +217,9 @@ class PostForm extends Form
                         [
                             'name' => MaxFileValidator::class,
                             'options' => [
-                              'max' => 100,
-                              'id'  => $id
+                              'min' => 0,
+                              'max'  => 10,
+                              'id'=> $id
                             ]                        
                         ],
                     ],

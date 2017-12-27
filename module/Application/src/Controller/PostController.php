@@ -324,16 +324,16 @@ class PostController extends AbstractActionController
                 ];
             $form->setData($data);
             }
-            
-            if ($step==2) {
+
+        }
+        
+        if ($step==2) {
                 
                 // Get the list of already saved files.
                 $files = $this->imageManager->getTempFiles($postId, 
                         $this->sessionContainer->userChoices['step2dirty']);
                 $this->sessionContainer->userChoices['step2dirty'] = true;  
             }
-  
-        }
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
             return $this->redirect()->toRoute('not-authorized');
