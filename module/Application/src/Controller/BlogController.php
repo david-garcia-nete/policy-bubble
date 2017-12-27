@@ -28,13 +28,20 @@ class BlogController extends AbstractActionController
      */
     private $postManager;
     
+   /**
+     * Image manager.
+     * @var Application\Service\ImageManager;
+     */
+    private $imageManager;
+    
     /**
      * Constructor is used for injecting dependencies into the controller.
      */
-    public function __construct($entityManager, $postManager) 
+    public function __construct($entityManager, $postManager, $imageManager) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
+        $this->imageManager = $imageManager;
     }
     
     /**
@@ -70,7 +77,8 @@ class BlogController extends AbstractActionController
         return new ViewModel([
             'posts' => $paginator,
             'postManager' => $this->postManager,
-            'tagCloud' => $tagCloud
+            'tagCloud' => $tagCloud,
+            'imageManager' => $this->imageManager,
         ]);
     }
 }

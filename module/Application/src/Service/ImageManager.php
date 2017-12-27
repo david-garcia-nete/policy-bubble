@@ -89,6 +89,40 @@ class ImageManager
     }
     
     /**
+     * Returns the array of saved file names.
+     * @return array List of uploaded file names.
+     */
+    public function getFirstSavedFiles($id, $count = 2) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
+        if(!is_dir($permDir)) {
+            if(!mkdir($permDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+
+        // Scan the directory and create the list of uploaded files.
+        $files = array();        
+        $handle  = opendir($permDir);
+        $i=0;
+        while ((false !== ($entry = readdir($handle))) && $i<$count) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            
+            $files[] = $entry;
+            $i++;
+        }
+        
+        // Return the list of uploaded files.
+        return $files;
+    }
+    
+    /**
      * Returns the array of temp file names.
      * @return array List of uploaded file names.
      */
