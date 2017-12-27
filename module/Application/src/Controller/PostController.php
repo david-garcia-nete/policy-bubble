@@ -6,6 +6,9 @@ use Application\Form\PostForm;
 use Application\Form\AddPostForm;
 use Application\Entity\Post;
 use Application\Form\CommentForm;
+use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
+use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
+use Zend\Paginator\Paginator;
 /**
  * This is the Post controller class of the Blog application. 
  * This controller is used for managing posts (adding/editing/viewing/deleting).
@@ -388,15 +391,22 @@ class PostController extends AbstractActionController
      */
     public function adminAction()
     {
+        $page = $this->params()->fromQuery('page', 1);
         // Get recent posts
         $user = $this->currentUser();
-        $posts = $this->entityManager->getRepository(Post::class)
-                ->findPostsByUser($user);
+        $query = $this->entityManager->getRepository(Post::class)
+                ->findPostsByUser($user, true);
+        
+        $adapter = new DoctrineAdapter(new ORMPaginator($query, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(10);        
+        $paginator->setCurrentPageNumber($page);
         
         // Render the view template
         return new ViewModel([
-            'posts' => $posts,
-            'postManager' => $this->postManager
+            'posts' => $paginator,
+            'postManager' => $this->postManager,
+            'imageManager' => $this->imageManager
         ]);        
     }
 }

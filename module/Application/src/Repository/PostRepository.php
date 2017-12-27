@@ -76,7 +76,7 @@ class PostRepository extends EntityRepository
      * @param \Application\Entity\User $user
      * @return array
      */
-    public function findPostsByUser($user)
+    public function findPostsByUser($user, $query=false)
     {
         $entityManager = $this->getEntityManager();
         
@@ -87,6 +87,10 @@ class PostRepository extends EntityRepository
             ->where('p.user = ?1')
             ->orderBy('p.dateCreated', 'DESC')
             ->setParameter('1', $user);
+        
+        if($query){
+            return $queryBuilder->getQuery();
+        }
         
         $posts = $queryBuilder->getQuery()->getResult();
         

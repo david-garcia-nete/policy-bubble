@@ -21,6 +21,7 @@ $this->pageBreadcrumbs()->setItems([
    <tr>
         <th>ID</th>
         <th>Post Title</th>
+        <th>Image</th>
         <th>Date Created</th>
         <th>Status</th>        
         <th>Actions</th>        
@@ -34,6 +35,41 @@ $this->pageBreadcrumbs()->setItems([
             <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$post->getId()]); ?>">
                 <?= $this->escapeHtml($post->getTitle()); ?>
             </a> 
+        </td>
+        <td>
+            
+            <?php 
+    $files = $imageManager->getFirstSavedFiles($post->getId(), 1);
+    ?>
+    
+
+    <?php if(count($files)==0): ?>
+
+    <p>
+      <i>There is no image to display.</i>
+    </p>
+
+    <?php else: ?>
+
+    
+
+        <?php foreach($files as $file): ?>  
+            <a target="_blank" href="<?= $this->url('images', ['action' => 'file'], 
+            ['query' => ['name' => $file, 'id' => $post->getId(), 
+            'loc' => 'perm']]); ?>" class="btn btn-default" role="button"> 
+
+                <img src="<?= $this->url('images', ['action' => 'file'], ['query' => 
+                ['name' => $file, 'id' => $post->getId(), 'loc' => 'perm', 
+                'thumbnail' => true]]); ?>">
+
+            </a>
+        <?php endforeach; ?>
+    
+
+    <?php endif; ?>
+
+    
+            
         </td>
         <td><?= $this->escapeHtml($post->getDateCreated()); ?></td>        
         <td><?= $this->escapeHtml($postManager->getPostStatusAsString($post)); ?></td>
@@ -52,3 +88,8 @@ $this->pageBreadcrumbs()->setItems([
     <?php endforeach; ?>   
     
 </table>
+
+<?= $this->paginationControl($posts,
+                    'Sliding',
+                    'application/partial/paginator', 
+                    array('route' => 'posts')); ?>
