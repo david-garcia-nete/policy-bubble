@@ -28,6 +28,6 @@ class Version20171206203209 extends AbstractMigration
     public function down(Schema $schema)
     {
         $table = $schema->getTable('post');
-        $table->removeColumn('post_id' );
+        $table->dropColumn('user_id' );
     }
 }

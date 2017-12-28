@@ -30,7 +30,7 @@ class Version20171204192236 extends AbstractMigration
     public function down(Schema $schema)
     {
         $table = $schema->getTable('user');
-        $table->removeColumn('reg_conf_token' );
-        $table->removeColumn('reg_conf_token_creation_date' );
+        $table->dropColumn('reg_conf_token' );
+        $table->dropColumn('reg_conf_token_creation_date' );
     }
 }
