@@ -31,9 +31,9 @@ $form->prepare();
 </h1>
 
 <p class="comments-header">
-    <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> | 
-    <a href="#comment">
-        Add new comment
+    <?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?> | 
+    <a href="#response">
+        Add new response
     </a>
 </p>
 
@@ -77,7 +77,7 @@ $form->prepare();
 
 <hr/>
 
-<h3><?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?></h3>
+<h3><?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?></h3>
 
 <?php foreach ($post->getComments() as $comment): ?>
 
@@ -96,27 +96,13 @@ $form->prepare();
 
 <hr>
 
-<a name="comment"></a>
-<h3>Leave Reply</h3>
+<a name="response"></a>
 
-<div class="row">
-    <div class="col-md-8">
-        <?= $this->form()->openTag($form); ?>
-        
-        <div class="form-group">
-            <?= $this->formLabel($form->get('author')); ?>
-            <?= $this->formElement($form->get('author')); ?>
-            <?= $this->formElementErrors($form->get('author')); ?>                  
-        </div>
-        
-        <div class="form-group">
-            <?= $this->formLabel($form->get('comment')); ?>
-            <?= $this->formElement($form->get('comment')); ?>
-            <?= $this->formElementErrors($form->get('comment')); ?>                  
-        </div>
-        
-        <?= $this->formElement($form->get('submit')); ?>
-        
-        <?= $this->form()->closeTag(); ?>
-    </div>    
-</div>   
+
+<p>
+<a class="btn btn-default" href="
+    <?= $this->url('posts', ['action'=>'add'], ['query' => 
+                ['id' => $post->getId()]]); ?>">
+    Leave Response
+</a>
+</p>

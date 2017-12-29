@@ -28,7 +28,7 @@ class PostManager
      * This method adds a new post.
      * @param \Application\Entity\User $user
      */
-    public function addNewPost($data, $user) 
+    public function addNewPost($data, $user, $parentId = false) 
     {
         // Create new Post entity.
         $post = new Post();
@@ -37,7 +37,16 @@ class PostManager
         $post->setStatus($data['status']);
         $post->setUser($user);
         $currentDate = date('Y-m-d H:i:s');
-        $post->setDateCreated($currentDate);        
+        $post->setDateCreated($currentDate);
+
+        if($parentId){
+            $parentPost = $this->entityManager->getRepository(Post::class)
+            ->findOneBy(array('id' => $parentId));
+            if ($parentPost==null) {
+                throw new \Exception('Parent post ' . $parentId . ' doesn\'t exist');
+            }
+            $post->setParentPost($parentPost);
+        }        
         
         // Add the entity to entity manager.
         $this->entityManager->persist($post);
@@ -130,17 +139,17 @@ class PostManager
         return $tagsStr;
     }    
     /**
-     * Returns count of comments for given post as properly formatted string.
+     * Returns count of responses for given post as properly formatted string.
      */
-    public function getCommentCountStr($post)
+    public function getResponseCountStr($post)
     {
-        $commentCount = count($post->getComments());
+        $responseCount = count($post->getChildPosts());
         if ($commentCount == 0)
-            return 'No comments';
+            return 'No responses';
         else if ($commentCount == 1) 
-            return '1 comment';
+            return '1 response';
         else
-            return $commentCount . ' comments';
+            return $responseCount . ' response';
     }
     /**
      * This method adds a new comment to post.
@@ -230,4 +239,5 @@ class PostManager
         }
         return $fileExists;
     }
+    
 }

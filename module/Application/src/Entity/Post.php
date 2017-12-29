@@ -64,12 +64,32 @@ class Post
     protected $user;
     
     /**
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Post")
+     * @ORM\JoinTable(name="post_hierarchy",
+     *      joinColumns={@ORM\JoinColumn(name="child_post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="parent_post_id", referencedColumnName="id")}
+     *      )
+     */
+    private $parentPosts;
+    
+    /**
+     * @ORM\ManyToMany(targetEntity="Application\Entity\Post")
+     * @ORM\JoinTable(name="post_hierarchy",
+     *      joinColumns={@ORM\JoinColumn(name="parent_post_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="child_post_id", referencedColumnName="id")}
+     *      )
+     */
+    protected $childPosts;
+    
+    /**
      * Constructor.
      */
     public function __construct() 
     {
         $this->comments = new ArrayCollection();        
-        $this->tags = new ArrayCollection();        
+        $this->tags = new ArrayCollection();
+        $this->parentPosts = new ArrayCollection();
+        $this->childPosts = new ArrayCollection();        
     }
 
     /**
@@ -223,6 +243,16 @@ class Post
     {
         $this->user = $user;
         $user->addPost($this);
+    }
+    
+    public function getParentPosts()
+    {
+        return $this->parentPosts;
+    }
+    
+    public function getChildPosts()
+    {
+        return $this->childPosts;
     }
 }
 

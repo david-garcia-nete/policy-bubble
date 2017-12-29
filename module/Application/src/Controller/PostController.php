@@ -73,6 +73,8 @@ class PostController extends AbstractActionController
             // Init user choices.
             $this->sessionContainer->addUserChoices = [];
             $this->sessionContainer->addUserChoices['addStep2Dirty'] = false;
+            $this->sessionContainer->addUserChoices['addParentPostId'] = 
+                    $this->params()->fromQuery('id', false);
         }
         
         // Create image holder.
@@ -116,10 +118,10 @@ class PostController extends AbstractActionController
                     // Use post manager service to add new post to database.
                     $data = $this->sessionContainer->addUserChoices['addStep1'];
                     $this->postManager->addNewPost(
-                            $data, $user);
+                            $data, $user, $this->sessionContainer->addUserChoices['addParentPostId']);
                     $posts = $this->entityManager->getRepository(Post::class)
                         ->findPostsByUser($user);
-                    $post = $posts[0];
+                    $post = $posts[0];   
                     $postId = $post->getId();
                     $this->imageManager->saveAddTempFiles($postId, $user->getId());
                     

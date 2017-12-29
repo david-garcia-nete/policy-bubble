@@ -91,5 +91,6 @@ class Version20171130224058 extends AbstractMigration
         $schema->dropTable('role_permission');
         $schema->dropTable('permission');
         $schema->dropTable('role');
+        $schema->dropTable('role_hierarchy');
     }
 }
