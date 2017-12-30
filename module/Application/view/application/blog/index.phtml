@@ -26,11 +26,11 @@ $this->pageBreadcrumbs()->setItems([
         | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p>    
         
-    <p class="comments-header">
-        <?= $this->escapeHtml($postManager->getCommentCountStr($post)); ?> | 
+    <p class="responses-header">
+        <?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?> | 
         <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$post->getId()],
-                ['fragment'=>'comment']); ?>">
-            Add new comment
+                ['fragment'=>'response']); ?>">
+            Add new response
         </a>
     </p>
 

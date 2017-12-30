@@ -95,5 +95,31 @@ class PostRepository extends EntityRepository
         $posts = $queryBuilder->getQuery()->getResult();
         
         return $posts;
+    } 
+    
+    /**
+     * Finds all published posts having the given user.
+     * @param \Application\Entity\User $user
+     * @return array
+     */
+    public function findPostsByParentId($parentId, $query=false)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')
+            ->from(Post::class, 'p')
+            ->where('p.user = ?1')
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', $user);
+        
+        if($query){
+            return $queryBuilder->getQuery();
+        }
+        
+        $posts = $queryBuilder->getQuery()->getResult();
+        
+        return $posts;
     }   
 }

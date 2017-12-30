@@ -163,6 +163,7 @@ class PostController extends AbstractActionController
      */
     public function viewAction() 
     {       
+        $page = $this->params()->fromQuery('page', 1);
         $postId = (int)$this->params()->fromRoute('id', -1);
         
         // Validate input parameter
@@ -178,45 +179,13 @@ class PostController extends AbstractActionController
         if ($post == null) {
             $this->getResponse()->setStatusCode(404);
             return;                        
-        }        
-        
-        // Create the form.
-        $form = new CommentForm();
-        
-        // Check whether this post is a POST request.
-        if($this->getRequest()->isPost()) {
-            
-            // Make certain to merge the files info!
-            $request = $this->getRequest();
-            $data = array_merge_recursive(
-                $request->getPost()->toArray(),
-                $request->getFiles()->toArray()
-            );
-            
-            // Fill form with data.
-            $form->setData($data);
-            if($form->isValid()) {
-                                
-                // Get validated form data.
-                $data = $form->getData();
-                
-                // Use post manager service to add new comment to post.
-                $this->postManager->addCommentToPost($post, $data);
-                
-                // Get a single entry of the $_FILES array.
-                $file = $this->params()->fromFiles('file');
-                
-                $comments = $this->entityManager->getRepository(Post::class)
-                        ->findCommentsByPost($post);
-                    $comment = $comments[0];
-                    $commentId = $comment->getId();
-                    $this->imageManager->saveCommentFile($commentId, $post->getId());
-                
-                // Redirect the user again to "view" page.
-                return $this->redirect()->toRoute('posts', ['action'=>'view', 'id'=>$postId]);
-            }
         }
         
+        $query = $this->entityManager->getRepository(Post::class)
+                            ->findPublishedPosts();
+
+        
+                        
         // Get the list of already saved files.
         $files = $this->imageManager->getSavedFiles($postId);
         
@@ -224,7 +193,6 @@ class PostController extends AbstractActionController
         return new ViewModel([
             'files'=>$files,
             'post' => $post,
-            'form' => $form,
             'postManager' => $this->postManager
         ]);
     }  
