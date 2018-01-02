@@ -19,10 +19,24 @@ $this->pageBreadcrumbs()->setItems([
 
 <p class="responses-header">
     <?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?> | 
-    <a href="#response">
+    <a href="<?= $this->url('posts', ['action'=>'add'], ['query' => 
+                    ['id' => $post->getId()]]); ?>">
         Add new response
     </a>
 </p>
+
+<?php
+$parentPosts = $post->getParentPosts();
+foreach ($parentPosts as $parent):
+    ?>
+    <p>Response to:<a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
+            <?= $this->escapeHtml($parent->getTitle()); ?>
+        </a>   
+    </p>
+<?php endforeach; 
+if(count($parentPosts)<1)
+    echo '<p>Response to: None';
+?>
 
 <p>
     Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
