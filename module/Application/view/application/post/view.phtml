@@ -64,9 +64,25 @@ $this->pageBreadcrumbs()->setItems([
 
 <hr/>
 
+<a name="response"></a>
+    
+
+<div class="row">
+    <div class="col-md-8">
+    <p>
+    <a class="btn btn-default" href="
+        <?= $this->url('posts', ['action'=>'add'], ['query' => 
+                    ['id' => $post->getId()]]); ?>">
+        Leave Response
+    </a>
+    </p>
+    </div>
+</div> 
+
+
 <h3><?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?></h3>
 
-<div class="col-md-8">
+
 
     <?php foreach($posts as $childPost): ?>
         
@@ -128,26 +144,10 @@ $this->pageBreadcrumbs()->setItems([
 
     <hr/>
 
-
     <?php endforeach; ?>
 
     <?= $this->paginationControl($posts,
                     'Sliding',
                     'application/partial/paginator', 
                     array('route' => 'blog')); ?>
-    
    
-    
-
-    <hr>
-
-    <a name="response"></a>
-
-
-    <p>
-    <a class="btn btn-default" href="
-        <?= $this->url('posts', ['action'=>'add'], ['query' => 
-                    ['id' => $post->getId()]]); ?>">
-        Leave Response
-    </a>
-    </p>

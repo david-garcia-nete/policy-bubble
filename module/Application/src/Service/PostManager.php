@@ -45,7 +45,7 @@ class PostManager
             if ($parentPost==null) {
                 throw new \Exception('Parent post ' . $parentId . ' doesn\'t exist');
             }
-            $post->setParentPost($parentPost);
+            $parentPost->addChildPost($post);
         }        
         
         // Add the entity to entity manager.
@@ -149,7 +149,7 @@ class PostManager
         else if ($responseCount == 1) 
             return '1 response';
         else
-            return $responseCount . ' response';
+            return $responseCount . ' responses';
     }
     /**
      * This method adds a new comment to post.

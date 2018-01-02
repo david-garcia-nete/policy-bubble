@@ -244,10 +244,10 @@ class Post
         $this->user = $user;
         $user->addPost($this);
     }
-    
-    public function addParentPost($post)
+        
+    public function addChildPost($post)
     {
-        return $this->parentPosts[]= $post;
+        return $this->childPosts[]= $post;
     }
     
      public function getParentPosts()
