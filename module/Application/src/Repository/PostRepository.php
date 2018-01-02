@@ -98,11 +98,10 @@ class PostRepository extends EntityRepository
     } 
     
     /**
-     * Finds all published posts having the given user.
-     * @param \Application\Entity\User $user
+     * Finds all published posts having the given parent post id.
      * @return array
      */
-    public function findPostsByParentId($parentId, $query=false)
+    public function findChildPosts($parentPost, $query=false)
     {
         $entityManager = $this->getEntityManager();
         
@@ -110,9 +109,9 @@ class PostRepository extends EntityRepository
         
         $queryBuilder->select('p')
             ->from(Post::class, 'p')
-            ->where('p.user = ?1')
+            ->where('?1 MEMBER OF p.parentPosts')
             ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', $user);
+            ->setParameter('1', $parentPost);
         
         if($query){
             return $queryBuilder->getQuery();

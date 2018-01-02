@@ -6,19 +6,6 @@ $this->pageBreadcrumbs()->setItems([
             'Posts'=>$this->url('posts'),
             'View Post'=>''
             ]);
-        
-$form = $this->form;
-$form->get('author')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'Author\'s name'
-    ]);
-$form->get('comment')->setAttributes([
-    'class'=>'form-control',
-    'rows'=>6, 
-    'placeholder'=>'Text'
-    ]);
-$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
-$form->prepare();        
 ?>
 
 <a href="
@@ -79,30 +66,88 @@ $form->prepare();
 
 <h3><?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?></h3>
 
-<?php foreach ($post->getComments() as $comment): ?>
+<div class="col-md-8">
 
-<hr>
+    <?php foreach($posts as $childPost): ?>
+        
+    <h3>
+        <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$childPost->getId()]); ?>">
+            <?= $this->escapeHtml($childPost->getTitle()); ?>
+        </a>    
+    </h3>
+    
+    <p>
+        Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($childPost->getDateCreated()))); ?> 
+        | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($childPost)); ?>   
+    </p>    
+        
+    <p class="responses-header">
+        <?= $this->escapeHtml($postManager->getResponseCountStr($childPost)); ?> | 
+        <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$childPost->getId()],
+                ['fragment'=>'response']); ?>">
+            Add new response
+        </a>
+    </p>
 
-<p>
-    <?= $this->escapeHtml($comment->getAuthor()) ?> on 
-    <?= $this->escapeHtml($comment->getDateCreated()); ?>
-</p>
+    <p>    
+        <?= $this->escapeHtml($childPost->getContent()); ?>
+    </p>
+    
+    <?php 
+    $childFiles = $imageManager->getFirstSavedFiles($childPost->getId());
+    ?>
+    
+    <hr/>
 
-<p>
-    <?= $this->escapeHtml($comment->getContent()); ?>    
-</p>
+    <?php if(count($childFiles)==0): ?>
 
-<?php endforeach; ?>
+    <p>
+      <i>There are no images to display.</i>
+    </p>
 
-<hr>
+    <?php else: ?>
 
-<a name="response"></a>
+    <div class="row">
+      <div class="col-sm-6 col-md-12">
+
+        <?php foreach($childFiles as $childFile): ?>  
+            <a target="_blank" href="<?= $this->url('images', ['action' => 'file'], 
+            ['query' => ['name' => $childFile, 'id' => $childPost->getId(), 
+            'loc' => 'perm']]); ?>" class="btn btn-default" role="button"> 
+
+                <img src="<?= $this->url('images', ['action' => 'file'], ['query' => 
+                ['name' => $childFile, 'id' => $childPost->getId(), 'loc' => 'perm', 
+                'thumbnail' => true]]); ?>">
+
+            </a>
+        <?php endforeach; ?>
+      </div>
+    </div>
+
+    <?php endif; ?>
+
+    <hr/>
 
 
-<p>
-<a class="btn btn-default" href="
-    <?= $this->url('posts', ['action'=>'add'], ['query' => 
-                ['id' => $post->getId()]]); ?>">
-    Leave Response
-</a>
-</p>
+    <?php endforeach; ?>
+
+    <?= $this->paginationControl($posts,
+                    'Sliding',
+                    'application/partial/paginator', 
+                    array('route' => 'blog')); ?>
+    
+   
+    
+
+    <hr>
+
+    <a name="response"></a>
+
+
+    <p>
+    <a class="btn btn-default" href="
+        <?= $this->url('posts', ['action'=>'add'], ['query' => 
+                    ['id' => $post->getId()]]); ?>">
+        Leave Response
+    </a>
+    </p>

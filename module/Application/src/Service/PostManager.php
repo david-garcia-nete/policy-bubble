@@ -144,9 +144,9 @@ class PostManager
     public function getResponseCountStr($post)
     {
         $responseCount = count($post->getChildPosts());
-        if ($commentCount == 0)
+        if ($responseCount == 0)
             return 'No responses';
-        else if ($commentCount == 1) 
+        else if ($responseCount == 1) 
             return '1 response';
         else
             return $responseCount . ' response';

@@ -5,7 +5,6 @@ use Zend\View\Model\ViewModel;
 use Application\Form\PostForm;
 use Application\Form\AddPostForm;
 use Application\Entity\Post;
-use Application\Form\CommentForm;
 use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
@@ -182,18 +181,23 @@ class PostController extends AbstractActionController
         }
         
         $query = $this->entityManager->getRepository(Post::class)
-                            ->findPublishedPosts();
+                            ->findChildPosts($post, true);
 
-        
+        $adapter = new DoctrineAdapter(new ORMPaginator($query, false));
+        $paginator = new Paginator($adapter);
+        $paginator->setDefaultItemCountPerPage(10);        
+        $paginator->setCurrentPageNumber($page);
                         
         // Get the list of already saved files.
         $files = $this->imageManager->getSavedFiles($postId);
         
         // Render the view template.
         return new ViewModel([
+            'posts' => $paginator,
             'files'=>$files,
             'post' => $post,
-            'postManager' => $this->postManager
+            'postManager' => $this->postManager,
+            'imageManager' => $this->imageManager
         ]);
     }  
     
