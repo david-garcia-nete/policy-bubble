@@ -33,6 +33,12 @@ class PostController extends AbstractActionController
     private $imageManager;
     
     /**
+     * Video manager.
+     * @var Application\Service\VideoManager;
+     */
+    private $videoManager;
+    
+    /**
      * Session container.
      * @var Zend\Session\Container
      */
@@ -42,11 +48,12 @@ class PostController extends AbstractActionController
     /**
      * Constructor is used for injecting dependencies into the controller.
      */
-    public function __construct($entityManager, $postManager, $imageManager, $sessionContainer) 
+    public function __construct($entityManager, $postManager, $imageManager, $videoManager, $sessionContainer) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
         $this->imageManager = $imageManager;
+        $this->videoManager = $videoManager;
         $this->sessionContainer = $sessionContainer;
     }
     
@@ -214,13 +221,14 @@ class PostController extends AbstractActionController
         }
         
         // Ensure the step is correct (between 1 and 2).
-        if ($step<1 || $step>2)
+        if ($step<1 || $step>3)
             $step = 1;
         
         if ($step==1) {
             // Init user choices.
             $this->sessionContainer->userChoices = [];
             $this->sessionContainer->userChoices['step2dirty'] = false;
+            $this->sessionContainer->userChoices['step3dirty'] = false;
         }
         
         // Create image holder.
@@ -275,11 +283,12 @@ class PostController extends AbstractActionController
                 }
                 
                 // If we completed both steps.
-                if ($step>2) {
+                if ($step>3) {
                     // Use post manager service update existing post.
                     $this->postManager->updatePost($post, 
                             $this->sessionContainer->userChoices['step1']);
                     $this->imageManager->saveTempFiles($postId);
+                    $this->videoManager->saveTempFiles($postId);
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -311,6 +320,14 @@ class PostController extends AbstractActionController
                         $this->sessionContainer->userChoices['step2dirty']);
                 $this->sessionContainer->userChoices['step2dirty'] = true;  
             }
+            
+        if ($step==3) {
+                
+                // Get the list of already saved files.
+                $files = $this->videoManager->getTempFiles($postId, 
+                        $this->sessionContainer->userChoices['step3dirty']);
+                $this->sessionContainer->userChoices['step3dirty'] = true;  
+            }    
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
             return $this->redirect()->toRoute('not-authorized');

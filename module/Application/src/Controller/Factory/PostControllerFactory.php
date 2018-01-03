@@ -5,6 +5,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 use Application\Service\PostManager;
 use Application\Controller\PostController;
 use Application\Service\ImageManager;
+use Application\Service\VideoManager;
 
 /**
  * This is the factory for PostController. Its purpose is to instantiate the
@@ -17,9 +18,10 @@ class PostControllerFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $postManager = $container->get(PostManager::class);
         $imageManager = $container->get(ImageManager::class);
+        $videoManager = $container->get(VideoManager::class);
         $sessionContainer = $container->get('Posts');
         
         // Instantiate the controller and inject dependencies
-        return new PostController($entityManager, $postManager, $imageManager, $sessionContainer);
+        return new PostController($entityManager, $postManager, $imageManager, $videoManager, $sessionContainer);
     }
 }

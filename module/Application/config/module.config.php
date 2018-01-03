@@ -141,6 +141,7 @@ return [
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
             Service\MailSender::class => InvokableFactory::class,
             Service\ImageManager::class => InvokableFactory::class,
+            Service\VideoManager::class => InvokableFactory::class,
         ],
     ],
     'session_containers' => [

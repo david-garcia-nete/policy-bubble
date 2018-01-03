@@ -1,0 +1,150 @@
+<?php
+$this->headTitle('Edit Post');
+$this->mainMenu()->setActiveItemId('posts');
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Posts'=>$this->url('posts'),    
+            'Edit Post'=>''
+            ]);
+$form = $this->form;
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+$form->get('submit')->setValue('Continue');
+
+$form->prepare();
+
+?>
+
+
+
+<h1>Edit Post - Step 2</h1>
+
+
+
+<p>
+
+    Please fill out the following form and press the <i>Continue</i> button.  
+    To finish, do not select files.
+
+</p>
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <?= $this->form()->openTag($form); ?>
+
+        
+
+        <div class="form-group">
+
+            <?= $this->formLabel($form->get('video')); ?>
+
+            <?= $this->formElement($form->get('video')); ?>
+
+            <?= $this->formElementErrors($form->get('video')); ?>
+
+            <div class="hint">(PNG and JPG formats are allowed)</div>
+
+        </div>
+
+                
+
+        <?= $this->formElement($form->get('submit')); ?>
+
+        
+
+        <?= $this->form()->closeTag(); ?>
+
+    </div>    
+
+</div>    
+
+<hr/>
+
+
+
+<?php if(count($files)==0): ?>
+
+
+
+<p>
+
+    <i>There are no files to display.</i>
+
+</p>
+
+
+
+<?php else: ?>
+
+
+
+<div class="row">
+
+    <div class="col-sm-6 col-md-12">
+
+
+
+        <?php foreach($files as $file): ?>  
+
+
+
+        <div class="img-thumbnail">
+
+            
+
+            <img src="<?= $this->url('images', ['action'=>'file'], 
+
+                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'temp',  
+                        'thumbnail'=>true]]); ?>">
+
+            
+
+            <div class="caption">
+
+                                
+                <br>
+                
+                 <span>
+
+                    <a href="<?= $this->url('images',  
+                            ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$post->getId()]]); ?>" 
+
+                            class="btn btn-default" role="button">Remove</a>
+
+                </span>
+                
+                <span>
+
+                    <a target="_blank" href="<?= $this->url('images',  
+
+                            ['action'=>'file'], ['query'=>['name'=>$file, 
+                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 
+
+                            class="btn btn-default" role="button">View</a>
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <?php endforeach; ?>
+
+    </div>
+
+</div>
+
+
+
+<hr/>
+
+
+
+<?php endif; ?>

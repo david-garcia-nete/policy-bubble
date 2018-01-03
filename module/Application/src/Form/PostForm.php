@@ -110,6 +110,22 @@ class PostForm extends Form
                 ],
             ]);      
         }
+        
+        else if ($step==3) {
+            
+            // Add "file" field.
+            $this->add([
+                'type'  => 'file',
+                'name' => 'video',
+                'attributes' => [                
+                    'id' => 'video',
+                    'multiple' => true
+                ],
+                'options' => [
+                    'label' => 'Video file',
+                ],
+            ]);      
+        }
                 
         // Add the submit button
         $this->add([
@@ -228,6 +244,39 @@ class PostForm extends Form
                             'name' => 'FileRenameUpload',
                             'options' => [  
                                 'target'=>'./data/upload/post/' . $id . '/temp',
+                                'useUploadName'=>true,
+                                'useUploadExtension'=>true,
+                                'overwrite'=>true,
+                                'randomize'=>false
+                            ]
+                        ]
+                    ],   
+                ]); 
+        }
+        
+        if ($step==3) {
+            
+            // Add validation rules for the "file" field.	 
+            $inputFilter->add([
+                    'type'     => 'Zend\InputFilter\FileInput',
+                    'name'     => 'video',
+                    'required' => false,   
+                    'validators' => [
+                        ['name'    => 'FileUploadFile'],
+                        [
+                            'name' => MaxFileValidator::class,
+                            'options' => [
+                              'min' => 0,
+                              'max'  => 10,
+                              'id'=> $id
+                            ]                        
+                        ],
+                    ],
+                    'filters'  => [                    
+                        [
+                            'name' => 'FileRenameUpload',
+                            'options' => [  
+                                'target'=>'./data/video/post/' . $id . '/temp',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,
