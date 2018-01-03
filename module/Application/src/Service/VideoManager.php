@@ -440,7 +440,7 @@ class VideoManager
     public  function resizeVideo($filePath, $desiredWidth = 240) 
     {
         // Get original image dimensions.
-        list($originalWidth, $originalHeight) = getimagesize($filePath);
+        list($originalWidth, $originalHeight) = getvideosize($filePath);
 
         // Calculate aspect ratio
         $aspectRatio = $originalWidth/$originalHeight;

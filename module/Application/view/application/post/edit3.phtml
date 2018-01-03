@@ -17,7 +17,7 @@ $form->prepare();
 
 
 
-<h1>Edit Post - Step 2</h1>
+<h1>Edit Post - Step 3</h1>
 
 
 
@@ -46,7 +46,6 @@ $form->prepare();
 
             <?= $this->formElementErrors($form->get('video')); ?>
 
-            <div class="hint">(PNG and JPG formats are allowed)</div>
 
         </div>
 
@@ -96,7 +95,7 @@ $form->prepare();
 
             
 
-            <img src="<?= $this->url('images', ['action'=>'file'], 
+            <img src="<?= $this->url('videos', ['action'=>'file'], 
 
                     ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'temp',  
                         'thumbnail'=>true]]); ?>">
@@ -110,7 +109,7 @@ $form->prepare();
                 
                  <span>
 
-                    <a href="<?= $this->url('images',  
+                    <a href="<?= $this->url('videos',  
                             ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
                                 'id'=>$post->getId()]]); ?>" 
 
@@ -120,7 +119,7 @@ $form->prepare();
                 
                 <span>
 
-                    <a target="_blank" href="<?= $this->url('images',  
+                    <a target="_blank" href="<?= $this->url('videos',  
 
                             ['action'=>'file'], ['query'=>['name'=>$file, 
                                 'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 

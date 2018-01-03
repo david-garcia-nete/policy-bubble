@@ -77,6 +77,19 @@ return [
                     ],
                 ],
             ],
+            'videos' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/videos[/:action]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\VideoController::class,
+                        'action'        => 'file',
+                    ],
+                ],
+            ],
             'contactus' => [
                 'type'    => Literal::class,
                 'options' => [
@@ -95,6 +108,8 @@ return [
             Controller\BlogController::class => Controller\Factory\BlogControllerFactory::class,
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
             Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
+            Controller\VideoController::class => Controller\Factory\VideoControllerFactory::class,
+
         ],
     ],
     // The 'access_filter' key is used by the User module to restrict or permit
@@ -126,6 +141,9 @@ return [
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
             Controller\ImageController::class => [
+                ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
+            ],
+            Controller\VideoController::class => [
                 ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
             ],
         ]
