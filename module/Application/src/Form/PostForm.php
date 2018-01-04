@@ -264,6 +264,12 @@ class PostForm extends Form
                     'validators' => [
                         ['name'    => 'FileUploadFile'],
                         [
+                            'name'    => 'FileMimeType',                        
+                            'options' => [                            
+                                'mimeType'  => ['video/mp4', 'video/ogg']
+                            ]
+                        ],
+                        [
                             'name' => MaxFileValidator::class,
                             'options' => [
                               'min' => 0,
