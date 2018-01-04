@@ -229,7 +229,7 @@ class PostManager
     /**
      * Checks if file exists.
      */
-    public function checkfileExists($data) 
+    public function checkFileExists($data) 
     {
         $fileExists = false;
         if (array_key_exists('file', $data)) {
@@ -237,6 +237,13 @@ class PostManager
                 $fileExists = true;
             }
         }
+        
+        if (array_key_exists('video', $data)) {
+            if ($data['video'][0]['size'] > 0) {
+                $fileExists = true;
+            }
+        }
+        
         return $fileExists;
     }
     
