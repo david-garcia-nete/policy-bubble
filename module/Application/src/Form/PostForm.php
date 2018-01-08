@@ -4,6 +4,7 @@ use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Application\Entity\Post;
 use Application\Validator\MaxFileValidator;
+use Application\Validator\MaxVideoValidator;
 /**
  * This form is used to collect post data.
  */
@@ -119,7 +120,7 @@ class PostForm extends Form
                 'name' => 'video',
                 'attributes' => [                
                     'id' => 'video',
-                    'multiple' => true
+                    'multiple' => false
                 ],
                 'options' => [
                     'label' => 'Video file',
@@ -270,13 +271,20 @@ class PostForm extends Form
                             ]
                         ],
                         [
-                            'name' => MaxFileValidator::class,
+                            'name'    => 'FileSize',
                             'options' => [
-                              'min' => 0,
-                              'max'  => 10,
-                              'id'=> $id
-                            ]                        
+                                'min' => '10kB',
+			        'max' => '500MB',
+                            ]
                         ],
+//                        [
+//                            'name' => MaxVideoValidator::class,
+//                            'options' => [
+//                              'min' => 0,
+//                              'max'  => 3,
+//                              'id'=> $id
+//                            ]                        
+//                        ],
                     ],
                     'filters'  => [                    
                         [
