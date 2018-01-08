@@ -92,15 +92,13 @@ $form->prepare();
 
 
         <div class="img-thumbnail">
-
-            
-
-            <img src="<?= $this->url('videos', ['action'=>'file'], 
-
-                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'temp',  
-                        'thumbnail'=>true]]); ?>">
-
-            
+                        
+            <video width="320" height="240" controls>
+                <source src="<?= $this->url('videos',  
+                            ['action'=>'file'], ['query'=>['name'=>$file, 
+                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" >
+            Your browser does not support the video tag.
+            </video>             
 
             <div class="caption">
 
@@ -117,17 +115,6 @@ $form->prepare();
 
                 </span>
                 
-                <span>
-
-                    <a target="_blank" href="<?= $this->url('videos',  
-
-                            ['action'=>'file'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 
-
-                            class="btn btn-default" role="button">View</a>
-
-                </span>
-
             </div>
 
         </div>
