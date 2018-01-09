@@ -120,7 +120,7 @@ class PostForm extends Form
                 'name' => 'video',
                 'attributes' => [                
                     'id' => 'video',
-                    'multiple' => false
+                    'multiple' => true
                 ],
                 'options' => [
                     'label' => 'Video file',
@@ -274,17 +274,17 @@ class PostForm extends Form
                             'name'    => 'FileSize',
                             'options' => [
                                 'min' => '10kB',
-			        'max' => '500MB',
+			        'max' => '5GB',
                             ]
                         ],
-//                        [
-//                            'name' => MaxVideoValidator::class,
-//                            'options' => [
-//                              'min' => 0,
-//                              'max'  => 3,
-//                              'id'=> $id
-//                            ]                        
-//                        ],
+                        [
+                            'name' => MaxVideoValidator::class,
+                            'options' => [
+                              'min' => 0,
+                              'max'  => 3,
+                              'id'=> $id
+                            ]                        
+                        ],
                     ],
                     'filters'  => [                    
                         [

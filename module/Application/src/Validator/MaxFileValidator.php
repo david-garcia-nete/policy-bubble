@@ -250,7 +250,7 @@ class MaxFileValidator extends AbstractValidator
         }
         
         
-        $uploadCount = count($file['video']);
+        $uploadCount = count($file['file']);
       
         $total = $tempCount + $uploadCount;
         $this->count = $total;
