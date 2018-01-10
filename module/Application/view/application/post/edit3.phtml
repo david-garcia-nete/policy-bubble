@@ -94,9 +94,7 @@ $form->prepare();
         <div class="img-thumbnail">
                         
             <video width="320" height="240" controls>
-                <source src="<?= $this->url('videos',  
-                            ['action'=>'file'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" >
+                <source src="/video/post/<?= $post->getId()?>/temp/<?= $file ?>" >
             Your browser does not support the video tag.
             </video>             
 

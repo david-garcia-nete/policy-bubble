@@ -14,7 +14,7 @@ class VideoManager
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = './data/video/';
+    private $saveToDir = '/video/';
         
     /**
      * Returns path to the directory where we save the image files.

@@ -8,3 +8,4 @@ phpunit.xml
 public/img/captcha/*
 data/upload/*
 data/video/*
+public/video/*

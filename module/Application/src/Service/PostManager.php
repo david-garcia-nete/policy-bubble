@@ -239,7 +239,7 @@ class PostManager
         }
         
         if (array_key_exists('video', $data)) {
-            if ($data['video'][0]['size'] > 0) {
+            if ($data['video']['size'] > 0) {
                 $fileExists = true;
             }
         }
