@@ -5,6 +5,7 @@ use Zend\InputFilter\InputFilter;
 use Application\Entity\Post;
 use Application\Validator\AddMaxFileValidator;
 use Application\Validator\AddMaxVideoValidator;
+use Application\Validator\AddMaxAudioValidator;
 /**
  * This form is used to collect post data.
  */
@@ -18,7 +19,7 @@ class AddPostForm extends Form
         
         // Check input.
 
-        if (!is_int($step) || $step<1 || $step>3)
+        if (!is_int($step) || $step<1 || $step>4)
 
             throw new \Exception('Step is invalid');
         
@@ -107,6 +108,21 @@ class AddPostForm extends Form
                 ],
                 'options' => [
                     'label' => 'Video file',
+                ],
+            ]);      
+        }
+        
+        else if ($step==4) {
+            
+            // Add "file" field.
+            $this->add([
+                'type'  => 'file',
+                'name' => 'audio',
+                'attributes' => [                
+                    'id' => 'audio'
+                ],
+                'options' => [
+                    'label' => 'Audio file',
                 ],
             ]);      
         }
@@ -274,6 +290,52 @@ class AddPostForm extends Form
                             'name' => 'FileRenameUpload',
                             'options' => [  
                                 'target'=>'./public/video/user/' . $id . '/',
+                                'useUploadName'=>true,
+                                'useUploadExtension'=>true,
+                                'overwrite'=>true,
+                                'randomize'=>false
+                            ]
+                        ]
+                    ],   
+                ]); 
+        }
+        
+        if ($step==4) {
+            
+            // Add validation rules for the "file" field.	 
+            $inputFilter->add([
+                    'type'     => 'Zend\InputFilter\FileInput',
+                    'name'     => 'audio',
+                    'required' => false,   
+                    'validators' => [
+                        ['name'    => 'FileUploadFile'],
+                        [
+                            'name'    => 'FileMimeType',                        
+                            'options' => [                            
+                                'mimeType'  => ['audio/mp3', 'audio/ogg']
+                            ]
+                        ],
+                        [
+                            'name'    => 'FileSize',
+                            'options' => [
+                                'min' => '10kB',
+			        'max' => '5GB',
+                            ]
+                        ],
+                        [
+                            'name' => AddMaxAudioValidator::class,
+                            'options' => [
+                              'min' => 0,
+                              'max'  => 1,
+                              'id'=> $id
+                            ]                        
+                        ],
+                    ],
+                    'filters'  => [                    
+                        [
+                            'name' => 'FileRenameUpload',
+                            'options' => [  
+                                'target'=>'./public/audio/user/' . $id . '/',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,

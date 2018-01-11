@@ -244,6 +244,12 @@ class PostManager
             }
         }
         
+        if (array_key_exists('video', $data)) {
+            if ($data['audio']['size'] > 0) {
+                $fileExists = true;
+            }
+        }
+        
         return $fileExists;
     }
     

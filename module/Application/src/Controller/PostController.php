@@ -61,7 +61,7 @@ class PostController extends AbstractActionController
         $this->postManager = $postManager;
         $this->imageManager = $imageManager;
         $this->videoManager = $videoManager;
-        $this->audiooManager = $audioManager;
+        $this->audioManager = $audioManager;
         $this->sessionContainer = $sessionContainer;
     }
     
@@ -168,6 +168,14 @@ class PostController extends AbstractActionController
                     $this->sessionContainer->addUserChoices['addStep3Dirty']);
             $this->sessionContainer->addUserChoices['addStep3Dirty'] = true;  
         } 
+        
+        if ($step==4) {
+
+            // Get the list of already saved files.
+            $files = $this->audioManager->getAddTempFiles($user->getId(), 
+                    $this->sessionContainer->addUserChoices['addStep4Dirty']);
+            $this->sessionContainer->addUserChoices['addStep4Dirty'] = true;  
+        } 
   
         
         
@@ -219,12 +227,14 @@ class PostController extends AbstractActionController
         $files = $this->imageManager->getSavedFiles($postId);
         // Get the list of already saved files.
         $videos = $this->videoManager->getSavedFiles($postId);
+        $audio = $this->audioManager->getSavedFiles($postId);
         
         // Render the view template.
         return new ViewModel([
             'posts' => $paginator,
             'files'=>$files,
             'videos'=>$videos,
+            'audio'=>$audio,
             'post' => $post,
             'postManager' => $this->postManager,
             'imageManager' => $this->imageManager
@@ -244,7 +254,7 @@ class PostController extends AbstractActionController
         }
         
         // Ensure the step is correct (between 1 and 2).
-        if ($step<1 || $step>3)
+        if ($step<1 || $step>4)
             $step = 1;
         
         if ($step==1) {
@@ -252,6 +262,7 @@ class PostController extends AbstractActionController
             $this->sessionContainer->userChoices = [];
             $this->sessionContainer->userChoices['step2Dirty'] = false;
             $this->sessionContainer->userChoices['step3Dirty'] = false;
+            $this->sessionContainer->userChoices['step4Dirty'] = false;
         }
         
         // Create image holder.
@@ -306,12 +317,13 @@ class PostController extends AbstractActionController
                 }
                 
                 // If we completed both steps.
-                if ($step>3) {
+                if ($step>4) {
                     // Use post manager service update existing post.
                     $this->postManager->updatePost($post, 
                             $this->sessionContainer->userChoices['step1']);
                     $this->imageManager->saveTempFiles($postId);
                     $this->videoManager->saveTempFiles($postId);
+                    $this->audioManager->saveTempFiles($postId);
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -351,6 +363,14 @@ class PostController extends AbstractActionController
                         $this->sessionContainer->userChoices['step3Dirty']);
                 $this->sessionContainer->userChoices['step3Dirty'] = true;  
             }    
+            
+        if ($step==4) {
+                
+                // Get the list of already saved files.
+                $files = $this->audioManager->getTempFiles($postId, 
+                        $this->sessionContainer->userChoices['step3Dirty']);
+                $this->sessionContainer->userChoices['step3Dirty'] = true;  
+            }      
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
             return $this->redirect()->toRoute('not-authorized');
@@ -394,6 +414,7 @@ class PostController extends AbstractActionController
         $this->postManager->removePost($post);
         $this->imageManager->removePost($postId);
         $this->videoManager->removePost($postId);
+        $this->audioManager->removePost($postId);
         
         // Redirect the user to "admin" page.
         return $this->redirect()->toRoute('posts', ['action'=>'admin']);        
