@@ -250,19 +250,14 @@ class MaxVideoValidator extends AbstractValidator
         }
         
         
-        $uploadCount = 0;
+        $uploadCount = 1;
                 
-        if (array_key_exists('video', $files)) {
-            if ($files['video']['size'] > 0) {
-                $uploadCount = 1;
-            }
-        }
-      
+        
         $total = $tempCount + $uploadCount;
         $this->count = $total;
         $this->existCount = $tempCount;
         $this->selectCount = $uploadCount;
-        if (($this->getMax() !== null) && ($this->count >= $this->getMax())) {
+        if (($this->getMax() !== null) && ($this->count > $this->getMax())) {
             return $this->throwError($file, self::TOO_MANY);
         }
 
