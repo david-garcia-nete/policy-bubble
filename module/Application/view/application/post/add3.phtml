@@ -1,0 +1,135 @@
+<?php
+$this->headTitle('Add Post');
+$this->mainMenu()->setActiveItemId('posts');
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Posts'=>$this->url('posts'),    
+            'Add Post'=>''
+            ]);
+$form = $this->form;
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
+$form->get('submit')->setValue('Continue');
+
+$form->prepare();
+
+?>
+
+
+
+<h1>Add Post - Step 3</h1>
+
+
+
+<p>
+
+    Please fill out the following form and press the <i>Continue</i> button.  
+    To finish, do not select files.
+
+</p>
+
+
+
+<div class="row">
+
+    <div class="col-md-6">
+
+        <?= $this->form()->openTag($form); ?>
+
+        
+
+        <div class="form-group">
+
+            <?= $this->formLabel($form->get('video')); ?>
+
+            <?= $this->formElement($form->get('video')); ?>
+
+            <?= $this->formElementErrors($form->get('video')); ?>
+
+            <div class="hint">(MP4 and OGG formats are allowed)</div>
+
+        </div>
+
+                
+
+        <?= $this->formElement($form->get('submit')); ?>
+
+        
+
+        <?= $this->form()->closeTag(); ?>
+
+    </div>    
+
+</div>    
+
+<hr/>
+
+
+
+<?php if(count($files)==0): ?>
+
+
+
+<p>
+
+    <i>There are no files to display.</i>
+
+</p>
+
+
+
+<?php else: ?>
+
+
+
+<div class="row">
+
+    <div class="col-sm-6 col-md-12">
+
+
+
+        <?php foreach($files as $file): ?>  
+
+
+
+        <div class="img-thumbnail">
+                        
+            <video width="320" height="240" controls>
+                <source src="/video/user/<?= $user->getId()?>/<?= $file ?>" >
+            Your browser does not support the video tag.
+            </video>             
+
+            <div class="caption">
+
+                                
+                <br>
+                
+                 <span>
+
+                    <a href="<?= $this->url('videos',  
+                            ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$user->getId()]]); ?>" 
+
+                            class="btn btn-default" role="button">Remove</a>
+
+                </span>
+                
+            </div>
+
+        </div>
+
+
+
+        <?php endforeach; ?>
+
+    </div>
+
+</div>
+
+
+
+<hr/>
+
+
+
+<?php endif; ?>

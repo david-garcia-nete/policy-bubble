@@ -72,13 +72,14 @@ class PostController extends AbstractActionController
         }
         
         // Ensure the step is correct (between 1 and 2).
-        if ($step<1 || $step>2)
+        if ($step<1 || $step>3)
             $step = 1;
         
         if ($step==1) {
             // Init user choices.
             $this->sessionContainer->addUserChoices = [];
             $this->sessionContainer->addUserChoices['addStep2Dirty'] = false;
+            $this->sessionContainer->addUserChoices['addStep3Dirty'] = false;
             $this->sessionContainer->addUserChoices['addParentPostId'] = 
                     $this->params()->fromQuery('id', false);
         }
@@ -119,7 +120,7 @@ class PostController extends AbstractActionController
                     $this->sessionContainer->addUserChoices['addStepCount'] = $step;
                 }
                 
-                if ($step>2) {
+                if ($step>3) {
                     
                     // Use post manager service to add new post to database.
                     $data = $this->sessionContainer->addUserChoices['addStep1'];
@@ -130,6 +131,7 @@ class PostController extends AbstractActionController
                     $post = $posts[0];   
                     $postId = $post->getId();
                     $this->imageManager->saveAddTempFiles($postId, $user->getId());
+                    $this->videoManager->saveAddTempFiles($postId, $user->getId());
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -139,17 +141,25 @@ class PostController extends AbstractActionController
                 return $this->redirect()->toRoute('posts', ['action'=>'add', 
                     'id'=>0, 'step'=>2]);
             }
-        }   else {
+        }   
 
-            if ($step==2) {
-                
-                // Get the list of already saved files.
-                $files = $this->imageManager->getAddTempFiles($user->getId(), 
-                        $this->sessionContainer->addUserChoices['addStep2Dirty']);
-                $this->sessionContainer->addUserChoices['addStep2Dirty'] = true;  
-            }
-  
+        if ($step==2) {
+
+            // Get the list of already saved files.
+            $files = $this->imageManager->getAddTempFiles($user->getId(), 
+                    $this->sessionContainer->addUserChoices['addStep2Dirty']);
+            $this->sessionContainer->addUserChoices['addStep2Dirty'] = true;  
         }
+
+        if ($step==3) {
+
+            // Get the list of already saved files.
+            $files = $this->videoManager->getAddTempFiles($user->getId(), 
+                    $this->sessionContainer->addUserChoices['addStep3Dirty']);
+            $this->sessionContainer->addUserChoices['addStep3Dirty'] = true;  
+        } 
+  
+        
         
         // Render the view template.
         $viewModel = new ViewModel([
@@ -227,8 +237,8 @@ class PostController extends AbstractActionController
         if ($step==1) {
             // Init user choices.
             $this->sessionContainer->userChoices = [];
-            $this->sessionContainer->userChoices['step2dirty'] = false;
-            $this->sessionContainer->userChoices['step3dirty'] = false;
+            $this->sessionContainer->userChoices['step2Dirty'] = false;
+            $this->sessionContainer->userChoices['step3Dirty'] = false;
         }
         
         // Create image holder.
@@ -317,16 +327,16 @@ class PostController extends AbstractActionController
                 
                 // Get the list of already saved files.
                 $files = $this->imageManager->getTempFiles($postId, 
-                        $this->sessionContainer->userChoices['step2dirty']);
-                $this->sessionContainer->userChoices['step2dirty'] = true;  
+                        $this->sessionContainer->userChoices['step2Dirty']);
+                $this->sessionContainer->userChoices['step2Dirty'] = true;  
             }
             
         if ($step==3) {
                 
                 // Get the list of already saved files.
                 $files = $this->videoManager->getTempFiles($postId, 
-                        $this->sessionContainer->userChoices['step3dirty']);
-                $this->sessionContainer->userChoices['step3dirty'] = true;  
+                        $this->sessionContainer->userChoices['step3Dirty']);
+                $this->sessionContainer->userChoices['step3Dirty'] = true;  
             }    
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
@@ -370,6 +380,7 @@ class PostController extends AbstractActionController
         
         $this->postManager->removePost($post);
         $this->imageManager->removePost($postId);
+        $this->videoManager->removePost($postId);
         
         // Redirect the user to "admin" page.
         return $this->redirect()->toRoute('posts', ['action'=>'admin']);        

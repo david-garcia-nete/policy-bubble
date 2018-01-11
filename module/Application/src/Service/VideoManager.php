@@ -217,7 +217,6 @@ class VideoManager
 
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
-        rmdir($tempDir);
     }
     
     /**
@@ -296,7 +295,6 @@ class VideoManager
 
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
-        rmdir($tempDir);
     }
     
     /**

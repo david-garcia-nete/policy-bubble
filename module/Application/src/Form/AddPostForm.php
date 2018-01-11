@@ -4,6 +4,7 @@ use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Application\Entity\Post;
 use Application\Validator\AddMaxFileValidator;
+use Application\Validator\AddMaxVideoValidator;
 /**
  * This form is used to collect post data.
  */
@@ -107,6 +108,21 @@ class AddPostForm extends Form
                 ],
                 'options' => [
                     'label' => 'Image file',
+                ],
+            ]);      
+        }
+        
+        else if ($step==3) {
+            
+            // Add "file" field.
+            $this->add([
+                'type'  => 'file',
+                'name' => 'video',
+                'attributes' => [                
+                    'id' => 'video'
+                ],
+                'options' => [
+                    'label' => 'Video file',
                 ],
             ]);      
         }
@@ -237,5 +253,52 @@ class AddPostForm extends Form
                     ],   
                 ]); 
         }
+        
+        if ($step==3) {
+            
+            // Add validation rules for the "file" field.	 
+            $inputFilter->add([
+                    'type'     => 'Zend\InputFilter\FileInput',
+                    'name'     => 'video',
+                    'required' => false,   
+                    'validators' => [
+                        ['name'    => 'FileUploadFile'],
+                        [
+                            'name'    => 'FileMimeType',                        
+                            'options' => [                            
+                                'mimeType'  => ['video/mp4', 'video/ogg']
+                            ]
+                        ],
+                        [
+                            'name'    => 'FileSize',
+                            'options' => [
+                                'min' => '10kB',
+			        'max' => '5GB',
+                            ]
+                        ],
+                        [
+                            'name' => AddMaxVideoValidator::class,
+                            'options' => [
+                              'min' => 0,
+                              'max'  => 1,
+                              'id'=> $id
+                            ]                        
+                        ],
+                    ],
+                    'filters'  => [                    
+                        [
+                            'name' => 'FileRenameUpload',
+                            'options' => [  
+                                'target'=>'./public/video/user/' . $id . '/',
+                                'useUploadName'=>true,
+                                'useUploadExtension'=>true,
+                                'overwrite'=>true,
+                                'randomize'=>false
+                            ]
+                        ]
+                    ],   
+                ]); 
+        }
+        
     }
 }

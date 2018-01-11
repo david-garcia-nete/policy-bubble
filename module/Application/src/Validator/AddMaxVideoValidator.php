@@ -8,7 +8,7 @@ use Zend\Validator\Exception;
  * This validator class is designed for checking a phone number for conformance to
  * the local or to the international format.
  */
-class MaxVideoValidator extends AbstractValidator 
+class AddMaxVideoValidator extends AbstractValidator 
 {
     /**#@+
      * @const string Error constants
@@ -22,7 +22,7 @@ class MaxVideoValidator extends AbstractValidator
      */
     protected $messageTemplates = [
         self::TOO_MANY => "Too many files, maximum '%max%' post video is allowed.",
-        self::TOO_FEW  => "Too few files, minimum '%min%'  post videos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
+        self::TOO_FEW  => "Too few files, minimum '%min%'  post photos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
     ];
 
     /**
@@ -236,7 +236,7 @@ class MaxVideoValidator extends AbstractValidator
         
         // First check phone number length
         $isValid = false;
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'user/' . $id . '/' ;
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
@@ -251,8 +251,7 @@ class MaxVideoValidator extends AbstractValidator
         
         
         $uploadCount = 1;
-                
-        
+      
         $total = $tempCount + $uploadCount;
         $this->count = $total;
         $this->existCount = $tempCount;
