@@ -39,6 +39,12 @@ class PostController extends AbstractActionController
     private $videoManager;
     
     /**
+     * Audio manager.
+     * @var Application\Service\AudioManager;
+     */
+    private $audioManager;
+    
+    /**
      * Session container.
      * @var Zend\Session\Container
      */
@@ -48,12 +54,14 @@ class PostController extends AbstractActionController
     /**
      * Constructor is used for injecting dependencies into the controller.
      */
-    public function __construct($entityManager, $postManager, $imageManager, $videoManager, $sessionContainer) 
+    public function __construct($entityManager, $postManager, $imageManager, 
+            $videoManager, $audioManager, $sessionContainer) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
         $this->imageManager = $imageManager;
         $this->videoManager = $videoManager;
+        $this->audiooManager = $audioManager;
         $this->sessionContainer = $sessionContainer;
     }
     
@@ -72,7 +80,7 @@ class PostController extends AbstractActionController
         }
         
         // Ensure the step is correct (between 1 and 2).
-        if ($step<1 || $step>3)
+        if ($step<1 || $step>4)
             $step = 1;
         
         if ($step==1) {
@@ -80,6 +88,7 @@ class PostController extends AbstractActionController
             $this->sessionContainer->addUserChoices = [];
             $this->sessionContainer->addUserChoices['addStep2Dirty'] = false;
             $this->sessionContainer->addUserChoices['addStep3Dirty'] = false;
+            $this->sessionContainer->addUserChoices['addStep4Dirty'] = false;
             $this->sessionContainer->addUserChoices['addParentPostId'] = 
                     $this->params()->fromQuery('id', false);
         }
@@ -120,7 +129,7 @@ class PostController extends AbstractActionController
                     $this->sessionContainer->addUserChoices['addStepCount'] = $step;
                 }
                 
-                if ($step>3) {
+                if ($step>4) {
                     
                     // Use post manager service to add new post to database.
                     $data = $this->sessionContainer->addUserChoices['addStep1'];
@@ -132,6 +141,7 @@ class PostController extends AbstractActionController
                     $postId = $post->getId();
                     $this->imageManager->saveAddTempFiles($postId, $user->getId());
                     $this->videoManager->saveAddTempFiles($postId, $user->getId());
+                    $this->audioManager->saveAddTempFiles($postId, $user->getId());
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);

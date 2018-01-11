@@ -1,10 +1,10 @@
 <?php
-$this->headTitle('Edit Post');
+$this->headTitle('Add Post');
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
             'Posts'=>$this->url('posts'),    
-            'Edit Post'=>''
+            'Add Post'=>''
             ]);
 $form = $this->form;
 
@@ -17,7 +17,7 @@ $form->prepare();
 
 
 
-<h1>Edit Post - Step 3</h1>
+<h1>Add Post - Step 4</h1>
 
 
 
@@ -40,13 +40,13 @@ $form->prepare();
 
         <div class="form-group">
 
-            <?= $this->formLabel($form->get('video')); ?>
+            <?= $this->formLabel($form->get('audio')); ?>
 
-            <?= $this->formElement($form->get('video')); ?>
+            <?= $this->formElement($form->get('audio')); ?>
 
-            <?= $this->formElementErrors($form->get('video')); ?>
-            
-            <div class="hint">(MP4 and OGG formats are allowed)</div>
+            <?= $this->formElementErrors($form->get('audio')); ?>
+
+            <div class="hint">(MP3 and OGG formats are allowed)</div>
 
         </div>
 
@@ -95,8 +95,8 @@ $form->prepare();
         <div class="img-thumbnail">
                         
             <video width="320" height="240" controls>
-                <source src="/video/post/<?= $post->getId()?>/temp/<?= $file ?>" >
-            Your browser does not support the video tag.
+                <source src="/audio/user/<?= $user->getId()?>/<?= $file ?>" >
+            Your browser does not support the audio tag.
             </video>             
 
             <div class="caption">
@@ -106,9 +106,9 @@ $form->prepare();
                 
                  <span>
 
-                    <a href="<?= $this->url('videos',  
-                            ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId()]]); ?>" 
+                    <a href="<?= $this->url('audio',  
+                            ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
+                                'id'=>$user->getId()]]); ?>" 
 
                             class="btn btn-default" role="button">Remove</a>
 

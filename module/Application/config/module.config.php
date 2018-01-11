@@ -90,6 +90,19 @@ return [
                     ],
                 ],
             ],
+            'audio' => [
+                'type'    => Segment::class,
+                'options' => [
+                    'route'    => '/audio[/:action]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ],
+                    'defaults' => [
+                        'controller'    => Controller\AudioController::class,
+                        'action'        => 'file',
+                    ],
+                ],
+            ],
             'contactus' => [
                 'type'    => Literal::class,
                 'options' => [
@@ -109,6 +122,7 @@ return [
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
             Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
             Controller\VideoController::class => Controller\Factory\VideoControllerFactory::class,
+            Controller\AudioController::class => Controller\Factory\AudioControllerFactory::class,
 
         ],
     ],
@@ -148,6 +162,9 @@ return [
             Controller\VideoController::class => [
                 ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
             ],
+            Controller\AudioController::class => [
+                ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
+            ],
         ]
     ],
     // This key stores configuration for RBAC manager.
@@ -162,6 +179,7 @@ return [
             Service\MailSender::class => InvokableFactory::class,
             Service\ImageManager::class => InvokableFactory::class,
             Service\VideoManager::class => InvokableFactory::class,
+            Service\AudioManager::class => InvokableFactory::class,
         ],
     ],
     'session_containers' => [
