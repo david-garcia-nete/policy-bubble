@@ -136,12 +136,14 @@ return [
                 ['actions' => ['index'], 'allow' => '*']
             ],
             Controller\PostController::class => [
-                ['actions' => ['add', 'view', 'admin'], 'allow' => '@'],
+                ['actions' => ['view'], 'allow' => '*'],
+                ['actions' => ['add', 'admin'], 'allow' => '@'],
                 ['actions' => ['edit'], 'allow' => '+post.own.edit'],
                 ['actions' => ['delete'], 'allow' => '+post.own.delete']
             ],
             Controller\ImageController::class => [
-                ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
+                ['actions' => ['file'], 'allow' => '*'],
+                ['actions' => ['addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']
             ],
             Controller\VideoController::class => [
                 ['actions' => ['file', 'addFile', 'removeTemp', 'removeAddTemp'], 'allow' => '@']

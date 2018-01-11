@@ -276,12 +276,20 @@ class PostForm extends Form
 			        'max' => '5GB',
                             ]
                         ],
+                        [
+                            'name' => MaxVideoValidator::class,
+                            'options' => [
+                              'min' => 0,
+                              'max'  => 1,
+                              'id'=> $id
+                            ]                        
+                        ],
                     ],
                     'filters'  => [                    
                         [
                             'name' => 'FileRenameUpload',
                             'options' => [  
-                                'target'=>'/video/post/' . $id . '/temp',
+                                'target'=>'./public/video/post/' . $id . '/temp',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,

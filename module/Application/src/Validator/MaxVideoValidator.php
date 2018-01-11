@@ -21,7 +21,7 @@ class MaxVideoValidator extends AbstractValidator
      * @var array Error message templates
      */
     protected $messageTemplates = [
-        self::TOO_MANY => "Too many files, maximum '%max%' post videos are allowed.  '%existCount%' exist and '%selectCount%' are selected.",
+        self::TOO_MANY => "Too many files, maximum '%max%' post videos is allowed.",
         self::TOO_FEW  => "Too few files, minimum '%min%'  post videos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
     ];
 
@@ -66,7 +66,7 @@ class MaxVideoValidator extends AbstractValidator
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = '/video/';
+    private $saveToDir = './public/video/';
 
     /**
      * Options for this validator
@@ -250,13 +250,19 @@ class MaxVideoValidator extends AbstractValidator
         }
         
         
-        $uploadCount = count($file['video']);
+        $uploadCount = 0;
+                
+        if (array_key_exists('video', $files)) {
+            if ($files['video']['size'] > 0) {
+                $uploadCount = 1;
+            }
+        }
       
         $total = $tempCount + $uploadCount;
         $this->count = $total;
         $this->existCount = $tempCount;
         $this->selectCount = $uploadCount;
-        if (($this->getMax() !== null) && ($this->count > $this->getMax())) {
+        if (($this->getMax() !== null) && ($this->count >= $this->getMax())) {
             return $this->throwError($file, self::TOO_MANY);
         }
 
