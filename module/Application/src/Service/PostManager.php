@@ -34,7 +34,7 @@ class PostManager
         $post = new Post();
         $post->setTitle($data['title']);
         $post->setContent($data['content']);
-        $post->setStatus($data['status']);
+        $post->setStatus(2);
         $post->setUser($user);
         $currentDate = date('Y-m-d H:i:s');
         $post->setDateCreated($currentDate);
@@ -65,7 +65,7 @@ class PostManager
     {
         $post->setTitle($data['title']);
         $post->setContent($data['content']);
-        $post->setStatus($data['status']);
+        $post->setStatus(2);
         
         // Add tags to post
         $this->addTagsToPost($data['tags'], $post);

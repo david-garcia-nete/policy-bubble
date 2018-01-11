@@ -78,22 +78,6 @@ class AddPostForm extends Form
                     'label' => 'Tags',
                 ],
             ]);
-
-            // Add "status" field
-            $this->add([
-                'type'  => 'select',
-                'name' => 'status',
-                'attributes' => [                
-                    'id' => 'status'
-                ],
-                'options' => [
-                    'label' => 'Status',
-                    'value_options' => [
-                        Post::STATUS_PUBLISHED => 'Published',
-                        Post::STATUS_DRAFT => 'Draft',
-                    ]
-                ],
-            ]);
         }
         
         else if ($step==2) {
