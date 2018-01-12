@@ -1,0 +1,69 @@
+<?php
+
+$this->headTitle('Membership');
+
+$this->mainMenu()->setActiveItemId('membership');
+
+$this->pageBreadcrumbs()->setItems(array(
+            'Home'=>$this->url('home'),
+            'Membership'=>$this->url('membership')
+            ));
+
+?>
+
+<h1>Membership</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Plan</th>
+                <th>Posts / Month</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Free</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Bronze</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>Silver</td>
+                <td>25</td>
+              </tr>
+              <tr>
+                <td>Gold</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>Platinum</td>
+                <td>100</td>
+              </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>         
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="WY4L6W3QQS3C2">
+<div class="form-group">
+<table>
+<tr><td>
+        <input type="hidden" name="on0" value="Membership Options" class="form-control"><label>Membership Options</label></td></tr><tr><td><select name="os0" class="form-control">
+	<option value="Bronze">Bronze : $10.00 USD - monthly</option>
+	<option value="Silver">Silver : $25.00 USD - monthly</option>
+	<option value="Gold">Gold : $50.00 USD - monthly</option>
+	<option value="Platinum">Platinum : $100.00 USD - monthly</option>
+</select> </td></tr>
+</table>
+</div>
+<input type="hidden" name="currency_code" value="USD">
+<input class="btn" type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
