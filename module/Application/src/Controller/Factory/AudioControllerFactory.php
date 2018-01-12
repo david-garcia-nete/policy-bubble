@@ -3,13 +3,14 @@ namespace Application\Controller\Factory;
 
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
+use Application\Service\AudioManager;
 use Application\Controller\AudioController;
 
 /**
  * This is the factory for ImageController. Its purpose is to instantiate the
  * controller.
  */
-class VideoControllerFactory implements FactoryInterface
+class AudioControllerFactory implements FactoryInterface
 {
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {

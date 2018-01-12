@@ -106,6 +106,34 @@ if(count($parentPosts)<1)
 
 <hr/>
 
+<?php if(count($audioFiles)==0): ?>
+
+<p>
+  <i>There are no audio files to display.</i>
+</p>
+
+<?php else: ?>
+
+<div class="row">
+  <div class="col-sm-6 col-md-12">
+
+    <?php foreach($audioFiles as $audio): ?>  
+        <div class="img-thumbnail">
+                        
+            <audio controls>
+                <source src="/audio/post/<?= $post->getId()?>/perm/<?= $audio ?>" >
+            Your browser does not support the audio tag.
+            </audio>             
+
+        </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<?php endif; ?>
+
+<hr/>
+
 <a name="response"></a>
     
 

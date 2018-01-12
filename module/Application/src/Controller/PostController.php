@@ -227,14 +227,14 @@ class PostController extends AbstractActionController
         $files = $this->imageManager->getSavedFiles($postId);
         // Get the list of already saved files.
         $videos = $this->videoManager->getSavedFiles($postId);
-        $audio = $this->audioManager->getSavedFiles($postId);
+        $audioFiles = $this->audioManager->getSavedFiles($postId);
         
         // Render the view template.
         return new ViewModel([
             'posts' => $paginator,
             'files'=>$files,
             'videos'=>$videos,
-            'audio'=>$audio,
+            'audioFiles'=>$audioFiles,
             'post' => $post,
             'postManager' => $this->postManager,
             'imageManager' => $this->imageManager
