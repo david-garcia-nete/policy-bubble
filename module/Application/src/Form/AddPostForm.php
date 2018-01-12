@@ -312,7 +312,7 @@ class AddPostForm extends Form
                         [
                             'name'    => 'FileMimeType',                        
                             'options' => [                            
-                                'mimeType'  => ['audio/mp3', 'audio/ogg']
+                                'mimeType'  => ['audio/mpeg', 'audio/ogg']
                             ]
                         ],
                         [
