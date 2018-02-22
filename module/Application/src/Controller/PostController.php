@@ -196,7 +196,7 @@ class PostController extends AbstractActionController
      * to add a comment to post. 
      */
     public function viewAction() 
-    {       
+    {          
         $page = $this->params()->fromQuery('page', 1);
         $postId = (int)$this->params()->fromRoute('id', -1);
         
@@ -213,6 +213,17 @@ class PostController extends AbstractActionController
         if ($post == null) {
             $this->getResponse()->setStatusCode(404);
             return;                        
+        }
+        
+        // Only the post owner can see a draft post.
+        if ($this->identity()!=null) {
+            if(($post->getUser()->getId()!= $this->currentUser()->getId())&& ($post->getStatus()==1)){
+                return $this->redirect()->toRoute('not-authorized'); 
+            }
+        } else {
+            if($post->getStatus()==1){
+                return $this->redirect()->toRoute('not-authorized'); 
+            }
         }
         
         $query = $this->entityManager->getRepository(Post::class)

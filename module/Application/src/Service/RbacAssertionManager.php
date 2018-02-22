@@ -44,7 +44,7 @@ class RbacAssertionManager
         
         if ($permission=='post.own.delete' && $params['post']->getUser()->getId()==$currentUser->getId())
             return true;
-        
+             
         return false;
     }
 }
