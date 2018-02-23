@@ -246,8 +246,10 @@ class UserManager
         $body .= "$passwordResetUrl\n";
         $body .= "If you haven't asked to reset your password, please ignore this message.\n";
         
+        $header = 'From: Policy Bubble';
+        
         // Send email to user.
-        mail($user->getEmail(), $subject, $body);
+        mail($user->getEmail(), $subject, $body. $header);
     }
     
     /**
@@ -275,8 +277,10 @@ class UserManager
         $body .= "$registrationConfirmationUrl\n";
         $body .= "If you haven't asked to register your email, please ignore this message.\n";
         
+        $header = 'From: Policy Bubble';
+        
         // Send email to user.
-        mail($user->getEmail(), $subject, $body);
+        mail($user->getEmail(), $subject, $body, $header);
     }
     
     /**
