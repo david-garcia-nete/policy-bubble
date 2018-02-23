@@ -249,7 +249,7 @@ class UserManager
         $header = 'From: Policy Bubble';
         
         // Send email to user.
-        mail($user->getEmail(), $subject, $body. $header);
+        mail($user->getEmail(), $subject, $body, $header);
     }
     
     /**
