@@ -10,6 +10,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\User;
+use Application\Entity\Post;
 use Application\Form\ContactForm;
 
 class IndexController extends AbstractActionController
@@ -146,9 +147,10 @@ class IndexController extends AbstractActionController
         $user = $this->currentUser();
         $membershipStatus = $user->getMembershipAsString();
         
-        
         // Get the user's post count for this month
         $postCount = null;
+        $posts = $this->entityManager->getRepository(Post::class)
+                ->findPostsByUser($user);
         
         
         

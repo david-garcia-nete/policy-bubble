@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts'];
+            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'membership'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts'];
+        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'membership'];
     }
 
     /**
@@ -461,6 +461,39 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPost', [$post]);
 
         return parent::addPost($post);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMembership()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMembership', []);
+
+        return parent::getMembership();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getMembershipAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getMembershipAsString', []);
+
+        return parent::getMembershipAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setMembership($membership)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMembership', [$membership]);
+
+        return parent::setMembership($membership);
     }
 
 }
