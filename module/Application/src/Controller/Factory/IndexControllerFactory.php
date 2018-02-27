@@ -3,6 +3,7 @@ namespace Application\Controller\Factory;
 use Interop\Container\ContainerInterface;
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Application\Service\MailSender;
+use Application\Service\MembershipManager;
 use Application\Controller\IndexController;
 /**
  * This is the factory for IndexController. Its purpose is to instantiate the
@@ -14,8 +15,9 @@ class IndexControllerFactory implements FactoryInterface
     {
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $mailSender = $container->get(MailSender::class);
+        $membershipManager = $container->get(MembershipManager::class);
         
         // Instantiate the controller and inject dependencies
-        return new IndexController($entityManager, $mailSender);
+        return new IndexController($entityManager, $mailSender, $membershipManager);
     }
 }

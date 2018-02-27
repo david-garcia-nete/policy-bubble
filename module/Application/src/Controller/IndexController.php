@@ -11,7 +11,6 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\User;
 use Application\Form\ContactForm;
-use Application\Service\MailSender;
 
 class IndexController extends AbstractActionController
 {
@@ -28,12 +27,19 @@ class IndexController extends AbstractActionController
     private $mailSender;
     
     /**
+     * Membership Manager.
+     * @var Application\Service\MembershipManager
+     */
+    private $membershipManager;
+    
+    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager, $mailSender) 
+    public function __construct($entityManager, $mailSender, $membershipManager) 
     {
        $this->entityManager = $entityManager;
        $this->mailSender = $mailSender;
+       $this->membershipManager = $membershipManager;
     }
     
     
@@ -136,6 +142,20 @@ class IndexController extends AbstractActionController
     
     public function membershipAction() 
     {
-        return new ViewModel();
+        // Get the user's membership status
+        $user = $this->currentUser();
+        $membershipStatus = $user->getMembershipAsString();
+        
+        
+        // Get the user's post count for this month
+        $postCount = null;
+        
+        
+        
+        return new ViewModel([
+            'membershipStatus' => $membershipStatus,
+            'postCount' => $postCount
+                
+        ]);
     }
 }

@@ -151,9 +151,9 @@ return [
         'controllers' => [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
-                ['actions' => ['index', 'contactUs', 'thankYou', 'sendError', 'membership'], 'allow' => '*'],
+                ['actions' => ['index', 'contactUs', 'thankYou', 'sendError'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
-                ['actions' => ['settings'], 'allow' => '@']
+                ['actions' => ['settings', 'membership'], 'allow' => '@']
             ],
             Controller\BlogController::class => [
                 // Allow anyone to visit "index" action
@@ -186,6 +186,7 @@ return [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
+            Service\MembershipManager::class => Service\Factory\MembershipManagerFactory::class,
             Service\MailSender::class => InvokableFactory::class,
             Service\ImageManager::class => InvokableFactory::class,
             Service\VideoManager::class => InvokableFactory::class,

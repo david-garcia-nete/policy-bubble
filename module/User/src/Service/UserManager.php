@@ -62,6 +62,8 @@ class UserManager
         
         $user->setStatus($data['status']);
         
+        $user->setMembership(1);
+        
         $currentDate = date('Y-m-d H:i:s');
         $user->setDateCreated($currentDate);        
         
@@ -98,6 +100,8 @@ class UserManager
         $user->setPassword($passwordHash);
         
         $user->setStatus(2);
+        
+        $user->setMembership(1);
         
         $currentDate = date('Y-m-d H:i:s');
         $user->setDateCreated($currentDate);        
