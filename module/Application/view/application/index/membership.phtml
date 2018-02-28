@@ -52,17 +52,17 @@ My Posts this Month: <?php echo $postCount; // e.g. 2 of 10 ?>
     </div>    
 </div>         
 
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<form action="/membership" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="WY4L6W3QQS3C2">
 <div class="form-group">
 <table>
 <tr><td>
         <input type="hidden" name="on0" value="Membership Options" class="form-control"><label>Membership Options</label></td></tr><tr><td><select name="os0" class="form-control">
-	<option value="Bronze">Bronze : $10.00 USD - monthly</option>
-	<option value="Silver">Silver : $25.00 USD - monthly</option>
-	<option value="Gold">Gold : $50.00 USD - monthly</option>
-	<option value="Platinum">Platinum : $100.00 USD - monthly</option>
+	<option value="10.00">Bronze : $10.00 USD - monthly</option>
+	<option value="25.00">Silver : $25.00 USD - monthly</option>
+	<option value="50.00">Gold : $50.00 USD - monthly</option>
+	<option value="100.00">Platinum : $100.00 USD - monthly</option>
 </select> </td></tr>
 </table>
 </div>

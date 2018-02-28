@@ -151,19 +151,58 @@ class IndexController extends AbstractActionController
     
     public function membershipAction() 
     {
-        $api = new ApiContext(
-            new OAuthTokenCredential(
-                'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
-                'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
-            )
-        );
         
-        $payer = new Payer();
-        $details = new Details();
-        $amount = new Amount();
-        $transaction = new Transaction();
-        $payment = new Payment();
-        $redirectUrls = new RedirectUrls();
+        if($this->getRequest()->isPost()) {
+            
+            $apiContext = new ApiContext(
+                new OAuthTokenCredential(
+                    'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
+                    'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                )
+            );
+
+            $payer = new Payer();
+            $details = new Details();
+            $amount = new Amount();
+            $transaction = new Transaction();
+            $payment = new Payment();
+            $redirectUrls = new RedirectUrls();
+            
+            $payer->setPaymentMethod('paypal');
+            
+            $data = $this->params()->fromPost();
+            $total = $data['os0'];
+            $amount->setTotal($total);
+            $amount->setCurrency('USD');
+            
+            $transaction->setAmount($amount);
+            
+            $redirectUrls->setReturnUrl("http://policybubble.com/membership?approved=true")
+                ->setCancelUrl("http://policybubble.com/membership?approved=false");
+            
+            $payment->setIntent('sale')
+                ->setPayer($payer)
+                ->setTransactions(array($transaction))
+                ->setRedirectUrls($redirectUrls);
+            
+            try {
+                $payment->create($apiContext);
+            }
+            catch (PayPalConnectionException $ex) {
+                // This will print the detailed information on the exception.
+                //REALLY HELPFUL FOR DEBUGGING
+                echo $ex->getData();
+            }
+            
+            foreach($payment->getLinks() as $link){
+                if ($link->getRel() == 'approval_url'){
+                    $redirectUrl = $link->getHref();
+                }
+            }
+ 
+            $this->redirect()->toUrl($redirectUrl);
+  
+        }    
         
         // Get the user's membership status
         $user = $this->currentUser();
