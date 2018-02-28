@@ -12,6 +12,14 @@ use Zend\View\Model\ViewModel;
 use User\Entity\User;
 use Application\Entity\Post;
 use Application\Form\ContactForm;
+use PayPal\Rest\ApiContext;
+use PayPal\Auth\OAuthTokenCredential;
+use PayPal\Api\Payer;
+use PayPal\Api\Details;
+use PayPal\Api\Amount;
+use PayPal\Api\Transaction;
+use PayPal\Api\Payment;
+use PayPal\Api\RedirectUrls;
 
 class IndexController extends AbstractActionController
 {
@@ -143,6 +151,20 @@ class IndexController extends AbstractActionController
     
     public function membershipAction() 
     {
+        $api = new ApiContext(
+            new OAuthTokenCredential(
+                'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
+                'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+            )
+        );
+        
+        $payer = new Payer();
+        $details = new Details();
+        $amount = new Amount();
+        $transaction = new Transaction();
+        $payment = new Payment();
+        $redirectUrls = new RedirectUrls();
+        
         // Get the user's membership status
         $user = $this->currentUser();
         $membershipStatus = $user->getMembershipAsString();
