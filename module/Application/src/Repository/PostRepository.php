@@ -120,5 +120,28 @@ class PostRepository extends EntityRepository
         $posts = $queryBuilder->getQuery()->getResult();
         
         return $posts;
-    }   
+    }
+    
+    /**
+     * Finds all published posts having the given user.
+     * @param \Application\Entity\User $user
+     * @return array
+     */
+    public function findMonthPostCountByUser($user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('COUNT(p)')
+            ->from(Post::class, 'p')
+            ->where('p.user = ?1')
+            ->andWhere('MONTH(p.dateCreated) = ?2')
+            ->setParameter('1', $user)
+            ->setParameter('2', date('m'));
+     
+        $count = $queryBuilder->getQuery()->getResult();
+        
+        return $count[0][1];
+    } 
 }

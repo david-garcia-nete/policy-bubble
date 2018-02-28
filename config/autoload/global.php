@@ -64,5 +64,12 @@ return [
                 'table'     => 'migrations',
             ],
         ],
+        'configuration' => [
+            'orm_default' => [
+                'string_functions' => [
+                    'month' => 'DoctrineExtensions\Query\Mysql\Month'
+                ],    
+            ],
+        ],   
     ],
 ];

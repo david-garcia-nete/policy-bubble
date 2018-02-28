@@ -148,12 +148,9 @@ class IndexController extends AbstractActionController
         $membershipStatus = $user->getMembershipAsString();
         
         // Get the user's post count for this month
-        $postCount = null;
-        $posts = $this->entityManager->getRepository(Post::class)
-                ->findPostsByUser($user);
-        
-        
-        
+        $postCount = $this->entityManager->getRepository(Post::class)
+                ->findMonthPostCountByUser($user);
+      
         return new ViewModel([
             'membershipStatus' => $membershipStatus,
             'postCount' => $postCount
