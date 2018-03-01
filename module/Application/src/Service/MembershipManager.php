@@ -39,4 +39,5 @@ class MembershipManager
         // Apply changes to database.
         $this->entityManager->flush();
     }
+    
 }

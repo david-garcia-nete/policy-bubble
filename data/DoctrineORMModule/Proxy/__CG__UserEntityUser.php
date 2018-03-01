@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'membership'];
+            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'membership'];
+        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership'];
     }
 
     /**
@@ -461,6 +461,28 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'addPost', [$post]);
 
         return parent::addPost($post);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getTransactions()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getTransactions', []);
+
+        return parent::getTransactions();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function addTransaction($transaction)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'addTransaction', [$transaction]);
+
+        return parent::addTransaction($transaction);
     }
 
     /**

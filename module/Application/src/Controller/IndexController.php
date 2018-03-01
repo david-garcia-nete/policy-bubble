@@ -20,7 +20,11 @@ use PayPal\Api\Amount;
 use PayPal\Api\Transaction;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
+use PayPal\Exception\PayPalConnectionException;
 use Zend\Crypt\Password\Bcrypt;
+use Application\Entity\TransactionsPayPal;
+use PayPal\Api\PaymentExecution;
+
 
 class IndexController extends AbstractActionController
 {
@@ -159,7 +163,45 @@ class IndexController extends AbstractActionController
     }
     
     public function membershipAction() 
-    {
+    { 
+        
+        // If the transaction was approved on the PayPal side.
+        if($this->params()->fromQuery('approved', false)){
+            $payerId = $this->params()->fromQuery('PayerID');
+            
+            $transaction = $this->entityManager->getRepository(TransactionsPayPal::class)
+                        ->findOneBy(array('hash' => $this->sessionContainer->paypal_hash));
+            $paymentId = $transaction->getPaymentId();
+            
+            $apiContext = new ApiContext(
+                new OAuthTokenCredential(
+                    'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
+                    'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                )
+            );
+            
+            $payment = Payment::get($paymentId, $apiContext);
+            
+            $execution = new PaymentExecution();
+            $execution->setPayerId($payerId);
+            
+            $payment->execute($execution, $apiContext);
+            
+            // Update transaction. Set complete = 1 where payment id = payment id.
+            // I may want to add more info such as date and member level
+            $transaction->setComplete(1);
+            // Apply changes to database.
+            $this->entityManager->flush();
+            
+            // Set user as a member.  Update users.  Set membership = memebership from session
+            $user = $this->currentUser();
+            $transaction->setMembership(1);
+            $this->entityManager->flush();
+            //Unset hash
+            $this->sessionContainer->paypal_hash = null;
+            
+                    
+        }
         
         if($this->getRequest()->isPost()) {
             
