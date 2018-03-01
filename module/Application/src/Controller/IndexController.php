@@ -168,9 +168,9 @@ class IndexController extends AbstractActionController
         // If the transaction was approved on the PayPal side.
         if($this->params()->fromQuery('approved', false)){
             $payerId = $this->params()->fromQuery('PayerID');
-            
+                      
             $transaction = $this->entityManager->getRepository(TransactionsPayPal::class)
-                        ->findOneBy(array('hash' => $this->sessionContainer->paypal_hash));
+                        ->findOneBy(array('hash' => $this->sessionContainer->payPal['hash']));
             $paymentId = $transaction->getPaymentId();
             
             $apiContext = new ApiContext(
@@ -195,10 +195,10 @@ class IndexController extends AbstractActionController
             
             // Set user as a member.  Update users.  Set membership = memebership from session
             $user = $this->currentUser();
-            $transaction->setMembership(1);
+            $user->setMembership($this->sessionContainer->payPal['membership']);
             $this->entityManager->flush();
-            //Unset hash
-            $this->sessionContainer->paypal_hash = null;
+            //Unset session containter array
+            $this->sessionContainer->payPal = null;
             
                     
         }
@@ -222,8 +222,8 @@ class IndexController extends AbstractActionController
             $payer->setPaymentMethod('paypal');
             
             $data = $this->params()->fromPost();
-            $total = $data['os0'];
-            $amount->setTotal($total);
+            $selection = explode('-', $data['os0']);
+            $amount->setTotal($selection[1]);
             $amount->setCurrency('USD');
             
             $transaction->setAmount($amount);
@@ -241,7 +241,9 @@ class IndexController extends AbstractActionController
                 
                 $bcrypt = new Bcrypt();
                 $hash = $bcrypt->create($payment->getId());
-                $this->sessionContainer->paypal_hash = $hash;
+                $this->sessionContainer->payPal = [];
+                $this->sessionContainer->payPal['hash'] = $hash;
+                $this->sessionContainer->payPal['membership'] = $selection[0];
                 
                 $user = $this->currentUser();
                 $this->membershipManager->addNewTransaction($user, $payment, $hash);
