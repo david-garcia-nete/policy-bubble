@@ -20,6 +20,7 @@ use PayPal\Api\Amount;
 use PayPal\Api\Transaction;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
+use Zend\Crypt\Password\Bcrypt;
 
 class IndexController extends AbstractActionController
 {
@@ -42,13 +43,21 @@ class IndexController extends AbstractActionController
     private $membershipManager;
     
     /**
+     * Session container.
+     * @var Zend\Session\Container
+     */
+    private $sessionContainer;
+    
+    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager, $mailSender, $membershipManager) 
+    public function __construct($entityManager, $mailSender, $membershipManager, 
+            $sessionContainer) 
     {
        $this->entityManager = $entityManager;
        $this->mailSender = $mailSender;
        $this->membershipManager = $membershipManager;
+       $this->sessionContainer = $sessionContainer;
     }
     
     
@@ -187,6 +196,14 @@ class IndexController extends AbstractActionController
             
             try {
                 $payment->create($apiContext);
+                
+                $bcrypt = new Bcrypt();
+                $hash = $bcrypt->create($payment->getId());
+                $this->sessionContainer->paypal_hash = $hash;
+                
+                $user = $this->currentUser();
+                $this->membershipManager->addNewTransaction($user, $payment, $hash);
+                
             }
             catch (PayPalConnectionException $ex) {
                 // This will print the detailed information on the exception.

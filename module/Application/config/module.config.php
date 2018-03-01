@@ -194,7 +194,8 @@ return [
         ],
     ],
     'session_containers' => [
-        'Posts'
+        'Posts',
+        'PayPal'
     ],
 
     'view_helpers' => [

@@ -16,8 +16,10 @@ class IndexControllerFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $mailSender = $container->get(MailSender::class);
         $membershipManager = $container->get(MembershipManager::class);
+        $sessionContainer = $container->get('PayPal');
         
         // Instantiate the controller and inject dependencies
-        return new IndexController($entityManager, $mailSender, $membershipManager);
+        return new IndexController($entityManager, $mailSender, $membershipManager, 
+                $sessionContainer);
     }
 }

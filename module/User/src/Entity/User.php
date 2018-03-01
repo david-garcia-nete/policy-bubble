@@ -89,6 +89,12 @@ class User
      */
     protected $posts;
     
+    /**
+     * @ORM\OneToMany(targetEntity="\Application\Entity\TransactionsPayPal", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id")
+     */
+    protected $transactions;
+    
     /** 
      * @ORM\Column(name="membership")  
      */
@@ -100,6 +106,8 @@ class User
     public function __construct() 
     {
         $this->roles = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->transactions = new ArrayCollection();
     }
     
     /**
@@ -359,6 +367,24 @@ class User
     public function addPost($post) 
     {
         $this->posts[] = $post;
+    }
+    
+    /**
+     * Returns transactions for this user.
+     * @return array
+     */
+    public function getTransactions() 
+    {
+        return $this->transactions;
+    }
+    
+    /**
+     * Adds a new transaction to this user.
+     * @param $transaction
+     */
+    public function addTransaction($transaction) 
+    {
+        $this->transactions[] = $transaction;
     }
     
      /**
