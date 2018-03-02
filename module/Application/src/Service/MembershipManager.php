@@ -24,14 +24,19 @@ class MembershipManager
      * @param \Application\Entity\User $user
      * @param \PayPal\Api\Payment $payment
      */
-    public function addNewTransaction($user, $payment, $hash) 
+    public function addNewTransaction($user, $payment, $hash, $membership, $amount) 
     {
         // Create new Post entity.
         $transaction = new TransactionsPayPal();
         $transaction->setUser($user);
         $transaction->setPaymentId($payment->getId());
         $transaction->setHash($hash);
-        $transaction->setComplete(0);       
+        $transaction->setComplete(0);
+        $transaction->setMembership($membership);
+        $transaction->setAmount(floatval($amount));
+        $currentDate = date('Y-m-d H:i:s');
+        $transaction->setDateCreated($currentDate);
+        
         
         // Add the entity to entity manager.
         $this->entityManager->persist($transaction);

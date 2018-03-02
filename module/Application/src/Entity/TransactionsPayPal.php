@@ -61,6 +61,11 @@ class TransactionsPayPal
      */
     protected $dateCompleted;
     
+    /** 
+     * @ORM\Column(name="amount")  
+     */
+    protected $amount;
+    
 
     /**
      * Returns ID of this post.
@@ -234,6 +239,24 @@ class TransactionsPayPal
     {
         $this->dateCompleted= $dateCompleted;
     }    
+    
+     /**
+     * Returns amount.
+     * @return float     
+     */
+    public function getAmount() 
+    {
+        return $this->amount;
+    }
+    
+     /**
+     * Sets amount.
+     * @param float $amount   
+     */
+    public function setAmount($amount) 
+    {
+        $this->amount = $amount;
+    }   
         
     
 }

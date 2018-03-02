@@ -166,7 +166,7 @@ class IndexController extends AbstractActionController
     { 
         
         // If the transaction was approved on the PayPal side.
-        if($this->params()->fromQuery('approved', false)){
+        if($this->params()->fromQuery('approved', 'false') == 'true'){
             $payerId = $this->params()->fromQuery('PayerID');
                       
             $transaction = $this->entityManager->getRepository(TransactionsPayPal::class)
@@ -190,12 +190,9 @@ class IndexController extends AbstractActionController
             // Update transaction. Set complete = 1 where payment id = payment id.
             // I may want to add more info such as date and member level
             $transaction->setComplete(1);
-            // Apply changes to database.
-            $this->entityManager->flush();
-            
-            // Set user as a member.  Update users.  Set membership = memebership from session
-            $user = $this->currentUser();
-            $user->setMembership($this->sessionContainer->payPal['membership']);
+            $transaction->setMembership($this->sessionContainer->payPal['membership']);
+            $currentDate = date('Y-m-d H:i:s');
+            $transaction->setDateCompleted($currentDate);
             $this->entityManager->flush();
             //Unset session containter array
             $this->sessionContainer->payPal = null;
@@ -246,7 +243,8 @@ class IndexController extends AbstractActionController
                 $this->sessionContainer->payPal['membership'] = $selection[0];
                 
                 $user = $this->currentUser();
-                $this->membershipManager->addNewTransaction($user, $payment, $hash);
+                $this->membershipManager->addNewTransaction($user, $payment, 
+                        $hash, $selection[0], $selection[1]);
                 
             }
             catch (PayPalConnectionException $ex) {
