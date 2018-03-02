@@ -267,7 +267,7 @@ class IndexController extends AbstractActionController
         
         // Get the user's membership status
         $user = $this->currentUser();
-        $membershipStatus = $user->getMembershipAsString();
+        $membershipStatus = $this->membershipManager->getMembership($user);
         
         // Get the user's post count for this month
         $postCount = $this->entityManager->getRepository(Post::class)

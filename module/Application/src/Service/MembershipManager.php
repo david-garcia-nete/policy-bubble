@@ -40,4 +40,23 @@ class MembershipManager
         $this->entityManager->flush();
     }
     
+    /**
+     * Get membership.
+     * @param \Application\Entity\User $user
+     */
+    public function getMembership($user) 
+    {
+        $transactions = $this->entityManager->getRepository(TransactionsPayPal::class)
+                    ->findCompletedTransactionsByUser($user);
+        
+        if(count($transactions) == 0) return 'Free';
+            
+        $latestTransaction = $transactions[0];
+        $membership = $latestTransaction->getMembershipAsString();
+        
+        return $membership;
+    
+        
+    }
+    
 }

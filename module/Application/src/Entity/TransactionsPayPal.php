@@ -5,11 +5,18 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * This class represents a single membership transaction.
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Application\Repository\TransactionsPayPalRepository")
  * @ORM\Table(name="transactions_paypal")
  */
 class TransactionsPayPal 
 {
+    
+    // User membership constants.
+    const MEMBERSHIP_FREE       = 1;    // Free user.
+    const MEMBERSHIP_BRONZE     = 2;    // Bronze user.
+    const MEMBERSHIP_SILVER     = 3;    // Silver user.
+    const MEMBERSHIP_GOLD       = 4;    // Gold user.
+    const MEMBERSHIP_PLATINUM   = 5;    // Platinum user.
     
     /**
      * @ORM\Id
@@ -38,6 +45,21 @@ class TransactionsPayPal
      * @ORM\Column(name="complete")  
      */
     protected $complete;
+    
+    /** 
+     * @ORM\Column(name="membership")  
+     */
+    protected $membership;
+    
+    /**
+     * @ORM\Column(name="date_created")  
+     */
+    protected $dateCreated;
+    
+    /**
+     * @ORM\Column(name="date_completed")  
+     */
+    protected $dateCompleted;
     
 
     /**
@@ -130,6 +152,88 @@ class TransactionsPayPal
     {
         $this->complete = $complete;
     }
+    
+      /**
+     * Returns membership.
+     * @return int     
+     */
+    public function getMembership() 
+    {
+        return $this->membership;
+    }
+
+    /**
+     * Returns possible memberships as array.
+     * @return array
+     */
+    public static function getMembershipList() 
+    {
+        return [
+            self::MEMBERSHIP_FREE => 'Free',
+            self::MEMBERSHIP_BRONZE => 'Bronze',
+            self::MEMBERSHIP_SILVER => 'Silver',
+            self::MEMBERSHIP_GOLD => 'Gold',
+            self::MEMBERSHIP_PLATINUM => 'Platinum'
+        ];
+    }    
+    
+    /**
+     * Returns transaction membership as string.
+     * @return string
+     */
+    public function getMembershipAsString()
+    {
+        $list = self::getMembershipList();
+        if (isset($list[$this->membership]))
+            return $list[$this->membership];
+        
+        return 'Unknown';
+    }    
+    
+    /**
+     * Sets membership.
+     * @param int $membership     
+     */
+    public function setMembership($membership) 
+    {
+        $this->membership = $membership;
+    }   
+    
+    /**
+     * Returns the date of transaction creation.
+     * @return string     
+     */
+    public function getDateCreated() 
+    {
+        return $this->dateCreated;
+    }
+    
+    /**
+     * Sets the date when this transaction was created.
+     * @param string $dateCreated     
+     */
+    public function setDateCreated($dateCreated) 
+    {
+        $this->dateCreated = $dateCreated;
+    }    
+    
+    /**
+     * Returns the date of transaction completion.
+     * @return string     
+     */
+    public function getDateCompleted() 
+    {
+        return $this->dateCompleted;
+    }
+    
+    /**
+     * Sets the date when this transaction was completed.
+     * @param string $dateCompleted     
+     */
+    public function setDateCompleted($dateCompleted) 
+    {
+        $this->dateCompleted= $dateCompleted;
+    }    
         
     
 }
