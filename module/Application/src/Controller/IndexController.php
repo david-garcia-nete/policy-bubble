@@ -175,8 +175,8 @@ class IndexController extends AbstractActionController
             
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
-                    'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
-                    'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                    'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
+                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
                 )
             );
             
@@ -204,8 +204,8 @@ class IndexController extends AbstractActionController
             
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
-                    'AVI5ewWx9QqD2rERLTae6tTwGhjc2R2c476aXYawIAljDaUeh3svqBWIN4jE86KTlXQBy2hMwNjjvvKR',     // ClientID
-                    'ECThE6oCr1UzrP2wz4O4eczkDkSlMhoDSNRB4tin1SbHXwlQetKCGgH-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                    'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
+                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
                 )
             );
 
