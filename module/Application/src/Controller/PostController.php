@@ -71,7 +71,14 @@ class PostController extends AbstractActionController
      * a new Post entity will be created.
      */
     public function addAction() 
-    {     
+    {   
+        $user = $this->currentUser();
+        // Check the post limit and redirect accordingly.
+        if($this->postManager->postLimitReached($user)){
+            // Redirect the user to the "membership" page.
+            return $this->redirect()->toRoute('home', ['action'=>'membership']);
+        }
+        
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.
         $step = 1;
@@ -95,8 +102,6 @@ class PostController extends AbstractActionController
         
         // Create image holder.
         $files = null;
-        
-        $user = $this->currentUser();
                
         // Create the form.
         $form = new AddPostForm($step, $user->getId());
