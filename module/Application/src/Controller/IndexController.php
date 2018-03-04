@@ -176,9 +176,11 @@ class IndexController extends AbstractActionController
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
                     'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
-                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC'      // ClientSecret
                 )
             );
+            
+            $apiContext->setConfig(['mode' => 'live']);
             
             $payment = Payment::get($paymentId, $apiContext);
             
@@ -205,9 +207,11 @@ class IndexController extends AbstractActionController
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
                     'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
-                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC-6kN0up8jI2TGFNjelAXZYZ3z'      // ClientSecret
+                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC'      // ClientSecret
                 )
             );
+            
+            $apiContext->setConfig(['mode' => 'live']);
 
             $payer = new Payer();
             $details = new Details();
