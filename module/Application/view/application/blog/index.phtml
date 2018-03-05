@@ -48,7 +48,7 @@ $this->pageBreadcrumbs()->setItems([
     ?>
     
     <p>    
-        <?= $this->escapeHtml($post->getContent()); ?>
+        <?= substr(nl2br($this->escapeHtml($post->getContent())), 0, 500) ?> &hellip;
     </p>
     
     <?php 

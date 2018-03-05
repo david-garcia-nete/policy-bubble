@@ -44,7 +44,7 @@ if(count($parentPosts)<1)
 </p>
 
 <p>    
-    <?= $this->escapeHtml($post->getContent()); ?>
+    <?= nl2br($this->escapeHtml($post->getContent())) ?>
 </p>
 
 <hr/>
