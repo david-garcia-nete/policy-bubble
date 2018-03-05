@@ -20,7 +20,7 @@ class TagRepository extends EntityRepository
         
         $queryBuilder->select('t')
             ->from(Tag::class, 't')
-            ->join('p.user', 'p')
+            ->join('t.posts', 'p')
             ->where('p.user = ?1')
             ->setParameter('1', $user);
         
