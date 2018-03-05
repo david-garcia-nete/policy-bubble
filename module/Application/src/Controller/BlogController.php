@@ -73,6 +73,7 @@ class BlogController extends AbstractActionController
         // Get popular tags.
         $tagCloud = $this->postManager->getTagCloud();
         
+        $myTagCloud = null;
         if ($this->identity()!=null) {
             $user = $this->currentUser();
             // User is logged in.  Retrieve user identity
