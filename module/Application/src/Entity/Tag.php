@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * This class represents a tag.
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="\Application\Repository\TagRepository")
  * @ORM\Table(name="tag")
  */
 class Tag 

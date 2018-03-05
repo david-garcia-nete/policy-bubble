@@ -17,18 +17,11 @@ class PostManager
     private $entityManager;
     
     /**
-     * Membership Manager.
-     * @var Application\Service\MembershipManager
-     */
-    private $membershipManager;
-    
-    /**
      * Constructor.
      */
-    public function __construct($entityManager, $membershipManager)
+    public function __construct($entityManager)
     {
         $this->entityManager = $entityManager;
-        $this->membershipManager = $membershipManager;
     }
     
     /**
@@ -233,6 +226,40 @@ class PostManager
         return $normalizedTagCloud;
     }
     
+     /**
+     * Calculates frequencies of user tag usage.
+     */
+    public function getMyTagCloud($user)
+    {
+        $tagCloud = [];
+                
+        $posts = $this->entityManager->getRepository(Post::class)
+                    ->findMyPostsHavingAnyTag($user);
+        $totalPostCount = count($posts);
+        
+        $tags = $this->entityManager->getRepository(Tag::class)
+                ->findAllByUser($user);
+        foreach ($tags as $tag) {
+            
+            $postsByTag = $this->entityManager->getRepository(Post::class)
+                    ->findMyPostsByTag($tag->getName(), $user)->getResult();
+            
+            $postCount = count($postsByTag);
+            if ($postCount > 0) {
+                $tagCloud[$tag->getName()] = $postCount;
+            }
+        }
+        
+        $normalizedTagCloud = [];
+        
+        // Normalize
+        foreach ($tagCloud as $name=>$postCount) {
+            $normalizedTagCloud[$name] =  $postCount/$totalPostCount;
+        }
+        
+        return $normalizedTagCloud;
+    }
+    
     /**
      * Checks if file exists.
      */
@@ -258,40 +285,6 @@ class PostManager
         }
         
         return $fileExists;
-    }
-    
-    /**
-     * Check if the user's post limit has been reached for this month.
-     * @param \Application\Entity\User $user
-     */
-    public function postLimitReached($user) 
-    {
-        $membershipStatus = $this->membershipManager->getMembership($user);
-        switch ($membershipStatus) {
-            case 'Free':
-                $limit = 3;
-                break;
-            case 'Bronze':
-                $limit = 10;
-                break;
-            case 'Silver':
-                $limit = 25;
-                break;
-            case 'Gold':
-                $limit = 50;
-                break;
-            case 'Platinum':
-                $limit = 100;
-                break;
-        }
-        // Get the user's post count for this month
-        $postCount = $this->entityManager->getRepository(Post::class)
-                ->findMonthPostCountByUser($user);
-        if ($postCount >= $limit){
-            return true;
-        }
-        
-        return false;
     }
     
 }

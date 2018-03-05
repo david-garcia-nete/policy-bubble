@@ -73,11 +73,18 @@ class BlogController extends AbstractActionController
         // Get popular tags.
         $tagCloud = $this->postManager->getTagCloud();
         
+        if ($this->identity()!=null) {
+            $user = $this->currentUser();
+            // User is logged in.  Retrieve user identity
+            $myTagCloud = $this->postManager->getMyTagCloud($user);
+        }
+        
         // Render the view template.
         return new ViewModel([
             'posts' => $paginator,
             'postManager' => $this->postManager,
             'tagCloud' => $tagCloud,
+            'myTagCloud' => $myTagCloud,
             'imageManager' => $this->imageManager,
         ]);
     }

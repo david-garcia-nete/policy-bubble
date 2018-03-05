@@ -117,4 +117,32 @@ $this->pageBreadcrumbs()->setItems([
             </div>
         </div>
     </div>
+    
+    <?php if($this->identity()!=null): ?>
+    
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">My Tags</h3>
+            </div>
+            <div class="panel-body">
+                <?php foreach($this->myTagCloud as $tagName=>$frequency): ?>
+                
+                <a href="<?= $this->url('blog', ['action'=>'index'],
+                    ['query'=>['tag'=>$tagName]]); ?>">                   
+        
+                    <span style="font-size:<?= $this->escapeHtml(0.9+$frequency*3) ?>em">
+                        <?= $this->escapeHtml($tagName); ?>
+                    </span>
+                
+                </a>    
+                    
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php endif; ?>
+    
+    
 </div>

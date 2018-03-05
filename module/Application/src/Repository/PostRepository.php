@@ -49,6 +49,30 @@ class PostRepository extends EntityRepository
     }
     
     /**
+     * Finds all of the user's published posts having any tag.
+     * @return array
+     */
+    public function findMyPostsHavingAnyTag($user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')
+            ->from(Post::class, 'p')
+            ->join('p.tags', 't')
+            ->where('p.status = ?1')
+            ->andWhere('p.user = ?2')    
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', Post::STATUS_PUBLISHED)
+            ->setParameter('2', $user);
+        
+        $posts = $queryBuilder->getQuery()->getResult();
+        
+        return $posts;
+    }
+    
+    /**
      * Finds all published posts having the given tag.
      * @param string $tagName Name of the tag.
      * @return Query
@@ -67,6 +91,31 @@ class PostRepository extends EntityRepository
             ->orderBy('p.dateCreated', 'DESC')
             ->setParameter('1', Post::STATUS_PUBLISHED)
             ->setParameter('2', $tagName);
+        
+        return $queryBuilder->getQuery();
+    }   
+    
+    /**
+     * Finds all published posts having the given tag.
+     * @param string $tagName Name of the tag.
+     * @return Query
+     */
+    public function findMyPostsByTag($tagName, $user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')
+            ->from(Post::class, 'p')
+            ->join('p.tags', 't')
+            ->where('p.status = ?1')
+            ->andWhere('t.name = ?2')
+            ->andWhere('p.user = ?3')
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', Post::STATUS_PUBLISHED)
+            ->setParameter('2', $tagName)
+            ->setParameter('3', $user);
         
         return $queryBuilder->getQuery();
     }   
@@ -120,28 +169,5 @@ class PostRepository extends EntityRepository
         $posts = $queryBuilder->getQuery()->getResult();
         
         return $posts;
-    }
-    
-    /**
-     * Finds all published posts having the given user.
-     * @param \Application\Entity\User $user
-     * @return array
-     */
-    public function findMonthPostCountByUser($user)
-    {
-        $entityManager = $this->getEntityManager();
-        
-        $queryBuilder = $entityManager->createQueryBuilder();
-        
-        $queryBuilder->select('COUNT(p)')
-            ->from(Post::class, 'p')
-            ->where('p.user = ?1')
-            ->andWhere('MONTH(p.dateCreated) = ?2')
-            ->setParameter('1', $user)
-            ->setParameter('2', date('m'));
-     
-        $count = $queryBuilder->getQuery()->getResult();
-        
-        return $count[0][1];
-    } 
+    }   
 }
