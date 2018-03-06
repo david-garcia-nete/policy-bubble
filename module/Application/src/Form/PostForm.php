@@ -291,7 +291,7 @@ class PostForm extends Form
                             'name'    => 'FileSize',
                             'options' => [
                                 'min' => '10kB',
-			        'max' => '5GB',
+			        'max' => '2GB',
                             ]
                         ],
                         [
@@ -337,7 +337,7 @@ class PostForm extends Form
                             'name'    => 'FileSize',
                             'options' => [
                                 'min' => '10kB',
-			        'max' => '5GB',
+			        'max' => '1GB',
                             ]
                         ],
                         [
