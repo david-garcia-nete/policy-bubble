@@ -29,8 +29,10 @@ class ImageManager
     public function __construct()
     {
         $this->s3 = S3Client::factory([
-            'key' => 'AKIAI7WS74G66LJ3O7AQ',
-            'secret' => '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',
+            'credentials' => [
+                'key' => 'AKIAI7WS74G66LJ3O7AQ',
+                'secret' => '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'
+            ],
             'region' => 'us-east-2',
             'version' => '2006-03-01'
         ]);
@@ -236,11 +238,11 @@ class ImageManager
                     $this->s3->putObject([
                         'Bucket' => 'policybubble.com',
                         'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
-                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'Body' => $tempDir . $file,
                         'ACL' => 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
-                    die ("There was an error uploading that file.");
+                    die ("There was an error uploading that file." . $e);
                 }
             } 
         }  
