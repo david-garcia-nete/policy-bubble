@@ -3,6 +3,8 @@
  * A service model class encapsulating the functionality for image management.
  */
 namespace Application\Service;
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
 
 /**
  * The image manager service. Responsible for getting the list of uploaded
@@ -15,6 +17,23 @@ class ImageManager
      * @var string
      */
     private $saveToDir = './data/upload/';
+    
+    /**
+     * The AWS S3 client
+     */
+    private $s3 = null;
+    
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $this->s3 = S3Client::factory([
+            'key' => 'AKIAI7WS74G66LJ3O7AQ',
+            'secret' => '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'
+        ]);
+    }
+    
         
     /**
      * Returns path to the directory where we save the image files.
@@ -210,7 +229,17 @@ class ImageManager
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
-                copy($tempDir . $file, $permDir . $file); 
+                //copy($tempDir . $file, $permDir . $file);
+                try{
+                    $s3->putObject([
+                        'Bucket' => 'policybubble.com',
+                        'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'ACL' => 'public-read'
+                    ]);                    
+                } catch(S3Exception $e){
+                    die ("There was an error uploading that file.");
+                }
             } 
         }  
         closedir($dir);
