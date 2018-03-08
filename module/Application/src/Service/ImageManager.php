@@ -30,7 +30,9 @@ class ImageManager
     {
         $this->s3 = S3Client::factory([
             'key' => 'AKIAI7WS74G66LJ3O7AQ',
-            'secret' => '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'
+            'secret' => 'skHxwFXPB1ywKyHCSlYPMII1tMwbjqJI927KIQQQ',
+            'region' => 'us-east-2',
+            'version' => '2006-03-01'
         ]);
     }
     
@@ -231,7 +233,7 @@ class ImageManager
             if (( $file != '.' ) && ( $file != '..' )) {      
                 //copy($tempDir . $file, $permDir . $file);
                 try{
-                    $s3->putObject([
+                    $this->s3->putObject([
                         'Bucket' => 'policybubble.com',
                         'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
