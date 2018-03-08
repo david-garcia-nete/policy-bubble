@@ -242,7 +242,7 @@ class ImageManager
                         'ACL' => 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
-                    die ("There was an error uploading that file." . $e);
+                    die ("There was an error uploading that file.");
                 }
             } 
         }  
