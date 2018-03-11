@@ -36,7 +36,8 @@
         "zendframework/zend-form": "^2.11",
         "paypal/rest-api-sdk-php": "*",
         "beberlei/DoctrineExtensions": "^1.0",
-        "aws/aws-sdk-php": "^3.52"
+        "aws/aws-sdk-php": "^3.52",
+        "zendframework/zend-config": "^3.1"
     },
     "autoload": {
         "psr-4": {
