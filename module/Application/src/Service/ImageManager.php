@@ -5,6 +5,7 @@
 namespace Application\Service;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
+use Zend\Config;
 
 /**
  * The image manager service. Responsible for getting the list of uploaded
@@ -21,21 +22,21 @@ class ImageManager
     /**
      * The AWS S3 client
      */
-    private $s3 = null;
+    private $s3client = null;
+    
+    /**
+     * The AWS S3 bucket
+     */
+    private $s3bucket = null;
     
     /**
      * Constructor.
      */
     public function __construct()
     {
-        $this->s3 = S3Client::factory([
-            'credentials' => [
-                'key' => 'AKIAI7WS74G66LJ3O7AQ',
-                'secret' => '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'
-            ],
-            'region' => 'us-east-2',
-            'version' => '2006-03-01'
-        ]);
+        $config = new Config(include './config/autoload/local.php');
+        $this->s3client = S3Client::factory($config->s3->s3client);
+        $this->s3bucket = $config->s3->s3bucket;
     }
     
         
@@ -235,8 +236,8 @@ class ImageManager
             if (( $file != '.' ) && ( $file != '..' )) {      
                 //copy($tempDir . $file, $permDir . $file);
                 try{
-                    $this->s3->putObject([
-                        'Bucket' => 'policybubble.com',
+                    $this->s3client->putObject([
+                        'Bucket' => $this->s3bucket,
                         'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
                         'Body' => $tempDir . $file,
                         'ACL' => 'public-read'

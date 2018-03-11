@@ -19,7 +19,7 @@ return [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => '127.0.0.1',                    
+                    'host'     => '<host>',                    
                     'user'     => '<user>',
                     'password' => '<password>',
                     'dbname'   => '<dbname>',
@@ -27,4 +27,15 @@ return [
             ],            
         ],        
     ],
+    's3' => [
+        's3client' => [
+            'credentials' => [
+                    'key' => '<key>',
+                    'secret' => '<secret>'
+                ],
+                'region' => '<region>',
+                'version' => '<version>'
+        ],
+        's3bucket' => '<s3bucket>',
+    ]
 ];
