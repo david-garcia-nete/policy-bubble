@@ -24,6 +24,7 @@ use PayPal\Exception\PayPalConnectionException;
 use Zend\Crypt\Password\Bcrypt;
 use Application\Entity\TransactionsPayPal;
 use PayPal\Api\PaymentExecution;
+use Zend\Config\Config;
 
 
 class IndexController extends AbstractActionController
@@ -53,6 +54,11 @@ class IndexController extends AbstractActionController
     private $sessionContainer;
     
     /**
+     * Local Configuration
+     */
+    private $localConfig;
+    
+    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $mailSender, $membershipManager, 
@@ -62,6 +68,7 @@ class IndexController extends AbstractActionController
        $this->mailSender = $mailSender;
        $this->membershipManager = $membershipManager;
        $this->sessionContainer = $sessionContainer;
+       $this->$localConfig = new Config(include './config/autoload/local.php');
     }
     
     
@@ -175,12 +182,12 @@ class IndexController extends AbstractActionController
             
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
-                    'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
-                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC'      // ClientSecret
+                    $this->localConfig->payPal->clientId,     
+                    $this->localConfig->payPal->clientSecret     
                 )
             );
             
-            $apiContext->setConfig(['mode' => 'live']);
+            $apiContext->setConfig(['mode' => $this->localConfig->payPal->mode]);
             
             $payment = Payment::get($paymentId, $apiContext);
             
@@ -206,12 +213,12 @@ class IndexController extends AbstractActionController
             
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
-                    'AbLJgOLDtTtthvtXvwGfP4JhVv-6aowu3kzpO8tUCRaleQiQ8-v8udUbYBkMhViWABcNT37OuJL7gzS0',     // ClientID
-                    'EBW9bbQcBDQF1YtjuGzlUyJkTm_vE3CWI82T1sGtk07J4u8fdVjLFw3idvEz01IOobFWNDtlbggEE0UC'      // ClientSecret
+                    $this->localConfig->payPal->clientId,     
+                    $this->localConfig->payPal->clientSecret      
                 )
             );
             
-            $apiContext->setConfig(['mode' => 'live']);
+            $apiContext->setConfig(['mode' => $this->localConfig->payPal->mode]);
 
             $payer = new Payer();
             $details = new Details();
@@ -229,8 +236,8 @@ class IndexController extends AbstractActionController
             
             $transaction->setAmount($amount);
             
-            $redirectUrls->setReturnUrl("http://policybubble.com/membership?approved=true")
-                ->setCancelUrl("http://policybubble.com/membership?approved=false");
+            $redirectUrls->setReturnUrl("https://" . $this->localConfig->domainName . "/membership?approved=true")
+                ->setCancelUrl("https://" . $this->localConfig->domainName . "/membership?approved=false");
             
             $payment->setIntent('sale')
                 ->setPayer($payer)

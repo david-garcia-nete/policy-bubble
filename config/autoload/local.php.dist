@@ -37,5 +37,10 @@ return [
                 'version' => '<version>'
         ],
         's3bucket' => '<s3bucket>',
-    ]
+    ],
+    'payPal' => [
+        'clientId' => '<clientId>',
+        'clientSecret' => '<clientSecret>',
+    ],
+    'domainName' => '<domainName>'
 ];
