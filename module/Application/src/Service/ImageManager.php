@@ -5,7 +5,7 @@
 namespace Application\Service;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
-use Zend\Config;
+use Zend\Config\Config;
 
 /**
  * The image manager service. Responsible for getting the list of uploaded
@@ -35,7 +35,7 @@ class ImageManager
     public function __construct()
     {
         $config = new Config(include './config/autoload/local.php');
-        $this->s3client = S3Client::factory($config->s3->s3client);
+        $this->s3client = S3Client::factory($config->s3->s3client->toArray());
         $this->s3bucket = $config->s3->s3bucket;
     }
     
