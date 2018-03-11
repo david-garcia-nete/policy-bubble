@@ -68,7 +68,7 @@ class IndexController extends AbstractActionController
        $this->mailSender = $mailSender;
        $this->membershipManager = $membershipManager;
        $this->sessionContainer = $sessionContainer;
-       $this->$localConfig = new Config(include './config/autoload/local.php');
+       $this->localConfig = new Config(include './config/autoload/local.php');
     }
     
     
