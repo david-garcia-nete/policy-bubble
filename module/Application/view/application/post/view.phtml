@@ -61,15 +61,9 @@ if(count($parentPosts)<1)
   <div class="col-sm-6 col-md-12">
 
     <?php foreach($files as $file): ?>  
-        <a target="_blank" href="<?= $this->url('images', ['action' => 'file'], 
-        ['query' => ['name' => $file, 'id' => $post->getId(), 
-        'loc' => 'perm']]); ?>" class="btn btn-default" role="button"> 
+        
+            <img src="<?= $file ?>">
             
-            <img src="<?= $this->url('images', ['action' => 'file'], ['query' => 
-            ['name' => $file, 'id' => $post->getId(), 'loc' => 'perm', 
-            'thumbnail' => true]]); ?>">
-            
-        </a>
     <?php endforeach; ?>
   </div>
 </div>

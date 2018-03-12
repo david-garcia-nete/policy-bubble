@@ -86,28 +86,16 @@ class ImageManager
      */
     public function getSavedFiles($id) 
     {
-        // The directory where we plan to save uploaded files.
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+        ]);
         
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
+        $files = array();
+        foreach ($objects as $object){
+            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
         }
-
-        // Scan the directory and create the list of uploaded files.
-        $files = array();        
-        $handle  = opendir($permDir);
-        while (false !== ($entry = readdir($handle))) {
-            
-            if($entry=='.' || $entry=='..')
-                continue; // Skip current dir and parent dir.
-            
-            $files[] = $entry;
-        }
-        
+               
         // Return the list of uploaded files.
         return $files;
     }
@@ -239,7 +227,7 @@ class ImageManager
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
                         'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
-                        'Body' => $tempDir . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
                         'ACL' => 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
