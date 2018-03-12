@@ -199,22 +199,14 @@ class ImageManager
      */
     public function saveTempFiles($id) 
     {
-        // The directory where we plan to save uploaded files.
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
         // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+        ]);
+        
+        foreach ($objects as $object){
+            $files[] = $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
         // Copy all files
