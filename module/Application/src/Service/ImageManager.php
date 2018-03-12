@@ -106,32 +106,24 @@ class ImageManager
      */
     public function getFirstSavedFiles($id, $count = 2) 
     {
-        // The directory where we plan to save uploaded files.
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+        ]);
         
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+        $files = array();
+        $i=0;
+        foreach ($objects as $object){
+            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+            $i++;
+            if ($i>=$count){
+                return $files;
             }
         }
-
-        // Scan the directory and create the list of uploaded files.
-        $files = array();        
-        $handle  = opendir($permDir);
-        $i=0;
-        while ((false !== ($entry = readdir($handle))) && $i<$count) {
-            
-            if($entry=='.' || $entry=='..')
-                continue; // Skip current dir and parent dir.
-            
-            $files[] = $entry;
-            $i++;
-        }
-        
+               
         // Return the list of uploaded files.
         return $files;
+   
     }
     
     /**
@@ -166,7 +158,13 @@ class ImageManager
             foreach($paths as $file){ // iterate files
                 if(is_file($file))
                 unlink($file); // delete file
-            }    
+            }
+            
+            $client->getObject(array(
+    'Bucket' => $bucket,
+    'Key'    => 'data.txt',
+    'SaveAs' => '/tmp/data.txt'
+));
         
             // Copy all files
             $permDir = $this->saveToDir . 'post/' . $id . '/perm/';

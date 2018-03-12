@@ -54,14 +54,8 @@ $this->pageBreadcrumbs()->setItems([
     
 
         <?php foreach($files as $file): ?>  
-            <a target="_blank" href="<?= $this->url('images', ['action' => 'file'], 
-            ['query' => ['name' => $file, 'id' => $post->getId(), 
-            'loc' => 'perm']]); ?>" class="btn btn-default" role="button"> 
-
-                <img src="<?= $this->url('images', ['action' => 'file'], ['query' => 
-                ['name' => $file, 'id' => $post->getId(), 'loc' => 'perm', 
-                'thumbnail' => true]]); ?>">
-
+            <a target="_blank" href="<?= $file ?>" class="btn btn-default" role="button">             
+                <img width="240" src="<?= $file ?>">    
             </a>
         <?php endforeach; ?>
     
