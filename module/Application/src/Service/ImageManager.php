@@ -153,29 +153,31 @@ class ImageManager
         }
         
         if (!$dirty){
+            
             // Delete all files
             $paths = glob($tempDir . '*'); // get all file names
             foreach($paths as $file){ // iterate files
                 if(is_file($file))
                 unlink($file); // delete file
-            }
+            }    
             
-            $client->getObject(array(
-    'Bucket' => $bucket,
-    'Key'    => 'data.txt',
-    'SaveAs' => '/tmp/data.txt'
-));
-        
             // Copy all files
-            $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-            $dir = opendir($permDir);  
-            while(false !== ( $file = readdir($dir)) ) { 
-                if (( $file != '.' ) && ( $file != '..' )) {      
-                    copy($permDir . $file, $tempDir . $file); 
-                } 
-            } 
-            closedir($dir);
-         }
+            $objects = $this->s3client->getIterator('ListObjects', [
+                'Bucket' =>  $this->s3bucket,
+                'Prefix' =>  'data/upload/post/' . $id . '/perm/',
+            ]);
+
+            foreach ($objects as $object){
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                $this->s3client->getObject([
+                    'Bucket' => $this->s3bucket,
+                    'Key' => $object['Key'],
+                    'SaveAs' => $tempDir . $parts[$count-1]
+                ]);
+            }
+
+        }
         
         // Scan the directory and create the list of uploaded files.
         $files = array();        
@@ -204,7 +206,7 @@ class ImageManager
         ]);
         
         foreach ($objects as $object){
-            $files[] = $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
         // Copy all files
