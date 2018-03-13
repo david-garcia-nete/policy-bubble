@@ -280,22 +280,15 @@ class ImageManager
      */
     public function saveAddTempFiles($postId, $userId) 
     {
-        // The directory where we plan to save uploaded files.
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
         
         // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  'data/upload/post/' . $postId . '/perm/'
+        ]);
+        
+        foreach ($objects as $object){
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
         // Copy all files
@@ -303,7 +296,17 @@ class ImageManager
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
-                copy($tempDir . $file, $permDir . $file); 
+                //copy($tempDir . $file, $permDir . $file);
+                try{
+                    $this->s3client->putObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => 'data/upload/post/' . $postId . '/perm/' . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'ACL' => 'public-read'
+                    ]);                    
+                } catch(S3Exception $e){
+                    die ("There was an error uploading that file.");
+                }
             } 
         }  
         closedir($dir);
@@ -311,6 +314,7 @@ class ImageManager
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
+        
     }
     
     /**
@@ -341,24 +345,16 @@ class ImageManager
      */
     public function removePost($postId) 
     {
-        // The directory where we plan to save uploaded files.
         
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
+        // Delete all perm files
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  'data/upload/post/' . $postId . '/perm/'
+        ]);
         
-        // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
+        foreach ($objects as $object){
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
-        rmdir($permDir);
         
         // Check whether the directory already exists, and if not,
         // create the directory.
@@ -372,9 +368,7 @@ class ImageManager
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
-        
-        $postDir = $this->saveToDir . 'post/' . $postId . '/';
-        rmdir($postDir);
+      
     }
     
     /**
