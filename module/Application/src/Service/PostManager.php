@@ -150,7 +150,9 @@ class PostManager
      */
     public function getResponseCountStr($post)
     {
-        $responseCount = count($post->getChildPosts());
+        $parents = $post->getParentPosts();
+        $parent = $parents[0];
+        $responseCount = count($post->findChildPosts($parent));
         if ($responseCount == 0)
             return 'No responses';
         else if ($responseCount == 1) 

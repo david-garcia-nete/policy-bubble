@@ -6,6 +6,7 @@ namespace Application\Service;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
 use Zend\Config\Config;
+use Application\Entity\Post;
 
 /**
  * The image manager service. Responsible for getting the list of uploaded
@@ -93,7 +94,7 @@ class AudioManager
         $files = array();
             
         // If draft, get tokenized URLs. 
-        if($post->getStatus() == 1){
+        if($post->getStatus() == Post::STATUS_DRAFT){
 
             foreach ($objects as $object){
 
@@ -136,7 +137,7 @@ class AudioManager
         $files = array();
         
         // If draft, get tokenized URLs. 
-        if($post->getStatus() == 1){
+        if($post->getStatus() == Post::STATUS_DRAFT){
         
             $i=0;
             foreach ($objects as $object){
@@ -256,7 +257,7 @@ class AudioManager
                         'Bucket' => $this->s3bucket,
                         'Key' => $post->getId() . '/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
+                        'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
@@ -314,7 +315,7 @@ class AudioManager
     /**
      * Saves the temp file to the permanent folder
      */
-    public function saveAddTempFiles($postId, $userId) 
+    public function saveAddTempFiles($post, $userId) 
     {
         // Delete all files
         $objects = $this->s3client->getIterator('ListObjects', [
@@ -337,7 +338,7 @@ class AudioManager
                         'Bucket' => $this->s3bucket,
                         'Key' => $post->getId() . '/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
+                        'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
