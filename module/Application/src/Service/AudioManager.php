@@ -246,7 +246,7 @@ class AudioManager
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . $post->getId() . '/';
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
