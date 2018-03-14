@@ -7,6 +7,7 @@ phpunit.xml
 /nbproject/private/
 public/img/captcha/*
 data/upload/*
+data/image/*
 data/video/*
 public/video/*
 public/audio/*

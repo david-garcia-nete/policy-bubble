@@ -17,7 +17,7 @@ class VideoManager
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = './video/';
+    private $saveToDir = './public/video/';
     
     /**
      * The AWS S3 client

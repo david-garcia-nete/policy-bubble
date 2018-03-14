@@ -17,7 +17,7 @@ class AudioManager
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = './audio/';
+    private $saveToDir = './public/audio/';
     
     /**
      * The AWS S3 client

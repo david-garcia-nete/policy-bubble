@@ -261,7 +261,7 @@ class PostForm extends Form
                         [
                             'name' => 'FileRenameUpload',
                             'options' => [  
-                                'target'=>'./data/upload/post/' . $id . '/temp',
+                                'target'=>'./data/image/post/' . $id . '/',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,
