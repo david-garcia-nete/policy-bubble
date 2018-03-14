@@ -144,7 +144,7 @@ class PostController extends AbstractActionController
                         ->findPostsByUser($user);
                     $post = $posts[0];   
                     $postId = $post->getId();
-                    $this->imageManager->saveAddTempFiles($postId, $user->getId());
+                    $this->imageManager->saveAddTempFiles($post, $user->getId());
                     $this->videoManager->saveAddTempFiles($postId, $user->getId());
                     $this->audioManager->saveAddTempFiles($postId, $user->getId());
                     
@@ -240,7 +240,7 @@ class PostController extends AbstractActionController
         $paginator->setCurrentPageNumber($page);
                         
         // Get the list of already saved files.
-        $files = $this->imageManager->getSavedFiles($postId);
+        $files = $this->imageManager->getSavedFiles($post);
         // Get the list of already saved files.
         $videos = $this->videoManager->getSavedFiles($postId);
         $audioFiles = $this->audioManager->getSavedFiles($postId);
@@ -337,7 +337,7 @@ class PostController extends AbstractActionController
                     // Use post manager service update existing post.
                     $this->postManager->updatePost($post, 
                             $this->sessionContainer->userChoices['step1']);
-                    $this->imageManager->saveTempFiles($postId);
+                    $this->imageManager->saveTempFiles($post);
                     $this->videoManager->saveTempFiles($postId);
                     $this->audioManager->saveTempFiles($postId);
                     

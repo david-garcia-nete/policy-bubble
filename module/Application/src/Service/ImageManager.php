@@ -84,25 +84,39 @@ class ImageManager
      * Returns the array of saved file names.
      * @return array List of uploaded file names.
      */
-    public function getSavedFiles($id) 
+    public function getSavedFiles($post) 
     {
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
         ]);
         
         $files = array();
-        foreach ($objects as $object){
-            $cmd = $this->s3client->getCommand('GetObject', [
-                'Bucket' => $this->s3bucket,
-                'Key'    => $object['Key']
-            ]);
+            
+        // If draft, get tokenized URLs. 
+        if($post->getStatus() == 1){
 
-            $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+            foreach ($objects as $object){
 
-            // Get the actual presigned-url
-            $files[] = (string) $request->getUri();
-        }
+                $cmd = $this->s3client->getCommand('GetObject', [
+                    'Bucket' => $this->s3bucket,
+                    'Key'    => $object['Key']
+                ]);
+
+                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+
+                // Get the actual presigned-url
+                $files[] = (string) $request->getUri();
+
+            }
+
+        } else {
+            
+            foreach ($objects as $object){
+                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+            }
+            
+        }    
                
         // Return the list of uploaded files.
         return $files;
@@ -112,30 +126,47 @@ class ImageManager
      * Returns the array of saved file names.
      * @return array List of uploaded file names.
      */
-    public function getFirstSavedFiles($id, $count = 2) 
+    public function getFirstSavedFiles($post, $count = 2) 
     {
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
         ]);
         
         $files = array();
-        $i=0;
-        foreach ($objects as $object){
-            $cmd = $this->s3client->getCommand('GetObject', [
-                'Bucket' => $this->s3bucket,
-                'Key'    => $object['Key']
-            ]);
+        
+        // If draft, get tokenized URLs. 
+        if($post->getStatus() == 1){
+        
+            $i=0;
+            foreach ($objects as $object){
+                $cmd = $this->s3client->getCommand('GetObject', [
+                    'Bucket' => $this->s3bucket,
+                    'Key'    => $object['Key']
+                ]);
 
-            $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
-            // Get the actual presigned-url
-            $files[] = (string) $request->getUri();
-            $i++;
-            if ($i>=$count){
-                return $files;
+                // Get the actual presigned-url
+                $files[] = (string) $request->getUri();
+                $i++;
+                if ($i>=$count){
+                    return $files;
+                }
             }
-        }
+            
+        } else {
+            
+            $i=0;
+            foreach ($objects as $object){
+                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                $i++;
+                if ($i>=$count){
+                    return $files;
+                }
+            }
+            
+        }    
                
         // Return the list of uploaded files.
         return $files;
@@ -213,12 +244,12 @@ class ImageManager
     /**
      * Saves the temp file to the permanent folder
      */
-    public function saveTempFiles($id) 
+    public function saveTempFiles($post) 
     {
         // Delete all files
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $id . '/perm/'
+            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
         ]);
         
         foreach ($objects as $object){
@@ -226,7 +257,7 @@ class ImageManager
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/temp/';
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
@@ -234,9 +265,9 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
+                        'Key' => 'data/upload/post/' . $post->getId() . '/perm/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => 'private'
+                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
@@ -294,13 +325,13 @@ class ImageManager
     /**
      * Saves the temp file to the permanent folder
      */
-    public function saveAddTempFiles($postId, $userId) 
+    public function saveAddTempFiles($post, $userId) 
     {
         
         // Delete all files
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $postId . '/perm/'
+            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
         ]);
         
         foreach ($objects as $object){
@@ -316,9 +347,9 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => 'data/upload/post/' . $postId . '/perm/' . $file,
+                        'Key' => 'data/upload/post/' . $post->getId() . '/perm/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => 'public-read'
+                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
