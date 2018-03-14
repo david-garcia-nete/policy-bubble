@@ -93,7 +93,7 @@ class ImageManager
         
         $files = array();
         foreach ($objects as $object){
-            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key'], '+1 minute');
         }
                
         // Return the list of uploaded files.
@@ -114,7 +114,7 @@ class ImageManager
         $files = array();
         $i=0;
         foreach ($objects as $object){
-            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key'], '+1 minute');
             $i++;
             if ($i>=$count){
                 return $files;
@@ -220,7 +220,7 @@ class ImageManager
                         'Bucket' => $this->s3bucket,
                         'Key' => 'data/upload/post/' . $id . '/perm/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => 'public-read'
+                        'ACL' => 'private'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
