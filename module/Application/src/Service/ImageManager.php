@@ -265,7 +265,7 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => $post->getId() . $file,
+                        'Key' => $post->getId() . '/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
                         'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
                     ]);                    
