@@ -17,7 +17,7 @@ class ImageManager
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = './data/upload/';
+    private $saveToDir = './data/image/';
     
     /**
      * The AWS S3 client
@@ -54,14 +54,14 @@ class ImageManager
      * @param string $fileName Image file name (without path part).
      * @return string Path to image file.
      */
-    public function getImagePathByName($fileName, $id, $loc)
+    public function getImagePathByName($fileName, $id)
     {
         // Take some precautions to make file name secure
         $fileName = str_replace("/", "", $fileName);  // Remove slashes
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
                 
         // Return concatenated directory name and file name.
-        return $this->saveToDir . 'post/' . $id . "/$loc/" . $fileName;                
+        return $this->saveToDir . 'post/' . $id . "/" . $fileName;                
     }
     
     /**
@@ -183,18 +183,9 @@ class ImageManager
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' .  $id . '/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
             }
         }
@@ -257,7 +248,7 @@ class ImageManager
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
@@ -405,7 +396,7 @@ class ImageManager
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        $tempDir = $this->saveToDir . 'post/' . $postId . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $postId . '/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
@@ -428,7 +419,7 @@ class ImageManager
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
         //
         // The directory where we plan to save uploaded files.
-        $temp = $this->saveToDir . 'post/' . $postId . '/temp/' . $fileName;
+        $temp = $this->saveToDir . 'post/' . $postId . '/' . $fileName;
 
         unlink($temp); // delete file
     }

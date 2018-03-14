@@ -3,6 +3,9 @@
  * A service model class encapsulating the functionality for image management.
  */
 namespace Application\Service;
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
+use Zend\Config\Config;
 
 /**
  * The image manager service. Responsible for getting the list of uploaded
@@ -14,7 +17,27 @@ class VideoManager
      * The directory where we save image files.
      * @var string
      */
-    private $saveToDir = './public/video/';
+    private $saveToDir = './video/';
+    
+    /**
+     * The AWS S3 client
+     */
+    private $s3client = null;
+    
+    /**
+     * The AWS S3 bucket
+     */
+    private $s3bucket = null;
+    
+    /**
+     * Constructor.
+     */
+    public function __construct()
+    {
+        $config = new Config(include './config/autoload/local.php');
+        $this->s3client = S3Client::factory($config->s3->s3client->toArray());
+        $this->s3bucket = $config->s3->s3videoBucket;
+    }
         
     /**
      * Returns path to the directory where we save the image files.
@@ -30,14 +53,14 @@ class VideoManager
      * @param string $fileName Image file name (without path part).
      * @return string Path to image file.
      */
-    public function getVideoPathByName($fileName, $id, $loc)
+    public function getVideoPathByName($fileName, $id)
     {
         // Take some precautions to make file name secure
         $fileName = str_replace("/", "", $fileName);  // Remove slashes
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
                 
         // Return concatenated directory name and file name.
-        return $this->saveToDir . 'post/' . $id . "/$loc/" . $fileName;                
+        return $this->saveToDir . 'post/' . $id . "/" . $fileName;                
     }
     
     /**
@@ -60,66 +83,94 @@ class VideoManager
      * Returns the array of saved file names.
      * @return array List of uploaded file names.
      */
-    public function getSavedFiles($id) 
+    public function getSavedFiles($post) 
     {
-        // The directory where we plan to save uploaded files.
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  $post->getId()
+        ]);
         
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
+        $files = array();
+            
+        // If draft, get tokenized URLs. 
+        if($post->getStatus() == 1){
 
-        // Scan the directory and create the list of uploaded files.
-        $files = array();        
-        $handle  = opendir($permDir);
-        while (false !== ($entry = readdir($handle))) {
+            foreach ($objects as $object){
+
+                $cmd = $this->s3client->getCommand('GetObject', [
+                    'Bucket' => $this->s3bucket,
+                    'Key'    => $object['Key']
+                ]);
+
+                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+
+                // Get the actual presigned-url
+                $files[] = (string) $request->getUri();
+
+            }
+
+        } else {
             
-            if($entry=='.' || $entry=='..')
-                continue; // Skip current dir and parent dir.
+            foreach ($objects as $object){
+                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+            }
             
-            $files[] = $entry;
-        }
-        
+        }    
+               
         // Return the list of uploaded files.
         return $files;
+        
     }
     
     /**
      * Returns the array of saved file names.
      * @return array List of uploaded file names.
      */
-    public function getFirstSavedFiles($id, $count = 2) 
+    public function getFirstSavedFiles($post, $count = 2) 
     {
-        // The directory where we plan to save uploaded files.
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  $post->getId()
+        ]);
         
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
+        $files = array();
+        
+        // If draft, get tokenized URLs. 
+        if($post->getStatus() == 1){
+        
+            $i=0;
+            foreach ($objects as $object){
+                $cmd = $this->s3client->getCommand('GetObject', [
+                    'Bucket' => $this->s3bucket,
+                    'Key'    => $object['Key']
+                ]);
 
-        // Scan the directory and create the list of uploaded files.
-        $files = array();        
-        $handle  = opendir($permDir);
-        $i=0;
-        while ((false !== ($entry = readdir($handle))) && $i<$count) {
+                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+
+                // Get the actual presigned-url
+                $files[] = (string) $request->getUri();
+                $i++;
+                if ($i>=$count){
+                    return $files;
+                }
+            }
             
-            if($entry=='.' || $entry=='..')
-                continue; // Skip current dir and parent dir.
+        } else {
             
-            $files[] = $entry;
-            $i++;
-        }
-        
+            $i=0;
+            foreach ($objects as $object){
+                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                $i++;
+                if ($i>=$count){
+                    return $files;
+                }
+            }
+            
+        }    
+               
         // Return the list of uploaded files.
         return $files;
+        
     }
     
     /**
@@ -132,18 +183,9 @@ class VideoManager
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $id . '/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
             }
         }
@@ -157,14 +199,20 @@ class VideoManager
             }    
         
             // Copy all files
-            $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-            $dir = opendir($permDir);  
-            while(false !== ( $file = readdir($dir)) ) { 
-                if (( $file != '.' ) && ( $file != '..' )) {      
-                    copy($permDir . $file, $tempDir . $file); 
-                } 
-            } 
-            closedir($dir);
+            $objects = $this->s3client->getIterator('ListObjects', [
+                'Bucket' =>  $this->s3bucket,
+                'Prefix' =>  $id
+            ]);
+
+            foreach ($objects as $object){
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                $this->s3client->getObject([
+                    'Bucket' => $this->s3bucket,
+                    'Key' => $object['Key'],
+                    'SaveAs' => $tempDir . $parts[$count-1]
+                ]);
+            }
          }
         
         // Scan the directory and create the list of uploaded files.
@@ -185,38 +233,41 @@ class VideoManager
     /**
      * Saves the temp file to the permanent folder
      */
-    public function saveTempFiles($id) 
+    public function saveTempFiles($post) 
     {
-        // The directory where we plan to save uploaded files.
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $id . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
         // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  $post->getId()
+        ]);
+        
+        foreach ($objects as $object){
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
-                copy($tempDir . $file, $permDir . $file); 
+                //copy($tempDir . $file, $permDir . $file);
+                try{
+                    $this->s3client->putObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => $post->getId() . '/' . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
+                    ]);                    
+                } catch(S3Exception $e){
+                    die ("There was an error uploading that file.");
+                }
             } 
         }  
         closedir($dir);
 
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
     }
     
     /**
@@ -265,22 +316,14 @@ class VideoManager
      */
     public function saveAddTempFiles($postId, $userId) 
     {
-        // The directory where we plan to save uploaded files.
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
         // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  $post->getId()
+        ]);
+        
+        foreach ($objects as $object){
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
         // Copy all files
@@ -288,13 +331,24 @@ class VideoManager
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
-                copy($tempDir . $file, $permDir . $file); 
+                //copy($tempDir . $file, $permDir . $file);
+                try{
+                    $this->s3client->putObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => $post->getId() . '/' . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
+                    ]);                    
+                } catch(S3Exception $e){
+                    die ("There was an error uploading that file.");
+                }
             } 
         }  
         closedir($dir);
 
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
     }
     
     /**
@@ -325,28 +379,19 @@ class VideoManager
      */
     public function removePost($postId) 
     {
-        // The directory where we plan to save uploaded files.
+        // Delete all perm files
+        $objects = $this->s3client->getIterator('ListObjects', [
+            'Bucket' =>  $this->s3bucket,
+            'Prefix' =>  $postId
+        ]);
+        
+        foreach ($objects as $object){
+            $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
+        }
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        $permDir = $this->saveToDir . 'post/' . $postId . '/perm/';
-        if(!is_dir($permDir)) {
-            if(!mkdir($permDir, 0755, true)) {
-                throw new \Exception('Could not create directory for uploads: '. error_get_last());
-            }
-        }
-        
-        // Delete all files
-        $paths = glob($permDir . '*'); // get all file names
-        foreach($paths as $file){ // iterate files
-            if(is_file($file))
-            unlink($file); // delete file
-        }
-        rmdir($permDir);
-        
-        // Check whether the directory already exists, and if not,
-        // create the directory.
-        $tempDir = $this->saveToDir . 'post/' . $postId . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $postId . '/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
@@ -356,9 +401,6 @@ class VideoManager
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
-        
-        $postDir = $this->saveToDir . 'post/' . $postId . '/';
-        rmdir($postDir);
     }
     
     /**
@@ -371,7 +413,7 @@ class VideoManager
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
         //
         // The directory where we plan to save uploaded files.
-        $temp = $this->saveToDir . 'post/' . $postId . '/temp/' . $fileName;
+        $temp = $this->saveToDir . $postId . '/' . $fileName;
 
         unlink($temp); // delete file
     }

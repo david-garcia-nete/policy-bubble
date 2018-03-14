@@ -145,8 +145,8 @@ class PostController extends AbstractActionController
                     $post = $posts[0];   
                     $postId = $post->getId();
                     $this->imageManager->saveAddTempFiles($post, $user->getId());
-                    $this->videoManager->saveAddTempFiles($postId, $user->getId());
-                    $this->audioManager->saveAddTempFiles($postId, $user->getId());
+                    $this->videoManager->saveAddTempFiles($post, $user->getId());
+                    $this->audioManager->saveAddTempFiles($post, $user->getId());
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -242,8 +242,8 @@ class PostController extends AbstractActionController
         // Get the list of already saved files.
         $files = $this->imageManager->getSavedFiles($post);
         // Get the list of already saved files.
-        $videos = $this->videoManager->getSavedFiles($postId);
-        $audioFiles = $this->audioManager->getSavedFiles($postId);
+        $videos = $this->videoManager->getSavedFiles($post);
+        $audioFiles = $this->audioManager->getSavedFiles($post);
         
         // Render the view template.
         return new ViewModel([
@@ -338,8 +338,8 @@ class PostController extends AbstractActionController
                     $this->postManager->updatePost($post, 
                             $this->sessionContainer->userChoices['step1']);
                     $this->imageManager->saveTempFiles($post);
-                    $this->videoManager->saveTempFiles($postId);
-                    $this->audioManager->saveTempFiles($postId);
+                    $this->videoManager->saveTempFiles($post);
+                    $this->audioManager->saveTempFiles($post);
                     
                     // Redirect the user to "admin" page.
                     return $this->redirect()->toRoute('posts', ['action'=>'admin']);
@@ -428,9 +428,9 @@ class PostController extends AbstractActionController
         }
         
         $this->postManager->removePost($post);
-        $this->imageManager->removePost($postId);
-        $this->videoManager->removePost($postId);
-        $this->audioManager->removePost($postId);
+        $this->imageManager->removePost($post);
+        $this->videoManager->removePost($post);
+        $this->audioManager->removePost($post);
         
         // Redirect the user to "admin" page.
         return $this->redirect()->toRoute('posts', ['action'=>'admin']);        

@@ -98,7 +98,7 @@ $form->prepare();
 
             <img src="<?= $this->url('images', ['action'=>'file'], 
 
-                    ['query'=>['name'=>$file, 'id'=>$post->getId(), 'loc'=>'temp',  
+                    ['query'=>['name'=>$file, 'id'=>$post->getId(),  
                         'thumbnail'=>true]]); ?>">
 
             
@@ -123,7 +123,7 @@ $form->prepare();
                     <a target="_blank" href="<?= $this->url('images',  
 
                             ['action'=>'file'], ['query'=>['name'=>$file, 
-                                'id'=>$post->getId(), 'loc'=>'temp']]); ?>" 
+                                'id'=>$post->getId()]]); ?>" 
 
                             class="btn btn-default" role="button">View</a>
 

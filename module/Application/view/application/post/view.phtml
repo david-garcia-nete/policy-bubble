@@ -88,7 +88,7 @@ if(count($parentPosts)<1)
         <div class="img-thumbnail">
                         
             <video width="320" height="240" controls>
-                <source src="/video/post/<?= $post->getId()?>/perm/<?= $video ?>" >
+                <source src="<?= $video ?>" >
             Your browser does not support the video tag.
             </video>             
 
@@ -116,7 +116,7 @@ if(count($parentPosts)<1)
         <div class="img-thumbnail">
                         
             <audio controls>
-                <source src="/audio/post/<?= $post->getId()?>/perm/<?= $audio ?>" >
+                <source src="<?= $audio ?>" >
             Your browser does not support the audio tag.
             </audio>             
 
@@ -175,7 +175,7 @@ if(count($parentPosts)<1)
     </p>
     
     <?php 
-    $childFiles = $imageManager->getFirstSavedFiles($childPost->getId());
+    $childFiles = $imageManager->getFirstSavedFiles($childPost);
     ?>
     
     <hr/>
@@ -192,15 +192,9 @@ if(count($parentPosts)<1)
       <div class="col-sm-6 col-md-12">
 
         <?php foreach($childFiles as $childFile): ?>  
-            <a target="_blank" href="<?= $this->url('images', ['action' => 'file'], 
-            ['query' => ['name' => $childFile, 'id' => $childPost->getId(), 
-            'loc' => 'perm']]); ?>" class="btn btn-default" role="button"> 
-
-                <img src="<?= $this->url('images', ['action' => 'file'], ['query' => 
-                ['name' => $childFile, 'id' => $childPost->getId(), 'loc' => 'perm', 
-                'thumbnail' => true]]); ?>">
-
-            </a>
+            <a target="_blank" href="<?= $childFile ?>" class="btn btn-default" role="button">             
+            <img width="240" src="<?= $childFile ?>">    
+        </a>
         <?php endforeach; ?>
       </div>
     </div>

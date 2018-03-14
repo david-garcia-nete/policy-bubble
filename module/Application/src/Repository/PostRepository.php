@@ -159,8 +159,10 @@ class PostRepository extends EntityRepository
         $queryBuilder->select('p')
             ->from(Post::class, 'p')
             ->where('?1 MEMBER OF p.parentPosts')
+            ->andWhere('p.status = ?2')
             ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', $parentPost);
+            ->setParameter('1', $parentPost)
+            ->setParameter('2', Post::STATUS_PUBLISHED);
         
         if($query){
             return $queryBuilder->getQuery();

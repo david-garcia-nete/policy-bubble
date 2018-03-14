@@ -34,9 +34,7 @@ class AudioController extends AbstractActionController
         $fileName = $this->params()->fromQuery('name', '');
         
         $postId = $this->params()->fromQuery('id', '');
-        
-        $loc = $this->params()->fromQuery('loc', '');
-                
+             
         // Check whether the user needs a thumbnail or a full-size image
         $isThumbnail = (bool)$this->params()->fromQuery('thumbnail', false);
         
@@ -46,7 +44,7 @@ class AudioController extends AbstractActionController
         }
         
         // Get path to image file
-        $fileName = $this->audioManager->getAudioPathByName($fileName, $postId, $loc);
+        $fileName = $this->audioManager->getAudioPathByName($fileName, $postId);
                 
         if($isThumbnail) {        
             // Resize the image

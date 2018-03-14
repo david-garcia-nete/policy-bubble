@@ -37,6 +37,8 @@ return [
                 'version' => '<version>'
         ],
         's3imageBucket' => '<s3imageBucket>',
+        's3videoBucket' => '<s3videoBucket>',
+        's3audioBucket' => '<s3audioBucket>',
     ],
     'payPal' => [
         'clientId' => '<clientId>',

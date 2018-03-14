@@ -34,9 +34,7 @@ class VideoController extends AbstractActionController
         $fileName = $this->params()->fromQuery('name', '');
         
         $postId = $this->params()->fromQuery('id', '');
-        
-        $loc = $this->params()->fromQuery('loc', '');
-                
+              
         // Check whether the user needs a thumbnail or a full-size image
         $isThumbnail = (bool)$this->params()->fromQuery('thumbnail', false);
         
@@ -46,7 +44,7 @@ class VideoController extends AbstractActionController
         }
         
         // Get path to image file
-        $fileName = $this->videoManager->getVideoPathByName($fileName, $postId, $loc);
+        $fileName = $this->videoManager->getVideoPathByName($fileName, $postId);
                 
         if($isThumbnail) {        
             // Resize the image
