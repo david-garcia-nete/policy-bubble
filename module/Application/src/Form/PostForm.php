@@ -307,7 +307,7 @@ class PostForm extends Form
                         [
                             'name' => 'FileRenameUpload',
                             'options' => [  
-                                'target'=>'./public/video/post/' . $id . '/temp',
+                                'target'=>'./public/video/post/' . $id . '/',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,
@@ -353,7 +353,7 @@ class PostForm extends Form
                         [
                             'name' => 'FileRenameUpload',
                             'options' => [  
-                                'target'=>'./public/audio/post/' . $id . '/temp',
+                                'target'=>'./public/audio/post/' . $id . '/',
                                 'useUploadName'=>true,
                                 'useUploadExtension'=>true,
                                 'overwrite'=>true,

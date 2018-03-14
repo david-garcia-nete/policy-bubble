@@ -413,7 +413,7 @@ class VideoManager
         $fileName = str_replace("\\", "", $fileName); // Remove back-slashes
         //
         // The directory where we plan to save uploaded files.
-        $temp = $this->saveToDir . $postId . '/' . $fileName;
+        $temp = $this->saveToDir . 'post/' . $postId . '/' . $fileName;
 
         unlink($temp); // delete file
     }

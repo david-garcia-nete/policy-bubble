@@ -236,7 +236,7 @@ class MaxAudioValidator extends AbstractValidator
         
         // First check phone number length
         $isValid = false;
-        $tempDir = $this->saveToDir . 'post/' . $id . '/temp/';
+        $tempDir = $this->saveToDir . 'post/' . $id . '/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
