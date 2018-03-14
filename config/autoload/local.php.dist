@@ -36,7 +36,7 @@ return [
                 'region' => '<region>',
                 'version' => '<version>'
         ],
-        's3bucket' => '<s3bucket>',
+        's3imageBucket' => '<s3imageBucket>',
     ],
     'payPal' => [
         'clientId' => '<clientId>',

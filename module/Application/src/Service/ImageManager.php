@@ -36,7 +36,7 @@ class ImageManager
     {
         $config = new Config(include './config/autoload/local.php');
         $this->s3client = S3Client::factory($config->s3->s3client->toArray());
-        $this->s3bucket = $config->s3->s3bucket;
+        $this->s3bucket = $config->s3->s3imageBucket;
     }
     
         
@@ -88,7 +88,7 @@ class ImageManager
     {
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
+            'Prefix' =>  $post->getId()
         ]);
         
         $files = array();
@@ -130,7 +130,7 @@ class ImageManager
     {
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
+            'Prefix' =>  $post->getId()
         ]);
         
         $files = array();
@@ -211,7 +211,7 @@ class ImageManager
             // Copy all files
             $objects = $this->s3client->getIterator('ListObjects', [
                 'Bucket' =>  $this->s3bucket,
-                'Prefix' =>  'data/upload/post/' . $id . '/perm/',
+                'Prefix' =>  $id
             ]);
 
             foreach ($objects as $object){
@@ -249,7 +249,7 @@ class ImageManager
         // Delete all files
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
+            'Prefix' =>  $post->getId()
         ]);
         
         foreach ($objects as $object){
@@ -265,7 +265,7 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => 'data/upload/post/' . $post->getId() . '/perm/' . $file,
+                        'Key' => $post->getId() . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
                         'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
                     ]);                    
@@ -331,7 +331,7 @@ class ImageManager
         // Delete all files
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $post->getId() . '/perm/'
+            'Prefix' =>  $post->getId()
         ]);
         
         foreach ($objects as $object){
@@ -347,7 +347,7 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => 'data/upload/post/' . $post->getId() . '/perm/' . $file,
+                        'Key' => $post->getId() . '/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
                         'ACL' => $post->getStatus() == 1 ? 'private' : 'public-read'
                     ]);                    
@@ -396,7 +396,7 @@ class ImageManager
         // Delete all perm files
         $objects = $this->s3client->getIterator('ListObjects', [
             'Bucket' =>  $this->s3bucket,
-            'Prefix' =>  'data/upload/post/' . $postId . '/perm/'
+            'Prefix' =>  $postId
         ]);
         
         foreach ($objects as $object){
