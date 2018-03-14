@@ -93,7 +93,15 @@ class ImageManager
         
         $files = array();
         foreach ($objects as $object){
-            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key'], '+1 minute');
+            $cmd = $this->s3client->getCommand('GetObject', [
+                'Bucket' => $this->s3bucket,
+                'Key'    => $object['Key']
+            ]);
+
+            $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+
+            // Get the actual presigned-url
+            $files[] = (string) $request->getUri();
         }
                
         // Return the list of uploaded files.
@@ -114,7 +122,15 @@ class ImageManager
         $files = array();
         $i=0;
         foreach ($objects as $object){
-            $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key'], '+1 minute');
+            $cmd = $this->s3client->getCommand('GetObject', [
+                'Bucket' => $this->s3bucket,
+                'Key'    => $object['Key']
+            ]);
+
+            $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+
+            // Get the actual presigned-url
+            $files[] = (string) $request->getUri();
             $i++;
             if ($i>=$count){
                 return $files;
