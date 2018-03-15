@@ -10,7 +10,7 @@ $form = $this->form;
 $form->setAttribute('action', $this->url('blog'));
 $form->get('search')->setAttributes(array(
     'class'=>'form-control', 
-    'placeholder'=>'Search Tags'
+    'placeholder'=>'comma, separated, list, of, tags'
     ));
 $form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
 $form->prepare();

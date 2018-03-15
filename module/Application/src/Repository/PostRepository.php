@@ -97,23 +97,32 @@ class PostRepository extends EntityRepository
     
     /**
      * Finds all published posts having the given tag.
-     * @param string $tagName Name of the tag.
+     * @param string $search Names of the tags.
      * @return Query
      */
-    public function findPostsByTagSearch($tagName)
+    public function findPostsByTagSearch($search)
     {
         $entityManager = $this->getEntityManager();
         
         $queryBuilder = $entityManager->createQueryBuilder();
         
-        $queryBuilder->select('p')
+        $queryBuilder->select('p')->distinct()
             ->from(Post::class, 'p')
             ->join('p.tags', 't')
             ->where('p.status = ?1')
-            ->andWhere('t.name = ?2')
+            ->andWhere('t.name in (?2)')
             ->orderBy('p.dateCreated', 'DESC')
             ->setParameter('1', Post::STATUS_PUBLISHED)
-            ->setParameter('2', $tagName);
+            ->setParameter('2', $search);
+        
+//        $queryBuilder->select('p')->distinct()
+//            ->from(Tag::class, 't')
+//            ->join('t.posts', 'p')
+//            ->where('p.status = ?1')
+//            ->andWhere('t.name in (?2)')
+//            ->orderBy('p.dateCreated', 'DESC')
+//            ->setParameter('1', Post::STATUS_PUBLISHED)
+//            ->setParameter('2', $search);
         
         return $queryBuilder->getQuery();
     }   
