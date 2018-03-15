@@ -150,9 +150,9 @@ class PostManager
      */
     public function getResponseCountStr($post)
     {
-        $parents = $post->getParentPosts();
-        $parent = $parents[0];
-        $responseCount = count($post->findChildPosts($parent));
+        $responsePosts = $this->entityManager->getRepository(Post::class)
+                            ->findChildPosts($post);
+        $responseCount = count($responsePosts);
         if ($responseCount == 0)
             return 'No responses';
         else if ($responseCount == 1) 
