@@ -7,6 +7,7 @@ use DoctrineORMModule\Paginator\Adapter\DoctrinePaginator as DoctrineAdapter;
 use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
 use Application\Entity\Post;
+use Application\Form\SearchForm;
 
 /**
  * This is the main controller class of the Blog application. The 
@@ -53,17 +54,42 @@ class BlogController extends AbstractActionController
         $page = $this->params()->fromQuery('page', 1);
         $tagFilter = $this->params()->fromQuery('tag', null);
         
-        if ($tagFilter) {
-         
-            // Filter posts by tag
-            $query = $this->entityManager->getRepository(Post::class)
-                    ->findPostsByTag($tagFilter);
+        // Create the form.
+        $form = new SearchForm();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
             
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                
+                // Filter posts by tag search
+                $query = $this->entityManager->getRepository(Post::class)
+                        ->findPostsByTagSearch($data['search']);
+                
+            }               
         } else {
-            // Get recent posts
-            $query = $this->entityManager->getRepository(Post::class)
-                    ->findPublishedPosts();
-        }
+        
+            if ($tagFilter) {
+
+                // Filter posts by tag
+                $query = $this->entityManager->getRepository(Post::class)
+                        ->findPostsByTag($tagFilter);
+
+            } else {
+                // Get recent posts
+                $query = $this->entityManager->getRepository(Post::class)
+                        ->findPublishedPosts();
+            }
+        }    
         
         $adapter = new DoctrineAdapter(new ORMPaginator($query, false));
         $paginator = new Paginator($adapter);
@@ -82,6 +108,7 @@ class BlogController extends AbstractActionController
         
         // Render the view template.
         return new ViewModel([
+            'form' => $form,
             'posts' => $paginator,
             'postManager' => $this->postManager,
             'tagCloud' => $tagCloud,
