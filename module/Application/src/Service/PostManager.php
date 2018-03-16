@@ -335,6 +335,11 @@ class PostManager
      */
     public function findPostsByTagSearch($search) 
     {
+        if($search == ''){
+            $query = $this->entityManager->getRepository(Post::class)
+                       ->findPublishedPosts();
+            return $query;
+        }
         $tags = explode(',', $search);
         $results = array();
         foreach ($tags as $tag) {

@@ -77,7 +77,7 @@ class SearchForm extends Form
         
         $inputFilter->add([
                 'name'     => 'search',
-                'required' => true,
+                'required' => false,
                 'filters'  => [
                     ['name' => 'StringTrim'],
                     ['name' => 'StripTags'],
