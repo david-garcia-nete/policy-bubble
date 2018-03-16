@@ -50,6 +50,12 @@ class NavManager
         ];
         
         $items[] = [
+            'id' => 'about',
+            'label' => 'About',
+            'link'  => $url('about')
+            ];
+        
+        $items[] = [
             'id' => 'blog',
             'label' => 'Blog',
             'link'  => $url('blog')
@@ -59,6 +65,12 @@ class NavManager
             'id' => 'posts',
             'label' => 'Posts',
             'link' => $url('posts')
+            ];
+        
+        $items[] = [
+            'id' => 'analysis',
+            'label' => 'Analysis',
+            'link' => $url('analysis')
             ];
                 
         // Display "Login" menu item for not authorized user only. On the other hand,

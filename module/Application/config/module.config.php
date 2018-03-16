@@ -122,6 +122,26 @@ return [
                         'action'        => 'membership',
                     ],
                 ],
+            ],
+            'about' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/about',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'about',
+                    ],
+                ],
+            ], 
+            'analysis' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/analysis',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'analysis',
+                    ],
+                ],
             ],    
         ],
     ],
@@ -152,7 +172,7 @@ return [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
                 ['actions' => ['index', 'contactUs', 'thankYou', 
-                    'sendError', 'membership'], 'allow' => '*'],
+                    'sendError', 'membership', 'about', 'analysis'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
             ],

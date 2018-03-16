@@ -77,6 +77,18 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
     
+    public function aboutAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function analysisAction()
+    {
+       return new ViewModel([
+            'entityManager' => $this->entityManager
+        ]);
+    }
+    
      /**
      * The "settings" action displays the info about currently logged in user.
      */

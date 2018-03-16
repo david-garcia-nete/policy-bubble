@@ -1,0 +1,43 @@
+<?php
+use User\Entity\User;
+use Application\Entity\Post;
+use Application\Entity\Tag;
+
+$this->headTitle('Analysis');
+
+$this->mainMenu()->setActiveItemId('analysis');
+
+$this->pageBreadcrumbs()->setItems(array(
+            'Home'=>$this->url('home'),
+            'Analysis'=>$this->url('analysis')
+            ));
+?>
+
+<h1>Analysis</h1>
+
+<h3>Number of Users</h3>
+
+<h4>
+<?php
+   echo count( $this->entityManager->getRepository(User::class)
+                    ->findAll());
+?>    
+</h4>
+
+<h3>Number of Posts</h3>
+
+<h4>
+<?php
+    echo count( $this->entityManager->getRepository(Post::class)
+                    ->findAll());
+?> 
+</h4>
+
+<h3>Number of Tags</h3>
+
+<h4>
+<?php
+    echo count( $this->entityManager->getRepository(Tag::class)
+                    ->findAll());
+?> 
+</h4>
