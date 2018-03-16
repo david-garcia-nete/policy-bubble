@@ -16,7 +16,7 @@ $form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
 $form->prepare();
 ?>
 
-<h1>All Posts</h1>
+
 
 <div class="row">
     <div class="col-md-6">
@@ -34,7 +34,13 @@ $form->prepare();
         
         <?php echo $this->form()->closeTag(); ?>
     </div>    
-</div>    
+</div> 
+
+<?php if($form->get('search')->getValue() == ''): ?>
+
+<h1>All Posts</h1>
+    
+<?php endif; ?>
 
 <div class="row">
     
