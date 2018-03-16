@@ -54,6 +54,12 @@ class NavManager
             'label' => 'Blog',
             'link'  => $url('blog')
             ];
+        
+        $items[] = [
+            'id' => 'posts',
+            'label' => 'Posts',
+            'link' => $url('posts')
+            ];
                 
         // Display "Login" menu item for not authorized user only. On the other hand,
         // display "Admin" and "Logout" menu items only for authorized users.
@@ -71,12 +77,6 @@ class NavManager
                 'float' => 'right'
             ];
         } else {
-
-            $items[] = [
-            'id' => 'posts',
-            'label' => 'Posts',
-            'link' => $url('posts')
-            ];
             
             // Determine which items must be displayed in Admin dropdown.
             $adminDropdownItems = [];
