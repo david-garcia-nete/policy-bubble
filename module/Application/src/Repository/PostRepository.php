@@ -97,38 +97,6 @@ class PostRepository extends EntityRepository
     
     /**
      * Finds all published posts having the given tag.
-     * @param string $search Names of the tags.
-     * @return Query
-     */
-    public function findPostsByTagSearch($search)
-    {
-        $entityManager = $this->getEntityManager();
-        
-        $queryBuilder = $entityManager->createQueryBuilder();
-        
-        $queryBuilder->select('p')->distinct()
-            ->from(Post::class, 'p')
-            ->join('p.tags', 't')
-            ->where('p.status = ?1')
-            ->andWhere('t.name in (?2)')
-            ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', Post::STATUS_PUBLISHED)
-            ->setParameter('2', $search);
-        
-//        $queryBuilder->select('p')->distinct()
-//            ->from(Tag::class, 't')
-//            ->join('t.posts', 'p')
-//            ->where('p.status = ?1')
-//            ->andWhere('t.name in (?2)')
-//            ->orderBy('p.dateCreated', 'DESC')
-//            ->setParameter('1', Post::STATUS_PUBLISHED)
-//            ->setParameter('2', $search);
-        
-        return $queryBuilder->getQuery();
-    }   
-    
-    /**
-     * Finds all published posts having the given tag.
      * @param string $tagName Name of the tag.
      * @return Query
      */
@@ -226,6 +194,32 @@ class PostRepository extends EntityRepository
         $count = $queryBuilder->getQuery()->getResult();
         
         return $count[0][1];
+    } 
+    
+     /**
+     * Finds all published posts having the given user.
+     * @param \Application\Entity\User $user
+     * @return array
+     */
+    public function findPostsByIdArray($array)
+    {
+        $postIds = implode(',', $array);
+        
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')->distinct()
+            ->from(Post::class, 'p')
+            ->where('p.status = ?1')
+            ->andWhere('p.id in (?2)')
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', Post::STATUS_PUBLISHED)
+            ->setParameter('2', $postIds);
+     
+        $query = $queryBuilder->getQuery();
+        
+        return $query;
     } 
     
 }

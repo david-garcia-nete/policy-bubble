@@ -69,11 +69,8 @@ class BlogController extends AbstractActionController
             if($form->isValid()) {
                 
                 // Get filtered and validated data
-                $data = $form->getData();
-                
-                // Filter posts by tag search
-                $query = $this->entityManager->getRepository(Post::class)
-                        ->findPostsByTagSearch($data['search']);
+                $data = $form->getData();       
+                $query = $this->postManager->findPostsByTagSearch($data['search']);
                 
             }               
         } else {
