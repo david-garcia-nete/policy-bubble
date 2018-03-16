@@ -151,9 +151,10 @@ return [
         'controllers' => [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
-                ['actions' => ['index', 'contactUs', 'thankYou', 'sendError'], 'allow' => '*'],
+                ['actions' => ['index', 'contactUs', 'thankYou', 
+                    'sendError', 'membership'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
-                ['actions' => ['settings', 'membership'], 'allow' => '@']
+                ['actions' => ['settings'], 'allow' => '@']
             ],
             Controller\BlogController::class => [
                 // Allow anyone to visit "index" action

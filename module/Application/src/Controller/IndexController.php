@@ -211,6 +211,10 @@ class IndexController extends AbstractActionController
         
         if($this->getRequest()->isPost()) {
             
+            if ($this->identity()== null) {
+                return $this->redirect()->toRoute('login');
+            }
+            
             $apiContext = new ApiContext(
                 new OAuthTokenCredential(
                     $this->localConfig->payPal->clientId,     
