@@ -18,7 +18,7 @@ $this->pageBreadcrumbs()->setItems([
 </h1>
 
 <p class="responses-header">
-    <?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?> | 
+    <?= $this->escapeHtml($responseCountString); ?> | 
     <a href="<?= $this->url('posts', ['action'=>'add'], ['query' => 
                     ['id' => $post->getId()]]); ?>">
         Add new response
@@ -145,7 +145,7 @@ if(count($parentPosts)<1)
 </div> 
 
 
-<h3><?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?></h3>
+<h3><?= $this->escapeHtml($responseCountString); ?></h3>
 
 
 

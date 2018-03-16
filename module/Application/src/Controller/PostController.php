@@ -238,6 +238,8 @@ class PostController extends AbstractActionController
         $paginator = new Paginator($adapter);
         $paginator->setDefaultItemCountPerPage(10);        
         $paginator->setCurrentPageNumber($page);
+        
+        $responseCountString = $this->postManager->getResponseCountStr($post);
                         
         // Get the list of already saved files.
         $files = $this->imageManager->getSavedFiles($post);
@@ -247,6 +249,7 @@ class PostController extends AbstractActionController
         
         // Render the view template.
         return new ViewModel([
+            'responseCountString' => $responseCountString,
             'posts' => $paginator,
             'files'=>$files,
             'videos'=>$videos,
