@@ -341,6 +341,12 @@ class PostManager
             return $query;
         }
         $tags = explode(',', $search);
+        if(count($tags)==1){
+            $tag = trim($tags[0]);
+            $query = $this->entityManager->getRepository(Post::class)
+                       ->findPostsByTag($tag);
+            return $query;
+        }
         $results = array();
         foreach ($tags as $tag) {
             $tag = trim($tag);
@@ -355,7 +361,7 @@ class PostManager
         }
         $result = call_user_func_array('array_intersect', $results);
         $query = $this->entityManager->getRepository(Post::class)
-                       ->findPostsByTag($tag);
+                       ->findPostsByIdArray($result);
         
         return $query;
     }
