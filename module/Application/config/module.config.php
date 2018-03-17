@@ -134,9 +134,12 @@ return [
                 ],
             ], 
             'analysis' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/analysis',
+                    'route'    => '/analysis[/:action]',
+                    'constraints' => [
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                    ],
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'analysis',
@@ -172,7 +175,7 @@ return [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
                 ['actions' => ['index', 'contactUs', 'thankYou', 
-                    'sendError', 'membership', 'about', 'analysis'], 'allow' => '*'],
+                    'sendError', 'membership', 'about', 'analysis', 'popularTags'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
             ],

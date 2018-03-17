@@ -89,6 +89,11 @@ class IndexController extends AbstractActionController
         ]);
     }
     
+    public function popularTagsAction()
+    {
+       return new ViewModel();
+    }
+    
      /**
      * The "settings" action displays the info about currently logged in user.
      */

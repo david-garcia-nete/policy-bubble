@@ -1,0 +1,16 @@
+<?php
+
+$this->headTitle('Popular Tags');
+
+$this->mainMenu()->setActiveItemId('analysis');
+
+$this->pageBreadcrumbs()->setItems(array(
+            'Home'=>$this->url('home'),
+            'Analysis'=>$this->url('analysis'),
+            'Popular Tags'=>$this->url('application', ['action'=>'popularTags'])
+            ));
+?>
+
+<h1>Popular Tags</h1>
+
+
