@@ -42,19 +42,34 @@ class NavManager
         $url = $this->urlHelper;
         $items = [];
         
-        $items[] = [
-            'id' => 'home',
-            'label' => 'Home',
-            'link'  => $url('home')
-            
-        ];
+        $homeDropdownItems = [];
         
-        $items[] = [
+        $homeDropdownItems[] = [
             'id' => 'about',
             'label' => 'About',
             'link'  => $url('about')
-            ];
+        ];
         
+        $homeDropdownItems[] = [
+            'id' => 'membership',
+            'label' => 'Membership',
+            'link'  => $url('membership')
+        ];
+        
+        $homeDropdownItems[] = [
+            'id' => 'contactUs',
+            'label' => 'Feedback',
+            'link'  => $url('contactus')
+        ];
+        
+        $items[] = [
+            'id' => 'home',
+            'label' => 'Home',
+            'link'  => $url('home'),
+            'dropdown' => $homeDropdownItems
+            
+        ];
+                
         $items[] = [
             'id' => 'blog',
             'label' => 'Blog',
