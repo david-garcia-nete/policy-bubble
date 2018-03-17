@@ -1,7 +1,6 @@
 <?php
 use User\Entity\User;
 use Application\Entity\Post;
-use Application\Entity\Tag;
 
 $this->headTitle('Analysis');
 
@@ -20,7 +19,7 @@ $this->pageBreadcrumbs()->setItems(array(
 <h4>
 <?php
    echo count( $this->entityManager->getRepository(User::class)
-                    ->findAll());
+                    ->findBy(array('status' => User::STATUS_ACTIVE)));
 ?>    
 </h4>
 
@@ -29,7 +28,7 @@ $this->pageBreadcrumbs()->setItems(array(
 <h4>
 <?php
     echo count( $this->entityManager->getRepository(Post::class)
-                    ->findAll());
+                    ->findBy(array('status' => Post::STATUS_PUBLISHED)));
 ?> 
 </h4>
 
@@ -37,23 +36,25 @@ $this->pageBreadcrumbs()->setItems(array(
 
 <h4>
 <?php
-    echo count( $this->entityManager->getRepository(Tag::class)
-                    ->findAll());
+    echo count( $this->entityManager->getRepository(Post::class)
+                    ->findPublishedTags());
 ?> 
 </h4>
 
 
-<h3>
+<!--<h3>
  
 <a href="<?= $this->url('analysis', ['action'=>'popularTags']); ?>" target="_blank"> Popular Tags</a>
 
 </h3>
 
+-->
+
 <br>
 
 <h4>
  
-<a href="https://github.com/d3/d3/wiki/Gallery" target="_blank"> More data visualizations will be coming soon.</a>
+<a href="https://github.com/d3/d3/wiki/Gallery" target="_blank"> Data visualizations will be coming soon.</a>
 
 </h4>
 

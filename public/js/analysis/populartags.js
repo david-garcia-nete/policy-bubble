@@ -1,27 +1,3 @@
-<?php
-
-$this->headTitle('Popular Tags');
-
-$this->mainMenu()->setActiveItemId('analysis');
-
-$this->pageBreadcrumbs()->setItems(array(
-            'Home'=>$this->url('home'),
-            'Analysis'=>$this->url('analysis'),
-            'Popular Tags'=>$this->url('application', ['action'=>'popularTags'])
-            ));
-
-?>
-
-<h1>Popular Tags</h1>
-
-<noscript>Your browser does not support JavaScript.  You need to enable JavaScript in your browser to see the visualization.</noscript>
-
-
-
-<svg width="960" height="960" font-family="sans-serif" font-size="10" text-anchor="middle"></svg>
-<script src="https://d3js.org/d3.v4.min.js"></script>
-<script>
-
 var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
@@ -34,7 +10,7 @@ var pack = d3.pack()
     .size([width, height])
     .padding(1.5);
 
-d3.csv("/js/analysis/flare.csv", function(d) {
+d3.csv("flare.csv", function(d) {
   d.value = +d.value;
   if (d.value) return d;
 }, function(error, classes) {
@@ -79,9 +55,3 @@ d3.csv("/js/analysis/flare.csv", function(d) {
   node.append("title")
       .text(function(d) { return d.id + "\n" + format(d.value); });
 });
-
-</script>
-
-
-
-

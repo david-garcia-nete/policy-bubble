@@ -222,4 +222,19 @@ class PostRepository extends EntityRepository
         return $query;
     } 
     
+     public function findPublishedTags()
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+               
+        $queryBuilder->select('t.name')->distinct()
+            ->from(Post::class, 'p')
+            ->join('p.tags', 't')    
+            ->where('p.status = ?1')
+            ->setParameter('1', Post::STATUS_PUBLISHED);
+        
+        return $queryBuilder->getQuery()->getResult();
+    }
+    
 }
