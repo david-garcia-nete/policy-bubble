@@ -30,6 +30,22 @@ $this->pageBreadcrumbs()->setItems([
                 <th>Date Created:</th>
                 <td><?= $this->escapeHtml($user->getDateCreated()) ?></td>
             </tr>
+            <tr>
+                <th>Demographics:</th>
+                <td>
+                    <a class="btn btn-info" >
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Account:</th>
+                <td>
+                    <a class="btn btn-danger" >
+                        <span class="glyphicon glyphicon-remove"></span> Delete
+                    </a>
+                </td>
+            </tr>
         </table>
     </div>
 </div>
