@@ -102,7 +102,6 @@ class User
     
     /**
      * @ORM\OneToOne(targetEntity="\Application\Entity\Demographic", mappedBy="user")
-     * @ORM\JoinColumn(name="id", referencedColumnName="user_id")
      */
     protected $demographic;
     

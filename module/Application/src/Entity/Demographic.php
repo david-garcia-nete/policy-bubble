@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * This class represents a single demographic object.
  * @ORM\Entity
- * @ORM\Table(name="transactions_paypal")
+ * @ORM\Table(name="demographic")
  */
 class Demographic 
 {
@@ -24,7 +24,7 @@ class Demographic
     protected $id;
     
     /**
-     * @ORM\ManyToOne(targetEntity="User\Entity\User", inversedBy="demographic")
+     * @ORM\OneToOne(targetEntity="User\Entity\User", inversedBy="demographic")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
