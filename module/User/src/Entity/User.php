@@ -101,6 +101,12 @@ class User
     protected $membership;
     
     /**
+     * @ORM\OneToOne(targetEntity="\Application\Entity\Demographic", mappedBy="user")
+     * @ORM\JoinColumn(name="id", referencedColumnName="user_id")
+     */
+    protected $demographic;
+    
+    /**
      * Constructor.
      */
     public function __construct() 
@@ -432,6 +438,25 @@ class User
     {
         $this->membership = $membership;
     }   
+    
+    /**
+     * Returns demographic for this user.
+     * @return \Application\Entity\Demographic
+     */
+    public function getDemographic() 
+    {
+        return $this->demographic;
+    }
+    
+    /**
+     * Sets associated demographic.
+     * @param \Applcation\Entity\Demographic $demographic
+     */
+    public function setDemographic($demographic) 
+    {
+        $this->demographic = $demographic;
+        $user->setDemographic($this);
+    }
     
 }
 

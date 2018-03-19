@@ -87,7 +87,7 @@ class TransactionsPayPal
 
      /*
      * Returns associated user.
-     * @return \Application\Entity\User
+     * @return \User\Entity\User
      */
     public function getUser() 
     {
@@ -96,7 +96,7 @@ class TransactionsPayPal
     
     /**
      * Sets associated user.
-     * @param \Application\Entity\User $user
+     * @param \User\Entity\User $user
      */
     public function setUser($user) 
     {
