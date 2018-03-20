@@ -253,6 +253,47 @@ class Geographic
     {
         $this->dmaCode = $dmaCode;
     }
+    
+    
+    /**
+     * Returns country code.
+     * @return string
+     */
+    public function getCountryCode() 
+    {
+       return $this->countryCode; 
+    }
+    
+    /**
+     * Sets country code.     
+     * @param string $countryCode
+     */
+    public function setCountryCode($countryCode) 
+    {
+        $this->countryCode = $countryCode;
+    }
+
+    
+        
+    /**
+     * Returns country name.
+     * @return string
+     */
+    public function getCountryName() 
+    {
+       return $this->countryName; 
+    }
+    
+    /**
+     * Sets country name.     
+     * @param string $countryName
+     */
+    public function setCountryName($countryName) 
+    {
+        $this->countryName = $countryName;
+    }
+
+        
 
     
     
