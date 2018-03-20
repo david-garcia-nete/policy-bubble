@@ -4,11 +4,11 @@ namespace Application\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * This class represents geographic information for a post.
+ * This class represents geography information for a post.
  * @ORM\Entity
- * @ORM\Table(name="geographic")
+ * @ORM\Table(name="geography")
  */
-class Geographic 
+class Geography 
 {
        
     /**
@@ -19,7 +19,7 @@ class Geographic
     protected $id;
     
     /**
-     * @ORM\OneToOne(targetEntity="Application\Entity\Post", inversedBy="geographic")
+     * @ORM\OneToOne(targetEntity="Application\Entity\Post", inversedBy="geography")
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
     protected $post;
@@ -143,7 +143,7 @@ class Geographic
     public function setPost($post) 
     {
         $this->post = $post;
-        $post->setGeographic($this);
+        $post->setGeography($this);
     }
     
     /**

@@ -212,6 +212,7 @@ return [
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
             Service\MembershipManager::class => Service\Factory\MembershipManagerFactory::class,
             Service\MailSender::class => InvokableFactory::class,
+            Service\GeoPlugin::class => InvokableFactory::class,
             Service\ImageManager::class => InvokableFactory::class,
             Service\VideoManager::class => InvokableFactory::class,
             Service\AudioManager::class => InvokableFactory::class,

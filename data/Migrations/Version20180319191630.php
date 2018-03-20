@@ -15,7 +15,7 @@ class Version20180319191630 extends AbstractMigration
      */
     public function getDescription()
     {
-        $description = 'Create the geographic table.';
+        $description = 'Create the geography table.';
         return $description;
     }
     
@@ -26,7 +26,7 @@ class Version20180319191630 extends AbstractMigration
     public function up(Schema $schema)
     {
         // Create 'user' table
-        $table = $schema->createTable('geographic');
+        $table = $schema->createTable('geography');
         $table->addColumn('id', 'integer', ['autoincrement'=>true]);        
         $table->addColumn('post_id', 'integer', ['notnull'=>false]);
         $table->addColumn('request', 'string', ['notnull'=>false, 'length'=>256]);
@@ -55,6 +55,6 @@ class Version20180319191630 extends AbstractMigration
      */
     public function down(Schema $schema)
     {
-        $schema->dropTable('geographic');
+        $schema->dropTable('geography');
     }
 }

@@ -82,9 +82,9 @@ class Post
     protected $childPosts;
     
     /**
-     * @ORM\OneToOne(targetEntity="\Application\Entity\Geographic", mappedBy="post")
+     * @ORM\OneToOne(targetEntity="\Application\Entity\Geography", mappedBy="post")
      */
-    protected $geographic;
+    protected $geography;
     
     /**
      * Constructor.
@@ -266,22 +266,22 @@ class Post
     }
     
     /*
-     * Returns associated geographic info.
-     * @return \Application\Entity\Geographic
+     * Returns associated geography info.
+     * @return \Application\Entity\Geography
      */
-    public function getGeographic() 
+    public function getGeography() 
     {
-        return $this->geographic;
+        return $this->geography;
     }
     
     /**
-     * Sets geographic info.
-     * @param \Application\Entity\Geographic $geographic
+     * Sets geography info.
+     * @param \Application\Entity\Geography $geography
      */
-    public function setGeographic($geographic) 
+    public function setGeography($geography) 
     {
-        $this->geographic = $geographic;
-        $geographic->setPost($this);
+        $this->geography = $geography;
+        $geography->setPost($this);
     }
 }
 

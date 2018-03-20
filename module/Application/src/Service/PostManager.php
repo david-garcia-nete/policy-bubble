@@ -3,6 +3,7 @@ namespace Application\Service;
 use Application\Entity\Post;
 use Application\Entity\Comment;
 use Application\Entity\Tag;
+use Application\Entity\Geography;
 use Zend\Filter\StaticFilter;
 /**
  * The PostManager service is responsible for adding new posts, updating existing
@@ -23,12 +24,19 @@ class PostManager
     private $membershipManager;
     
     /**
+    * Geography plugin.
+    * @var Application\Service\GeoPlugin
+    */
+    private $geoPlugin;
+    
+    /**
      * Constructor.
      */
-    public function __construct($entityManager, $membershipManager)
+    public function __construct($entityManager, $membershipManager, $geoPlugin)
     {
         $this->entityManager = $entityManager;
         $this->membershipManager = $membershipManager;
+        $this->geoPlugin = $geoPlugin;
     }
     
     /**
