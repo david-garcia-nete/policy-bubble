@@ -293,9 +293,167 @@ class Geographic
         $this->countryName = $countryName;
     }
 
-        
-
+    /**
+     * Returns continent code.
+     * @return string
+     */
+    public function getContinentCode() 
+    {
+       return $this->continentCode; 
+    }
     
+    /**
+     * Sets continent code.     
+     * @param string $continentCode
+     */
+    public function setContinentCode($continentCode) 
+    {
+        $this->continentCode = $continentCode;
+    }
+    
+    /**
+     * Returns latitude.
+     * @return string
+     */
+    public function getLatitude() 
+    {
+       return $this->latitude; 
+    }
+    
+    /**
+     * Sets latitude.     
+     * @param string $latitude
+     */
+    public function setLatitude($latitude) 
+    {
+        $this->latitude = $latitude;
+    }
+    
+    /**
+     * Returns longitude.
+     * @return string
+     */
+    public function getLongitude() 
+    {
+       return $this->longitude; 
+    }
+    
+    /**
+     * Sets longitude.     
+     * @param string $longitude
+     */
+    public function setLongitude($longitude) 
+    {
+        $this->longitude = $longitude;
+    }
+
+    /**
+     * Returns region code.
+     * @return string
+     */
+    public function getRegionCode() 
+    {
+       return $this->regionCode; 
+    }
+    
+    /**
+     * Sets region code.     
+     * @param string $regionCode
+     */
+    public function setRegionCode($regionCode) 
+    {
+        $this->regionCode = $regionCode;
+    }    
+    
+    /**
+     * Returns region name.
+     * @return string
+     */
+    public function getRegionName() 
+    {
+       return $this->regionName; 
+    }
+    
+    /**
+     * Sets region name.     
+     * @param string $regionName
+     */
+    public function setRegionName($regionName) 
+    {
+        $this->regionName = $regionName;
+    }    
+
+    /**
+     * Returns currency code.
+     * @return string
+     */
+    public function getCurrencyCode() 
+    {
+       return $this->currencyCode; 
+    }
+    
+    /**
+     * Sets currency code.     
+     * @param string $currencyCode
+     */
+    public function setCurrencyCode($currencyCode) 
+    {
+        $this->currencyCode = $currencyCode;
+    }
+
+    /**
+     * Returns currency symbol.
+     * @return string
+     */
+    public function getCurrencySymbol() 
+    {
+       return $this->currencySymbol; 
+    }
+    
+    /**
+     * Sets currency symbol.     
+     * @param string $currencySymbol
+     */
+    public function setCurrencySymbol($currencySymbol) 
+    {
+        $this->currencySymbol = $currencySymbol;
+    }
+
+    /**
+     * Returns currency symbol utf8.
+     * @return string
+     */
+    public function getCurrencySymbolUtf8() 
+    {
+       return $this->currencySymbolUtf8; 
+    }
+    
+    /**
+     * Sets currency symbol utf8.     
+     * @param string $currencySymbolUtf8
+     */
+    public function setCurrencySymbolUtf8($currencySymbolUtf8) 
+    {
+        $this->currencySymbolUtf8 = $currencySymbolUtf8;
+    }
+
+    /**
+     * Returns currency converter.
+     * @return string
+     */
+    public function getCurrencyConverter() 
+    {
+       return $this->currencyConverter; 
+    }
+    
+    /**
+     * Sets currency converter.     
+     * @param string $currencyConverter
+     */
+    public function setCurrencyConverter($currencyConverter) 
+    {
+        $this->currencyConverter = $currencyConverter;
+    }    
     
 }
 
