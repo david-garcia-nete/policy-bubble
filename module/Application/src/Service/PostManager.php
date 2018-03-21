@@ -69,6 +69,31 @@ class PostManager
         // Add tags to post
         $this->addTagsToPost($data['tags'], $post);
         
+        // Create new Geography entity.
+        $geography = new Geography();
+        $this->geoPlugin->locate();
+        $geography->setPost($post);
+        $geography->setRequest($this->geoPlugin->request);
+        $geography->setStatus($this->geoPlugin->status);
+        $geography->setCredit($this->geoPlugin->credit);
+        $geography->setRegion($this->geoPlugin->region);
+        $geography->setAreaCode($this->geoPlugin->areaCode);
+        $geography->setDmaCode($this->geoPlugin->dmaCode);
+        $geography->setCountryCode($this->geoPlugin->countryCode);
+        $geography->setCountryName($this->geoPlugin->countryName);
+        $geography->setContinentCode($this->geoPlugin->continentCode);
+        $geography->setLatitude($this->geoPlugin->latitude);
+        $geography->setLongitude($this->geoPlugin->longitude);
+        $geography->setRegionCode($this->geoPlugin->regionCode);
+        $geography->setRegionName($this->geoPlugin->regionName);
+        $geography->setCurrencyCode($this->geoPlugin->currencyCode);
+        $geography->setCurrencySymbol($this->geoPlugin->currencySymbol);
+        $geography->setCurrencySymbolUtf8($this->geoPlugin->currencySymbolUtf8);
+        $geography->setCurrencyConverter($this->geoPlugin->currencyConverter);
+        
+        // Add the entity to entity manager.
+        $this->entityManager->persist($geography);
+      
         // Apply changes to database.
         $this->entityManager->flush();
     }
@@ -85,6 +110,27 @@ class PostManager
         // Add tags to post
         $this->addTagsToPost($data['tags'], $post);
         
+        $geography = $post->getGeography();
+        $this->geoPlugin->locate();
+        $geography->setPost($post);
+        $geography->setRequest($this->geoPlugin->request);
+        $geography->setStatus($this->geoPlugin->status);
+        $geography->setCredit($this->geoPlugin->credit);
+        $geography->setRegion($this->geoPlugin->region);
+        $geography->setAreaCode($this->geoPlugin->areaCode);
+        $geography->setDmaCode($this->geoPlugin->dmaCode);
+        $geography->setCountryCode($this->geoPlugin->countryCode);
+        $geography->setCountryName($this->geoPlugin->countryName);
+        $geography->setContinentCode($this->geoPlugin->continentCode);
+        $geography->setLatitude($this->geoPlugin->latitude);
+        $geography->setLongitude($this->geoPlugin->longitude);
+        $geography->setRegionCode($this->geoPlugin->regionCode);
+        $geography->setRegionName($this->geoPlugin->regionName);
+        $geography->setCurrencyCode($this->geoPlugin->currencyCode);
+        $geography->setCurrencySymbol($this->geoPlugin->currencySymbol);
+        $geography->setCurrencySymbolUtf8($this->geoPlugin->currencySymbolUtf8);
+        $geography->setCurrencyConverter($this->geoPlugin->currencyConverter);
+               
         // Apply changes to database.
         $this->entityManager->flush();
     }

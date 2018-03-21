@@ -37,7 +37,8 @@ class GeoPlugin {
 	var $currency = 'USD';
 	
 	//initiate the geoPlugin vars
-	var $ip = null;
+	var $request = null;
+        var $status = null;
 	var $city = null;
 	var $region = null;
 	var $areaCode = null;
@@ -47,8 +48,11 @@ class GeoPlugin {
 	var $continentCode = null;
 	var $latitude = null;
 	var $longitude = null;
+        var $regionCode = null;
+        var $regionName = null;
 	var $currencyCode = null;
 	var $currencySymbol = null;
+        var $currencySymbolUtf8 = null;
 	var $currencyConverter = null;
 	
 	function geoPlugin() {
@@ -73,7 +77,8 @@ class GeoPlugin {
 		$data = unserialize($response);
 		
 		//set the geoPlugin vars
-		$this->ip = $ip;
+		$this->request = $data['geoplugin_request'];
+                $this->status = $data['geoplugin_status'];
 		$this->city = $data['geoplugin_city'];
 		$this->region = $data['geoplugin_region'];
 		$this->areaCode = $data['geoplugin_areaCode'];
@@ -83,8 +88,11 @@ class GeoPlugin {
 		$this->continentCode = $data['geoplugin_continentCode'];
 		$this->latitude = $data['geoplugin_latitude'];
 		$this->longitude = $data['geoplugin_longitude'];
+                $this->regionCode = $data['geoplugin_regionCode'];
+		$this->regionCode = $data['geoplugin_regionCode'];
 		$this->currencyCode = $data['geoplugin_currencyCode'];
 		$this->currencySymbol = $data['geoplugin_currencySymbol'];
+                $this->currencySymbolUtf8 = $data['geoplugin_currencySymbol_UTF8'];
 		$this->currencyConverter = $data['geoplugin_currencyConverter'];
 		
 	}
