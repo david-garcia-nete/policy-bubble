@@ -32,8 +32,9 @@ class Version20180319191630 extends AbstractMigration
         $table->addColumn('request', 'string', ['notnull'=>false, 'length'=>256]);
         $table->addColumn('status', 'integer', ['notnull'=>false]);
         $table->addColumn('credit', 'text', ['notnull'=>false]);
-        $table->addColumn('region', 'string', ['notnull'=>false, 'length'=>256]);
+        $table->addColumn('city', 'string', ['notnull'=>false, 'length'=>256]);
         $table->addColumn('area_code', 'string', ['notnull'=>false, 'length'=>256]);
+        $table->addColumn('region', 'string', ['notnull'=>false, 'length'=>256]);
         $table->addColumn('dma_code', 'string', ['notnull'=>false, 'length'=>256]);
         $table->addColumn('country_code', 'string', ['notnull'=>false, 'length'=>256]);
         $table->addColumn('country_name', 'string', ['notnull'=>false, 'length'=>256]);

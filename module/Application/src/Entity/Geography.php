@@ -40,6 +40,11 @@ class Geography
     protected $credit;
     
     /** 
+     * @ORM\Column(name="city")  
+     */
+    protected $city;
+    
+    /** 
      * @ORM\Column(name="region")  
      */
     protected $region;
@@ -198,6 +203,24 @@ class Geography
     public function setCredit($credit) 
     {
         $this->credit = $credit;
+    }
+    
+    /**
+     * Returns city.
+     * @return string
+     */
+    public function getCity() 
+    {
+       return $this->city; 
+    }
+    
+    /**
+     * Sets city.     
+     * @param string $city
+     */
+    public function setCity($city) 
+    {
+        $this->city = $city;
     }
     
     /**

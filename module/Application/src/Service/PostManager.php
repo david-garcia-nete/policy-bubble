@@ -76,6 +76,7 @@ class PostManager
         $geography->setRequest($this->geoPlugin->request);
         $geography->setStatus($this->geoPlugin->status);
         $geography->setCredit($this->geoPlugin->credit);
+        $geography->setCity($this->geoPlugin->city);
         $geography->setRegion($this->geoPlugin->region);
         $geography->setAreaCode($this->geoPlugin->areaCode);
         $geography->setDmaCode($this->geoPlugin->dmaCode);
@@ -116,6 +117,7 @@ class PostManager
         $geography->setRequest($this->geoPlugin->request);
         $geography->setStatus($this->geoPlugin->status);
         $geography->setCredit($this->geoPlugin->credit);
+        $geography->setCity($this->geoPlugin->city);
         $geography->setRegion($this->geoPlugin->region);
         $geography->setAreaCode($this->geoPlugin->areaCode);
         $geography->setDmaCode($this->geoPlugin->dmaCode);

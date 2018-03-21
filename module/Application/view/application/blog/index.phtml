@@ -57,6 +57,11 @@ $form->prepare();
     <p>
         Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
         | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
+    </p> 
+    
+    <p>
+        Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
+        | Region: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p>    
         
     <p class="responses-header">

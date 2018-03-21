@@ -39,6 +39,7 @@ class GeoPlugin {
 	//initiate the geoPlugin vars
 	var $request = null;
         var $status = null;
+        var $credit = null;
 	var $city = null;
 	var $region = null;
 	var $areaCode = null;
@@ -79,6 +80,7 @@ class GeoPlugin {
 		//set the geoPlugin vars
 		$this->request = $data['geoplugin_request'];
                 $this->status = $data['geoplugin_status'];
+                $this->credit = $data['geoplugin_credit'];
 		$this->city = $data['geoplugin_city'];
 		$this->region = $data['geoplugin_region'];
 		$this->areaCode = $data['geoplugin_areaCode'];
