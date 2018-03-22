@@ -404,28 +404,16 @@ class PostManager
         }
         $tags = explode(',', $data['tags']);
         $results = array();
-        if(count($tags)==1){            
-            $tag = trim($tags[0]);
+        foreach ($tags as $tag) {
+            $tag = trim($tag);
             $query = $this->entityManager->getRepository(Post::class)
-                       ->findPostsByTag($tag);
+                        ->findPostsByTag($tag);
             $posts = $query->getResult();
             $postIds = array();
             foreach($posts as $post){
                 $postIds[] = $post->getId();
             }
             $results[] = $postIds; 
-        } else{
-            foreach ($tags as $tag) {
-                $tag = trim($tag);
-                $query = $this->entityManager->getRepository(Post::class)
-                            ->findPostsByTag($tag);
-                $posts = $query->getResult();
-                $postIds = array();
-                foreach($posts as $post){
-                    $postIds[] = $post->getId();
-                }
-                $results[] = $postIds; 
-            }
         }
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['countryName'=>$data['country']]);
@@ -449,7 +437,11 @@ class PostManager
         }
         $results[] = $postIds; 
         
-        $result = call_user_func_array('array_intersect', $results);
+        if ($results>1){
+            $result = call_user_func_array('array_intersect', $results);
+        }else{
+            $result = $results;
+        }
         $query = $this->entityManager->getRepository(Post::class)
                        ->findPostsByIdArray($result);
         
