@@ -440,8 +440,9 @@ class PostManager
         if (count($results)>1){
             $result = call_user_func_array('array_intersect', $results);
         }else{
-            $result = $results[0];
+            $result = call_user_func_array('array_merge ', $results);
         }
+        var_dump($results); die;
         $query = $this->entityManager->getRepository(Post::class)
                        ->findPostsByIdArray($result);
         
