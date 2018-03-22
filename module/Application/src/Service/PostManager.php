@@ -413,7 +413,9 @@ class PostManager
             foreach($posts as $post){
                 $postIds[] = $post->getId();
             }
-            $results[] = $postIds; 
+            if(count($postIds)>0){
+                $results[] = $postIds; 
+            }
         }
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['countryName'=>$data['country']]);
@@ -421,28 +423,45 @@ class PostManager
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();
         }
-        $results[] = $postIds;
+        if(count($postIds)>0){
+                $results[] = $postIds; 
+            }
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['regionName'=>$data['region']]);
         $postIds = array();
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();
         }
-        $results[] = $postIds; 
+        if(count($postIds)>0){
+                $results[] = $postIds; 
+            }
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['city'=>$data['city']]);
         $postIds = array();
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();
         }
-        $results[] = $postIds; 
+        if(count($postIds)>0){
+                $results[] = $postIds; 
+            } 
         
-        if (count($results)>1){
-            $result = call_user_func_array('array_intersect', $results);
-        }else{
-            $result = call_user_func_array('array_merge ', $results);
+        
+        $resultCount = 0;
+        $resultHolder = [];
+        foreach ($results as $result){
+            if (count($result)>0){
+                $resultCount++;
+                $resultHolder[] = $result;
+            }
         }
-        var_dump($results); die;
+        if ($resultCount == 1){
+            $result = $resultHolder[0];
+        } 
+        
+        if ($resultCount > 1){
+            $result = call_user_func_array('array_intersect', $results);
+        } 
+
         $query = $this->entityManager->getRepository(Post::class)
                        ->findPostsByIdArray($result);
         
