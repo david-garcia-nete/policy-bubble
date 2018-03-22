@@ -31,18 +31,55 @@ class SearchForm extends Form
     {
        
                 
-        // Add "title" field
+        // Add "tags" field
         $this->add([        
             'type'  => 'text',
-            'name' => 'search',
+            'name' => 'tags',
             'attributes' => [
-                'id' => 'search'
+                'id' => 'tags'
             ],
             'options' => [
-                'label' => 'Search Tags',
+                'label' => 'Tags',
             ],
         ]);
-
+        
+        // Add "country" field
+        $this->add([        
+            'type'  => 'text',
+            'name' => 'country',
+            'attributes' => [
+                'id' => 'country'
+            ],
+            'options' => [
+                'label' => 'Country',
+            ],
+        ]);
+        
+        // Add "region" field
+        $this->add([        
+            'type'  => 'text',
+            'name' => 'region',
+            'attributes' => [
+                'id' => 'region'
+            ],
+            'options' => [
+                'label' => 'Region',
+            ],
+        ]);
+        
+        // Add "city" field
+        $this->add([        
+            'type'  => 'text',
+            'name' => 'city',
+            'attributes' => [
+                'id' => 'city'
+            ],
+            'options' => [
+                'label' => 'City',
+            ],
+        ]);
+        
+       
         // Add the CSRF field
         $this->add([
             'type'  => 'csrf',
@@ -76,7 +113,64 @@ class SearchForm extends Form
         $this->setInputFilter($inputFilter);
         
         $inputFilter->add([
-                'name'     => 'search',
+                'name'     => 'tags',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                    ['name' => 'StripNewlines'],
+                ],                
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'min' => 1,
+                            'max' => 1024
+                        ],
+                    ],
+                ],
+        ]);
+        
+        $inputFilter->add([
+                'name'     => 'country',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                    ['name' => 'StripNewlines'],
+                ],                
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'min' => 1,
+                            'max' => 1024
+                        ],
+                    ],
+                ],
+        ]);
+        
+        $inputFilter->add([
+                'name'     => 'region',
+                'required' => false,
+                'filters'  => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                    ['name' => 'StripNewlines'],
+                ],                
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'min' => 1,
+                            'max' => 1024
+                        ],
+                    ],
+                ],
+        ]);
+        
+        $inputFilter->add([
+                'name'     => 'city',
                 'required' => false,
                 'filters'  => [
                     ['name' => 'StringTrim'],

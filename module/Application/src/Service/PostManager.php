@@ -390,20 +390,19 @@ class PostManager
     /**
      * Find posts by tag search query.
      */
-    public function findPostsByTagSearch($search) 
+    public function findPostsBySearch($data) 
     {
-        if($search == ''){
+        if(
+                $data['tags'] == '' &&
+                $data['country'] == '' &&
+                $data['region'] == '' &&
+                $data['city'] == ''
+           ){
             $query = $this->entityManager->getRepository(Post::class)
                        ->findPublishedPosts();
             return $query;
         }
-        $tags = explode(',', $search);
-        if(count($tags)==1){
-            $tag = trim($tags[0]);
-            $query = $this->entityManager->getRepository(Post::class)
-                       ->findPostsByTag($tag);
-            return $query;
-        }
+        $tags = explode(',', $data['tags']);
         $results = array();
         foreach ($tags as $tag) {
             $tag = trim($tag);
@@ -416,6 +415,9 @@ class PostManager
             }
             $results[] = $postIds; 
         }
+        $this->entityManager->getRepository(Geography::class)
+                        ->findBy(['countryName'=>'data']);
+        
         $result = call_user_func_array('array_intersect', $results);
         $query = $this->entityManager->getRepository(Post::class)
                        ->findPostsByIdArray($result);

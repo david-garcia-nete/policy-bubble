@@ -70,7 +70,7 @@ class BlogController extends AbstractActionController
                 
                 // Get filtered and validated data
                 $data = $form->getData();       
-                $query = $this->postManager->findPostsByTagSearch($data['search']);
+                $query = $this->postManager->findPostsBySearch($data);
                 
             }               
         } else {
