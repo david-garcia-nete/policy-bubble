@@ -61,7 +61,8 @@ $form->prepare();
     
     <p>
         Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
-        | Region: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
+        | Region: <?= $this->escapeHtml($post->getGeography()->getRegionName()); ?>  
+        | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
     </p>    
         
     <p class="responses-header">

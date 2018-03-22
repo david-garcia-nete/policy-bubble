@@ -43,6 +43,12 @@ if(count($parentPosts)<1)
     | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
 </p>
 
+ <p>
+    Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
+    | Region: <?= $this->escapeHtml($post->getGeography()->getRegionName()); ?>  
+    | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
+</p>   
+
 <p>    
     <?= nl2br($this->escapeHtml($post->getContent())) ?>
 </p>

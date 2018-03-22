@@ -281,7 +281,6 @@ class Post
     public function setGeography($geography) 
     {
         $this->geography = $geography;
-        $geography->setPost($this);
     }
 }
 

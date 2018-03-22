@@ -91,7 +91,7 @@ class GeoPlugin {
 		$this->latitude = $data['geoplugin_latitude'];
 		$this->longitude = $data['geoplugin_longitude'];
                 $this->regionCode = $data['geoplugin_regionCode'];
-		$this->regionCode = $data['geoplugin_regionCode'];
+		$this->regionName = $data['geoplugin_regionName'];
 		$this->currencyCode = $data['geoplugin_currencyCode'];
 		$this->currencySymbol = $data['geoplugin_currencySymbol'];
                 $this->currencySymbolUtf8 = $data['geoplugin_currencySymbol_UTF8'];
