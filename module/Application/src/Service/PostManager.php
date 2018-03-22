@@ -404,19 +404,50 @@ class PostManager
         }
         $tags = explode(',', $data['tags']);
         $results = array();
-        foreach ($tags as $tag) {
-            $tag = trim($tag);
+        if(count($tags)==1){            
+            $tag = trim($tags[0]);
             $query = $this->entityManager->getRepository(Post::class)
-                        ->findPostsByTag($tag);
+                       ->findPostsByTag($tag);
             $posts = $query->getResult();
             $postIds = array();
             foreach($posts as $post){
                 $postIds[] = $post->getId();
             }
             $results[] = $postIds; 
+        } else{
+            foreach ($tags as $tag) {
+                $tag = trim($tag);
+                $query = $this->entityManager->getRepository(Post::class)
+                            ->findPostsByTag($tag);
+                $posts = $query->getResult();
+                $postIds = array();
+                foreach($posts as $post){
+                    $postIds[] = $post->getId();
+                }
+                $results[] = $postIds; 
+            }
         }
-        $this->entityManager->getRepository(Geography::class)
-                        ->findBy(['countryName'=>'data']);
+        $geographies = $this->entityManager->getRepository(Geography::class)
+                        ->findBy(['countryName'=>$data['country']]);
+        $postIds = array();
+        foreach($geographies as $geography){
+            $postIds[] = $geography->getPost()->getId();
+        }
+        $results[] = $postIds;
+        $geographies = $this->entityManager->getRepository(Geography::class)
+                        ->findBy(['regionName'=>$data['region']]);
+        $postIds = array();
+        foreach($geographies as $geography){
+            $postIds[] = $geography->getPost()->getId();
+        }
+        $results[] = $postIds; 
+        $geographies = $this->entityManager->getRepository(Geography::class)
+                        ->findBy(['city'=>$data['city']]);
+        $postIds = array();
+        foreach($geographies as $geography){
+            $postIds[] = $geography->getPost()->getId();
+        }
+        $results[] = $postIds; 
         
         $result = call_user_func_array('array_intersect', $results);
         $query = $this->entityManager->getRepository(Post::class)
