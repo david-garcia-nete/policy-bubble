@@ -445,7 +445,6 @@ class PostManager
                 $results[] = $postIds; 
             } 
         
-        
         $resultCount = 0;
         $resultHolder = [];
         foreach ($results as $result){
@@ -461,6 +460,8 @@ class PostManager
         if ($resultCount > 1){
             $result = call_user_func_array('array_intersect', $results);
         } 
+        
+        //var_dump($result); die;
 
         $query = $this->entityManager->getRepository(Post::class)
                        ->findPostsByIdArray($result);
