@@ -111,7 +111,8 @@ class PostManager
         // Add tags to post
         $this->addTagsToPost($data['tags'], $post);
         
-        $geography = $post->getGeography();
+        $geography = $this->entityManager->getRepository(Geography::class)
+                    ->findOneBy(['post'=>$post]);
         $this->geoPlugin->locate();
         $geography->setPost($post);
         $geography->setRequest($this->geoPlugin->request);
