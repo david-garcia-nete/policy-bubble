@@ -205,19 +205,27 @@ class PostRepository extends EntityRepository
     {
         $postIds = implode(',', $array);
         
+        //var_dump($postIds); die;
+        
         $entityManager = $this->getEntityManager();
         
         $queryBuilder = $entityManager->createQueryBuilder();
         
-        $queryBuilder->select('p')->distinct()
+        $queryBuilder->select('p')//->distinct()
             ->from(Post::class, 'p')
-            ->where('p.status = ?1')
-            ->andWhere('p.id in (?2)')
-            ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', Post::STATUS_PUBLISHED)
-            ->setParameter('2', $postIds);
+           // ->where('p.status = ?1')
+          //  ->andWhere('p.id in (?2)')
+            ->orderBy('p.dateCreated', 'DESC');
+           // ->setParameter('1', Post::STATUS_PUBLISHED)
+           // ->setParameter('2', $postIds);
      
-        $query = $queryBuilder->getQuery();
+        $query = $queryBuilder->getQuery();//->getResult();
+        
+       // echo $query->getSql();
+      //  echo $query->getParameter('1');
+      //  die;
+        //echo count($query); die;
+         //var_dump($query); die;
         
         return $query;
     } 
