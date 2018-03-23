@@ -255,6 +255,10 @@ class PostManager
         
         $this->entityManager->remove($post);
         
+        $geography = $this->entityManager->getRepository(Geography::class)
+                    ->findOneBy(['post'=>$post]);
+        $this->entityManager->remove($geography);
+        
         $this->entityManager->flush();
     }
     
