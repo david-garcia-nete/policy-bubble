@@ -45,7 +45,7 @@ if(count($parentPosts)<1)
 
  <p>
     Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
-    | Region: <?= $this->escapeHtml($post->getGeography()->getRegionName()); ?>  
+    | Region: <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
     | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
 </p>   
 
