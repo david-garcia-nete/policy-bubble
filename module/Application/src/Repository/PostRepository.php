@@ -203,18 +203,28 @@ class PostRepository extends EntityRepository
      */
     public function findPostsByIdArray($array)
     {
-        $postIds = implode(',', $array);
+
+        $postIds = implode(',', $array);   
         
         $entityManager = $this->getEntityManager();
         
         $queryBuilder = $entityManager->createQueryBuilder();
         
-        $queryBuilder->select('p')->distinct()
-            ->from(Post::class, 'p')
-            ->where('p.status = ?1')
-            ->andWhere("p.id in ($postIds)")
-            ->orderBy('p.dateCreated', 'DESC')
-            ->setParameter('1', Post::STATUS_PUBLISHED);
+        if ($postIds==null){
+            $queryBuilder->select('p')->distinct()
+                ->from(Post::class, 'p')
+                ->where('p.id = ?1')
+                ->orderBy('p.dateCreated', 'DESC')
+                ->setParameter('1', -1);
+        }
+        else{
+            $queryBuilder->select('p')->distinct()
+                ->from(Post::class, 'p')
+                ->where('p.status = ?1')
+                ->andWhere("p.id in ($postIds)")
+                ->orderBy('p.dateCreated', 'DESC')
+                ->setParameter('1', Post::STATUS_PUBLISHED);
+        }
      
         $query = $queryBuilder->getQuery();
         

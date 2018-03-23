@@ -459,10 +459,10 @@ class PostManager
         
         if ($resultCount > 1){
             $result = call_user_func_array('array_intersect', $results);
-        } 
+        }
 
         $query = $this->entityManager->getRepository(Post::class)
-                       ->findPostsByIdArray($result);
+                       ->findPostsByIdArray($result);  
         
         return $query;
     }
