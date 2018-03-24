@@ -408,7 +408,9 @@ class PostManager
         }
         $tags = explode(',', $data['tags']);
         $results = array();
+        $inputCount = 0;
         foreach ($tags as $tag) {
+            $inputCount++;
             $tag = trim($tag);
             $query = $this->entityManager->getRepository(Post::class)
                         ->findPostsByTag($tag);
@@ -421,6 +423,9 @@ class PostManager
                 $results[] = $postIds; 
             }
         }
+        if (count($data['country'])>0){
+            $inputCount++;
+        }
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['countryName'=>$data['country']]);
         $postIds = array();
@@ -430,6 +435,10 @@ class PostManager
         if(count($postIds)>0){
                 $results[] = $postIds; 
             }
+        if (count($data['region'])>0){
+            $inputCount++;
+        }    
+        //echo count($data['region']); die;
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['regionName'=>$data['region']]);
         $postIds = array();
@@ -439,6 +448,9 @@ class PostManager
         if(count($postIds)>0){
                 $results[] = $postIds; 
             }
+        if (count($data['city'])>0){
+            $inputCount++;
+        }      
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['city'=>$data['city']]);
         $postIds = array();
@@ -447,7 +459,9 @@ class PostManager
         }
         if(count($postIds)>0){
                 $results[] = $postIds; 
-            } 
+            }
+            
+           // var_dump($results); die;    
         
         $resultCount = 0;
         $resultHolder = [];
@@ -457,7 +471,8 @@ class PostManager
                 $resultHolder[] = $result;
             }
         }
-        if ($resultCount == 1){
+        echo $inputCount; die;
+        if (($resultCount == 1)&&($inputCount == 1)){
             $result = $resultHolder[0];
         } 
         
