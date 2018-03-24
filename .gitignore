@@ -11,3 +11,4 @@ data/image/*
 data/video/*
 public/video/*
 public/audio/*
+public/info.php
