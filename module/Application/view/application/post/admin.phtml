@@ -65,7 +65,7 @@ $this->pageBreadcrumbs()->setItems([
     
             
         </td>
-        <td><?= $this->escapeHtml($post->getDateCreated()); ?></td>
+        <td><?= $this->escapeHtml($post->getDateCreated()); ?>&nbsp;UTC</td>
         <td><?= $this->escapeHtml($postManager->getPostStatusAsString($post)); ?></td>        
         <td>
             <a class="btn btn-info" href="<?= $this->url('posts', 
