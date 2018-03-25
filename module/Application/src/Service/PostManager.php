@@ -423,11 +423,11 @@ class PostManager
                 $results[] = $postIds; 
             }
         }
-          // echo $inputCount; die;
+
         if (strlen($data['country'])>0){
             $inputCount++;
         }
-           //echo $inputCount; die;
+
         $geographies = $this->entityManager->getRepository(Geography::class)
                         ->findBy(['countryName'=>$data['country']]);
         $postIds = array();
@@ -440,10 +440,9 @@ class PostManager
         if (strlen($data['region'])>0){
             $inputCount++;
         }    
-          // echo $inputCount; die;
-        //echo count($data['region']); die;
+
         $geographies = $this->entityManager->getRepository(Geography::class)
-                        ->findBy(['regionName'=>$data['region']]);
+                        ->findBy(['region'=>$data['region']]);
         $postIds = array();
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();
@@ -464,9 +463,7 @@ class PostManager
         if(count($postIds)>0){
                 $results[] = $postIds; 
             }
-            
-           // var_dump($results); die;    
-        
+              
         $resultCount = 0;
         $resultHolder = [];
         foreach ($results as $result){
@@ -475,12 +472,22 @@ class PostManager
                 $resultHolder[] = $result;
             }
         }
-       // echo $inputCount; die;
+
+        //An array intersect will return nothing so return the result instead.
         if (($resultCount == 1)&&($inputCount == 1)){
+         
             $result = $resultHolder[0];
         } 
         
+        //All the criteria have not been met.
+        if (($resultCount == 1)&&($inputCount > 1)){
+            
+            $result = null;
+        } 
+        
+        //Perform an array intersect to find the posts that match all search items.  
         if ($resultCount > 1){
+              
             $result = call_user_func_array('array_intersect', $results);
         }
 
