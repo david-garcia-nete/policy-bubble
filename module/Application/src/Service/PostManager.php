@@ -410,17 +410,19 @@ class PostManager
         $results = array();
         $inputCount = 0;
         foreach ($tags as $tag) {
-            $inputCount++;
-            $tag = trim($tag);
-            $query = $this->entityManager->getRepository(Post::class)
-                        ->findPostsByTag($tag);
-            $posts = $query->getResult();
-            $postIds = array();
-            foreach($posts as $post){
-                $postIds[] = $post->getId();
-            }
-            if(count($postIds)>0){
-                $results[] = $postIds; 
+            if (strlen($tag)>0){
+                $inputCount++;
+                $tag = trim($tag);
+                $query = $this->entityManager->getRepository(Post::class)
+                            ->findPostsByTag($tag);
+                $posts = $query->getResult();
+                $postIds = array();
+                foreach($posts as $post){
+                    $postIds[] = $post->getId();
+                }
+                if(count($postIds)>0){
+                    $results[] = $postIds; 
+                }
             }
         }
 

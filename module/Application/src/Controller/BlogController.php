@@ -8,6 +8,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator as ORMPaginator;
 use Zend\Paginator\Paginator;
 use Application\Entity\Post;
 use Application\Form\SearchForm;
+use User\Entity\User;
 
 /**
  * This is the main controller class of the Blog application. The 
@@ -53,6 +54,7 @@ class BlogController extends AbstractActionController
     {
         $page = $this->params()->fromQuery('page', 1);
         $tagFilter = $this->params()->fromQuery('tag', null);
+        $userFilter = $this->params()->fromQuery('user', null);
         
         // Create the form.
         $form = new SearchForm();
@@ -81,6 +83,12 @@ class BlogController extends AbstractActionController
                 $query = $this->entityManager->getRepository(Post::class)
                         ->findPostsByTag($tagFilter);
 
+            } elseif($userFilter){
+                $user = $this->entityManager->getRepository(User::class)
+                    ->find($userFilter);
+                // Filter posts by user
+                $query = $this->entityManager->getRepository(Post::class)
+                        ->findPublishedPostsByUser($user);
             } else {
                 // Get recent posts
                 $query = $this->entityManager->getRepository(Post::class)
@@ -111,6 +119,8 @@ class BlogController extends AbstractActionController
             'tagCloud' => $tagCloud,
             'myTagCloud' => $myTagCloud,
             'imageManager' => $this->imageManager,
+            'tagFilter' => $tagFilter,
+            'userFilter' => $userFilter
         ]);
     }
 }

@@ -121,7 +121,7 @@ class PostRepository extends EntityRepository
     }   
     
     /**
-     * Finds all published posts having the given user.
+     * Finds all posts having the given user.
      * @param \Application\Entity\User $user
      * @return array
      */
@@ -144,6 +144,28 @@ class PostRepository extends EntityRepository
         $posts = $queryBuilder->getQuery()->getResult();
         
         return $posts;
+    } 
+    
+    /**
+     * Finds all published posts having the given user.
+     * @param \Application\Entity\User $user
+     * @return array
+     */
+    public function findPublishedPostsByUser($user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+        
+        $queryBuilder->select('p')
+            ->from(Post::class, 'p')
+            ->where('p.user = ?1')
+            ->andWhere('p.status = ?2')
+            ->orderBy('p.dateCreated', 'DESC')
+            ->setParameter('1', $user)
+            ->setParameter('2', Post::STATUS_PUBLISHED);
+
+        return $queryBuilder->getQuery();
     } 
     
     /**

@@ -72,7 +72,9 @@ if(
         $form->get('tags')->getValue() == '' &&
         $form->get('country')->getValue() == '' &&
         $form->get('region')->getValue() == '' &&
-        $form->get('city')->getValue() == ''
+        $form->get('city')->getValue() == '' &&
+        $tagFilter == '' &&
+        $userFilter == '' 
   ): 
      
 ?>
@@ -102,7 +104,18 @@ if(
         Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
         | Region: <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
         | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
-    </p>    
+    </p>  
+    
+    <p>
+    Author: <a href="<?= $this->url('blog', ['action'=>'index'],
+                    ['query'=>['user'=>$this->escapeHtml($post->getUser()->getId())]]); ?>">                   
+        
+                    <span >
+                        <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 
+                    </span>
+                
+                </a>     
+</p> 
         
     <p class="responses-header">
         <?= $this->escapeHtml($postManager->getResponseCountStr($post)); ?> | 
