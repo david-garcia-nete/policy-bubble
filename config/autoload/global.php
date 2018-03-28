@@ -18,7 +18,7 @@ use Zend\Session\Validator\HttpUserAgent;
 return [
     // Session configuration.
     'session_config' => [
-        'cookie_lifetime'     => 60*60*1, // Session cookie will expire in 1 hour.
+        'cookie_lifetime'     => 60*60*24*30, // Session cookie will expire in 1 hour.
         'gc_maxlifetime'      => 60*60*24*30, // How long to store session data on server (for 1 month).        
     ],
     // Session manager configuration.
