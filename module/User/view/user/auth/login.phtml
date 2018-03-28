@@ -37,11 +37,12 @@ $form->get('password')->setAttributes([
             <?= $this->formElement($form->get('email')); ?>
             <?= $this->formLabel($form->get('password')); ?>
             <?= $this->formElement($form->get('password')); ?>
-            <div class="checkbox">
+<!--            <div class="checkbox">
                 <label>
                     <?= $this->formElement($form->get('remember_me')); ?> Remember me
                 </label>
-            </div>
+            </div>-->
+            <br>
             <?= $this->formElement($form->get('redirect_url')); ?>
             <?= $this->formElement($form->get('csrf')) ?>
             <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
