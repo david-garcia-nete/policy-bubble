@@ -195,7 +195,7 @@ class PostRepository extends EntityRepository
         return $posts;
     } 
     
-        /**
+    /**
      * Finds all published posts having the given user.
      * @param \Application\Entity\User $user
      * @return array
@@ -253,6 +253,11 @@ class PostRepository extends EntityRepository
         return $query;
     } 
     
+    /**
+     * Finds all distinct published tags.
+     * @return array
+     */
+    
      public function findPublishedTags()
     {
         $entityManager = $this->getEntityManager();
@@ -266,6 +271,50 @@ class PostRepository extends EntityRepository
             ->setParameter('1', Post::STATUS_PUBLISHED);
         
         return $queryBuilder->getQuery()->getResult();
+    }
+    
+    /**
+     * Finds all distinct published child posts.
+     * @return string
+     */
+    
+     public function findPublishedChildPostsCount()
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+               
+        $queryBuilder->select('count(cp)')
+            ->from(Post::class, 'p')
+            ->join('p.childPosts', 'cp')    
+            ->where('cp.status = ?1')
+            ->setParameter('1', Post::STATUS_PUBLISHED);
+        
+        $count = $queryBuilder->getQuery()->getResult();
+        
+        return $count[0][1];
+    }
+    
+    /**
+     * Finds all distinct published geography records based on input field.
+     * @param string
+     * @return array
+     */
+    
+    public function findDistinctPublishedGeography($field)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $queryBuilder = $entityManager->createQueryBuilder();
+               
+        $queryBuilder->select("g.$field")->distinct()
+            ->from(Post::class, 'p')
+            ->join('p.geography', 'g')    
+            ->where('p.status = ?1')
+            ->setParameter('1', Post::STATUS_PUBLISHED);
+        
+        return $queryBuilder->getQuery()->getResult();
+  
     }
     
 }

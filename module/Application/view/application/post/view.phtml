@@ -1,5 +1,6 @@
 <?php
-$this->headTitle('View Post - ' . $post->getTitle());
+$this->headTitle($post->getTitle());
+$this->headMeta()->appendName('description', $postManager->convertTagsToString($post));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
@@ -30,7 +31,7 @@ $this->pageBreadcrumbs()->setItems([
 
  <p>
     Author: <a href="<?= $this->url('blog', ['action'=>'index'],
-                    ['query'=>['user'=>$this->escapeHtml($post->getUser()->getId())]]); ?>">                   
+                    ['query'=>['user'=>$post->getUser()->getId()]]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 

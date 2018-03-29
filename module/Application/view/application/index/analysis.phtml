@@ -32,12 +32,48 @@ $this->pageBreadcrumbs()->setItems(array(
 ?> 
 </h4>
 
+<h3>Number of Responses</h3>
+
+<h4>
+<?php
+    echo $this->entityManager->getRepository(Post::class)
+                    ->findPublishedChildPostsCount();
+?> 
+</h4>
+
 <h3>Number of Tags</h3>
 
 <h4>
 <?php
     echo count( $this->entityManager->getRepository(Post::class)
                     ->findPublishedTags());
+?> 
+</h4>
+
+<h3>Number of Countries</h3>
+
+<h4>
+<?php
+    echo count($this->entityManager->getRepository(Post::class)
+                    ->findDistinctPublishedGeography('countryName'));
+?> 
+</h4>
+
+<h3>Number of Regions</h3>
+
+<h4>
+<?php
+    echo count($this->entityManager->getRepository(Post::class)
+                    ->findDistinctPublishedGeography('region'));
+?> 
+</h4>
+
+<h3>Number of Cities</h3>
+
+<h4>
+<?php
+    echo count($this->entityManager->getRepository(Post::class)
+                    ->findDistinctPublishedGeography('city'));
 ?> 
 </h4>
 
