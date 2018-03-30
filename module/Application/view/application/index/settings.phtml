@@ -20,13 +20,9 @@ $this->pageBreadcrumbs()->setItems([
                 <td></td>
             </tr>
             <tr>
-                <th>E-mail:</th>
-                <td><?= $this->escapeHtml($user->getEmail()) ?></td>
-                 <td>
-                    <a class="btn btn-info" >
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
-                    </a>
-                </td>
+                <th>Date Created:</th>
+                <td><?= $this->escapeHtml($user->getDateCreated()) ?></td>
+                <td></td>
             </tr>
             <tr>
                 <th>Full Name:</th>
@@ -38,9 +34,13 @@ $this->pageBreadcrumbs()->setItems([
                 </td>
             </tr>
             <tr>
-                <th>Date Created:</th>
-                <td><?= $this->escapeHtml($user->getDateCreated()) ?></td>
-                <td></td>
+                <th>E-mail:</th>
+                <td><?= $this->escapeHtml($user->getEmail()) ?></td>
+                 <td>
+                    <a class="btn btn-info" >
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                    </a>
+                </td>
             </tr>
             <tr>
                 <th>Account Status:</th>
