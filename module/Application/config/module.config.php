@@ -113,16 +113,16 @@ return [
                     ],
                 ],
             ],
-            'membership' => [
-                'type'    => Literal::class,
-                'options' => [
-                    'route'    => '/membership',
-                    'defaults' => [
-                        'controller'    => Controller\IndexController::class,
-                        'action'        => 'membership',
-                    ],
-                ],
-            ],
+//            'membership' => [
+//                'type'    => Literal::class,
+//                'options' => [
+//                    'route'    => '/membership',
+//                    'defaults' => [
+//                        'controller'    => Controller\IndexController::class,
+//                        'action'        => 'membership',
+//                    ],
+//                ],
+//            ],
             'about' => [
                 'type'    => Literal::class,
                 'options' => [

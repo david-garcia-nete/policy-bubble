@@ -74,10 +74,10 @@ class PostController extends AbstractActionController
     {   
         $user = $this->currentUser();
         // Check the post limit and redirect accordingly.
-        if($this->postManager->postLimitReached($user)){
-            // Redirect the user to the "membership" page.
-            return $this->redirect()->toRoute('membership');
-        }
+//        if($this->postManager->postLimitReached($user)){
+//            // Redirect the user to the "membership" page.
+//            return $this->redirect()->toRoute('membership');
+//        }
         
         $stepParam = $this->params()->fromRoute('step', 1);
         // Determine the current step.

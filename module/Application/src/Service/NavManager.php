@@ -50,11 +50,11 @@ class NavManager
             'link'  => $url('about')
         ];
         
-        $homeDropdownItems[] = [
-            'id' => 'membership',
-            'label' => 'Membership',
-            'link'  => $url('membership')
-        ];
+//        $homeDropdownItems[] = [
+//            'id' => 'membership',
+//            'label' => 'Membership',
+//            'link'  => $url('membership')
+//        ];
         
         $homeDropdownItems[] = [
             'id' => 'contactUs',

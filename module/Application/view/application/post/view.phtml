@@ -1,6 +1,5 @@
 <?php
 $this->headTitle($post->getTitle());
-$this->headMeta()->appendName('description', $postManager->convertTagsToString($post));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
