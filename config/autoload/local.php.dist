@@ -40,9 +40,9 @@ return [
         's3videoBucket' => '<s3videoBucket>',
         's3audioBucket' => '<s3audioBucket>',
     ],
-    'payPal' => [
-        'clientId' => '<clientId>',
-        'clientSecret' => '<clientSecret>',
-    ],
-    'domainName' => '<domainName>'
+//    'payPal' => [
+//        'clientId' => '<clientId>',
+//        'clientSecret' => '<clientSecret>',
+//    ],
+//    'domainName' => '<domainName>'
 ];
