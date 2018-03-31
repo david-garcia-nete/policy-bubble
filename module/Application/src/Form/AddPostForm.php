@@ -282,7 +282,7 @@ class AddPostForm extends Form
                         [
                             'name'    => 'FileMimeType',                        
                             'options' => [                            
-                                'mimeType'  => ['video/mp4', 'video/ogg']
+                                'mimeType'  => ['video/mp4', 'video/ogg', 'video/quicktime']
                             ]
                         ],
                         [
