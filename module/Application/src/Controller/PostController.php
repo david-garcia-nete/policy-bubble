@@ -387,8 +387,8 @@ class PostController extends AbstractActionController
                 
                 // Get the list of already saved files.
                 $files = $this->audioManager->getTempFiles($postId, 
-                        $this->sessionContainer->userChoices['step3Dirty']);
-                $this->sessionContainer->userChoices['step3Dirty'] = true;  
+                        $this->sessionContainer->userChoices['step4Dirty']);
+                $this->sessionContainer->userChoices['step4Dirty'] = true;  
             }      
         
         if (!$this->access('post.own.edit', ['post'=>$post])) {
