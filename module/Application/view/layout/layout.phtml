@@ -55,7 +55,9 @@
             <?= $this->content ?>
             <hr>
             <footer>
-                <p>&copy; <?= date('Y') ?> by David's Web Sites. All rights reserved.</p>
+                <span>&copy; <?= date('Y') ?> by David's Web Sites. All rights reserved.</span> |
+                <a href="<?= $this->url('privacypolicy') ?>" target="_blank">Privacy Policy </a> |
+                <a href="<?= $this->url('disclosurepolicy') ?>" target="_blank">Disclosure Policy </a>
             </footer>
         </div>
         <?= $this->inlineScript() ?>

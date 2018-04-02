@@ -133,6 +133,26 @@ return [
                     ],
                 ],
             ], 
+            'privacypolicy' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/privacypolicy',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'privacyPolicy',
+                    ],
+                ],
+            ], 
+            'disclosurepolicy' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/disclosurepolicy',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'disclosurePolicy',
+                    ],
+                ],
+            ], 
             'analysis' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -175,7 +195,8 @@ return [
             Controller\IndexController::class => [
                 // Allow anyone to visit "index" action
                 ['actions' => ['index', 'contactUs', 'thankYou', 
-                    'sendError', 'membership', 'about', 'analysis', 'popularTags'], 'allow' => '*'],
+                    'sendError', 'membership', 'about', 'analysis', 
+                    'popularTags', 'privacyPolicy', 'disclosurePolicy'], 'allow' => '*'],
                 // Allow authorized users to visit "settings" action
                 ['actions' => ['settings'], 'allow' => '@']
             ],

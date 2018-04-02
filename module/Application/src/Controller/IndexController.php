@@ -82,6 +82,16 @@ class IndexController extends AbstractActionController
         return new ViewModel();
     }
     
+    public function privacyPolicyAction()
+    {
+        return new ViewModel();
+    }
+    
+    public function disclosurePolicyAction()
+    {
+        return new ViewModel();
+    }
+    
     public function analysisAction()
     {
        return new ViewModel([
