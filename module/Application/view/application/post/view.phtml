@@ -29,8 +29,7 @@ $this->pageBreadcrumbs()->setItems([
 </p> 
 
  <p>
-    Author: <a href="<?= $this->url('blog', ['action'=>'index'],
-                    ['query'=>['user'=>$post->getUser()->getId()]]); ?>">                   
+    Author: <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 

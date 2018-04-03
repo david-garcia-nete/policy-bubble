@@ -54,7 +54,7 @@ class BlogController extends AbstractActionController
     {
         $page = $this->params()->fromQuery('page', 1);
         $tagFilter = $this->params()->fromQuery('tag', null);
-        $userFilter = $this->params()->fromQuery('user', null);
+        $userFilter = $this->params()->fromRoute('user', null);
         
         // Create the form.
         $form = new SearchForm();

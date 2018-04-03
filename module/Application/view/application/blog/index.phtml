@@ -107,8 +107,7 @@ if(
     </p>  
     
     <p>
-    Author: <a href="<?= $this->url('blog', ['action'=>'index'],
-                    ['query'=>['user'=>$this->escapeHtml($post->getUser()->getId())]]); ?>">                   
+    Author: <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 

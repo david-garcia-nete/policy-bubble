@@ -42,7 +42,10 @@ return [
             'blog' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/blog[/:action]',
+                    'route'    => '/blog[/:user]',
+                    'constraints' => [
+                        'user' => '[0-9]+'
+                    ],
                     'defaults' => [
                         'controller'    => Controller\BlogController::class,
                         'action'        => 'index',
