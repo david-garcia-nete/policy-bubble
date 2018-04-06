@@ -1,5 +1,6 @@
 <?php
 namespace Application\Service;
+use User\Entity\User;
 /**
  * This service is responsible for determining which items should be in the main menu.
  * The items may be different depending on whether the user is authenticated or not.
@@ -25,13 +26,20 @@ class NavManager
     private $rbacManager;
     
     /**
+     * Entity manager.
+     * @var Doctrine\ORM\EntityManager
+     */
+    private $entityManager;
+    
+    /**
      * Constructs the service.
      */
-    public function __construct($authService, $urlHelper, $rbacManager) 
+    public function __construct($authService, $urlHelper, $rbacManager, $entityManager) 
     {
         $this->authService = $authService;
         $this->urlHelper = $urlHelper;
         $this->rbacManager = $rbacManager;
+        $this->entityManager = $entityManager;
     }
     
     /**
@@ -139,16 +147,19 @@ class NavManager
                     'dropdown' => $adminDropdownItems
                 ];
             }
+            
+            $user = $this->entityManager->getRepository(User::class)
+                    ->findOneBy(['email' => $this->authService->getIdentity()]);
                 
             $items[] = [
                 'id' => 'logout',
-                'label' => $this->authService->getIdentity(),
+                'label' => $user->getFullName(),
                 'float' => 'right',
                 'dropdown' => [
                     [
                         'id' => 'settings',
                         'label' => 'Settings',
-                        'link' => $url('application', ['action'=>'settings'])
+                        'link' => $url('settings')
                     ],
                     [
                         'id' => 'logout',

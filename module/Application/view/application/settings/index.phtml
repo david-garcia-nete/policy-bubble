@@ -5,7 +5,7 @@ $this->mainMenu()->setActiveItemId('settings');
 
 $this->pageBreadcrumbs()->setItems([
             'Home'=>$this->url('home'),
-            'Settings'=>$this->url('application', ['action'=>'settings']),
+            'Settings'=>$this->url('settings'),
             ]);
 ?>
 
@@ -21,7 +21,7 @@ $this->pageBreadcrumbs()->setItems([
             </tr>
             <tr>
                 <th>Date Created:</th>
-                <td><?= $this->escapeHtml($user->getDateCreated()) ?></td>
+                <td><?= $this->escapeHtml($user->getDateCreated()) ?>&nbsp;UTC</td>
                 <td></td>
             </tr>
             <tr>
@@ -43,8 +43,18 @@ $this->pageBreadcrumbs()->setItems([
                 </td>
             </tr>
             <tr>
+                <th>Password:</th>
+                <td></td>
+                <td>
+                    <a class="btn btn-info" href="<?php echo 
+                    $this->url('reset-password', ['action'=>'resetPassword']); ?>">
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                    </a>
+                </td>
+            </tr>            
+            <tr>
                 <th>Account Status:</th>
-                <td>Active</td>
+                <td></td>
                 <td>
                     <a class="btn btn-info" >
                         <span class="glyphicon glyphicon-pencil" ></span> Edit

@@ -25,16 +25,15 @@ return [
                     ],
                 ],
             ],
-            'application' => [
+            'settings' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/application[/:action[/:id]]',
+                    'route'    => '/settings[/:action]',
                     'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id' => '[0-9]+'
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],
                     'defaults' => [
-                        'controller'    => Controller\IndexController::class,
+                        'controller'    => Controller\SettingsController::class,
                         'action'        => 'index',
                     ],
                 ],
@@ -174,6 +173,7 @@ return [
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => Controller\Factory\IndexControllerFactory::class,
+            Controller\SettingsController::class => Controller\Factory\SettingsControllerFactory::class,
             Controller\BlogController::class => Controller\Factory\BlogControllerFactory::class,
             Controller\PostController::class => Controller\Factory\PostControllerFactory::class,
             Controller\ImageController::class => Controller\Factory\ImageControllerFactory::class,
@@ -199,9 +199,11 @@ return [
                 // Allow anyone to visit "index" action
                 ['actions' => ['index', 'contactUs', 'thankYou', 
                     'sendError', 'membership', 'about', 'analysis', 
-                    'popularTags', 'privacyPolicy', 'disclosurePolicy'], 'allow' => '*'],
-                // Allow authorized users to visit "settings" action
-                ['actions' => ['settings'], 'allow' => '@']
+                    'popularTags', 'privacyPolicy', 'disclosurePolicy'], 'allow' => '*']
+            ],
+            Controller\SettingsController::class => [   
+                // Allow authorized users to visit "index" action
+                ['actions' => ['index'], 'allow' => '@']
             ],
             Controller\BlogController::class => [
                 // Allow anyone to visit "index" action
