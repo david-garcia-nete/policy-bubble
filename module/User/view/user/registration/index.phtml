@@ -23,11 +23,6 @@ $form->get('password')->setAttributes([
     'placeholder'=>'Type password here (6 characters at minimum)'
     ]);
 
-$form->get('confirm_password')->setAttributes([
-    'class'=>'form-control', 
-    'placeholder'=>'Repeat password'
-    ]);
-
 $form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
 
 $form->prepare();
@@ -55,12 +50,6 @@ $form->prepare();
             <?= $this->formLabel($form->get('password')); ?>
             <?= $this->formElement($form->get('password')); ?>
             <?= $this->formElementErrors($form->get('password')); ?>                              
-        </div>
-        
-        <div class="form-group">
-            <?= $this->formLabel($form->get('confirm_password')); ?>
-            <?= $this->formElement($form->get('confirm_password')); ?>
-            <?= $this->formElementErrors($form->get('confirm_password')); ?>                              
         </div>
         
         <div class="form-group">

@@ -10,6 +10,7 @@ namespace Application\Controller;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\User;
+use Application\Form\FullNameForm;
 use Application\Entity\Post;
 
 
@@ -60,6 +61,52 @@ class SettingsController extends AbstractActionController
         
         return new ViewModel([
             'user' => $user
+        ]);
+    }
+    
+    /**
+    * This action displays the user Full Name update page.
+    */
+    public function fullNameAction() 
+    {   
+        // Create Full Name form
+        $form = new FullNameForm();
+        
+        $user = $this->currentUser();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                $fullName = $data['full_name'];
+                $user->setFullName($fullName);
+                // Apply changes to database.
+                $this->entityManager->flush();
+
+                // Redirect to "Settings" page
+                return $this->redirect()->toRoute('settings');
+            }               
+        } else {
+
+            $data = [
+                'full_name' => $user->getFullName()
+            ];
+            
+            $form->setData($data);
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
         ]);
     }
    

@@ -1,13 +1,13 @@
 <?php
-namespace User\Form;
+namespace Application\Form;
 
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 
 /**
- * This form is used to collect user registration data. 
+ * This form is used to change the user's full name. 
  */
-class RegistrationForm extends Form
+class FullNameForm extends Form
 {
     /**
      * Constructor.     
@@ -29,17 +29,6 @@ class RegistrationForm extends Form
      */
     protected function addElements() 
     { 
-        // Add "email" field
-        $this->add([           
-            'type'  => 'text',
-            'name' => 'email',
-            'attributes' => [
-                'id' => 'email'
-            ],
-            'options' => [
-                'label' => 'Your E-mail',
-            ],
-        ]);
 
         // Add "full_name" field
         $this->add([           
@@ -52,20 +41,7 @@ class RegistrationForm extends Form
                 'label' => 'Full Name',
             ],
         ]);
-
-        // Add "password" field
-        $this->add([           
-            'type'  => 'password',
-            'name' => 'password',
-            'attributes' => [
-                'id' => 'password'
-            ],
-            'options' => [
-                'label' => 'Choose Password',
-            ],
-        ]);
-
-            
+   
         // Add the CSRF field
         $this->add([
             'type'  => 'csrf',
@@ -98,23 +74,6 @@ class RegistrationForm extends Form
         $this->setInputFilter($inputFilter);
         
         $inputFilter->add([
-                'name'     => 'email',
-                'required' => true,
-                'filters'  => [
-                    ['name' => 'StringTrim'],                    
-                ],                
-                'validators' => [
-                    [
-                        'name' => 'EmailAddress',
-                        'options' => [
-                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
-                            'useMxCheck'    => false,                            
-                        ],
-                    ],
-                ],
-            ]);
-
-        $inputFilter->add([
             'name'     => 'full_name',
             'required' => true,
             'filters'  => [
@@ -133,21 +92,5 @@ class RegistrationForm extends Form
             ],
         ]);
 
-        // Add input for "password" field
-        $inputFilter->add([
-                'name'     => 'password',
-                'required' => true,
-                'filters'  => [                    
-                ],                
-                'validators' => [
-                    [
-                        'name'    => 'StringLength',
-                        'options' => [
-                            'min' => 6,
-                            'max' => 64
-                        ],
-                    ],
-                ],
-            ]);  
     }
 }
