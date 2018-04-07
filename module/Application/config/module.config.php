@@ -203,7 +203,7 @@ return [
             ],
             Controller\SettingsController::class => [   
                 // Allow authorized users to visit "index" action
-                ['actions' => ['index', 'fullName'], 'allow' => '@']
+                ['actions' => ['index', 'fullName', 'email'], 'allow' => '@']
             ],
             Controller\BlogController::class => [
                 // Allow anyone to visit "index" action

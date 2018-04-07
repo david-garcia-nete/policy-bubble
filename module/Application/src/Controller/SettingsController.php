@@ -11,7 +11,8 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use User\Entity\User;
 use Application\Form\FullNameForm;
-use Application\Entity\Post;
+use Application\Form\EmailForm;
+
 
 
 class SettingsController extends AbstractActionController
@@ -109,5 +110,52 @@ class SettingsController extends AbstractActionController
             'form' => $form
         ]);
     }
+    
+     /**
+    * This action displays the user Email update page.
+    */
+    public function emailAction() 
+    {   
+        // Create Email form
+        $form = new EmailForm();
+        
+        $user = $this->currentUser();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                $email = $data['email'];
+//                $user->setEmail($email);
+//                // Apply changes to database.
+//                $this->entityManager->flush();
+
+                // Redirect to "Settings" page
+                return $this->redirect()->toRoute('settings');
+            }               
+        } else {
+
+            $data = [
+                'email' => $user->getEmail()
+            ];
+            
+            $form->setData($data);
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
+    }
+   
    
 }

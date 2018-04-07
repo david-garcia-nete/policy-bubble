@@ -38,7 +38,8 @@ $this->pageBreadcrumbs()->setItems([
                 <th>E-mail:</th>
                 <td><?= $this->escapeHtml($user->getEmail()) ?></td>
                  <td>
-                    <a class="btn btn-info" >
+                    <a class="btn btn-info" href="<?php echo 
+                        $this->url('settings', ['action' => 'email']); ?>">
                         <span class="glyphicon glyphicon-pencil" ></span> Edit
                     </a>
                 </td>

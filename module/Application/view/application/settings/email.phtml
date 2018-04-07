@@ -1,0 +1,42 @@
+<?php
+$this->headTitle('Email');
+
+$this->mainMenu()->setActiveItemId('settings');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Settings' => $this->url('settings'),
+            'Email' => $this->url('settings', ['action' => 'email']),
+            ]);
+
+$form->get('email')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>'name@yourcompany.com'
+    ]);
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+
+$form->prepare();
+?>
+
+<h1>Settings</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('email')); ?>
+            <?= $this->formElement($form->get('email')); ?>
+            <?= $this->formElementErrors($form->get('email')); ?>                              
+        </div>
+        
+        <div class="form-group">
+        <?= $this->formElement($form->get('submit')); ?>
+        </div>
+        
+        <?= $this->formElement($form->get('csrf')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   
