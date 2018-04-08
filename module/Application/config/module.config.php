@@ -237,6 +237,7 @@ return [
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
             Service\MembershipManager::class => Service\Factory\MembershipManagerFactory::class,
+            Service\SettingsManager::class => Service\Factory\SettingsManagerFactory::class,
             Service\MailSender::class => InvokableFactory::class,
             Service\GeoPlugin::class => InvokableFactory::class,
             Service\ImageManager::class => InvokableFactory::class,

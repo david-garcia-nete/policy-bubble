@@ -24,6 +24,12 @@ class SettingsController extends AbstractActionController
     private $entityManager;
     
     /**
+     * Settings manager.
+     * @var Application\Service\SettingsManager 
+     */
+    private $settingsManager;
+    
+    /**
      * Mail sender.
      * @var Application\Service\MailSender
      */
@@ -33,9 +39,10 @@ class SettingsController extends AbstractActionController
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager, $mailSender) 
+    public function __construct($entityManager, $settingsManager, $mailSender) 
     {
        $this->entityManager = $entityManager;
+       $this->settingsManager = $settingsManager;
        $this->mailSender = $mailSender;
     }  
 
@@ -134,10 +141,18 @@ class SettingsController extends AbstractActionController
                 
                 // Get filtered and validated data
                 $data = $form->getData();
-                $email = $data['email'];
-//                $user->setEmail($email);
-//                // Apply changes to database.
-//                $this->entityManager->flush();
+                
+                $user = $this->entityManager->getRepository(User::class)
+                ->findOneByEmail($data['email']);
+                if($user == null) {
+                   $this->settingsManager->generateEmailResetToken($user);
+                    return $this->redirect()->toRoute('settings', 
+                                ['action'=>'message', 'id'=>'sent']);
+                }
+                
+                // This email is already registered.
+                return $this->redirect()->toRoute('settings', 
+                            ['action'=>'message', 'id'=>'exists']);   
 
                 // Redirect to "Settings" page
                 return $this->redirect()->toRoute('settings');
@@ -155,6 +170,51 @@ class SettingsController extends AbstractActionController
         return new ViewModel([
             'form' => $form
         ]);
+    }
+    
+    /**
+     * The "registration status" action shows a page letting the user know the registration
+     * status.
+     */
+    public function messageAction()
+    {
+        // Get message ID from route.
+        $id = (string)$this->params()->fromRoute('id');
+        
+        // Validate input argument.
+        if($id!='sent' && $id!='confirmed' && $id!='failed' && $id!='exists') {
+            throw new \Exception('Invalid message ID specified');
+        }
+        
+        return new ViewModel([
+            'id' => $id
+        ]);
+    }
+    
+    /**
+     * This action confirmed the user's registration through their email. 
+     */
+    public function confirmEmailAction()
+    {
+        $token = $this->params()->fromQuery('token', null);
+        
+        // Validate token length
+        if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
+            throw new \Exception('Invalid token type or length');
+        }
+        
+        if($token===null || 
+           !$this->registrationManager->validateRegistrationConfirmationToken($token)) {
+            return $this->redirect()->toRoute('registration', 
+                    ['action'=>'message', 'id'=>'failed']);
+        }
+                       
+        //Set the user to active
+        $this->registrationManager->confirmRegistration($token);
+        
+        return $this->redirect()->toRoute('registration', 
+                    ['action'=>'message', 'id'=>'confirmed']);
+        
     }
    
    

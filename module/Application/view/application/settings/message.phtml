@@ -1,0 +1,45 @@
+<?php
+$this->headTitle('Thank You');
+
+$this->mainMenu()->setActiveItemId('home');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'User Registration' => $this->url('registration')
+            ]);
+?>
+
+<div class="row">
+<div class="col-md-5">
+<h1>User Registration</h1>
+
+<?php if ($id=='sent'): ?>
+<p>
+    A registration confirmation link has been sent to your email address.
+</p>
+
+<?php elseif ($id=='confirmed'): ?>
+<p>
+    Your registration has been confirmed successfully.
+</p>
+<p>
+    Return to <a href="<?= $this->url('login'); ?>">login page</a>.
+</p>
+
+<?php elseif ($id=='exists'): ?>
+<p>
+    A user with that email already exists.
+</p>
+<p>
+    Please return <a href="<?= $this->url('registration', ['action'=>'index']); ?>">here</a> 
+    and try to register again with a different email.
+</p>
+
+<?php elseif ($id=='failed'): ?>
+
+    Invalid reset key or it may have expired. Please return 
+    <a href="<?= $this->url('registration', ['action'=>'index']); ?>">here</a> and try to register again.
+</p>
+<?php endif; ?>
+</div>
+</div>   
