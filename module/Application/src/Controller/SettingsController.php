@@ -145,7 +145,7 @@ class SettingsController extends AbstractActionController
                 $user = $this->entityManager->getRepository(User::class)
                 ->findOneByEmail($data['email']);
                 if($user == null) {
-                   $this->settingsManager->generateEmailResetToken($user);
+                   $this->settingsManager->generateEmailResetToken($user, $data['email']);
                     return $this->redirect()->toRoute('settings', 
                                 ['action'=>'message', 'id'=>'sent']);
                 }
@@ -173,7 +173,7 @@ class SettingsController extends AbstractActionController
     }
     
     /**
-     * The "registration status" action shows a page letting the user know the registration
+     * The "email reset status" action shows a page letting the user know the email reset
      * status.
      */
     public function messageAction()
@@ -192,11 +192,13 @@ class SettingsController extends AbstractActionController
     }
     
     /**
-     * This action confirmed the user's registration through their email. 
+     * This action confirms the user's email.. 
      */
     public function confirmEmailAction()
     {
         $token = $this->params()->fromQuery('token', null);
+        
+        $newEmail = $this->params()->fromQuery('newemail', null);
         
         // Validate token length
         if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
@@ -204,18 +206,17 @@ class SettingsController extends AbstractActionController
         }
         
         if($token===null || 
-           !$this->registrationManager->validateRegistrationConfirmationToken($token)) {
-            return $this->redirect()->toRoute('registration', 
+           !$this->settingsManager->validateEmailResetToken($token)) {
+            return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'failed']);
         }
                        
         //Set the user to active
-        $this->registrationManager->confirmRegistration($token);
+        $this->settingsManager->confirmEmail($token);
         
-        return $this->redirect()->toRoute('registration', 
+        return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'confirmed']);
         
     }
-   
    
 }

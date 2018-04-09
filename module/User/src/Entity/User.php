@@ -101,6 +101,16 @@ class User
     protected $membership;
     
     /**
+     * @ORM\Column(name="email_reset_token")  
+     */
+    protected $emailResetToken;
+    
+    /**
+     * @ORM\Column(name="email_reset_token_creation_date")  
+     */
+    protected $emailResetTokenCreationDate;
+    
+    /**
      * Constructor.
      */
     public function __construct() 
@@ -431,7 +441,43 @@ class User
     public function setMembership($membership) 
     {
         $this->membership = $membership;
-    }   
+    } 
+    
+    /**
+     * Returns email reset token.
+     * @return string
+     */
+    public function getResetEmailToken()
+    {
+        return $this->emailResetToken;
+    }
+    
+    /**
+     * Sets email reset token.
+     * @param string $token
+     */
+    public function setEmailResetToken($token) 
+    {
+        $this->emailResetToken = $token;
+    }
+    
+    /**
+     * Returns email reset token's creation date.
+     * @return string
+     */
+    public function getEmailResetTokenCreationDate()
+    {
+        return $this->emailResetTokenCreationDate;
+    }
+    
+    /**
+     * Sets email reset token's creation date.
+     * @param string $date
+     */
+    public function setEmailResetTokenCreationDate($date) 
+    {
+        $this->emailResetTokenCreationDate = $date;
+    }
     
 }
 

@@ -26,29 +26,30 @@ class SettingsManager
     }
     
      /**
-     * Generates a password reset token for the user. This token is then stored in database and 
-     * sent to the user's E-mail address. When the user clicks the link in E-mail message, he is 
-     * directed to the Set Password page.
+     * Generates an email reset token for the user. This token is then stored in database and 
+     * sent to the user's E-mail address. When the user clicks the link in E-mail message, they are 
+     * directed to the confirm email page.
      */
-    public function generatePasswordResetToken($user)
+    public function generateEmailResetToken($user, $newEmail)
     {
         // Generate a token.
         $token = Rand::getString(32, '0123456789abcdefghijklmnopqrstuvwxyz', true);
-        $user->setPasswordResetToken($token);
+        $user->setEmailResetToken($token);
         
         $currentDate = date('Y-m-d H:i:s');
-        $user->setPasswordResetTokenCreationDate($currentDate);  
+        $user->setEmailResetTokenCreationDate($currentDate);  
         
         $this->entityManager->flush();
         
-        $subject = 'Password Reset';
+        $subject = 'Reset Email';
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
-        $passwordResetUrl = 'http://' . $httpHost . '/users/set-password?token=' . $token;
+        $emailResetUrl = 'https://' . $httpHost 
+                . '/settings/confirm-email?token=' . $token . '?newemail=' . $newEmail;
         
         $body = "Please follow the link below to reset your password:\n";
-        $body .= "$passwordResetUrl\n";
-        $body .= "If you haven't asked to reset your password, please ignore this message.\n";
+        $body .= "$emailResetUrl\n";
+        $body .= "If you haven't asked to reset your email, please ignore this message.\n";
         
         $header = 'From: Policy Bubble';
         
@@ -57,18 +58,18 @@ class SettingsManager
     }
     
     /**
-     * Checks whether the given password reset token is a valid one.
+     * Checks whether the given email reset token is a valid one.
      */
-    public function validatePasswordResetToken($passwordResetToken)
+    public function validateEmailResetToken($emailResetToken)
     {
         $user = $this->entityManager->getRepository(User::class)
-                ->findOneByPasswordResetToken($passwordResetToken);
+                ->findOneByEmailResetToken($emailResetToken);
         
         if($user==null) {
             return false;
         }
         
-        $tokenCreationDate = $user->getPasswordResetTokenCreationDate();
+        $tokenCreationDate = $user->getEmailResetTokenCreationDate();
         $tokenCreationDate = strtotime($tokenCreationDate);
         
         $currentDate = strtotime('now');
@@ -78,6 +79,27 @@ class SettingsManager
         }
         
         return true;
+    }
+    
+    /**
+     * Confirms the user's email reset token.
+     */
+    public function confirmEmail($emailResetToken, $newEmail)
+    {
+        $user = $this->entityManager->getRepository(User::class)
+                ->findOneByEmailResetToken($emailResetToken);
+        
+        if($user==null) {
+            return false;
+        }
+        
+        $user->setEmail($newEmail);
+        
+        // Apply changes
+        $this->entityManager->flush();
+
+        return true;
+        
     }
     
 

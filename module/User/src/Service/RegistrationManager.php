@@ -111,7 +111,7 @@ class RegistrationManager
         $subject = 'Registration';
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
-        $registrationConfirmationUrl = 'http://' . $httpHost . '/registration/confirm-registration?token=' . $token;
+        $registrationConfirmationUrl = 'https://' . $httpHost . '/registration/confirm-registration?token=' . $token;
         
         $body = "Please follow the link below to confirm your registration:\n";
         $body .= "$registrationConfirmationUrl\n";
