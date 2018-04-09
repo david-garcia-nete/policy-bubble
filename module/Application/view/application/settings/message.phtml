@@ -37,8 +37,18 @@ $this->pageBreadcrumbs()->setItems([
 
 <?php elseif ($id=='failed'): ?>
 
+<p>
     Invalid reset key or it may have expired. Please return 
     <a href="<?= $this->url('settings', ['action'=>'index']); ?>">here</a> and try to update again.
+</p>
+
+<?php elseif ($id=='passwordUpdated'): ?>
+
+<p>
+    Your password has been updated successfully.
+</p>
+<p>
+    Return to <a href="<?= $this->url('settings'); ?>">settings page</a>.
 </p>
 <?php endif; ?>
 </div>

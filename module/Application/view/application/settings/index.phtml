@@ -48,7 +48,8 @@ $this->pageBreadcrumbs()->setItems([
                 <th>Password:</th>
                 <td></td>
                 <td>
-                    <a class="btn btn-info" >
+                    <a class="btn btn-info" href="<?php echo 
+                        $this->url('settings', ['action' => 'password']); ?>">
                         <span class="glyphicon glyphicon-pencil" ></span> Edit
                     </a>
                 </td>

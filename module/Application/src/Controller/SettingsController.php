@@ -12,6 +12,9 @@ use Zend\View\Model\ViewModel;
 use User\Entity\User;
 use Application\Form\FullNameForm;
 use Application\Form\EmailForm;
+use Application\Form\PasswordForm;
+use Zend\Crypt\Password\Bcrypt;
+
 
 
 
@@ -187,7 +190,7 @@ class SettingsController extends AbstractActionController
         $id = (string)$this->params()->fromRoute('id');
         
         // Validate input argument.
-        if($id!='sent' && $id!='confirmed' && $id!='failed' && $id!='exists') {
+        if($id!='sent' && $id!='confirmed' && $id!='failed' && $id!='exists' && $id!='passwordUpdated') {
             throw new \Exception('Invalid message ID specified');
         }
         
@@ -224,6 +227,47 @@ class SettingsController extends AbstractActionController
         return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'confirmed']);
         
+    }
+    
+    /**
+    * This action displays the user Password update page.
+    */
+    public function passwordAction() 
+    {   
+        // Create Full Name form
+        $form = new PasswordForm();
+        
+        $user = $this->currentUser();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                // Encrypt password and store the password in encrypted state.
+                $bcrypt = new Bcrypt();
+                $passwordHash = $bcrypt->create($data['password']);        
+                $user->setPassword($passwordHash);
+                // Apply changes to database.
+                $this->entityManager->flush();
+
+                return $this->redirect()->toRoute('settings', 
+                    ['action'=>'message', 'id'=>'passwordUpdated']);
+            }               
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
     }
    
 }

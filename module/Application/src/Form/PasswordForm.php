@@ -5,9 +5,9 @@ use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 
 /**
- * This form is used to change the user's full name. 
+ * This form is used to change the user's password. 
  */
-class FullNameForm extends Form
+class PasswordForm extends Form
 {
     /**
      * Constructor.     
@@ -15,7 +15,7 @@ class FullNameForm extends Form
     public function __construct()
     {        
         // Define form name
-        parent::__construct('full-name-form');
+        parent::__construct('password-form');
      
         // Set POST method for this form
         $this->setAttribute('method', 'post');
@@ -30,15 +30,15 @@ class FullNameForm extends Form
     protected function addElements() 
     { 
 
-        // Add "full_name" field
+        // Add "password" field
         $this->add([           
-            'type'  => 'text',
-            'name' => 'full_name',
+            'type'  => 'password',
+            'name' => 'password',
             'attributes' => [
-                'id' => 'full_name'
+                'id' => 'password'
             ],
             'options' => [
-                'label' => 'Full Name',
+                'label' => 'Choose Password',
             ],
         ]);
    
@@ -73,24 +73,22 @@ class FullNameForm extends Form
         $inputFilter = new InputFilter();        
         $this->setInputFilter($inputFilter);
         
+        // Add input for "password" field
         $inputFilter->add([
-            'name'     => 'full_name',
-            'required' => true,
-            'filters'  => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
-                ['name' => 'StripNewlines'],
-            ],                
-            'validators' => [
-                [
-                    'name'    => 'StringLength',
-                    'options' => [
-                        'min' => 1,
-                        'max' => 128
+                'name'     => 'password',
+                'required' => true,
+                'filters'  => [                    
+                ],                
+                'validators' => [
+                    [
+                        'name'    => 'StringLength',
+                        'options' => [
+                            'min' => 6,
+                            'max' => 64
+                        ],
                     ],
                 ],
-            ],
-        ]);
+            ]);  
 
     }
 }
