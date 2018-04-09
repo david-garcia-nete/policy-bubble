@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership'];
+            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership'];
+        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail'];
     }
 
     /**
@@ -516,6 +516,72 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setMembership', [$membership]);
 
         return parent::setMembership($membership);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getResetEmailToken()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getResetEmailToken', []);
+
+        return parent::getResetEmailToken();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmailResetToken($token)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailResetToken', [$token]);
+
+        return parent::setEmailResetToken($token);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEmailResetTokenCreationDate()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmailResetTokenCreationDate', []);
+
+        return parent::getEmailResetTokenCreationDate();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmailResetTokenCreationDate($date)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailResetTokenCreationDate', [$date]);
+
+        return parent::setEmailResetTokenCreationDate($date);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEmailResetEmail()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmailResetEmail', []);
+
+        return parent::getEmailResetEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmailResetEmail($emailResetEmail)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailResetEmail', [$emailResetEmail]);
+
+        return parent::setEmailResetEmail($emailResetEmail);
     }
 
 }
