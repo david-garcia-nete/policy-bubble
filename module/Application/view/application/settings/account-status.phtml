@@ -1,0 +1,36 @@
+<?php
+$this->headTitle('Account Status');
+
+$this->mainMenu()->setActiveItemId('settings');
+
+$this->pageBreadcrumbs()->setItems([
+            'Home'=>$this->url('home'),
+            'Settings' => $this->url('settings'),
+            'Account Status' => $this->url('settings', ['action' => 'accountStatus']),
+            ]);
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-danger'));
+
+$form->prepare();
+?>
+
+<a href="
+    <?= $this->url('settings'); ?>">
+    &larr; To settings menu
+</a>
+
+<h1>Settings</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        
+        <div class="form-group">
+        <?= $this->formElement($form->get('submit')); ?>
+        </div>
+        
+        <?= $this->formElement($form->get('csrf')); ?>
+        
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>   

@@ -6,6 +6,11 @@ use Application\Service\MailSender;
 use Application\Controller\SettingsController;
 use Application\Service\SettingsManager;
 use User\Service\AuthManager;
+use Application\Service\PostManager;
+use Application\Service\ImageManager;
+use Application\Service\VideoManager;
+use Application\Service\AudioManager;
+
 /**
  * This is the factory for SettingsController. Its purpose is to instantiate the
  * controller and inject dependencies into it.
@@ -17,9 +22,15 @@ class SettingsControllerFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $settingsManager = $container->get(SettingsManager::class);
         $authManager = $container->get(AuthManager::class);
+        $postManager = $container->get(PostManager::class);
+        $imageManager = $container->get(ImageManager::class);
+        $videoManager = $container->get(VideoManager::class);
+        $audioManager = $container->get(AudioManager::class);
         $mailSender = $container->get(MailSender::class);
         
         // Instantiate the controller and inject dependencies
-        return new SettingsController($entityManager, $settingsManager, $authManager, $mailSender);
+        return new SettingsController($entityManager, $settingsManager, 
+                $authManager, $postManager, $imageManager, 
+                $videoManager, $audioManager, $mailSender);
     }
 }

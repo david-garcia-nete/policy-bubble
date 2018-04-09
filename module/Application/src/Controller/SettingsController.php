@@ -14,6 +14,7 @@ use Application\Form\FullNameForm;
 use Application\Form\EmailForm;
 use Application\Form\PasswordForm;
 use Zend\Crypt\Password\Bcrypt;
+use Application\Form\AccountStatusForm;
 
 
 
@@ -39,6 +40,30 @@ class SettingsController extends AbstractActionController
     private $authManager;
     
     /**
+     * Post manager.
+     * @var Application\Service\PostManager 
+     */
+    private $postManager;
+    
+    /**
+     * Image manager.
+     * @var Application\Service\ImageManager;
+     */
+    private $imageManager;
+    
+    /**
+     * Video manager.
+     * @var Application\Service\VideoManager;
+     */
+    private $videoManager;
+    
+    /**
+     * Audio manager.
+     * @var Application\Service\AudioManager;
+     */
+    private $audioManager;
+    
+    /**
      * Mail sender.
      * @var Application\Service\MailSender
      */
@@ -48,11 +73,16 @@ class SettingsController extends AbstractActionController
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager, $settingsManager, $authManager, $mailSender) 
+    public function __construct($entityManager, $settingsManager, $authManager, 
+            $postManager, $imageManager, $videoManager, $audioManager, $mailSender) 
     {
        $this->entityManager = $entityManager;
        $this->settingsManager = $settingsManager;
        $this->authManager = $authManager;
+       $this->postManager = $postManager;
+       $this->imageManager = $imageManager;
+       $this->videoManager = $videoManager;
+       $this->audioManager = $audioManager;
        $this->mailSender = $mailSender;
     }  
 
@@ -261,6 +291,50 @@ class SettingsController extends AbstractActionController
 
                 return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'passwordUpdated']);
+            }               
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
+    }
+    
+    /**
+    * This action displays the user Account Status update page.
+    */
+    public function accountStatusAction() 
+    {   
+        // Create Full Name form
+        $form = new AccountStatusForm();
+        
+        $user = $this->currentUser();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                $posts = $user->getPosts();
+                foreach($posts as $post){
+                    $this->postManager->removePost($post);
+                    $this->imageManager->removePost($post->getId());
+                    $this->videoManager->removePost($post->getId());
+                    $this->audioManager->removePost($post->getId());  
+                }
+                
+                $user->setEmail('');
+                $user->setStatus(User::STATUS_RETIRED);
+                $this->entityManager->flush();
+                $this->authManager->logout();
+                
+                return $this->redirect()->toRoute('home');
             }               
         } 
         
