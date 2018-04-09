@@ -54,7 +54,7 @@ class SettingsManager
         $header = 'From: Policy Bubble';
         
         // Send email to user.
-        mail($user->getEmail(), $subject, $body, $header);
+        mail($newEmail, $subject, $body, $header);
     }
     
     /**

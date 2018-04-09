@@ -28,9 +28,10 @@ return [
             'settings' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/settings[/:action]',
+                    'route'    => '/settings[/:action[/:id]]',
                     'constraints' => [
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                         'id' => '[a-zA-Z0-9_-]*'
                     ],
                     'defaults' => [
                         'controller'    => Controller\SettingsController::class,
@@ -201,7 +202,8 @@ return [
                     'sendError', 'membership', 'about', 'analysis', 
                     'popularTags', 'privacyPolicy', 'disclosurePolicy'], 'allow' => '*']
             ],
-            Controller\SettingsController::class => [   
+            Controller\SettingsController::class => [
+                ['actions' => ['message', 'confirmEmail'], 'allow' => '*'],
                 // Allow authorized users to visit "index" action
                 ['actions' => ['index', 'fullName', 'email'], 'allow' => '@']
             ],

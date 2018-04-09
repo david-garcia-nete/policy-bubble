@@ -30,6 +30,12 @@ class SettingsController extends AbstractActionController
     private $settingsManager;
     
     /**
+     * Auth manager.
+     * @var User\Service\AuthManager
+     */
+    private $authManager;
+    
+    /**
      * Mail sender.
      * @var Application\Service\MailSender
      */
@@ -39,10 +45,11 @@ class SettingsController extends AbstractActionController
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
-    public function __construct($entityManager, $settingsManager, $mailSender) 
+    public function __construct($entityManager, $settingsManager, $authManager, $mailSender) 
     {
        $this->entityManager = $entityManager;
        $this->settingsManager = $settingsManager;
+       $this->authManager = $authManager;
        $this->mailSender = $mailSender;
     }  
 
@@ -126,7 +133,7 @@ class SettingsController extends AbstractActionController
         // Create Email form
         $form = new EmailForm();
         
-        $user = $this->currentUser();
+        $currentUser = $this->currentUser();
         
         // Check if user has submitted the form
         if($this->getRequest()->isPost()) {
@@ -145,7 +152,7 @@ class SettingsController extends AbstractActionController
                 $user = $this->entityManager->getRepository(User::class)
                 ->findOneByEmail($data['email']);
                 if($user == null) {
-                   $this->settingsManager->generateEmailResetToken($user, $data['email']);
+                   $this->settingsManager->generateEmailResetToken($currentUser, $data['email']);
                     return $this->redirect()->toRoute('settings', 
                                 ['action'=>'message', 'id'=>'sent']);
                 }
@@ -158,7 +165,7 @@ class SettingsController extends AbstractActionController
         } else {
 
             $data = [
-                'email' => $user->getEmail()
+                'email' => $currentUser->getEmail()
             ];
             
             $form->setData($data);
@@ -209,6 +216,10 @@ class SettingsController extends AbstractActionController
                        
         //Set the user email to the new email.
         $this->settingsManager->confirmEmail($token);
+        
+        if ($this->identity()!= null) {
+               $this->authManager->logout();
+            }
         
         return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'confirmed']);
