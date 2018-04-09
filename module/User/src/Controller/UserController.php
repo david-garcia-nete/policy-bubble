@@ -434,60 +434,6 @@ class UserController extends AbstractActionController
     }
     
     /**
-     * This action is called when the user clicks the confirm email link in their
-     * email after resetting their email in the settings page.
-     */
-    public function setEmailAction()
-    {
-        $token = $this->params()->fromQuery('token', null);
-        
-        // Validate token length
-        if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
-            throw new \Exception('Invalid token type or length');
-        }
-        
-        if($token===null || 
-           !$this->userManager->validateEmailResetToken($token)) {
-            return $this->redirect()->toRoute('users', 
-                    ['action'=>'message', 'id'=>'failed']);
-        }
-                
-        // Create form
-        $form = new PasswordChangeForm('reset');
-        
-        // Check if user has submitted the form
-        if ($this->getRequest()->isPost()) {
-            
-            // Fill in the form with POST data
-            $data = $this->params()->fromPost();            
-            
-            $form->setData($data);
-            
-            // Validate form
-            if($form->isValid()) {
-                
-                $data = $form->getData();
-                                               
-                // Set new password for the user.
-                if ($this->userManager->setNewPasswordByToken($token, $data['new_password'])) {
-                    
-                    // Redirect to "message" page
-                    return $this->redirect()->toRoute('users', 
-                            ['action'=>'message', 'id'=>'set']);                 
-                } else {
-                    // Redirect to "message" page
-                    return $this->redirect()->toRoute('users', 
-                            ['action'=>'message', 'id'=>'failed']);                 
-                }
-            }               
-        } 
-        
-        return new ViewModel([                    
-            'form' => $form
-        ]);
-    }
-    
-    /**
      * This action confirmed the user's registration through their email. 
      */
     public function confirmRegistrationAction()

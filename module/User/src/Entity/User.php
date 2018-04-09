@@ -110,6 +110,11 @@ class User
      */
     protected $emailResetTokenCreationDate;
     
+    /** 
+    * @ORM\Column(name="email_reset_email")  
+    */
+    protected $emailResetEmail;
+    
     /**
      * Constructor.
      */
@@ -477,6 +482,24 @@ class User
     public function setEmailResetTokenCreationDate($date) 
     {
         $this->emailResetTokenCreationDate = $date;
+    }
+    
+    /**
+    * Returns email reset email.     
+    * @return string
+    */
+    public function getEmailResetEmail() 
+    {
+        return $this->emailResetEmail;
+    }
+
+    /**
+     * Sets email reset email.     
+     * @param string $emailResetEmail
+     */
+    public function setEmailResetEmail($emailResetEmail) 
+    {
+        $this->emailResetEmail = $emailResetEmail;
     }
     
 }

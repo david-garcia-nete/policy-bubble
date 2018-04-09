@@ -2,8 +2,6 @@
 namespace Application\Service;
 
 use User\Entity\User;
-use User\Entity\Role;
-use Zend\Crypt\Password\Bcrypt;
 use Zend\Math\Rand;
 
 /**
@@ -39,13 +37,15 @@ class SettingsManager
         $currentDate = date('Y-m-d H:i:s');
         $user->setEmailResetTokenCreationDate($currentDate);  
         
+        $user->setEmailResetEmail($newEmail);
+        
         $this->entityManager->flush();
         
         $subject = 'Reset Email';
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
         $emailResetUrl = 'https://' . $httpHost 
-                . '/settings/confirm-email?token=' . $token . '?newemail=' . $newEmail;
+                . '/settings/confirm-email?token=' . $token;
         
         $body = "Please follow the link below to reset your password:\n";
         $body .= "$emailResetUrl\n";
@@ -84,7 +84,7 @@ class SettingsManager
     /**
      * Confirms the user's email reset token.
      */
-    public function confirmEmail($emailResetToken, $newEmail)
+    public function confirmEmail($emailResetToken)
     {
         $user = $this->entityManager->getRepository(User::class)
                 ->findOneByEmailResetToken($emailResetToken);
@@ -92,6 +92,8 @@ class SettingsManager
         if($user==null) {
             return false;
         }
+        
+        $newEmail = $user->getEmailResetEmail();
         
         $user->setEmail($newEmail);
         

@@ -154,8 +154,6 @@ class SettingsController extends AbstractActionController
                 return $this->redirect()->toRoute('settings', 
                             ['action'=>'message', 'id'=>'exists']);   
 
-                // Redirect to "Settings" page
-                return $this->redirect()->toRoute('settings');
             }               
         } else {
 
@@ -197,9 +195,7 @@ class SettingsController extends AbstractActionController
     public function confirmEmailAction()
     {
         $token = $this->params()->fromQuery('token', null);
-        
-        $newEmail = $this->params()->fromQuery('newemail', null);
-        
+                
         // Validate token length
         if ($token!=null && (!is_string($token) || strlen($token)!=32)) {
             throw new \Exception('Invalid token type or length');
@@ -211,7 +207,7 @@ class SettingsController extends AbstractActionController
                     ['action'=>'message', 'id'=>'failed']);
         }
                        
-        //Set the user to active
+        //Set the user email to the new email.
         $this->settingsManager->confirmEmail($token);
         
         return $this->redirect()->toRoute('settings', 

@@ -24,6 +24,7 @@ class Version20180408005318 extends AbstractMigration
         $table = $schema->getTable('user');
         $table->addColumn('email_reset_token', 'string', ['notnull'=>false, 'length'=>32]);
         $table->addColumn('email_reset_token_creation_date', 'datetime', ['notnull'=>false]);
+        $table->addColumn('email_reset_email', 'string', ['notnull'=>false, 'length'=>128]);
 
     }
 
@@ -32,5 +33,7 @@ class Version20180408005318 extends AbstractMigration
         $table = $schema->getTable('user');
         $table->dropColumn('email_reset_token' );
         $table->dropColumn('email_reset_token_creation_date' );
+        $table->dropColumn('email_reset_email' );
+
     }
 }
