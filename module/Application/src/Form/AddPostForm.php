@@ -90,8 +90,8 @@ class AddPostForm extends Form
                 'options' => [
                     'label' => 'Status',
                     'value_options' => [
-                        Post::STATUS_PUBLISHED => 'Published',
-                        Post::STATUS_DRAFT => 'Draft',
+                        Post::STATUS_PUBLISHED => 'Public',
+                        Post::STATUS_DRAFT => 'Private',
                     ]
                 ],
             ]);

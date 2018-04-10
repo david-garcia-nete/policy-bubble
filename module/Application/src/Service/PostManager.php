@@ -177,8 +177,8 @@ class PostManager
     public function getPostStatusAsString($post) 
     {
         switch ($post->getStatus()) {
-            case Post::STATUS_DRAFT: return 'Draft';
-            case Post::STATUS_PUBLISHED: return 'Published';
+            case Post::STATUS_DRAFT: return 'Private';
+            case Post::STATUS_PUBLISHED: return 'Public';
         }
         
         return 'Unknown';
