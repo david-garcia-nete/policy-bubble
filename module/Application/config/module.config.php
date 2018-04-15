@@ -156,6 +156,16 @@ return [
                     ],
                 ],
             ], 
+            'termsofservice' => [
+                'type'    => Literal::class,
+                'options' => [
+                    'route'    => '/termsofservice',
+                    'defaults' => [
+                        'controller'    => Controller\IndexController::class,
+                        'action'        => 'termsOfService',
+                    ],
+                ],
+            ], 
             'analysis' => [
                 'type'    => Segment::class,
                 'options' => [
@@ -200,7 +210,7 @@ return [
                 // Allow anyone to visit "index" action
                 ['actions' => ['index', 'contactUs', 'thankYou', 
                     'sendError', 'membership', 'about', 'analysis', 
-                    'popularTags', 'privacyPolicy', 'disclosurePolicy'], 'allow' => '*']
+                    'popularTags', 'privacyPolicy', 'disclosurePolicy', 'termsOfService'], 'allow' => '*']
             ],
             Controller\SettingsController::class => [
                 ['actions' => ['message', 'confirmEmail'], 'allow' => '*'],
