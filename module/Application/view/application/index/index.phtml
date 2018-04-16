@@ -1,6 +1,44 @@
 <?php
 $this->mainMenu()->setActiveItemId('home');
+
+$form->get('language')->setAttributes([
+    'class'=>'form-control'
+    ]);
+
+$form->get('submit')->setAttributes(array('class'=>'btn btn-info'));
+
+$form->prepare();
+
 ?>
+
+<div class="row">
+    <div class="col-md-1">
+        <?= $this->form()->openTag($form); ?>
+        
+        <img src="/img/world-map-blue.png" alt="Language" height="42">
+        
+    </div>
+    
+    <div class="col-md-2">
+        
+        <div class="form-group">
+            <?= $this->formElement($form->get('language')); ?>
+            <?= $this->formElementErrors($form->get('language')); ?>                              
+        </div>
+        
+    </div>
+    
+    <div class="col-md-2">
+
+            <div class="form-group">
+            <?= $this->formElement($form->get('submit')); ?>
+            </div>
+
+            <?= $this->formElement($form->get('csrf')); ?>
+
+            <?= $this->form()->closeTag(); ?>
+        </div>        
+</div>   
 
 <div class="jumbotron">
     <h1>Welcome to <span class= "pb-blue">Policy Bubble</span></h1>

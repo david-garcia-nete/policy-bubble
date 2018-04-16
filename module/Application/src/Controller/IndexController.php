@@ -25,6 +25,7 @@ use Zend\Crypt\Password\Bcrypt;
 use Application\Entity\TransactionsPayPal;
 use PayPal\Api\PaymentExecution;
 use Zend\Config\Config;
+use Application\Form\LanguageForm;
 
 
 class IndexController extends AbstractActionController
@@ -74,7 +75,35 @@ class IndexController extends AbstractActionController
     
     public function indexAction()
     {
-        return new ViewModel();
+        // Create Language form
+        $form = new LanguageForm();
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                $locale = $data['language'];
+                
+                $this->cookieService->createCookie('xuage', $locale, 
+                        $this->getResponse()->getHeaders());
+                
+                // Redirect to "Thank You" page
+                return $this->redirect()->toRoute('home');
+            }               
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
     }
     
     public function aboutAction()
