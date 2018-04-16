@@ -44,6 +44,9 @@ msgstr "No hay ninguna Excepción disponible."
 msgid "posts"
 msgstr "articulos"
 
+msgid "contactus"
+msgstr "contactar"
+
 msgid "A 404 error occurred"
 msgstr "Ha ocurrido un error 404"
 

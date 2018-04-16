@@ -55,6 +55,10 @@ msgstr ""
 msgid "posts"
 msgstr ""
 
+#: ../config/module.config.php:60
+msgid "contactus"
+msgstr ""
+
 #: ../view/error/404.phtml:1
 msgid "A 404 error occurred"
 msgstr ""

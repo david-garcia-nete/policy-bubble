@@ -109,9 +109,9 @@ return [
                 ],
             ],
             'contactus' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/contactus',
+                    'route'    => '/{contactus}',
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'contactUs',
