@@ -55,7 +55,7 @@
             <?= $this->content ?>
             <hr>
             <footer>
-                <span>&copy; <?= date('Y') ?> by David's Web Sites. All rights reserved.</span> |
+                <span>&copy; <?= date('Y') ?> by David's Web Sites. <?php echo $this->translate('All rights reserved.') ?></span> |
                 <a href="<?= $this->url('privacypolicy') ?>" target="_blank">Privacy Policy </a> |
                 <a href="<?= $this->url('disclosurepolicy') ?>" target="_blank">Disclosure Policy </a> |
                 <a href="<?= $this->url('termsofservice') ?>" target="_blank">Terms of Service </a>
