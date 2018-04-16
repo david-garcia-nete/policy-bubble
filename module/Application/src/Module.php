@@ -31,5 +31,24 @@ class Module
         // makes the SessionManager the 'default' one to avoid passing the 
         // session manager as a dependency to other models.
         $sessionManager = $serviceManager->get(SessionManager::class);
+        
+        $this->initTranslator($event);
+    }
+    
+    
+    protected function initTranslator($event, $serviceManager)
+    {
+
+        $lang = $event->getRequest()->getCookie()->xuage;
+
+        //if language is not set in the cookie, set the default language to english
+        if (!$lang) {
+            $lang = 'en_US';
+        }
+
+        $translator = $serviceManager->get('MvcTranslator');
+        $translator
+            ->setLocale($lang)
+            ->setFallbackLocale('en_US');
     }
 }
