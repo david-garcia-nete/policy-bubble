@@ -362,7 +362,7 @@ class PostController extends AbstractActionController
                     'tags' => $this->postManager->convertTagsToString($post),
                     'status' => $post->getStatus()
                 ];
-            $form->setData($data);
+                $form->setData($data);
             }
 
         }

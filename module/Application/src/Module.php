@@ -32,7 +32,7 @@ class Module
         // session manager as a dependency to other models.
         $sessionManager = $serviceManager->get(SessionManager::class);
         
-        //$this->initTranslator($event);
+        $this->initTranslator($event, $serviceManager);
     }
     
     

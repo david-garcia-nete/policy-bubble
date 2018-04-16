@@ -26,6 +26,7 @@ use Application\Entity\TransactionsPayPal;
 use PayPal\Api\PaymentExecution;
 use Zend\Config\Config;
 use Application\Form\LanguageForm;
+use Zend\Http\Header\SetCookie; 
 
 
 class IndexController extends AbstractActionController
@@ -92,13 +93,23 @@ class IndexController extends AbstractActionController
                 $data = $form->getData();
                 $locale = $data['language'];
                 
-                $this->cookieService->createCookie('xuage', $locale, 
-                        $this->getResponse()->getHeaders());
+                $cookie = new SetCookie(xuage, $locale);
+                $this->getResponse()->getHeaders()->addHeader($cookie);
                 
-                // Redirect to "Thank You" page
+                // Redirect to "Home" page
                 return $this->redirect()->toRoute('home');
             }               
-        } 
+        }
+        
+        $lang = $this->getRequest()->getCookie()->xuage;
+
+        // If language is not set in the cookie, set the default language to English
+        if (!$lang) {
+            $lang = 'en_US';
+        }
+        
+        $data = ['language' => $lang];
+        $form->setData($data);
         
         // Pass form variable to view
         return new ViewModel([

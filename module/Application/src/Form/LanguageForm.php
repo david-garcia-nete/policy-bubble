@@ -84,7 +84,9 @@ class LanguageForm extends Form
                     'validators' => [
                         [
                             'name'    => 'InArray',
-                            'haystack' => ['en_US', 'es_ES'],
+                            'options'=> [
+                                'haystack' => ['en_US', 'es_ES'],
+                            ]    
                         ],
                     ],
                 ]);
