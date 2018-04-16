@@ -11,9 +11,11 @@ use Zend\Router\Http\Literal;
 use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
+use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
 
 return [
     'router' => [
+        'router_class' => TranslatorAwareTreeRouteStack::class,
         'routes' => [
             'home' => [
                 'type' => Literal::class,
@@ -55,7 +57,7 @@ return [
             'posts' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/posts[/:action[/:id][/:step]]',
+                    'route'    => '/{posts}[/:action[/:id][/:step]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*',
