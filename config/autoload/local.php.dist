@@ -40,6 +40,9 @@ return [
         's3videoBucket' => '<s3videoBucket>',
         's3audioBucket' => '<s3audioBucket>',
     ],
+    'view_manager' => [
+        'display_exceptions' => '<boolean>'
+    ]
 //    'payPal' => [
 //        'clientId' => '<clientId>',
 //        'clientSecret' => '<clientSecret>',
