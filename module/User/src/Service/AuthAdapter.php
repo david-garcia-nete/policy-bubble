@@ -32,13 +32,20 @@ class AuthAdapter implements AdapterInterface
      * @var Doctrine\ORM\EntityManager 
      */
     private $entityManager;
+    
+    /**
+    * Session container.
+    * @var Zend\Session\Container
+    */
+    private $sessionContainer;
         
     /**
      * Constructor.
      */
-    public function __construct($entityManager)
+    public function __construct($entityManager, $sessionContainer)
     {
         $this->entityManager = $entityManager;
+        $this->sessionContainer = $sessionContainer;
     }
     
     /**
@@ -89,6 +96,7 @@ class AuthAdapter implements AdapterInterface
         $passwordHash = $user->getPassword();
         
         if ($bcrypt->verify($this->password, $passwordHash)) {
+            $this->sessionContainer->Language = $user->getLanguage();
             // Great! The password hash matches. Return user identity (email) to be
             // saved in session for later use.
             return new Result(
