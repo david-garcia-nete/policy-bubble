@@ -218,7 +218,7 @@ return [
                 ['actions' => ['message', 'confirmEmail'], 'allow' => '*'],
                 // Allow authorized users to visit "index" action
                 ['actions' => ['index', 'fullName', 'email', 'password', 
-                    'accountStatus'], 'allow' => '@']
+                    'accountStatus', 'language'], 'allow' => '@']
             ],
             Controller\BlogController::class => [
                 // Allow anyone to visit "index" action

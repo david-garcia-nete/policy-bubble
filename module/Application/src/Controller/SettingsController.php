@@ -15,6 +15,7 @@ use Application\Form\EmailForm;
 use Application\Form\PasswordForm;
 use Zend\Crypt\Password\Bcrypt;
 use Application\Form\AccountStatusForm;
+use Application\Form\LanguageForm;
 
 
 
@@ -257,6 +258,52 @@ class SettingsController extends AbstractActionController
         return $this->redirect()->toRoute('settings', 
                     ['action'=>'message', 'id'=>'confirmed']);
         
+    }
+    
+    /**
+    * This action displays the user Language update page.
+    */
+    public function languageAction() 
+    {   
+        // Create Language form
+        $form = new LanguageForm();
+        
+        $user = $this->currentUser();
+        
+        // Check if user has submitted the form
+        if($this->getRequest()->isPost()) {
+            
+            // Fill in the form with POST data
+            $data = $this->params()->fromPost();            
+            
+            $form->setData($data);
+            
+            // Validate form
+            if($form->isValid()) {
+                
+                // Get filtered and validated data
+                $data = $form->getData();
+                $language = $data['language'];
+                $user->setLanguage($language);
+                // Apply changes to database.
+                $this->entityManager->flush();
+
+                // Redirect to "Settings" page
+                return $this->redirect()->toRoute('settings');
+            }               
+        } else {
+
+            $data = [
+                'language' => $user->getLanguage()
+            ];
+            
+            $form->setData($data);
+        } 
+        
+        // Pass form variable to view
+        return new ViewModel([
+            'form' => $form
+        ]);
     }
     
     /**

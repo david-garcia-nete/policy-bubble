@@ -45,6 +45,16 @@ $this->pageBreadcrumbs()->setItems([
                 </td>
             </tr>
             <tr>
+                <th>Language:</th>
+                <td><?= $this->escapeHtml($user->getLanguageAsString()) ?></td>
+                <td>
+                    <a class="btn btn-info" href="<?php echo 
+                        $this->url('settings', ['action' => 'language']); ?>">
+                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                    </a>
+                </td>
+            </tr> 
+            <tr>
                 <th>Password:</th>
                 <td></td>
                 <td>
@@ -53,7 +63,7 @@ $this->pageBreadcrumbs()->setItems([
                         <span class="glyphicon glyphicon-pencil" ></span> Edit
                     </a>
                 </td>
-            </tr>            
+            </tr>   
             <tr>
                 <th>Account Status:</th>
                 <td></td>

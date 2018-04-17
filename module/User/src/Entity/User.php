@@ -115,6 +115,11 @@ class User
     */
     protected $emailResetEmail;
     
+    /** 
+    * @ORM\Column(name="language")  
+    */
+    protected $language;
+    
     /**
      * Constructor.
      */
@@ -500,6 +505,49 @@ class User
     public function setEmailResetEmail($emailResetEmail) 
     {
         $this->emailResetEmail = $emailResetEmail;
+    }
+    
+    /**
+     * Returns possible languages as array.
+     * @return array
+     */
+    public static function getLanguageList() 
+    {
+        return [
+            'en_US' => 'English',
+            'es_ES' => 'Español',
+        ];
+    }    
+    
+    /**
+     * Returns user language as string.
+     * @return string
+     */
+    public function getLanguageAsString()
+    {
+        $list = self::getLanguageList();
+        if (isset($list[$this->language]))
+            return $list[$this->language];
+        
+        return '';
+    }    
+    
+    /**
+    * Returns language.     
+    * @return string
+    */
+    public function getLanguage() 
+    {
+        return $this->language;
+    }
+
+    /**
+     * Sets language.     
+     * @param string $language
+     */
+    public function setLanguage($language) 
+    {
+        $this->language = $language;
     }
     
 }
