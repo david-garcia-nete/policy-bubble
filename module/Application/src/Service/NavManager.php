@@ -163,8 +163,6 @@ class NavManager
                     ->findOneBy(['email' => $this->authService->getIdentity()]);
             
             $this->sessionContainer->Language = $user->getLanguage();
-            
-          
                 
             $items[] = [
                 'id' => 'logout',
