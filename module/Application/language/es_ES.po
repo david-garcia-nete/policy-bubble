@@ -75,11 +75,11 @@ msgstr "sobre"
 
 #: ../config/module.config.php
 msgid "privacypolicy"
-msgstr "políticadeprivacidad"
+msgstr "politicadeprivacidad"
 
 #: ../config/module.config.php
 msgid "disclosurepolicy"
-msgstr "políticadedivulgación"
+msgstr "politicadedivulgacion"
 
 #: ../config/module.config.php
 msgid "termsofservice"
@@ -88,6 +88,38 @@ msgstr "terminosdeservicio"
 #: ../config/module.config.php
 msgid "analysis"
 msgstr "analisis"
+
+#: /Users/config/module.config.php
+msgid "login"
+msgstr "login"
+
+#: /Users/config/module.config.php
+msgid "logout"
+msgstr "cierredesesion"
+
+#: /Users/config/module.config.php
+msgid "not-authorized"
+msgstr "no-autorizado"
+
+#: /Users/config/module.config.php
+msgid "reset-password"
+msgstr "restablecer-la-contrasena"
+
+#: /Users/config/module.config.php
+msgid "users"
+msgstr "usuarios"
+
+#: /Users/config/module.config.php
+msgid "roles"
+msgstr "papeles"
+
+#: /Users/config/module.config.php
+msgid "permissions"
+msgstr "permisos"
+
+#: /Users/config/module.config.php
+msgid "registration"
+msgstr "inscripcion"
 
 msgid "A 404 error occurred"
 msgstr "Ha ocurrido un error 404"

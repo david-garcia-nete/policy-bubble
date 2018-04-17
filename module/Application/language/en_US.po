@@ -99,6 +99,38 @@ msgstr ""
 msgid "analysis"
 msgstr ""
 
+#: /Users/config/module.config.php
+msgid "login"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "logout"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "not-authorized"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "reset-password"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "users"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "roles"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "permissions"
+msgstr ""
+
+#: /Users/config/module.config.php
+msgid "registration"
+msgstr ""
+
 #: ../view/error/404.phtml:1
 msgid "A 404 error occurred"
 msgstr ""
