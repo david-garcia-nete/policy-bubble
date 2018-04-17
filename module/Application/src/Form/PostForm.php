@@ -221,6 +221,19 @@ class PostForm extends Form
                         ],
                     ],
                 ]);
+            
+            $inputFilter->add([
+                    'name' => 'status',
+                    'required' => true,
+                    'validators' => [
+                        [
+                            'name' => 'InArray',
+                            'options'=> [
+                                'haystack' => [Post::STATUS_PUBLISHED, Post::STATUS_DRAFT],
+                            ]
+                        ],
+                    ],
+                ]);
         }
         
         if ($step==2) {
