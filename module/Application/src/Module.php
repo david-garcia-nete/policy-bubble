@@ -9,7 +9,7 @@ namespace Application;
 
 use Zend\Mvc\MvcEvent;
 use Zend\Session\SessionManager;
-use Zend\Session\Container;
+use Application\Service\TranslationManager;
 
 class Module
 {
@@ -33,30 +33,11 @@ class Module
         // session manager as a dependency to other models.
         $sessionManager = $serviceManager->get(SessionManager::class);
   
+        $translationManager = new TranslationManager();
         
-        $this->initTranslator($event, $serviceManager, $sessionManager);
+        $translationManager->initTranslator($event, $serviceManager, $sessionManager);
     }
     
     
-    protected function initTranslator($event, $serviceManager, $sessionManager)
-    {
-        
-        $sessionContainer = new Container('Language', $sessionManager);
-        $lang = $sessionContainer->Language;
-
-        //if language is not set in the session
-        if (!$lang) {
-            $lang = $event->getRequest()->getCookie()->xuage;
-        }
-        
-        //if language is not set in the session or cookie
-        if (!$lang) {
-            $lang = 'en_US';
-        }
-
-        $translator = $serviceManager->get('MvcTranslator');
-        $translator
-            ->setLocale($lang)
-            ->setFallbackLocale('en_US');
-    }
+    
 }
