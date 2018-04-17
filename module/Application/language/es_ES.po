@@ -41,11 +41,53 @@ msgstr "Excepciones anteriores"
 msgid "No Exception available"
 msgstr "No hay ninguna Excepción disponible."
 
-msgid "posts"
-msgstr "articulos"
+#: ../config/module.config.php
+msgid "settings"
+msgstr "configuracion"
 
+#: ../config/module.config.php
+msgid "blog"
+msgstr "blog"
+
+#: ../config/module.config.php
+msgid "posts"
+msgstr "correo"
+
+#: ../config/module.config.php
+msgid "images"
+msgstr "imagenes"
+
+#: ../config/module.config.php
+msgid "videos"
+msgstr "videos"
+
+#: ../config/module.config.php
+msgid "audio"
+msgstr "audio"
+
+#: ../config/module.config.php
 msgid "contactus"
-msgstr "contactar"
+msgstr "contactenos"
+
+#: ../config/module.config.php
+msgid "about"
+msgstr "sobre"
+
+#: ../config/module.config.php
+msgid "privacypolicy"
+msgstr "políticadeprivacidad"
+
+#: ../config/module.config.php
+msgid "disclosurepolicy"
+msgstr "políticadedivulgación"
+
+#: ../config/module.config.php
+msgid "termsofservice"
+msgstr "terminosdeservicio"
+
+#: ../config/module.config.php
+msgid "analysis"
+msgstr "analisis"
 
 msgid "A 404 error occurred"
 msgstr "Ha ocurrido un error 404"

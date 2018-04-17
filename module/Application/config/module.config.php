@@ -30,7 +30,7 @@ return [
             'settings' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/settings[/:action[/:id]]',
+                    'route'    => '/{settings}[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                          'id' => '[a-zA-Z0-9_-]*'
@@ -44,7 +44,7 @@ return [
             'blog' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/blog[/:user]',
+                    'route'    => '/{blog}[/:user]',
                     'constraints' => [
                         'user' => '[0-9]+'
                     ],
@@ -72,7 +72,7 @@ return [
             'images' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/images[/:action]',
+                    'route'    => '/{images}[/:action]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],
@@ -85,7 +85,7 @@ return [
             'videos' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/videos[/:action]',
+                    'route'    => '/{videos}[/:action]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],
@@ -98,7 +98,7 @@ return [
             'audio' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/audio[/:action]',
+                    'route'    => '/{audio}[/:action]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],
@@ -129,9 +129,9 @@ return [
 //                ],
 //            ],
             'about' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/about',
+                    'route'    => '/{about}',
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'about',
@@ -139,9 +139,9 @@ return [
                 ],
             ], 
             'privacypolicy' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/privacypolicy',
+                    'route'    => '/{privacypolicy}',
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'privacyPolicy',
@@ -149,9 +149,9 @@ return [
                 ],
             ], 
             'disclosurepolicy' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/disclosurepolicy',
+                    'route'    => '/{disclosurepolicy}',
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'disclosurePolicy',
@@ -159,9 +159,9 @@ return [
                 ],
             ], 
             'termsofservice' => [
-                'type'    => Literal::class,
+                'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/termsofservice',
+                    'route'    => '/{termsofservice}',
                     'defaults' => [
                         'controller'    => Controller\IndexController::class,
                         'action'        => 'termsOfService',
@@ -171,7 +171,7 @@ return [
             'analysis' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/analysis[/:action]',
+                    'route'    => '/{analysis}[/:action]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*'
                     ],

@@ -51,12 +51,52 @@ msgstr ""
 msgid "No Exception available"
 msgstr ""
 
-#: ../config/module.config.php:60
+#: ../config/module.config.php
+msgid "settings"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "blog"
+msgstr ""
+
+#: ../config/module.config.php
 msgid "posts"
 msgstr ""
 
-#: ../config/module.config.php:60
+#: ../config/module.config.php
+msgid "images"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "videos"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "audio"
+msgstr ""
+
+#: ../config/module.config.php
 msgid "contactus"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "about"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "privacypolicy"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "disclosurepolicy"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "termsofservice"
+msgstr ""
+
+#: ../config/module.config.php
+msgid "analysis"
 msgstr ""
 
 #: ../view/error/404.phtml:1
