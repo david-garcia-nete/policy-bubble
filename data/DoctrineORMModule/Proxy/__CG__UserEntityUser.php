@@ -64,10 +64,10 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail'];
+            return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail', 'language'];
         }
 
-        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail'];
+        return ['__isInitialized__', 'id', 'email', 'fullName', 'password', 'status', 'dateCreated', 'passwordResetToken', 'passwordResetTokenCreationDate', 'registrationConfirmationToken', 'registrationConfirmationTokenCreationDate', '' . "\0" . 'User\\Entity\\User' . "\0" . 'roles', 'posts', 'transactions', 'membership', 'emailResetToken', 'emailResetTokenCreationDate', 'emailResetEmail', 'language'];
     }
 
     /**
@@ -582,6 +582,39 @@ class User extends \User\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmailResetEmail', [$emailResetEmail]);
 
         return parent::setEmailResetEmail($emailResetEmail);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLanguageAsString()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLanguageAsString', []);
+
+        return parent::getLanguageAsString();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLanguage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLanguage', []);
+
+        return parent::getLanguage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLanguage($language)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLanguage', [$language]);
+
+        return parent::setLanguage($language);
     }
 
 }

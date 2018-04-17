@@ -20,7 +20,9 @@ class NavManagerFactory
         $urlHelper = $viewHelperManager->get('url');
         $rbacManager = $container->get(RbacManager::class);
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $sessionContainer = $container->get('Language');
         
-        return new NavManager($authService, $urlHelper, $rbacManager, $entityManager);
+        return new NavManager($authService, $urlHelper, $rbacManager, $entityManager,
+                $sessionContainer);
     }
 }

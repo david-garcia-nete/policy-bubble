@@ -262,7 +262,8 @@ return [
     ],
     'session_containers' => [
         'Posts',
-        'PayPal'
+        'PayPal',
+        'Language'
     ],
 
     'view_helpers' => [

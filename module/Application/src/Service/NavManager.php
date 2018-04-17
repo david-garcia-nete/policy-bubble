@@ -32,14 +32,22 @@ class NavManager
     private $entityManager;
     
     /**
+     * Session container.
+     * @var Zend\Session\Container
+     */
+    private $sessionContainer;
+    
+    /**
      * Constructs the service.
      */
-    public function __construct($authService, $urlHelper, $rbacManager, $entityManager) 
+    public function __construct($authService, $urlHelper, $rbacManager, $entityManager,
+            $sessionContainer) 
     {
         $this->authService = $authService;
         $this->urlHelper = $urlHelper;
         $this->rbacManager = $rbacManager;
         $this->entityManager = $entityManager;
+        $this->sessionContainer = $sessionContainer;
     }
     
     /**
@@ -150,6 +158,8 @@ class NavManager
             
             $user = $this->entityManager->getRepository(User::class)
                     ->findOneBy(['email' => $this->authService->getIdentity()]);
+            
+            $this->sessionContainer->Language = $user->getLanguage();
                 
             $items[] = [
                 'id' => 'logout',

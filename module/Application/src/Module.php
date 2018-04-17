@@ -9,6 +9,7 @@ namespace Application;
 
 use Zend\Mvc\MvcEvent;
 use Zend\Session\SessionManager;
+use Zend\Session\Container;
 
 class Module
 {
@@ -31,17 +32,24 @@ class Module
         // makes the SessionManager the 'default' one to avoid passing the 
         // session manager as a dependency to other models.
         $sessionManager = $serviceManager->get(SessionManager::class);
+  
         
-        $this->initTranslator($event, $serviceManager);
+        $this->initTranslator($event, $serviceManager, $sessionManager);
     }
     
     
-    protected function initTranslator($event, $serviceManager)
+    protected function initTranslator($event, $serviceManager, $sessionManager)
     {
+        
+        $sessionContainer = new Container('Language', $sessionManager);
+        $lang = $sessionContainer->Language;
 
-        $lang = $event->getRequest()->getCookie()->xuage;
-
-        //if language is not set in the cookie, set the default language to english
+        //if language is not set in the session
+        if (!$lang) {
+            $lang = $event->getRequest()->getCookie()->xuage;
+        }
+        
+        //if language is not set in the session or cookie
         if (!$lang) {
             $lang = 'en_US';
         }

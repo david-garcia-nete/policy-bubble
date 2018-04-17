@@ -11,6 +11,8 @@ $form->prepare();
 
 ?>
 
+<?php if($this->identity()==null): ?>
+
 <div class="row">
     <div class="col-md-9">
         
@@ -37,6 +39,8 @@ $form->prepare();
             <?= $this->form()->closeTag(); ?>
         </div>        
 </div>   
+
+<?php endif; ?>
 
 <div class="jumbotron">
     <h1> <?php echo $this->translate('Welcome to') ?> <span class= "pb-blue">Policy Bubble</span></h1>
