@@ -107,6 +107,9 @@ class NavManager
         // Display "Login" menu item for not authorized user only. On the other hand,
         // display "Admin" and "Logout" menu items only for authorized users.
         if (!$this->authService->hasIdentity()) {
+            
+            $this->sessionContainer->Language = null;
+            
             $items[] = [
                 'id' => 'register',
                 'label' => 'Register',
@@ -160,6 +163,8 @@ class NavManager
                     ->findOneBy(['email' => $this->authService->getIdentity()]);
             
             $this->sessionContainer->Language = $user->getLanguage();
+            
+          
                 
             $items[] = [
                 'id' => 'logout',
