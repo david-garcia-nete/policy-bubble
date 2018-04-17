@@ -20,6 +20,10 @@ msgstr "Inicio"
 msgid "All rights reserved."
 msgstr "Todos los derechos reservados"
 
+#: ../application/index/index.phtml
+msgid "Welcome to"
+msgstr "Bienvendio a"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 

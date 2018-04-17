@@ -22,6 +22,10 @@ msgstr ""
 msgid "All rights reserved."
 msgstr ""
 
+#: ../application/index/index.phtml
+msgid "Welcome to"
+msgstr ""
+
 #: ../view/error/index.phtml:1
 msgid "An error occurred"
 msgstr ""
