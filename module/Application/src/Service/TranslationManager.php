@@ -11,8 +11,27 @@ use Zend\Http\Header\SetCookie;
 class TranslationManager
 {
     private $countryLanguage = [
-        'US' => 'es_ES',
-        'SV' => 'es_ES'
+        'US' => 'en_US',
+        'AR' => 'es_ES',
+        'BO' => 'es_ES',
+        'CL' => 'es_ES',
+        'CO' => 'es_ES',
+        'CR' => 'es_ES',
+        'CU' => 'es_ES',
+        'DO' => 'es_ES',
+        'EC' => 'es_ES',
+        'SV' => 'es_ES',
+        'GQ' => 'es_ES',
+        'GT' => 'es_ES',
+        'HN' => 'es_ES',
+        'MX' => 'es_ES',
+        'NI' => 'es_ES',
+        'PA' => 'es_ES',
+        'PY' => 'es_ES',
+        'PE' => 'es_ES',
+        'ES' => 'es_ES',
+        'UY' => 'es_ES',
+        'VE' => 'es_ES'
     ];
     
     public function initTranslator($event, $serviceManager, $sessionManager)
