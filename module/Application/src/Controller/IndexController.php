@@ -27,10 +27,17 @@ use PayPal\Api\PaymentExecution;
 use Zend\Config\Config;
 use Application\Form\LanguageForm;
 use Zend\Http\Header\SetCookie; 
+use Application\Service\GeoPlugin;
 
 
 class IndexController extends AbstractActionController
 {
+    
+    private $countryLanguage = [
+        'US' => 'es_ES',
+        'SV' => 'es_ES'
+    ];
+    
     /**
      * Entity manager.
      * @var Doctrine\ORM\EntityManager
@@ -102,6 +109,25 @@ class IndexController extends AbstractActionController
         }
         
         $lang = $this->getRequest()->getCookie()->xuage;
+        
+        // If language is not set in the luser settings or logged out drop down.
+        if (!$lang) {
+            // Use geolocation to create a geolocation cookie if it does not exist.
+            // If it exists use the value from the cookie.
+            // Include geoPlugin class here as well a country code to locale lookup array.
+            $geoCookie = $this->getRequest()->getCookie()->geoLanguage;
+            if (!$geoCookie) {
+                $geoplugin = new geoPlugin();
+                $geoplugin->locate();
+                if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
+                    $lang = $this->countryLanguage[$geoplugin->countryCode];
+                    $cookie = new SetCookie(geoLanguage, $lang);
+                    $this->getResponse()->getHeaders()->addHeader($cookie);
+                }
+            }else{
+                $lang = $event->getRequest()->getCookie()->geoLanguage;
+            }     
+        }
 
         // If language is not set in the cookie, set the default language to English
         if (!$lang) {
