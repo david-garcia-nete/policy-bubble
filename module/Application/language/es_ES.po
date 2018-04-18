@@ -24,6 +24,22 @@ msgstr "Todos los derechos reservados"
 msgid "Welcome to"
 msgstr "Bienvendio a"
 
+#: ../application/index/index.phtml
+msgid "This is a place where policy can be improved."
+msgstr "Este es un lugar donde se puede mejorar la política."
+
+#: ../application/index/index.phtml
+msgid "About"
+msgstr "Sobre"
+
+#: ../application/index/index.phtml
+msgid "Learn about Policy Bubble."
+msgstr "Obtenga información sobre Policy Bubble."
+
+#: ../application/index/index.phtml
+msgid "Learn"
+msgstr "Aprender"
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 

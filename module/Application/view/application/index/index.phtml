@@ -46,7 +46,7 @@ $form->prepare();
     <h1> <?php echo $this->translate('Welcome to') ?> <span class= "pb-blue">Policy Bubble</span></h1>
 
     <p>
-        This is a place where policy can be improved.
+        <?php echo $this->translate('This is a place where policy can be improved.') ?> 
     </p>
 
 </div>
@@ -56,16 +56,17 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">About</h3>
+                <h3 class="panel-title"><?php echo $this->translate('About') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    Learn about Policy Bubble.
+                    <?php echo $this->translate('Learn about Policy Bubble.') ?>
                 </p>
 
                 <p>
                     <a class="btn btn-info pull-right" 
-                       href="<?php echo $this->url('about'); ?>">Learn &raquo;
+                       href="<?php echo $this->url('about'); ?>"><?php echo 
+                       $this->translate('Learn') ?> &raquo;
                     </a>
                 </p>
             </div>

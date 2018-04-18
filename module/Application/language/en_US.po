@@ -26,6 +26,22 @@ msgstr ""
 msgid "Welcome to"
 msgstr ""
 
+#: ../application/index/index.phtml
+msgid "This is a place where policy can be improved."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "About"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Learn about Policy Bubble."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Learn"
+msgstr ""
+
 #: ../view/error/index.phtml:1
 msgid "An error occurred"
 msgstr ""
