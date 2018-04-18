@@ -129,7 +129,7 @@ class IndexController extends AbstractActionController
             }     
         }
 
-        // If language is not set in the cookie, set the default language to English
+        // If language is not set in a cookie, set the default language to English.
         if (!$lang) {
             $lang = 'en_US';
         }

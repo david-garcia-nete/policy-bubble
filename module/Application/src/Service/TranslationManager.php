@@ -26,7 +26,7 @@ class TranslationManager
             $lang = $event->getRequest()->getCookie()->xuage;
         }
         
-        // If language is not set in the luser settings or logged out drop down.
+        // If language is not set in the user settings or logged out drop down.
         if (!$lang) {
             // Use geolocation to create a geolocation cookie if it does not exist.
             // If it exists use the value from the cookie.
