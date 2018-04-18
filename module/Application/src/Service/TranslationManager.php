@@ -5,8 +5,8 @@ use Application\Service\GeoPlugin;
 use Zend\Http\Header\SetCookie;
 
 /**
- * The TranslationManager service is responsible for adding new posts, updating existing
- * posts, adding tags to post, etc.
+ * The TranslationManager service is responsible for setting the language when
+ * someone visit the site without logging in.
  */
 class TranslationManager
 {
