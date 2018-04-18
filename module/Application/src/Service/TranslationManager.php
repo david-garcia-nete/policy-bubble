@@ -2,6 +2,7 @@
 namespace Application\Service;
 use Zend\Session\Container;
 use Application\Service\GeoPlugin;
+use Zend\Http\Header\SetCookie;
 
 /**
  * The TranslationManager service is responsible for adding new posts, updating existing
@@ -9,6 +10,10 @@ use Application\Service\GeoPlugin;
  */
 class TranslationManager
 {
+    private $countryLanguage = [
+        'US' => 'es_ES',
+        'SV' => 'es_ES'
+    ];
     
     public function initTranslator($event, $serviceManager, $sessionManager)
     {
@@ -16,27 +21,31 @@ class TranslationManager
         $sessionContainer = new Container('Language', $sessionManager);
         $lang = $sessionContainer->Language;
 
-        //if language is not set in the session
+        // If language is not set in the user settings use the logged out language drop down.
         if (!$lang) {
             $lang = $event->getRequest()->getCookie()->xuage;
         }
         
-        //if language is not set in the session or cookie
+        // If language is not set in the luser settings or logged out drop down.
         if (!$lang) {
-            //use geolocation to create a geolocation cookie if it does not exist
-            // if it exists use the value from the cookie
-            //include geoplugun class here as well a country code to locale lookup array
-            $geoCookie = $event->getRequest()->getCookie()->geoCookie;
+            // Use geolocation to create a geolocation cookie if it does not exist.
+            // If it exists use the value from the cookie.
+            // Include geoPlugin class here as well a country code to locale lookup array.
+            $geoCookie = $event->getRequest()->getCookie()->geoLanguage;
             if (!$geoCookie) {
                 $geoplugin = new geoPlugin();
                 $geoplugin->locate();
-                
-                
-            }
- 
+                if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
+                    $lang = $this->countryLanguage[$geoplugin->countryCode];
+                    $cookie = new SetCookie(geoLanguage, $lang);
+                    $event->getResponse()->getHeaders()->addHeader($cookie);
+                }
+            }else{
+                $lang = $event->getRequest()->getCookie()->geoLanguage;
+            }     
         }
-        
-        //if language is not set in the session or cookie or by geolocation
+   
+        // If language is not set by the above three methods.
         if (!$lang) {
             $lang = 'en_US';
         }
