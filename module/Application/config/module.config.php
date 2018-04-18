@@ -258,6 +258,7 @@ return [
             Service\ImageManager::class => InvokableFactory::class,
             Service\VideoManager::class => InvokableFactory::class,
             Service\AudioManager::class => InvokableFactory::class,
+            Service\TranslationManager::class => InvokableFactory::class,
         ],
     ],
     'session_containers' => [

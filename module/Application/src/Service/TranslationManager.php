@@ -28,21 +28,7 @@ class TranslationManager
         
         // If language is not set in the user settings or logged out drop down.
         if (!$lang) {
-            // Use geolocation to create a geolocation cookie if it does not exist.
-            // If it exists use the value from the cookie.
-            // Include geoPlugin class here as well a country code to locale lookup array.
-            $geoCookie = $event->getRequest()->getCookie()->geoLanguage;
-            if (!$geoCookie) {
-                $geoplugin = new geoPlugin();
-                $geoplugin->locate();
-                if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
-                    $lang = $this->countryLanguage[$geoplugin->countryCode];
-                    $cookie = new SetCookie(geoLanguage, $lang);
-                    $event->getResponse()->getHeaders()->addHeader($cookie);
-                }
-            }else{
-                $lang = $event->getRequest()->getCookie()->geoLanguage;
-            }     
+           $lang = $this->getGeoLanguage($event);
         }
    
         // If language is not set by the above three methods.
@@ -56,6 +42,26 @@ class TranslationManager
             ->setFallbackLocale('en_US');
     }
     
-    
-    
+    public function getGeoLanguage(&$object)
+    {
+        $lang = null;
+        // Use geolocation to create a geolocation cookie if it does not exist.
+        // If it exists use the value from the cookie.
+        // Include geoPlugin class here as well a country code to locale lookup array.
+        $geoCookie = $object->getRequest()->getCookie()->geoLanguage;
+        if (!$geoCookie) {
+            $geoplugin = new geoPlugin();
+            $geoplugin->locate();
+            if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
+                $lang = $this->countryLanguage[$geoplugin->countryCode];
+                $cookie = new SetCookie(geoLanguage, $lang);
+                $object->getResponse()->getHeaders()->addHeader($cookie);
+            }
+        }else{
+            $lang = $object->getRequest()->getCookie()->geoLanguage;
+        }  
+        
+        return $lang;
+        
+    }
 }

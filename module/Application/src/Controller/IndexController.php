@@ -27,17 +27,9 @@ use PayPal\Api\PaymentExecution;
 use Zend\Config\Config;
 use Application\Form\LanguageForm;
 use Zend\Http\Header\SetCookie; 
-use Application\Service\GeoPlugin;
-
 
 class IndexController extends AbstractActionController
-{
-    
-    private $countryLanguage = [
-        'US' => 'es_ES',
-        'SV' => 'es_ES'
-    ];
-    
+{    
     /**
      * Entity manager.
      * @var Doctrine\ORM\EntityManager
@@ -68,16 +60,23 @@ class IndexController extends AbstractActionController
     private $localConfig;
     
     /**
+     * Translation Manager.
+     * @var Application\Service\TranslationManager
+     */
+    private $translationManager;
+    
+    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $mailSender, $membershipManager, 
-            $sessionContainer) 
+            $sessionContainer, $translationManager) 
     {
        $this->entityManager = $entityManager;
        $this->mailSender = $mailSender;
        $this->membershipManager = $membershipManager;
        $this->sessionContainer = $sessionContainer;
        $this->localConfig = new Config(include './config/autoload/local.php');
+       $this->translationManager = $translationManager;
     }
     
     
@@ -112,21 +111,7 @@ class IndexController extends AbstractActionController
         
         // If language is not set in the luser settings or logged out drop down.
         if (!$lang) {
-            // Use geolocation to create a geolocation cookie if it does not exist.
-            // If it exists use the value from the cookie.
-            // Include geoPlugin class here as well a country code to locale lookup array.
-            $geoCookie = $this->getRequest()->getCookie()->geoLanguage;
-            if (!$geoCookie) {
-                $geoplugin = new geoPlugin();
-                $geoplugin->locate();
-                if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
-                    $lang = $this->countryLanguage[$geoplugin->countryCode];
-                    $cookie = new SetCookie(geoLanguage, $lang);
-                    $this->getResponse()->getHeaders()->addHeader($cookie);
-                }
-            }else{
-                $lang = $event->getRequest()->getCookie()->geoLanguage;
-            }     
+            $lang = $this->translationManager->getGeoLanguage($this);
         }
 
         // If language is not set in a cookie, set the default language to English.
