@@ -56,36 +56,24 @@ msgid "Overview"
 msgstr "Visión de conjunto"
 
 #: ../application/index/about.phtml
-msgid "Policy Bubble aims to collect data about user's opinions.  Survey data is 
-    limited in what it can provide about public opinion because question are close ended.
-    Policy Bubble lets you share first hand your experiences with government, business or anything
-    else on your mind using text, photos, video and audio.  As the database expands analysis is 
-    performed using data visualization thus informing political choices."
-msgstr "Policy Bubble tiene como objetivo recopilar datos sobre las opiniones de los usuarios. Los datos de la encuesta son
-     limitado en cuanto a lo que puede proporcionar sobre la opinión pública porque las preguntas están cerradas.
-     Policy Bubble te permite compartir de primera mano tus experiencias con el gobierno, los negocios o cualquier cosa
-     otra cosa en tu mente usando texto, fotos, video y audio. A medida que la base de datos expande el análisis es
-     realizado utilizando la visualización de datos, informando así las elecciones políticas."
+msgid "Policy Bubble aims to collect data about user's opinions.  Survey data is limited in what it can provide about public opinion because question are close ended.  Policy Bubble lets you share first hand your experiences with government, business or anything else on your mind using text, photos, video and audio.  As the database expands analysis is performed using data visualization thus informing political choices."
+msgstr "Policy Bubble tiene como objetivo recopilar datos sobre las opiniones de los usuarios. Los datos de la encuesta son limitados en cuanto a lo que puede ofrecer sobre la opinión pública porque las preguntas terminan. Policy Bubble te permite compartir de primera mano tus experiencias con el gobierno, negocios o cualquier otra cosa texto, fotos, video y audio. A medida que la base de datos se expande, el análisis se lleva a cabo usando la visualización de datos, informando así las elecciones políticas."
 
 #: ../application/index/about.phtml
 msgid "Usage"
 msgstr "Uso"
 
 #: ../application/index/about.phtml
-msgid "Después de unirse a Policy Bubble, tendrá una página de administración posterior para crear, editar y eliminar publicaciones.
-   Puede filtrar el blog sobre temas que le interesan. Hay una página de análisis que los legisladores y los constituyentes
-   puede usar para mejorar cómo se hacen las leyes."
-msgstr ""
+msgid "After joining Policy Bubble you will have a post administration page for creating, editing and deleting posts.  You can filter the blog on topics that interest you.  There is an analysis page that policy makers and constituents can use to improve how laws are made."
+msgstr "Después de unirse a Policy Bubble, tendrá una página de administración posterior para crear, editar y eliminar publicaciones. Puede filtrar el blog sobre temas que le interesan. Hay una página de análisis que los legisladores y los constituyentes pueden usar para mejorar la forma en que se hacen las leyes."
 
 #: ../application/index/about.phtml
 msgid "User Settings"
 msgstr "Configuraciones de Usuario"
 
 #: ../application/index/about.phtml
-msgid "Users can update their name, email, password and preferred language and 
-    delete their account including all posts."
-msgstr "Los usuarios pueden actualizar su nombre, correo electrónico, contraseña y el idioma preferido y
-     borre su cuenta incluyendo todas las publicaciones."
+msgid "Users can update their name, email, password and preferred language and delete their account including all posts."
+msgstr "Los usuarios pueden actualizar su nombre, correo electrónico, contraseña y idioma preferido y eliminar su cuenta, incluidas todas las publicaciones."
 
 #: ../view/layout/layout.phtml:
 msgid "by"
