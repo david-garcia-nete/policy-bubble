@@ -69,7 +69,7 @@ class NavManager
         
         $homeDropdownItems[] = [
             'id' => 'about',
-            'label' => 'About',
+            'label' => $this->translator->translate('About'),
             'link'  => $url('about')
         ];
         
@@ -81,7 +81,7 @@ class NavManager
         
         $homeDropdownItems[] = [
             'id' => 'contactUs',
-            'label' => 'Feedback',
+            'label' => $this->translator->translate('Feedback'),
             'link'  => $url('contactus')
         ];
         
@@ -95,19 +95,19 @@ class NavManager
                 
         $items[] = [
             'id' => 'blog',
-            'label' => 'Blog',
+            'label' => $this->translator->translate('Blog'),
             'link'  => $url('blog')
             ];
         
         $items[] = [
             'id' => 'posts',
-            'label' => 'Posts',
+            'label' => $this->translator->translate('Posts'),
             'link' => $url('posts')
             ];
         
         $items[] = [
             'id' => 'analysis',
-            'label' => 'Analysis',
+            'label' => $this->translator->translate('Analysis'),
             'link' => $url('analysis')
             ];
                 
@@ -119,13 +119,13 @@ class NavManager
             
             $items[] = [
                 'id' => 'register',
-                'label' => 'Register',
+                'label' => $this->translator->translate('Register'),
                 'link'  => $url('registration'),
                 'float' => 'right'
             ];
             $items[] = [
                 'id' => 'login',
-                'label' => 'Sign in',
+                'label' => $this->translator->translate('Sign in'),
                 'link'  => $url('login'),
                 'float' => 'right'
             ];
@@ -137,7 +137,7 @@ class NavManager
             if ($this->rbacManager->isGranted(null, 'user.manage')) {
                 $adminDropdownItems[] = [
                             'id' => 'users',
-                            'label' => 'Manage Users',
+                            'label' => $this->translator->translate('Manage Users'),
                             'link' => $url('users')
                         ];
             }
@@ -145,7 +145,7 @@ class NavManager
             if ($this->rbacManager->isGranted(null, 'permission.manage')) {
                 $adminDropdownItems[] = [
                             'id' => 'permissions',
-                            'label' => 'Manage Permissions',
+                            'label' => $this->translator->translate('Manage Permissions'),
                             'link' => $url('permissions')
                         ];
             }
@@ -153,7 +153,7 @@ class NavManager
             if ($this->rbacManager->isGranted(null, 'role.manage')) {
                 $adminDropdownItems[] = [
                             'id' => 'roles',
-                            'label' => 'Manage Roles',
+                            'label' => $this->translator->translate('Manage Roles'),
                             'link' => $url('roles')
                         ];
             }
@@ -161,7 +161,7 @@ class NavManager
             if (count($adminDropdownItems)!=0) {
                 $items[] = [
                     'id' => 'admin',
-                    'label' => 'Admin',
+                    'label' => $this->translator->translate('Admin'),
                     'dropdown' => $adminDropdownItems
                 ];
             }
@@ -178,12 +178,12 @@ class NavManager
                 'dropdown' => [
                     [
                         'id' => 'settings',
-                        'label' => 'Settings',
+                        'label' => $this->translator->translate('Settings'),
                         'link' => $url('settings')
                     ],
                     [
                         'id' => 'logout',
-                        'label' => 'Sign out',
+                        'label' => $this->translator->translate('Sign out'),
                         'link' => $url('logout')
                     ],
                 ]

@@ -18,6 +18,38 @@ msgstr ""
 msgid "Home"
 msgstr "Inicio"
 
+#: ../src/Service/NavManager.php:
+msgid "Register"
+msgstr "Registrar"
+
+#: ../src/Service/NavManager.php:
+msgid "Sign in"
+msgstr "Ingresar"
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Users"
+msgstr "Administrar Usuarios"
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Permissions"
+msgstr "Administrar Permisos"
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Roles"
+msgstr "Administrar Papeles"
+
+#: ../src/Service/NavManager.php:
+msgid "Admin"
+msgstr "Admin"
+
+#: ../src/Service/NavManager.php:
+msgid "Settings"
+msgstr "Configuraciones"
+
+#: ../src/Service/NavManager.php:
+msgid "Sign out"
+msgstr "Cerrar sesión"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
@@ -44,13 +76,14 @@ msgstr "Enviar"
 
 #: ../application/index/index.phtml
 msgid "Welcome to"
-msgstr "Bienvendio a"
+msgstr "Bienvenido a"
 
 #: ../application/index/index.phtml
 msgid "This is a place where policy can be improved."
 msgstr "Este es un lugar donde se puede mejorar la política."
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "About"
 msgstr "Sobre"
 
@@ -63,6 +96,7 @@ msgid "Learn"
 msgstr "Aprender"
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Feedback"
 msgstr "Reacción "
 
@@ -75,6 +109,7 @@ msgid "Talk"
 msgstr "Hablar"
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Blog"
 msgstr "Blog"
 
@@ -87,6 +122,7 @@ msgid "Read"
 msgstr "Leer"
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Posts"
 msgstr "Correo"
 
@@ -99,6 +135,7 @@ msgid "Tell"
 msgstr "Decir"
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Analysis"
 msgstr "Análisis"
 

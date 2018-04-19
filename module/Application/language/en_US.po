@@ -18,6 +18,38 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
+#: ../src/Service/NavManager.php:
+msgid "Register"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Sign in"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Users"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Permissions"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Manage Roles"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Admin"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Settings"
+msgstr ""
+
+#: ../src/Service/NavManager.php:
+msgid "Sign out"
+msgstr ""
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr ""
@@ -51,6 +83,7 @@ msgid "This is a place where policy can be improved."
 msgstr ""
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "About"
 msgstr ""
 
@@ -63,6 +96,7 @@ msgid "Learn"
 msgstr ""
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Feedback"
 msgstr ""
 
@@ -75,6 +109,7 @@ msgid "Talk"
 msgstr ""
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Blog"
 msgstr ""
 
@@ -87,6 +122,7 @@ msgid "Read"
 msgstr ""
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Posts"
 msgstr ""
 
@@ -99,6 +135,7 @@ msgid "Tell"
 msgstr ""
 
 #: ../application/index/index.phtml
+#: ../src/Service/NavManager.php:
 msgid "Analysis"
 msgstr ""
 
