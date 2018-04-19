@@ -14,11 +14,29 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-msgid "Home"
-msgstr "Inicio"
+#: ../view/layout/layout.phtml:
+msgid "by"
+msgstr "por"
 
+#: ../view/layout/layout.phtml:
 msgid "All rights reserved."
-msgstr "Todos los derechos reservados"
+msgstr "Todos los derechos reservados."
+
+#: ../view/layout/layout.phtml:
+msgid "Privacy Policy"
+msgstr "Política de Privacidad"
+
+#: ../view/layout/layout.phtml:
+msgid "Disclosure Policy"
+msgstr "Política de Divulgación"
+
+#: ../view/layout/layout.phtml:
+msgid "Terms of Service"
+msgstr "Términos de Servicio"
+
+#: ../application/index/index.phtml
+msgid "Submit"
+msgstr "Enviar"
 
 #: ../application/index/index.phtml
 msgid "Welcome to"
@@ -49,8 +67,8 @@ msgid "Let us know what you think."
 msgstr "Háganos saber lo que piensas."
 
 #: ../application/index/index.phtml
-msgid "Hablar"
-msgstr ""
+msgid "Talk"
+msgstr "Hablar"
 
 #: ../application/index/index.phtml
 msgid "Blog"
@@ -62,7 +80,7 @@ msgstr "Lea sobre las políticas que afectan su área."
 
 #: ../application/index/index.phtml
 msgid "Read"
-msgstr ""
+msgstr "Leer"
 
 #: ../application/index/index.phtml
 msgid "Posts"
@@ -86,7 +104,7 @@ msgstr "Vea cómo las políticas están afectando su área."
 
 #: ../application/index/index.phtml
 msgid "See"
-msgstr Ver
+msgstr "Ver"
 
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"

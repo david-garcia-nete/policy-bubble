@@ -55,10 +55,11 @@
             <?= $this->content ?>
             <hr>
             <footer>
-                <span>&copy; <?= date('Y') ?> by David's Web Sites. <?php echo $this->translate('All rights reserved.') ?></span> |
-                <a href="<?= $this->url('privacypolicy') ?>" >Privacy Policy </a> |
-                <a href="<?= $this->url('disclosurepolicy') ?>" >Disclosure Policy </a> |
-                <a href="<?= $this->url('termsofservice') ?>" >Terms of Service </a>
+                <span>&copy; <?= date('Y') ?> <?= $this->translate('by') ?> David's Web Sites. 
+                    <?= $this->translate('All rights reserved.') ?></span> |
+                <a href="<?= $this->url('privacypolicy') ?>" ><?= $this->translate('Privacy Policy') ?> </a> |
+                <a href="<?= $this->url('disclosurepolicy') ?>" ><?= $this->translate('Disclosure Policy') ?> </a> |
+                <a href="<?= $this->url('termsofservice') ?>" ><?= $this->translate('Terms of Service') ?> </a>
             </footer>
         </div>
         <?= $this->inlineScript() ?>

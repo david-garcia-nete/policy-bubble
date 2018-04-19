@@ -5,7 +5,8 @@ $form->get('language')->setAttributes([
     'class'=>'form-control'
     ]);
 
-$form->get('submit')->setAttributes(array('class'=>'btn btn-info'));
+$form->get('submit')->setAttributes(['class'=>'btn btn-info', 
+    'value'=>$this->translate('Submit')]);
 
 $form->prepare();
 
@@ -43,10 +44,10 @@ $form->prepare();
 <?php endif; ?>
 
 <div class="jumbotron">
-    <h1> <?php echo $this->translate('Welcome to') ?> <span class= "pb-blue">Policy Bubble</span></h1>
+    <h1> <?= $this->translate('Welcome to') ?> <span class= "pb-blue">Policy Bubble</span></h1>
 
     <p>
-        <?php echo $this->translate('This is a place where policy can be improved.') ?> 
+        <?= $this->translate('This is a place where policy can be improved.') ?> 
     </p>
 
 </div>
@@ -56,11 +57,11 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('About') ?></h3>
+                <h3 class="panel-title"><?= $this->translate('About') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    <?php echo $this->translate('Learn about Policy Bubble.') ?>
+                    <?= $this->translate('Learn about Policy Bubble.') ?>
                 </p>
 
                 <p>
@@ -95,17 +96,17 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Feedback') ?></h3>
+                <h3 class="panel-title"><?= $this->translate('Feedback') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    <?php echo $this->translate('Let us know what you think.') ?>
+                    <?= $this->translate('Let us know what you think.') ?>
                 </p>
 
                 <p>
                     <a class="btn btn-info pull-right" 
                        href="<?php echo $this->url('contactus'); ?>">
-                           <?php echo $this->translate('Talk') ?> &raquo;
+                           <?= $this->translate('Talk') ?> &raquo;
                     </a>
                 </p>
             </div>
@@ -115,17 +116,17 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Blog') ?></h3>
+                <h3 class="panel-title"><?= $this->translate('Blog') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    <?php echo $this->translate('Read about policies affecting your area.') ?>
+                    <?= $this->translate('Read about policies affecting your area.') ?>
                 </p>
 
                 <p>
                     <a class="btn btn-info pull-right" 
                        href="<?php echo $this->url('blog'); ?>" >
-                           <?php echo $this->translate('Read') ?> &raquo;
+                           <?= $this->translate('Read') ?> &raquo;
                     </a>
                 </p>
 
@@ -136,17 +137,17 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Posts') ?></h3>
+                <h3 class="panel-title"><?= $this->translate('Posts') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    <?php echo $this->translate('Tell how policies are affecting your area.') ?>
+                    <?= $this->translate('Tell how policies are affecting your area.') ?>
                 </p>
 
                 <p>
                     <a class="btn btn-info pull-right" 
                        href="<?php echo $this->url('posts'); ?>">
-                           <?php echo $this->translate('Tell') ?> &raquo;
+                           <?= $this->translate('Tell') ?> &raquo;
                     </a>
                 </p>
             </div>
@@ -156,17 +157,17 @@ $form->prepare();
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Analysis') ?></h3>
+                <h3 class="panel-title"><?= $this->translate('Analysis') ?></h3>
             </div>
             <div class="panel-body">
                 <p>
-                    <?php echo $this->translate('See how policies are affecting your area.') ?>
+                    <?= $this->translate('See how policies are affecting your area.') ?>
                 </p>
 
                 <p>
                     <a class="btn btn-info pull-right" 
                        href="<?php echo $this->url('analysis'); ?>">
-                           <?php echo $this->translate('See') ?> &raquo;
+                           <?= $this->translate('See') ?> &raquo;
                     </a>
                 </p>
             </div>

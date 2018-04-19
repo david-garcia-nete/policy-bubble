@@ -14,12 +14,28 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: ../view/layout/layout.phtml:36
-msgid "Home"
+#: ../view/layout/layout.phtml:
+msgid "by"
 msgstr ""
 
-#: ../view/layout/layout.phtml:50
+#: ../view/layout/layout.phtml:
 msgid "All rights reserved."
+msgstr ""
+
+#: ../view/layout/layout.phtml:
+msgid "Privacy Policy"
+msgstr ""
+
+#: ../view/layout/layout.phtml:
+msgid "Disclosure Policy"
+msgstr ""
+
+#: ../view/layout/layout.phtml:
+msgid "Terms of Service"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Submit"
 msgstr ""
 
 #: ../application/index/index.phtml
