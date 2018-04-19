@@ -40,6 +40,54 @@ msgstr "Obtenga información sobre Policy Bubble."
 msgid "Learn"
 msgstr "Aprender"
 
+#: ../application/index/index.phtml
+msgid "Feedback"
+msgstr "Reacción "
+
+#: ../application/index/index.phtml
+msgid "Let us know what you think."
+msgstr "Háganos saber lo que piensas."
+
+#: ../application/index/index.phtml
+msgid "Hablar"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Blog"
+msgstr "Blog"
+
+#: ../application/index/index.phtml
+msgid "Read about policies affecting your area."
+msgstr "Lea sobre las políticas que afectan su área."
+
+#: ../application/index/index.phtml
+msgid "Read"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Posts"
+msgstr "Correo"
+
+#: ../application/index/index.phtml
+msgid "Tell how policies are affecting your area."
+msgstr "Explica cómo las políticas afectan tu área."
+
+#: ../application/index/index.phtml
+msgid "Tell"
+msgstr "Decir"
+
+#: ../application/index/index.phtml
+msgid "Analysis"
+msgstr "Análisis"
+
+#: ../application/index/index.phtml
+msgid "See how policies are affecting your area."
+msgstr "Vea cómo las políticas están afectando su área."
+
+#: ../application/index/index.phtml
+msgid "See"
+msgstr Ver
+
 msgid "An error occurred"
 msgstr "Ha ocurrido un error"
 

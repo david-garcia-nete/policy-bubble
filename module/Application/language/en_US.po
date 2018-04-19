@@ -42,6 +42,54 @@ msgstr ""
 msgid "Learn"
 msgstr ""
 
+#: ../application/index/index.phtml
+msgid "Feedback"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Let us know what you think."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Talk"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Blog"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Read about policies affecting your area."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Read"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Posts"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Tell how policies are affecting your area."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Tell"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "Analysis"
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "See how policies are affecting your area."
+msgstr ""
+
+#: ../application/index/index.phtml
+msgid "See"
+msgstr ""
+
 #: ../view/error/index.phtml:1
 msgid "An error occurred"
 msgstr ""
