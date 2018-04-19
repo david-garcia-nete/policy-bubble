@@ -15,6 +15,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: ../src/Service/NavManager.php:
+#: ../application/index/about.phtml
 msgid "Home"
 msgstr "Inicio"
 
@@ -50,6 +51,42 @@ msgstr "Configuraciones"
 msgid "Sign out"
 msgstr "Cerrar sesión"
 
+#: ../application/index/about.phtml
+msgid "Overview"
+msgstr "Visión de conjunto"
+
+#: ../application/index/about.phtml
+msgid "Policy Bubble aims to collect data about user's opinions.  Survey data is 
+    limited in what it can provide about public opinion because question are close ended.
+    Policy Bubble lets you share first hand your experiences with government, business or anything
+    else on your mind using text, photos, video and audio.  As the database expands analysis is 
+    performed using data visualization thus informing political choices."
+msgstr "Policy Bubble tiene como objetivo recopilar datos sobre las opiniones de los usuarios. Los datos de la encuesta son
+     limitado en cuanto a lo que puede proporcionar sobre la opinión pública porque las preguntas están cerradas.
+     Policy Bubble te permite compartir de primera mano tus experiencias con el gobierno, los negocios o cualquier cosa
+     otra cosa en tu mente usando texto, fotos, video y audio. A medida que la base de datos expande el análisis es
+     realizado utilizando la visualización de datos, informando así las elecciones políticas."
+
+#: ../application/index/about.phtml
+msgid "Usage"
+msgstr "Uso"
+
+#: ../application/index/about.phtml
+msgid "Después de unirse a Policy Bubble, tendrá una página de administración posterior para crear, editar y eliminar publicaciones.
+   Puede filtrar el blog sobre temas que le interesan. Hay una página de análisis que los legisladores y los constituyentes
+   puede usar para mejorar cómo se hacen las leyes."
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "User Settings"
+msgstr "Configuraciones de Usuario"
+
+#: ../application/index/about.phtml
+msgid "Users can update their name, email, password and preferred language and 
+    delete their account including all posts."
+msgstr "Los usuarios pueden actualizar su nombre, correo electrónico, contraseña y el idioma preferido y
+     borre su cuenta incluyendo todas las publicaciones."
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
@@ -84,6 +121,7 @@ msgstr "Este es un lugar donde se puede mejorar la política."
 
 #: ../application/index/index.phtml
 #: ../src/Service/NavManager.php:
+#: ../application/index/about.phtml
 msgid "About"
 msgstr "Sobre"
 

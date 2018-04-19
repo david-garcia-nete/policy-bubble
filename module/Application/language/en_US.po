@@ -15,6 +15,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: ../src/Service/NavManager.php:
+#: ../application/index/about.phtml
 msgid "Home"
 msgstr ""
 
@@ -48,6 +49,37 @@ msgstr ""
 
 #: ../src/Service/NavManager.php:
 msgid "Sign out"
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "Overview"
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "Policy Bubble aims to collect data about user's opinions.  Survey data is 
+    limited in what it can provide about public opinion because question are close ended.
+    Policy Bubble lets you share first hand your experiences with government, business or anything
+    else on your mind using text, photos, video and audio.  As the database expands analysis is 
+    performed using data visualization thus informing political choices."
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "Usage"
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "After joining Policy Bubble you will have a post administration page for creating, editing and deleting posts.
+  You can filter the blog on topics that interest you.  There is an analysis page that policy makers and constituents
+  can use to improve how laws are made."
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "User Settings"
+msgstr ""
+
+#: ../application/index/about.phtml
+msgid "Users can update their name, email, password and preferred language and 
+    delete their account including all posts."
 msgstr ""
 
 #: ../view/layout/layout.phtml:
@@ -84,6 +116,7 @@ msgstr ""
 
 #: ../application/index/index.phtml
 #: ../src/Service/NavManager.php:
+#: ../application/index/about.phtml
 msgid "About"
 msgstr ""
 
