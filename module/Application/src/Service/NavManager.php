@@ -38,16 +38,23 @@ class NavManager
     private $sessionContainer;
     
     /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
+    
+    /**
      * Constructs the service.
      */
     public function __construct($authService, $urlHelper, $rbacManager, $entityManager,
-            $sessionContainer) 
+            $sessionContainer, $translator) 
     {
         $this->authService = $authService;
         $this->urlHelper = $urlHelper;
         $this->rbacManager = $rbacManager;
         $this->entityManager = $entityManager;
         $this->sessionContainer = $sessionContainer;
+        $this->translator = $translator;
     }
     
     /**
@@ -80,7 +87,7 @@ class NavManager
         
         $items[] = [
             'id' => 'home',
-            'label' => 'Home',
+            'label' => $this->translator->translate('Home'),
             'link'  => $url('home'),
             'dropdown' => $homeDropdownItems
             

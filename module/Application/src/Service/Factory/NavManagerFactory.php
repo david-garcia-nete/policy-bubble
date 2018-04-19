@@ -3,6 +3,7 @@ namespace Application\Service\Factory;
 use Interop\Container\ContainerInterface;
 use Application\Service\NavManager;
 use User\Service\RbacManager;
+
 /**
  * This is the factory class for NavManager service. The purpose of the factory
  * is to instantiate the service and pass it dependencies (inject dependencies).
@@ -21,8 +22,9 @@ class NavManagerFactory
         $rbacManager = $container->get(RbacManager::class);
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $sessionContainer = $container->get('Language');
+        $translator = $container->get('MvcTranslator');
         
         return new NavManager($authService, $urlHelper, $rbacManager, $entityManager,
-                $sessionContainer);
+                $sessionContainer, $translator);
     }
 }
