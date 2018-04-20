@@ -16,7 +16,9 @@ msgstr ""
 
 #: ../src/Service/NavManager.php:
 #: ../application/index/about.phtml
+#: ../application/index/privacy-policy.phtml
 #: ../application/index/disclosure-policy.phtml
+#: ../application/index/terms-of-service.phtml
 msgid "Home"
 msgstr ""
 
@@ -422,6 +424,7 @@ msgid "Disclosure Policy"
 msgstr ""
 
 #: ../view/layout/layout.phtml:
+#: ../application/index/terms-of-service.phtml
 msgid "Terms of Service"
 msgstr ""
 

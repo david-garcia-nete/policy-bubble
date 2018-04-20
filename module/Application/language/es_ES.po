@@ -18,6 +18,7 @@ msgstr ""
 #: ../application/index/about.phtml
 #: ../application/index/privacy-policy.phtml
 #: ../application/index/disclosure-policy.phtml
+#: ../application/index/terms-of-service.phtml
 msgid "Home"
 msgstr "Inicio"
 
@@ -424,6 +425,7 @@ msgid "Disclosure Policy"
 msgstr "Política de Divulgación"
 
 #: ../view/layout/layout.phtml:
+#: ../application/index/terms-of-service.phtml
 msgid "Terms of Service"
 msgstr "Términos de Servicio"
 
