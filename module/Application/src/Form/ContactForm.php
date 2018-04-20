@@ -220,8 +220,11 @@ class ContactForm extends Form
         
         $inputFilter->add([
                 'name'     => 'phone',
-                'required' => true,                
-                'filters'  => [                    
+                'required' => false,                
+                'filters'  => [
+                    ['name' => 'StringTrim'],
+                    ['name' => 'StripTags'],
+                    ['name' => 'StripNewlines'],
                     /*[
                         'name' => 'Callback',
                         'options' => [
@@ -256,12 +259,12 @@ class ContactForm extends Form
                             ]
                         ]                        
                     ],*/
-                    [
-                        'name' => PhoneValidator::class,
-                        'options' => [
-                            'format' => PhoneValidator::PHONE_FORMAT_INTL
-                        ]                        
-                    ],
+//                    [
+//                        'name' => PhoneValidator::class,
+//                        'options' => [
+//                            'format' => PhoneValidator::PHONE_FORMAT_INTL
+//                        ]                        
+//                    ],
                 ],
             ]);
     }

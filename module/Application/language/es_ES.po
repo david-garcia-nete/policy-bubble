@@ -195,6 +195,10 @@ msgid "No Exception available"
 msgstr "No hay ninguna Excepción disponible."
 
 #: ../config/module.config.php
+msgid "application"
+msgstr "aplicacion"
+
+#: ../config/module.config.php
 msgid "settings"
 msgstr "configuracion"
 

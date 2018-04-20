@@ -203,6 +203,10 @@ msgid "No Exception available"
 msgstr ""
 
 #: ../config/module.config.php
+msgid "application"
+msgstr ""
+
+#: ../config/module.config.php
 msgid "settings"
 msgstr ""
 

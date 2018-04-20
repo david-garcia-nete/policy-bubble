@@ -210,13 +210,16 @@ class IndexController extends AbstractActionController
                 
                 // Get filtered and validated data
                 $data = $form->getData();
-                $email = $data['email'];
+                //$email = $data['email'];
                 $subject = $data['subject'];
-                $body = $data['body'];
+                $body = 'From: ' . $data['email'] . ' ' . $data['body'];
+               // $header = 'From: ' . $data['email'];
+                
+                if(!mail('david.garcia.nete@gmail.com', $subject, $body)) {
                 
                 // Send E-mail
-                if(!$this->mailSender->sendMail('david.garcia.nete@gmail.com', $email, 
-                        $subject, $body)) {
+//                if(!$this->mailSender->sendMail('david.garcia.nete@gmail.com', $email, 
+//                        $subject, $body)) {
                     // In case of error, redirect to "Error Sending Email" page
                     return $this->redirect()->toRoute('application', 
                             ['action'=>'sendError']);
