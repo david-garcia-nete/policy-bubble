@@ -4,8 +4,8 @@ $this->headTitle('Privacy Policy');
 $this->mainMenu()->setActiveItemId('home');
 
 $this->pageBreadcrumbs()->setItems(array(
-            'Home'=>$this->url('home'),
-            'Privacy Policy'=>$this->url('privacypolicy')
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Privacy Policy')=>$this->url('privacypolicy')
             ));
 ?>
 
@@ -29,7 +29,7 @@ $this->pageBreadcrumbs()->setItems(array(
    display:none;
    }
 </style>
-<div id='ppHeader'>Policy Bubble Privacy Policy</div>
+<div id='ppHeader'><?= $this->translate('Policy Bubble Privacy Policy') ?></div>
 <div id='ppBody'>
    <div class='ppConsistencies'>
       <div class='col-2'>
@@ -74,9 +74,9 @@ $this->pageBreadcrumbs()->setItems(array(
       </div>
    </div>
    <div style='clear:both;height:10px;'></div>
-   <div class='innerText'>This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.<br></div>
+   <div class='innerText'><?= $this->translate("This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website.") ?><br></div>
    <span id='infoCo'></span><br>
-   <div class='grayText'><strong>What personal information do we collect from the people that visit our blog, website or app?</strong></div>
+   <div class='grayText'><strong><?= $this->translate("What personal information do we collect from the people that visit our blog, website or app?") ?></strong></div>
    <br />
    <div class='innerText'>When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, phone number  or other details to help you with your experience.</div>
    <br>

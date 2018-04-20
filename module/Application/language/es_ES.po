@@ -75,6 +75,18 @@ msgstr "Configuraciones de Usuario"
 msgid "Users can update their name, email, password and preferred language and delete their account including all posts."
 msgstr "Los usuarios pueden actualizar su nombre, correo electrónico, contraseña y idioma preferido y eliminar su cuenta, incluidas todas las publicaciones."
 
+#: ../application/index/privacy-policy.phtml
+msgid "Policy Bubble Privacy Policy"
+msgstr "Política de Privacidad de Policy Bubble"
+
+#: ../application/index/privacy-policy.phtml
+msgid "This privacy policy has been compiled to better serve those who are concerned with how their 'Personally Identifiable Information' (PII) is being used online. PII, as described in US privacy law and information security, is information that can be used on its own or with other information to identify, contact, or locate a single person, or to identify an individual in context. Please read our privacy policy carefully to get a clear understanding of how we collect, use, protect or otherwise handle your Personally Identifiable Information in accordance with our website."
+msgstr "Esta política de privacidad ha sido compilada para servir mejor a aquellos que están preocupados por cómo se usa en línea su 'Información de identificación personal' (PII). La PII, como se describe en la ley de privacidad y seguridad de la información de EE. UU., es información que se puede usar en propia o con otra información para identificar, contactar o localizar a una sola persona, o para identificar a una persona en su contexto. Lea atentamente nuestra política de privacidad para obtener una comprensión clara de cómo recopilamos, usamos, protegemos o manejamos su información de identificación personal. Información de acuerdo con nuestro sitio web."
+
+#: ../application/index/privacy-policy.phtml
+msgid "What personal information do we collect from the people that visit our blog, website or app?"
+msgstr "¿Qué información personal recopilamos de las personas que visitan nuestro blog, sitio web o aplicación?"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
