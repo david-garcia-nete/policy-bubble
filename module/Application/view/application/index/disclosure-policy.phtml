@@ -4,34 +4,34 @@ $this->headTitle('Disclosure Policy');
 $this->mainMenu()->setActiveItemId('home');
 
 $this->pageBreadcrumbs()->setItems(array(
-            'Home'=>$this->url('home'),
-            'Disclosure Policy'=>$this->url('disclosurepolicy')
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Disclosure Policy')=>$this->url('disclosurepolicy')
             ));
 ?>
 
-<h1>Policy Bubble Disclosure Policy</h1>
+<h1><?= $this->translate("Policy Bubble Disclosure Policy") ?></h1>
 
 <p>
-This policy is valid from 02 April 2018
+<?= $this->translate("This policy is valid from 02 April 2018") ?>
 </p>
 
 <p>
-This blog is a collaborative blog written by a group of individuals. This blog does not accept any form of advertising, sponsorship, or paid insertions. We write for our own purposes. However, we may be influenced by our background, occupation, religion, political affiliation or experience.
+<?= $this->translate("This blog is a collaborative blog written by a group of individuals. This blog does not accept any form of advertising, sponsorship, or paid insertions. We write for our own purposes. However, we may be influenced by our background, occupation, religion, political affiliation or experience.") ?>
 </p>
 
 <p>
-This blog abides by word of mouth marketing standards. We believe in honesty of relationship, opinion and identity. The compensation received may influence the advertising content, topics or posts made in this blog. That content, advertising space or post will be clearly identified as paid or sponsored content.
+<?= $this->translate("This blog abides by word of mouth marketing standards. We believe in honesty of relationship, opinion and identity. The compensation received may influence the advertising content, topics or posts made in this blog. That content, advertising space or post will be clearly identified as paid or sponsored content.") ?>
 </p>
 
 <p>
-The owner(s) of this blog is not compensated to provide opinion on products, services, websites and various other topics. The views and opinions expressed on this blog are purely the blog owners. If we claim or appear to be experts on a certain topic or product or service area, we will only endorse products or services that we believe, based on our expertise, are worthy of such endorsement. Any product claim, statistic, quote or other representation about a product or service should be verified with the manufacturer or provider.
+<?= $this->translate("The owner(s) of this blog is not compensated to provide opinion on products, services, websites and various other topics. The views and opinions expressed on this blog are purely the blog owners. If we claim or appear to be experts on a certain topic or product or service area, we will only endorse products or services that we believe, based on our expertise, are worthy of such endorsement. Any product claim, statistic, quote or other representation about a product or service should be verified with the manufacturer or provider.") ?>
 </p>
 
 <p>
-This blog does not contain any content which might present a conflict of interest.
+<?= $this->translate("This blog does not contain any content which might present a conflict of interest.") ?>
 </p>
 
 
 <p>
-To get your own policy, go to http://www.disclosurepolicy.org
+<?= $this->translate("To get your own policy, go to http://www.disclosurepolicy.org") ?>
 </p>

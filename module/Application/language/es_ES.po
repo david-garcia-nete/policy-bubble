@@ -16,6 +16,8 @@ msgstr ""
 
 #: ../src/Service/NavManager.php:
 #: ../application/index/about.phtml
+#: ../application/index/privacy-policy.phtml
+#: ../application/index/disclosure-policy.phtml
 msgid "Home"
 msgstr "Inicio"
 
@@ -375,6 +377,34 @@ msgstr "Si hay alguna pregunta con respecto a esta política de privacidad, pued
 msgid "Last Edited on April 1 2018"
 msgstr "Última edición en 1 de abril de 2018"
 
+#: ../application/index/disclosure-policy.phtml
+msgid "Policy Bubble Disclosure Policy"
+msgstr "Política de Divulgación de Policy Bubble"
+
+#: ../application/index/disclosure-policy.phtml
+msgid "This policy is valid from 02 April 2018"
+msgstr "Esta política es válida desde el 2 de abril de 2018"
+
+#: ../application/index/disclosure-policy.phtml
+msgid "This blog is a collaborative blog written by a group of individuals. This blog does not accept any form of advertising, sponsorship, or paid insertions. We write for our own purposes. However, we may be influenced by our background, occupation, religion, political affiliation or experience."
+msgstr "Este blog es un blog colaborativo escrito por un grupo de personas. Este blog no acepta ninguna forma de publicidad, patrocinio o inserciones pagas. Escribimos para nuestros propios fines. Sin embargo, podemos estar influenciados por nuestros antecedentes, ocupación, religión, afiliación política o experiencia."
+
+#: ../application/index/disclosure-policy.phtml
+msgid "This blog abides by word of mouth marketing standards. We believe in honesty of relationship, opinion and identity. The compensation received may influence the advertising content, topics or posts made in this blog. That content, advertising space or post will be clearly identified as paid or sponsored content."
+msgstr "Este blog cumple con los estándares de comercialización de boca en boca. Creemos en la honestidad de la relación, opinión e identidad. La compensación recibida puede influir en el contenido publicitario, los temas o publicaciones hechas en este blog. Ese contenido, espacio publicitario o publicación será claramente identificado como contenido pagado o patrocinado."
+
+#: ../application/index/disclosure-policy.phtml
+msgid "The owner(s) of this blog is not compensated to provide opinion on products, services, websites and various other topics. The views and opinions expressed on this blog are purely the blog owners. If we claim or appear to be experts on a certain topic or product or service area, we will only endorse products or services that we believe, based on our expertise, are worthy of such endorsement. Any product claim, statistic, quote or other representation about a product or service should be verified with the manufacturer or provider."
+msgstr "El propietario (s) de este blog no recibe una compensación por su opinión sobre productos, servicios, sitios web y otros temas. Los puntos de vista y las opiniones expresadas en este blog son puramente los propietarios del blog. Si afirmamos o parecemos ser expertos en un determinado tema o producto o área de servicio, solo respaldaremos los productos o servicios que creemos, basados ​​en nuestra experiencia, son dignos de tal respaldo. Cualquier reclamo de producto, estadística, presupuesto u otra representación sobre un producto o servicio debe verificarse con el fabricante o proveedor."
+
+#: ../application/index/disclosure-policy.phtml
+msgid "This blog does not contain any content which might present a conflict of interest."
+msgstr "Este blog no contiene ningún contenido que pueda presentar un conflicto de intereses."
+
+#: ../application/index/disclosure-policy.phtml
+msgid "To get your own policy, go to http://www.disclosurepolicy.org"
+msgstr "Para obtener su propia política, vaya a http://www.disclosurepolicy.org"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
@@ -384,10 +414,12 @@ msgid "All rights reserved."
 msgstr "Todos los derechos reservados."
 
 #: ../view/layout/layout.phtml:
+#: ../application/index/privacy-policy.phtml
 msgid "Privacy Policy"
 msgstr "Política de Privacidad"
 
 #: ../view/layout/layout.phtml:
+#: ../application/index/disclosure-policy.phtml
 msgid "Disclosure Policy"
 msgstr "Política de Divulgación"
 
