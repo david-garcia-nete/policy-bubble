@@ -281,7 +281,7 @@ msgstr "Prácticas de información justas"
 
 #: ../application/index/privacy-policy.phtml
 msgid "The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information."
-msgid "Los principios de Fair Information Practices forman la columna vertebral de la ley de privacidad en los Estados Unidos y los conceptos que incluyen han jugado un papel importante en el desarrollo de leyes de protección de datos en todo el mundo. Comprender los principios de Fair Information Practice y cómo deben implementarse es fundamental para cumplir con las diversas leyes de privacidad que protegen la información personal."
+msgstr "Los principios de Fair Information Practices forman la columna vertebral de la ley de privacidad en los Estados Unidos y los conceptos que incluyen han jugado un papel importante en el desarrollo de leyes de protección de datos en todo el mundo. Comprender los principios de Fair Information Practice y cómo deben implementarse es fundamental para cumplir con las diversas leyes de privacidad que protegen la información personal."
 
 #: ../application/index/privacy-policy.phtml
 msgid "In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:"
@@ -298,10 +298,6 @@ msgstr "Dentro de 1 día laboral"
 #: ../application/index/privacy-policy.phtml
 msgid "We will notify the users via in-site notification"
 msgstr "Informaremos a los usuarios a través de la notificación en el sitio"
-
-#: ../application/index/privacy-policy.phtml
-msgid "Within 1 business day"
-msgstr "Dentro de 1 día laboral"
 
 #: ../application/index/privacy-policy.phtml
 msgid "We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors."
