@@ -87,6 +87,42 @@ msgstr "Esta política de privacidad ha sido compilada para servir mejor a aquel
 msgid "What personal information do we collect from the people that visit our blog, website or app?"
 msgstr "¿Qué información personal recopilamos de las personas que visitan nuestro blog, sitio web o aplicación?"
 
+#: ../application/index/privacy-policy.phtml
+msgid "When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, phone number  or other details to help you with your experience."
+msgstr "Al ordenar o registrarse en nuestro sitio, según corresponda, se le puede pedir que ingrese su nombre, dirección de correo electrónico, número de teléfono u otros detalles para ayudarlo con su experiencia."
+
+#: ../application/index/privacy-policy.phtml
+msgid "When do we collect information?" 
+msgstr "¿Cuándo recopilamos información?"
+
+#: ../application/index/privacy-policy.phtml
+msgid "We collect information from you when you register on our site, fill out a form or enter information on our site." 
+msgstr "Recopilamos información de usted cuando se registra en nuestro sitio, completa un formulario o ingresa información en nuestro sitio."
+
+#: ../application/index/privacy-policy.phtml
+msgid "How do we use your information?"
+msgstr "¿Cómo utilizamos su información?"
+
+#: ../application/index/privacy-policy.phtml
+msgid "We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:"
+msgstr "Podemos usar la información que recopilamos de usted cuando se registra, realiza una compra, se registra en nuestro boletín informativo, responde a una encuesta o comunicación de marketing, navega por el sitio web o utiliza otras características del sitio de las siguientes maneras:"
+
+#: ../application/index/privacy-policy.phtml
+msgid "To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested."
+msgstr "Para personalizar su experiencia y permitirnos entregar el tipo de contenido y ofertas de productos que más le interesan."
+
+#: ../application/index/privacy-policy.phtml
+msgid "To improve our website in order to better serve you."
+msgstr "Para mejorar nuestro sitio web a fin de brindarle un mejor servicio."
+
+#: ../application/index/privacy-policy.phtml
+msgid "To allow us to better service you in responding to your customer service requests."
+msgstr "Para permitirnos un mejor servicio al responder a sus solicitudes de servicio al cliente."
+
+#: ../application/index/privacy-policy.phtml
+msgid "How do we protect your information?"
+msgstr "¿Cómo protegemos su información?"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"

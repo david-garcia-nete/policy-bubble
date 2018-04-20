@@ -87,6 +87,42 @@ msgstr ""
 msgid "What personal information do we collect from the people that visit our blog, website or app?"
 msgstr ""
 
+#: ../application/index/privacy-policy.phtml
+msgid "When ordering or registering on our site, as appropriate, you may be asked to enter your name, email address, phone number  or other details to help you with your experience."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "When do we collect information?" 
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We collect information from you when you register on our site, fill out a form or enter information on our site." 
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "How do we use your information?"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We may use the information we collect from you when you register, make a purchase, sign up for our newsletter, respond to a survey or marketing communication, surf the website, or use certain other site features in the following ways:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "To personalize your experience and to allow us to deliver the type of content and product offerings in which you are most interested."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "To improve our website in order to better serve you."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "To allow us to better service you in responding to your customer service requests."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "How do we protect your information?"
+msgstr ""
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr ""
