@@ -123,6 +123,262 @@ msgstr ""
 msgid "How do we protect your information?"
 msgstr ""
 
+#: ../application/index/privacy-policy.phtml
+msgid "We do not use vulnerability scanning and/or scanning to PCI standards."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We only provide articles and information. We never ask for credit card numbers."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We use regular Malware Scanning."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Your personal information is contained behind secured networks and is only accessible by a limited number of persons who have special access rights to such systems, and are required to keep the information confidential. In addition, all sensitive/credit information you supply is encrypted via Secure Socket Layer (SSL) technology."
+msgstr ""
+ 
+#: ../application/index/privacy-policy.phtml
+msgid "We implement a variety of security measures when a user enters, submits, or accesses their information to maintain the safety of your personal information."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "All transactions are processed through a gateway provider and are not stored or processed on our servers."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Do we use 'cookies'?"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Yes. Cookies are small files that a site or its service provider transfers to your computer's hard drive through your Web browser (if you allow) that enables the site's or service provider's systems to recognize your browser and capture and remember certain information. For instance, we use cookies to help us remember and process the items in your shopping cart. They are also used to help us understand your preferences based on previous or current site activity, which enables us to provide you with improved services. We also use cookies to help us compile aggregate data about site traffic and site interaction so that we can offer better site experiences and tools in the future."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We use cookies to:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Understand and save user's preferences for future visits."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "You can choose to have your computer warn you each time a cookie is being sent, or you can choose to turn off all cookies. You do this through your browser settings. Since browser is a little different, look at your browser's Help Menu to learn the correct way to modify your cookies."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "If users disable cookies in their browser:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "If you turn cookies off it will turn off some of the features of the site."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Third-party disclosure"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We do not sell, trade, or otherwise transfer to outside parties your Personally Identifiable Information."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Third-party links"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Occasionally, at our discretion, we may include or offer third-party products or services on our website. These third-party sites have separate and independent privacy policies. We therefore have no responsibility or liability for the content and activities of these linked sites. Nonetheless, we seek to protect the integrity of our site and welcome any feedback about these sites."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Google"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Google's advertising requirements can be summed up by Google's Advertising Principles. They are put in place to provide a positive experience for users. https://support.google.com/adwordspolicy/answer/1316548?hl=en"
+msgstr ""
+ 
+#: ../application/index/privacy-policy.phtml
+msgid "We have not enabled Google AdSense on our site but we may do so in the future."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "California Online Privacy Protection Act"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "CalOPPA is the first state law in the nation to require commercial websites and online services to post a privacy policy.  The law's reach stretches well beyond California to require any person or company in the United States (and conceivably the world) that operates websites collecting Personally Identifiable Information from California consumers to post a conspicuous privacy policy on its website stating exactly the information being collected and those individuals or companies with whom it is being shared. -  See more at: http://consumercal.org/california-online-privacy-protection-act-caloppa/#sthash.0FdRbT51.dpuf"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "According to CalOPPA, we agree to the following:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Users can visit our site anonymously."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Once this privacy policy is created, we will add a link to it on our home page or as a minimum, on the first significant page after entering our website."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Our Privacy Policy link includes the word 'Privacy' and can easily be found on the page specified above."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "You will be notified of any Privacy Policy changes:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "On our Privacy Policy Page"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Can change your personal information:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "By logging in to your account"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "How does our site handle Do Not Track signals?"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We honor Do Not Track signals and Do Not Track, plant cookies, or use advertising when a Do Not Track (DNT) browser mechanism is in place."
+msgstr ""
+ 
+#: ../application/index/privacy-policy.phtml
+msgid "Does our site allow third-party behavioral tracking?"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "It's also important to note that we do not allow third-party behavioral tracking."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "COPPA (Children Online Privacy Protection Act)"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "When it comes to the collection of personal information from children under the age of 13 years old, the Children's Online Privacy Protection Act (COPPA) puts parents in control.  The Federal Trade Commission, United States' consumer protection agency, enforces the COPPA Rule, which spells out what operators of websites and online services must do to protect children's privacy and safety online."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Do we let third-parties, including ad networks or plug-ins collect PII from children under 13?"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We do not specifically market to children under the age of 13 years old."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Fair Information Practices"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "The Fair Information Practices Principles form the backbone of privacy law in the United States and the concepts they include have played a significant role in the development of data protection laws around the globe. Understanding the Fair Information Practice Principles and how they should be implemented is critical to comply with the various privacy laws that protect personal information."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "In order to be in line with Fair Information Practices we will take the following responsive action, should a data breach occur:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We will notify you via email"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Within 1 business day"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We will notify the users via in-site notification"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Within 1 business day"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We also agree to the Individual Redress Principle which requires that individuals have the right to legally pursue enforceable rights against data collectors and processors who fail to adhere to the law. This principle requires not only that individuals have enforceable rights against data users, but also that individuals have recourse to courts or government agencies to investigate and/or prosecute non-compliance by data processors."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "CAN SPAM Act"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "The CAN-SPAM Act is a law that sets the rules for commercial email, establishes requirements for commercial messages, gives recipients the right to have emails stopped from being sent to them, and spells out tough penalties for violations."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "We collect your email address in order to:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Send information, respond to inquiries, and/or other requests or questions"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "To be in accordance with CANSPAM, we agree to the following:"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Not use false or misleading subjects or email addresses."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Identify the message as an advertisement in some reasonable way."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Include the physical address of our business or site headquarters."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Monitor third-party email marketing services for compliance, if one is used."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Honor opt-out/unsubscribe requests quickly."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Allow users to unsubscribe by using the link at the bottom of each email."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "If at any time you would like to unsubscribe from receiving future emails, you can email us at"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "david.garcia.nete@gmail.com and we will promptly remove you from"
+msgstr ""
+ 
+#: ../application/index/privacy-policy.phtml
+msgid "ALL"
+msgstr ""
+ 
+#: ../application/index/privacy-policy.phtml
+msgid "correspondence."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Contacting Us"
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "If there are any questions regarding this privacy policy, you may contact us using the information below."
+msgstr ""
+
+#: ../application/index/privacy-policy.phtml
+msgid "Last Edited on April 1 2018"
+msgstr ""
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr ""
