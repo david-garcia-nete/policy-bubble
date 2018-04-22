@@ -425,7 +425,7 @@ msgstr "El siguiente acuerdo de términos de servicio (el 'TOS') es un acuerdo l
 
 #: ../application/index/terms-of-service.phtml
 msgid ", (the 'Site') and its Services, which shall be defined below."
-msgstr ", (el" Sitio ") y sus Servicios, que se definirán a continuación."
+msgstr ", (el 'Sitio' ) y sus Servicios, que se definirán a continuación."
 
 #: ../application/index/terms-of-service.phtml
 msgid "DESCRIPTION OF WEBSITE SERVICES OFFERED"
@@ -477,11 +477,15 @@ msgstr "Si alguien proporciona a sabiendas información falsa, falsa, inexacta o
 
 #: ../application/index/terms-of-service.phtml
 msgid "It is David's Web Sites' priority to ensure the safety and privacy of all its visitors, users and members, especially that of children. Therefore, it is for this reason that the parents of any child under the age of 13 that permit their child or children access to the David's Web Sites website platform Services must create a 'family' account, which will certify that the individual creating the 'family' account is of 18 years of age and as such, the parent or legal guardian of any child or children registered under the 'family' account. As the creator of the 'family' account he/she is thereby granting permission for his/her child or children to access the various Services provided, including, but not limited to, message boards, email, and/or instant messaging. It is the parent's and/or legal guardian's responsibility to determine whether any of the Services and/or content provided are age-appropriate for his/her child."
-msgstr "Es prioridad de David's Web Sites garantizar la seguridad y la privacidad de todos sus visitantes, usuarios y miembros, especialmente de los niños. Por lo tanto, es por esta razón que los padres de cualquier niño menor de 13 años que permitan su acceso de niños o niños a la plataforma del sitio web de Servivio de David's Web Sites. Los servicios deben crear una cuenta "familiar" que certifique que el individuo que crea la cuenta "familiar" tiene 18 años de edad y, como tal, el padre o tutor legal de cualquier niño o niños registrados bajo la cuenta 'familiar'. Como creador de la cuenta 'familiar', él / ella está otorgando permiso para que su hijo o hijos accedan a los diversos Servicios provistos, incluidos, entre otros, tableros de mensajes, correo electrónico y / o mensajería instantánea. Es responsabilidad del padre y / o del tutor legal determinar si alguno de los Servicios y / o contenidos proporcionados son apropiados para su edad para su hijo."
+msgstr "Es prioridad de David's Web Sites garantizar la seguridad y la privacidad de todos sus visitantes, usuarios y miembros, especialmente de los niños. Por lo tanto, es por esta razón que los padres de cualquier niño menor de 13 años que permitan su acceso de niños o niños a la plataforma del sitio web de Servivio de David's Web Sites. Los servicios deben crear una cuenta 'familiar' que certifique que el individuo que crea la cuenta 'familiar' tiene 18 años de edad y, como tal, el padre o tutor legal de cualquier niño o niños registrados bajo la cuenta 'familiar'. Como creador de la cuenta 'familiar', él / ella está otorgando permiso para que su hijo o hijos accedan a los diversos Servicios provistos, incluidos, entre otros, tableros de mensajes, correo electrónico y / o mensajería instantánea. Es responsabilidad del padre y / o del tutor legal determinar si alguno de los Servicios y / o contenidos proporcionados son apropiados para su edad para su hijo."
 
 #: ../application/index/terms-of-service.phtml
 msgid "PRIVACY POLICY"
 msgstr "POLÍTICA DE PRIVACIDAD"
+
+#: ../application/index/terms-of-service.phtml
+msgid "https://policybubble.com/privacypolicy"
+msgstr "https://policybubble.com/politicadeprivacidad"
 
 #: ../application/index/terms-of-service.phtml
 msgid "Every member's registration data and various other personal information are strictly protected by the David's Web Sites Online Privacy Policy (see the full Privacy Policy at"
@@ -616,24 +620,24 @@ msgid "CAUTIONS FOR GLOBAL USE AND EXPORT AND IMPORT COMPLIANCE"
 msgstr "PRECAUCIONES PARA EL USO GLOBAL Y LA EXPORTACIÓN Y EL CUMPLIMIENTO DE LAS IMPORTACIONES"
 
 #: ../application/index/terms-of-service.phtml
-msgid "Due to the global nature of the internet, through the use of our network you hereby agree to comply with all local rules relating to online conduct and that which is considered acceptable Content. Uploading, posting and/or transferring of software, technology and other technical data may be subject to the export and import laws of the United States and possibly other countries. Through the use of our network, you thus agree to comply with all applicable export and import laws, statutes and regulations, including, but not limited to,  the Export Administration Regulations"
-msgstr "Debido a la naturaleza global de internet, a través del uso de nuestra red usted acepta cumplir con todas las reglas locales relacionadas con la conducta en línea y con lo que se considera contenido aceptable. Cargar, publicar y / o transferir software, tecnología y otros datos técnicos pueden estar sujetos a las leyes de exportación e importación de los Estados Unidos y posiblemente de otros países. A través del uso de nuestra red, usted acepta cumplir con todas las leyes, estatutos y reglamentos de exportación e importación aplicables, incluidos, entre otros, a las Regulaciones de Administración de Exportaciones"
+msgid "Due to the global nature of the internet, through the use of our network you hereby agree to comply with all local rules relating to online conduct and that which is considered acceptable Content. Uploading, posting and/or transferring of software, technology and other technical data may be subject to the export and import laws of the United States and possibly other countries. Through the use of our network, you thus agree to comply with all applicable export and import laws, statutes and regulations, including, but not limited to, the Export Administration Regulations ("
+msgstr "Debido a la naturaleza global de internet, a través del uso de nuestra red usted acepta cumplir con todas las reglas locales relacionadas con la conducta en línea y con lo que se considera contenido aceptable. Cargar, publicar y / o transferir software, tecnología y otros datos técnicos pueden estar sujetos a las leyes de exportación e importación de los Estados Unidos y posiblemente de otros países. A través del uso de nuestra red, usted acepta cumplir con todas las leyes, estatutos y reglamentos de exportación e importación aplicables, incluidos, entre otros, a las Regulaciones de Administración de Exportaciones ("
 
 #: ../application/index/terms-of-service.phtml
-msgid "), as well as the sanctions control program of the United States"
-msgstr "), así como el programa de control de sanciones de los Estados Unidos"
+msgid "), as well as the sanctions control program of the United States ("
+msgstr "), así como el programa de control de sanciones de los Estados Unidos ("
 
 #: ../application/index/terms-of-service.phtml
 msgid "). Furthermore, you state and pledge that you:"
 msgstr "). Además, declaras y prometes que:"
 
 #: ../application/index/terms-of-service.phtml
-msgid "are not on the list of prohibited individuals which may be identified on any government export exclusion report"
-msgstr "no están en la lista de personas prohibidas que pueden identificarse en cualquier informe de exclusión de exportaciones del gobierno"
+msgid "are not on the list of prohibited individuals which may be identified on any government export exclusion report ("
+msgstr "no están en la lista de personas prohibidas que pueden identificarse en cualquier informe de exclusión de exportaciones del gobierno ("
 
 #: ../application/index/terms-of-service.phtml
-msgid " nor a member of any other government which may be part of an export-prohibited country identified in applicable export and import laws and regulations;"
-msgstr " ni un miembro de ningún otro gobierno que pueda ser parte de un país prohibido por la exportación identificado en las leyes y regulaciones de exportación e importación aplicables;"
+msgid ") nor a member of any other government which may be part of an export-prohibited country identified in applicable export and import laws and regulations;"
+msgstr ") ni un miembro de ningún otro gobierno que pueda ser parte de un país prohibido por la exportación identificado en las leyes y regulaciones de exportación e importación aplicables;"
 
 #: ../application/index/terms-of-service.phtml
 msgid "agree not to transfer any software, technology or any other technical data through the use of our network Services to any export-prohibited country;"
@@ -817,7 +821,7 @@ msgstr "ANUNCIANTES"
 
 #: ../application/index/terms-of-service.phtml
 msgid "Any correspondence or business dealings with, or the participation in any promotions of, advertisers located on or through our Services, which may include the payment and/or delivery of such related goods and/or Services, and any such other term, condition, warranty and/or representation associated with such dealings, are and shall be solely between you and any such advertiser. Moreover, you herein agree that David's Web Sites shall not be held responsible or liable for any loss or damage of any nature or manner incurred as a direct result of any such dealings or as a result of the presence of such advertisers on our website."
-msgstr "Cualquier correspondencia o trato comercial con, o la participación en cualquier promoción de anunciantes ubicados en oa través de nuestros Servicios, que puede incluir el pago y / o la entrega de dichos bienes y / o Servicios relacionados, y cualquier otro término, condición , garantía y / o representación asociada con tales transacciones, son y serán únicamente entre usted y cualquier anunciante. Además, usted acepta que David's Web Sites no se responsabilizará por ninguna pérdida o daño de cualquier naturaleza o forma incurrida como resultado directo de tales transacciones o como resultado de la presencia de dichos anunciantes en nuestro sitio web."
+msgstr "Cualquier correspondencia o trato comercial con, o la participación en cualquier promoción de anunciantes ubicados en oa través de nuestros Servicios, que puede incluir el pago y / o la entrega de dichos bienes y / o Servicios relacionados, y cualquier otro término, condición, garantía y / o representación asociada con tales transacciones, son y serán únicamente entre usted y cualquier anunciante. Además, usted acepta que David's Web Sites no se responsabilizará por ninguna pérdida o daño de cualquier naturaleza o forma incurrida como resultado directo de tales transacciones o como resultado de la presencia de dichos anunciantes en nuestro sitio web."
 
 #: ../application/index/terms-of-service.phtml
 msgid "LINKS"
@@ -825,7 +829,7 @@ msgstr "LINKS"
 
 #: ../application/index/terms-of-service.phtml
 msgid "Either David's Web Sites or any third parties may provide links to other websites and/or resources. Thus, you acknowledge and agree that we are not responsible for the availability of any such external sites or resources, and as such, we do not endorse nor are we responsible or liable for any content, products, advertising or any other materials, on or available from such third party sites or resources. Furthermore, you acknowledge and agree that David's Web Sites shall not be responsible or liable, directly or indirectly, for any such damage or loss which may be a result of, caused or allegedly to be caused by or in connection with the use of or the reliance on any such content, goods or Services made available on or through any such site or resource."
-msgstr "O bien David's Web Sites o cualquier tercero puede proporcionar enlaces a otros sitios web y / o recursos. Por lo tanto, usted reconoce y acepta que no somos responsables de la disponibilidad de dichos sitios o recursos externos, y como tal, no lo hacemos ni somos responsables de ningún contenido, producto, publicidad o cualquier otro material disponible o disponible en dichos sitios o recursos de terceros. Además, usted reconoce y acepta que David's Web Sites no será responsable, directa o indirectamente, de ningún daño o pérdida que pueda ser el resultado de, causado o presuntamente causado por o en relación con el uso o la dependencia de dicho contenido, bienes o servicios disponibles en oa través de dicho sitio o recurso."
+msgstr "David's Web Sites o cualquier tercero puede proporcionar enlaces a otros sitios web y / o recursos. Por lo tanto, usted reconoce y acepta que no somos responsables de la disponibilidad de dichos sitios o recursos externos, y como tal, no lo hacemos ni somos responsables de ningún contenido, producto, publicidad o cualquier otro material disponible o disponible en dichos sitios o recursos de terceros. Además, usted reconoce y acepta que David's Web Sites no será responsable, directa o indirectamente, de ningún daño o pérdida que pueda ser el resultado de, causado o presuntamente causado por o en relación con el uso o la dependencia de dicho contenido, bienes o servicios disponibles en oa través de dicho sitio o recurso."
 
 #: ../application/index/terms-of-service.phtml
 msgid "PROPRIETARY RIGHTS"
@@ -909,7 +913,7 @@ msgstr "ADMONICIÓN ESPECIAL RELACIONADA CON ASUNTOS FINANCIEROS"
 
 #: ../application/index/terms-of-service.phtml
 msgid "Should you intend to create or to join any service, receive or request any such news, messages, alerts or other information from our Services concerning companies, stock quotes, investments or securities, please review the above Sections Warranty Disclaimers and Limitations of Liability again. In addition, for this particular type of information, the phrase 'Let the investor beware' is appropriate. David's Web Sites' content is provided primarily for informational purposes, and no content that shall be provided or included in our Services is intended for trading or investing purposes. David's Web Sites and our licensors shall not be responsible or liable for the accuracy, usefulness or availability of any information transmitted and/or made available by way of our Services, and shall not be responsible or liable for any trading and/or investment decisions based on any such information."
-msgstr "Si tiene la intención de crear o unirse a cualquier servicio, recibir o solicitar tales noticias, mensajes, alertas u otra información de nuestros Servicios sobre compañías, cotizaciones bursátiles, inversiones o valores, por favor revise las Secciones anteriores Garantía Limitaciones y Limitaciones de Responsabilidad De nuevo, para este tipo particular de información, la frase "Deje que el inversor se preocupe" es apropiada. El contenido de David's Web Sites se proporciona principalmente con fines informativos, y ningún contenido que debe proporcionarse o incluirse en nuestros Servicios está destinado a con fines comerciales o de inversión. David's Web Sites y nuestros licenciantes no serán responsables de la precisión, utilidad o disponibilidad de la información transmitida y / o disponible a través de nuestros Servicios.y no será responsable de ninguna decisión de negociación y / o inversión basada en dicha información."
+msgstr "Si tiene la intención de crear o unirse a cualquier servicio, recibir o solicitar tales noticias, mensajes, alertas u otra información de nuestros Servicios sobre compañías, cotizaciones bursátiles, inversiones o valores, por favor revise las Secciones anteriores Garantía Limitaciones y Limitaciones de Responsabilidad De nuevo, para este tipo particular de información, la frase 'Deje que el inversor se preocupe' es apropiada. El contenido de David's Web Sites se proporciona principalmente con fines informativos, y ningún contenido que debe proporcionarse o incluirse en nuestros Servicios está destinado a con fines comerciales o de inversión. David's Web Sites y nuestros licenciantes no serán responsables de la precisión, utilidad o disponibilidad de la información transmitida y / o disponible a través de nuestros Servicios.y no será responsable de ninguna decisión de negociación y / o inversión basada en dicha información."
 
 #: ../application/index/terms-of-service.phtml
 msgid "EXCLUSION AND LIMITATIONS"

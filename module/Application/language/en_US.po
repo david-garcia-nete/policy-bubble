@@ -482,6 +482,10 @@ msgid "PRIVACY POLICY"
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
+msgid "https://policybubble.com/privacypolicy"
+msgstr ""
+
+#: ../application/index/terms-of-service.phtml
 msgid "Every member's registration data and various other personal information are strictly protected by the David's Web Sites Online Privacy Policy (see the full Privacy Policy at"
 msgstr ""
 
@@ -614,11 +618,11 @@ msgid "CAUTIONS FOR GLOBAL USE AND EXPORT AND IMPORT COMPLIANCE"
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
-msgid "Due to the global nature of the internet, through the use of our network you hereby agree to comply with all local rules relating to online conduct and that which is considered acceptable Content. Uploading, posting and/or transferring of software, technology and other technical data may be subject to the export and import laws of the United States and possibly other countries. Through the use of our network, you thus agree to comply with all applicable export and import laws, statutes and regulations, including, but not limited to,  the Export Administration Regulations"
+msgid "Due to the global nature of the internet, through the use of our network you hereby agree to comply with all local rules relating to online conduct and that which is considered acceptable Content. Uploading, posting and/or transferring of software, technology and other technical data may be subject to the export and import laws of the United States and possibly other countries. Through the use of our network, you thus agree to comply with all applicable export and import laws, statutes and regulations, including, but not limited to, the Export Administration Regulations ("
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
-msgid "), as well as the sanctions control program of the United States"
+msgid "), as well as the sanctions control program of the United States ("
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
@@ -626,11 +630,11 @@ msgid "). Furthermore, you state and pledge that you:"
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
-msgid "are not on the list of prohibited individuals which may be identified on any government export exclusion report"
+msgid "are not on the list of prohibited individuals which may be identified on any government export exclusion report ("
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
-msgid " nor a member of any other government which may be part of an export-prohibited country identified in applicable export and import laws and regulations;"
+msgid ") nor a member of any other government which may be part of an export-prohibited country identified in applicable export and import laws and regulations;"
 msgstr ""
 
 #: ../application/index/terms-of-service.phtml
