@@ -19,6 +19,7 @@ msgstr ""
 #: ../application/index/privacy-policy.phtml
 #: ../application/index/disclosure-policy.phtml
 #: ../application/index/terms-of-service.phtml
+#: ../application/index/analysis.phtml
 msgid "Home"
 msgstr "Inicio"
 
@@ -1055,6 +1056,34 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/index/analysis.phtml
+msgid "Number of:"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Users"
+msgstr "Usuarios"
+
+#: ../application/index/analysis.phtml
+msgid "Responses"
+msgstr "Respuestas"
+
+#: ../application/index/analysis.phtml
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: ../application/index/analysis.phtml
+msgid "Countries"
+msgstr "Países"
+
+#: ../application/index/analysis.phtml
+msgid "Regions"
+msgstr "Regiones"
+
+#: ../application/index/analysis.phtml
+msgid "Cities"
+msgstr "Ciudades"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
@@ -1132,6 +1161,7 @@ msgstr "Leer"
 
 #: ../application/index/index.phtml
 #: ../src/Service/NavManager.php:
+#: ../application/index/analysis.phtml 
 msgid "Posts"
 msgstr "Correo"
 
@@ -1145,6 +1175,7 @@ msgstr "Decir"
 
 #: ../application/index/index.phtml
 #: ../src/Service/NavManager.php:
+#: ../application/index/analysis.phtml
 msgid "Analysis"
 msgstr "Análisis"
 
