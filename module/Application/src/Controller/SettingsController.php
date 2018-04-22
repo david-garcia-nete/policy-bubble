@@ -70,12 +70,24 @@ class SettingsController extends AbstractActionController
      */
     private $mailSender;
     
+    /**
+     * Session container.
+     * @var Zend\Session\Container
+     */
+    private $sessionContainer;
+    
+    /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
+    
     
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $settingsManager, $authManager, 
-            $postManager, $imageManager, $videoManager, $audioManager, $mailSender) 
+            $postManager, $imageManager, $videoManager, $audioManager, $mailSender, $sessionContainer, $translator) 
     {
        $this->entityManager = $entityManager;
        $this->settingsManager = $settingsManager;
@@ -85,6 +97,8 @@ class SettingsController extends AbstractActionController
        $this->videoManager = $videoManager;
        $this->audioManager = $audioManager;
        $this->mailSender = $mailSender;
+       $this->sessionContainer = $sessionContainer;
+       $this->translator = $translator;
     }  
 
     public function indexAction()
@@ -287,6 +301,10 @@ class SettingsController extends AbstractActionController
                 $user->setLanguage($language);
                 // Apply changes to database.
                 $this->entityManager->flush();
+                
+                $this->translator->setLocale($data['language']);
+                
+                $this->sessionContainer->Language = $data['language'];
 
                 // Redirect to "Settings" page
                 return $this->redirect()->toRoute('settings');

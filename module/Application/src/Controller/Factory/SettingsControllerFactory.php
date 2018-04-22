@@ -27,10 +27,12 @@ class SettingsControllerFactory implements FactoryInterface
         $videoManager = $container->get(VideoManager::class);
         $audioManager = $container->get(AudioManager::class);
         $mailSender = $container->get(MailSender::class);
+        $sessionContainer = $container->get('Language');
+        $translator = $container->get('MvcTranslator');
         
         // Instantiate the controller and inject dependencies
         return new SettingsController($entityManager, $settingsManager, 
                 $authManager, $postManager, $imageManager, 
-                $videoManager, $audioManager, $mailSender);
+                $videoManager, $audioManager, $mailSender, $sessionContainer, $translator);
     }
 }

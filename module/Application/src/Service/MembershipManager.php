@@ -65,3 +65,23 @@ class MembershipManager
     }
     
 }
+
+// This goes in the home page but I moved it here so no one can see it.
+//<!--    <div class="col-md-4">
+//        <div class="panel panel-default">
+//            <div class="panel-heading">
+//                <h3 class="panel-title">Membership</h3>
+//            </div>
+//            <div class="panel-body">
+//                <p>
+//                    Update your posting limit.
+//                </p>
+//
+//                <p>
+//                    <a class="btn btn-info pull-right" 
+//                       href="<php echo $this->url('membership'); >">Update &raquo;
+//                    </a>
+//                </p>
+//            </div>
+//        </div>
+//    </div>-->

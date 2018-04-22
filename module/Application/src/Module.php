@@ -36,8 +36,7 @@ class Module
         $translationManager = new TranslationManager();
         
         $translationManager->initTranslator($event, $serviceManager, $sessionManager);
+        
     }
-    
-    
-    
+       
 }
