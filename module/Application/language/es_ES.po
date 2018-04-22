@@ -406,6 +406,651 @@ msgstr "Este blog no contiene ningún contenido que pueda presentar un conflicto
 msgid "To get your own policy, go to http://www.disclosurepolicy.org"
 msgstr "Para obtener su propia política, vaya a http://www.disclosurepolicy.org"
 
+
+#: ../application/index/terms-of-service.phtml
+msgid "POLICY BUBBLE TERMS OF SERVICE AGREEMENT"
+msgstr "CONDICIONES DEL ACUERDO DE SERVICIO DE POLICY BUBBLE "
+
+#: ../application/index/terms-of-service.phtml
+msgid "PLEASE READ THE FOLLOWING TERMS OF SERVICE AGREEMENT CAREFULLY. BY ACCESSING OR USING OUR SITES AND OUR SERVICES, YOU HEREBY AGREE TO BE BOUND BY THE TERMS AND ALL TERMS INCORPORATED HEREIN BY REFERENCE. IT IS THE RESPONSIBILITY OF YOU, THE USER, CUSTOMER, OR PROSPECTIVE CUSTOMER TO READ THE TERMS AND CONDITIONS BEFORE PROCEEDING TO USE THIS SITE. IF YOU DO NOT EXPRESSLY AGREE TO ALL OF THE TERMS AND CONDITIONS, THEN PLEASE DO NOT ACCESS OR USE OUR SITES OR OUR SERVICES. THIS TERMS OF SERVICE AGREEMENT IS EFFECTIVE AS OF APRIL 13 2018."
+msgstr "POR FAVOR, LEA ATENTAMENTE LOS SIGUIENTES TÉRMINOS DEL CONTRATO DE SERVICIO AL ACCEDER O UTILIZAR NUESTROS SITIOS Y NUESTROS SERVICIOS, POR LA PRESENTE ACUERDA ESTAR OBLIGADO POR LOS TÉRMINOS Y TODOS LOS TÉRMINOS INCORPORADOS AQUÍ POR REFERENCIA. ES RESPONSABILIDAD DE USTED, EL USUARIO, EL CLIENTE O CLIENTE PROSPECTIVO PARA LEER LOS TÉRMINOS Y CONDICIONES ANTES DE CONTINUAR USANDO ESTE SITIO. SI NO ESTÁ DE ACUERDO EXPRESAMENTE CON TODOS LOS TÉRMINOS Y CONDICIONES, ENTONCES NO ACCEDA O USE NUESTROS SITIOS O NUESTROS SERVICIOS. ESTE ACUERDO DE TÉRMINOS DE SERVICIO ES EN VIGENCIA A PARTIR DEL 13 DE ABRIL DE 2018."
+
+#: ../application/index/terms-of-service.phtml
+msgid "ACCEPTANCE OF TERMS"
+msgstr "ACEPTACIÓN DE TÉRMINOS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "The following Terms of Service Agreement (the 'TOS') is a legally binding agreement that shall govern the relationship with our users and others which may interact or interface with David's Web Sites located at 8750 Georgia Ave Apt 301B, Silver Spring, Maryland 20910 and our subsidiaries and affiliates, in association with the use of the David's Web Sites website, which includes"
+msgstr "El siguiente acuerdo de términos de servicio (el 'TOS') es un acuerdo legalmente vinculante que regirá la relación con nuestros usuarios y otros que pueden interactuar o interactuar con David's Web Sites ubicado en 8750 Georgia Ave Apt 301B, Silver Spring, Maryland 20910 y nuestras subsidiarias y afiliadas, en asociación con el uso del sitio web de David's Web Sites, que incluye"
+
+#: ../application/index/terms-of-service.phtml
+msgid ", (the 'Site') and its Services, which shall be defined below."
+msgstr ", (el" Sitio ") y sus Servicios, que se definirán a continuación."
+
+#: ../application/index/terms-of-service.phtml
+msgid "DESCRIPTION OF WEBSITE SERVICES OFFERED"
+msgstr "DESCRIPCIÓN DE LOS SERVICIOS DE SITIO WEB OFRECIDOS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "The Site is a political website social network which has the following description:"
+msgstr "El sitio es una red social de sitio web político que tiene la siguiente descripción:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Policy Bubble is a public opinion social platform. It encourages users to provide information about their political opinions so they may be better served by their representatives. It is a social network that allows users to collaborate and share ideas."
+msgstr "Policy Bubble es una plataforma social de opinión pública que alienta a los usuarios a proporcionar información sobre sus opiniones políticas para que sus representantes puedan atenderla mejor. Es una red social que permite a los usuarios colaborar y compartir ideas."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Any and all visitors to our site, despite whether they are registered or not, shall be deemed as 'users' of the herein contained Services provided for the purpose of this TOS. Once an individual register's for our Services, through the process of creating an account, the user shall then be considered a 'member'."
+msgstr "Todos y cada uno de los visitantes de nuestro sitio, independientemente de si están registrados o no, se considerarán como 'usuarios' de los Servicios contenidos a los fines de este TOS. Una vez que un registro individual sea para nuestros Servicios, a través del proceso de creando una cuenta, el usuario será considerado como un 'miembro'."
+
+#: ../application/index/terms-of-service.phtml
+msgid "The user and/or member acknowledges and agrees that the Services provided and made available through our website and applications, which may include some mobile applications and that those applications may be made available on various social media networking sites and numerous other platforms and downloadable programs, are the sole property of David's Web Sites. At its discretion, David's Web Sites may offer additional website Services and/or products, or update, modify or revise any current content and Services, and this Agreement shall apply to any and all additional Services and/or products and any and all updated, modified or revised Services unless otherwise stipulated. David's Web Sites does hereby reserve the right to cancel and cease offering any of the aforementioned Services and/or products. You, as the end user and/or member, acknowledge, accept and agree that David's Web Sites shall not be held liable for any such updates, modifications, revisions, suspensions or discontinuance of any of our Services and/or products. Your continued use of the Services provided, after such posting of any updates, changes, and/or modifications shall constitute your acceptance of such updates, changes and/or modifications, and as such, frequent review of this Agreement and any and all applicable terms and policies should be made by you to ensure you are aware of all terms and policies currently in effect. Should you not agree to the updated, revised or modified terms, you must stop using the provided Services forthwith."
+msgstr "El usuario y / o miembro reconoce y acepta que los Servicios brindan y están disponibles a través de nuestro sitio web y aplicaciones, que pueden incluir algunas aplicaciones móviles y que esas aplicaciones pueden estar disponibles en varios sitios de redes sociales y en muchas otras plataformas descargables. programas, son propiedad exclusiva de David's Web Sites. A su discreción, David's Web Sites puede ofrecer servicios o productos adicionales del sitio web o actualizar, modificar o revisar cualquier contenido y servicios actuales, y este acuerdo se aplicará a todos los Servicios y / o productos y todos y cada uno de los Servicios actualizados, modificados o revisados ​​a menos que se estipule lo contrario. Los David's Web Sites se reserva el derecho de cancelar y dejar de ofrecer cualquiera de los Servicios y / o productos antes mencionados. Usted, como usuario final y / o miembro, reconocer, aceptar y aceptar que David's Web Sites no se hará responsables de dichas actualizaciones, modificaciones, revisiones, suspensiones o Continuación de cualquiera de nuestros Servicios y / o productos. Su uso continuo de los Servicios brindados, después de dicha publicación de cualquier actualización, cambio y / o modificación, constituirá su aceptación de tales actualizaciones, cambios y / o modificaciones, y como tal, la revisión frecuente de este Acuerdo y todos los términos aplicables. y las políticas deben ser hechas por usted para garantizar que conoce todos los términos y políticas actualmente vigentes. Si no acepta los términos actualizados, revisados ​​o modificados, debe dejar de utilizar los Servicios proporcionados de inmediato."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Furthermore, the user and/or member understands, acknowledges and agrees that the Services offered shall be provided 'AS IS' and as such David's Web Sites shall not assume any responsibility or obligation for the timeliness, missed delivery, deletion and/or any failure to store user content, communication or personalization settings."
+msgstr "Además, el usuario y / o miembro entiende, reconoce y acepta que los Servicios ofrecidos se proporcionarán 'TAL CUAL', y como tal, los David's Web Sites no asumirá ninguna responsabilidad u obligación por la puntualidad, entrega no entregada, borrado y / o cualquier falla al almacenar el contenido del usuario, la comunicación o la configuración de personalización."
+
+#: ../application/index/terms-of-service.phtml
+msgid "REGISTRATION"
+msgstr "REGISTRO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "To register and become a 'member' of the Site, you must be at least 18 years of age to enter into and form a legally binding contract. In addition, you must be in good standing and not an individual that has been previously barred from receiving David's Web Sites' Services under the laws and statutes of the United States or other applicable jurisdiction."
+msgstr "Para registrarse y convertirse en 'miembro' del Sitio, debe tener al menos 18 años para firmar y formar un contrato legalmente vinculante. Además, debe estar en regla y no ser un individuo que haya estado previamente impedido de recibir los Servicios de David's Web Sites bajo las leyes y los estatutos de los Estados Unidos u otra jurisdicción aplicable."
+
+#: ../application/index/terms-of-service.phtml
+msgid "When you register, David's Web Sites may collect information such as your name, e-mail address, birth date, gender, mailing address, occupation, industry and personal interests. You can edit your account information at any time. Once you register with David's Web Sites and sign in to our Services, you are no longer anonymous to us. Furthermore, the registering party hereby acknowledges, understands and agrees to:"
+msgstr "Cuando se registra, David's Web Sites puede recopilar información como su nombre, dirección de correo electrónico, fecha de nacimiento, sexo, dirección postal, ocupación, industria e intereses personales. Puede editar la información de su cuenta en cualquier momento. Al registrar con David's Web Sites e iniciar sesión en nuestros Servicios, usted ya no es anónimo para nosotros. Además, la parte registrante reconoce, entiende y acepta:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "furnish factual, correct, current and complete information with regards to yourself as may be requested by the data registration process, and"
+msgstr "proporciona información objetiva, correcta, actual y completa con respecto a usted como puede ser solicitada por el proceso de registro de datos, y"
+
+#: ../application/index/terms-of-service.phtml
+msgid "maintain and promptly update your registration and profile information in an effort to maintain accuracy and completeness at all times."
+msgstr "mantendrá y actualizará prontamente su información de registro y perfil en un esfuerzo por mantener la precisión y la integridad en todo momento."
+
+#: ../application/index/terms-of-service.phtml
+msgid "If anyone knowingly provides any information of a false, untrue, inaccurate or incomplete nature, David's Web Sites will have sufficient grounds and rights to suspend or terminate the member in violation of this aspect of the Agreement, and as such refuse any and all current or future use of David's Web Sites Services, or any portion thereof."
+msgstr "Si alguien proporciona a sabiendas información falsa, falsa, inexacta o incompleta, David's Web Sites tendrá motivos y derechos suficientes para suspender o terminar al miembro en violación de este aspecto del Acuerdo, y como tal, rechazar cualquier y todos uso actual o futuro de los Servicios de David's Web Sites, o cualquier parte de los mismos."
+
+#: ../application/index/terms-of-service.phtml
+msgid "It is David's Web Sites' priority to ensure the safety and privacy of all its visitors, users and members, especially that of children. Therefore, it is for this reason that the parents of any child under the age of 13 that permit their child or children access to the David's Web Sites website platform Services must create a 'family' account, which will certify that the individual creating the 'family' account is of 18 years of age and as such, the parent or legal guardian of any child or children registered under the 'family' account. As the creator of the 'family' account he/she is thereby granting permission for his/her child or children to access the various Services provided, including, but not limited to, message boards, email, and/or instant messaging. It is the parent's and/or legal guardian's responsibility to determine whether any of the Services and/or content provided are age-appropriate for his/her child."
+msgstr "Es prioridad de David's Web Sites garantizar la seguridad y la privacidad de todos sus visitantes, usuarios y miembros, especialmente de los niños. Por lo tanto, es por esta razón que los padres de cualquier niño menor de 13 años que permitan su acceso de niños o niños a la plataforma del sitio web de Servivio de David's Web Sites. Los servicios deben crear una cuenta "familiar" que certifique que el individuo que crea la cuenta "familiar" tiene 18 años de edad y, como tal, el padre o tutor legal de cualquier niño o niños registrados bajo la cuenta 'familiar'. Como creador de la cuenta 'familiar', él / ella está otorgando permiso para que su hijo o hijos accedan a los diversos Servicios provistos, incluidos, entre otros, tableros de mensajes, correo electrónico y / o mensajería instantánea. Es responsabilidad del padre y / o del tutor legal determinar si alguno de los Servicios y / o contenidos proporcionados son apropiados para su edad para su hijo."
+
+#: ../application/index/terms-of-service.phtml
+msgid "PRIVACY POLICY"
+msgstr "POLÍTICA DE PRIVACIDAD"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Every member's registration data and various other personal information are strictly protected by the David's Web Sites Online Privacy Policy (see the full Privacy Policy at"
+msgstr "Los datos de registro de cada miembro y otra información personal están estrictamente protegidos por la Política de privacidad en línea de David's Web Sites (consulte la Política de privacidad completa en"
+
+#: ../application/index/terms-of-service.phtml
+msgid ". As a member, you herein consent to the collection and use of the information provided, including the transfer of information within the United States and/or other countries for storage, processing or use by David's Web Sites and/or our subsidiaries and affiliates."
+msgstr ". Como miembro, usted acepta la recopilación y el uso de la información proporcionada, incluida la transferencia de información dentro de los Estados Unidos y / u otros países para su almacenamiento, procesamiento o uso en David's Web Sites y / o nuestras subsidiarias y afiliados."
+
+#: ../application/index/terms-of-service.phtml
+msgid "MEMBER ACCOUNT, USERNAME, PASSWORD AND SECURITY"
+msgstr "CUENTA DE MIEMBRO, NOMBRE DE USUARIO, CONTRASEÑA Y SEGURIDAD"
+
+#: ../application/index/terms-of-service.phtml
+msgid "When you set up an account, you are the sole authorized user of your account. You shall be responsible for maintaining the secrecy and confidentiality of your password and for all activities that transpire on or within your account. It is your responsibility for any act or omission of any user(s) that access your account information that, if undertaken by you, would be deemed a violation of the TOS."
+msgstr "Cuando configura una cuenta, usted es el único usuario autorizado de su cuenta. Usted será responsable de mantener el secreto y la confidencialidad de su contraseña y de todas las actividades que ocurran en su cuenta o dentro de ella. Es su responsabilidad cualquier actuar u omitir a cualquier usuario que acceda a la información de su cuenta que, si lo realiza, se consideraría una violación de los TOS."
+
+#: ../application/index/terms-of-service.phtml
+msgid "It shall be your responsibility to notify David's Web Sites immediately if you notice any unauthorized access or use of your account or password or any other breach of security. David's Web Sites shall not be held liable for any loss and/or damage arising from any failure to comply with this term and/or condition of the TOS."
+msgstr "Tendrá la responsabilidad de notificar a David's Web Sites inmediatamente si observa un acceso o uso no autorizado de su cuenta o contraseña o cualquier otra violación de seguridad. David's Web Sites no se responsabilizará por ninguna pérdida y / o daño que surja de cualquier incumplimiento de este término y / o condición de los TOS."
+
+#: ../application/index/terms-of-service.phtml
+msgid "CONDUCT"
+msgstr "CONDUCTA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "As a user or member of the Site, you herein acknowledge, understand and agree that all information, text, software, data, photographs, music, video, messages, tags or any other content, whether it is publicly or privately posted and/or transmitted, is the expressed sole responsibility of the individual from whom the content originated. In short, this means that you are solely responsible for any and all content posted, uploaded, emailed, transmitted or otherwise made available by way of the David's Web Sites Services, and as such, we do not guarantee the accuracy, integrity or quality of such content. It is expressly understood that by use of our Services, you may be exposed to content including, but not limited to, any errors or omissions in any content posted, and/or any loss or damage of any kind incurred as a result of the use of any content posted, emailed, transmitted or otherwise made available by David's Web Sites."
+msgstr "Como usuario o miembro del Sitio, usted acepta, entiende y acepta que toda la información, texto, software, datos, fotografías, música, video, mensajes, etiquetas o cualquier otro contenido, ya sea pública o o transmitido, es la responsabilidad exclusiva expresada por la persona de la que se originó el contenido. En resumen, esto significa que usted es el único responsable de todo el contenido publicado, cargado, enviado por correo electrónico, transmitido o puesto a disposición a través de los Servicios de David's Web Sites, y como tal, no garantizamos la exactitud, integridad o calidad de dicho contenido. Se entiende expresamente que mediante el uso de nuestros Servicios, usted puede estar expuesto a contenido que incluye, pero no se limita a, cualquier error u omisión en cualquier contenido publicado, y / o cualquier pérdida o daño de cualquier tipo incurrido como resultado del uso de cualquier contenido publicado, enviado por correo electrónico, transmitido o de otro modo puesto a disposición por David's Web Sites."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Furthermore, you herein agree not to make use of David's Web Sites' Services for the purpose of"
+msgstr "Además, usted acepta no hacer uso de los Servicios de David's Web Sites con el propósito de"
+
+#: ../application/index/terms-of-service.phtml
+msgid "uploading, posting, emailing, transmitting, or otherwise making available any content that shall be deemed unlawful, harmful, threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, or invasive of another's privacy or which is hateful, and/or racially, ethnically, or otherwise objectionable;"
+msgstr "cargar, publicar, enviar por correo electrónico, transmitir o poner a disposición cualquier contenido que se considere ilegal, nocivo, amenazante, abusivo, acosador, tortuoso, difamatorio, vulgar, obsceno, difamatorio o invasivo de la privacidad de otra persona o que sea odioso, y / o racialmente, étnicamente o de otra manera objetable;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "causing harm to minors in any manner whatsoever;"
+msgstr "causando daño a menores de cualquier manera;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "impersonating any individual or entity, including, but not limited to, any David's Web Sites officials, forum leaders, guides or hosts or falsely stating or otherwise misrepresenting any affiliation with an individual or entity;"
+msgstr "hacerse pasar por cualquier persona o entidad, incluidos, entre otros, los funcionarios de David's Web Sites, líderes de foros, guías o anfitriones o declarar falsamente o tergiversar cualquier afiliación con una persona o entidad;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "forging captions, headings or titles or otherwise offering any content that you personally have no right to pursuant to any law nor having any contractual or fiduciary relationship with;"
+msgstr "falsificando leyendas, encabezados o títulos u ofreciendo cualquier contenido al que usted personalmente no tenga derecho de conformidad con ninguna ley ni que tenga ninguna relación contractual o fiduciaria con;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "uploading, posting, emailing, transmitting or otherwise offering any such content that may infringe upon any patent, copyright, trademark, or any other proprietary or intellectual rights of any other party;"
+msgstr "cargar, publicar, enviar por correo electrónico, transmitir u ofrecer cualquier contenido que pueda infringir cualquier patente, derecho de autor, marca registrada o cualquier otro derecho de propiedad o intelectual de cualquier otra parte;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "uploading, posting, emailing, transmitting or otherwise offering any content that you do not personally have any right to offer pursuant to any law or in accordance with any contractual or fiduciary relationship;"
+msgstr "cargar, publicar, enviar por correo electrónico, transmitir u ofrecer contenido que usted personalmente no tiene derecho a ofrecer en virtud de una ley o de acuerdo con una relación contractual o fiduciaria;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "uploading, posting, emailing, transmitting, or otherwise offering any unsolicited or unauthorized advertising, promotional flyers, 'junk mail', 'spam' or any other form of solicitation, except in any such areas that may have been designated for such purpose;"
+msgstr "cargar, publicar, enviar por correo electrónico, transmitir u ofrecer publicidad no solicitada o no autorizada, folletos promocionales, 'correo no deseado', 'spam' o cualquier otra forma de solicitud, excepto en las áreas que puedan haber sido designadas para tal fin;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "uploading, posting, emailing, transmitting, or otherwise offering any source that may contain a software virus or other computer code, any files and/or programs which have been designed to interfere, destroy and/or limit the operation of any computer software, hardware, or telecommunication equipment;"
+msgstr "cargar, publicar, enviar por correo electrónico, transmitir u ofrecer cualquier fuente que pueda contener un virus de software u otro código de computadora, cualquier archivo y / o programa que haya sido diseñado para interferir, destruir y / o limitar el funcionamiento de cualquier software de computadora , hardware o equipo de telecomunicaciones;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "disrupting the normal flow of communication, or otherwise acting in any manner that would negatively affect other users' ability to participate in any real time interactions;"
+msgstr "interrumpir el flujo normal de comunicación o actuar de cualquier otra manera que afecte negativamente la capacidad de otros usuarios de participar en interacciones en tiempo real;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "interfering with or disrupting any David's Web Sites Services, servers and/or networks that may be connected or related to our website, including, but not limited to, the use of any device software and/or routine to bypass the robot exclusion headers;"
+msgstr "interferir o interrumpir cualquier Servicios de David's Web Sites, servidores y / o redes que pueden estar conectados o relacionados con nuestro sitio web, incluido, entre otros, el uso de cualquier software y / o rutina de dispositivo para eludir los encabezados de exclusión del robot;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "intentionally or unintentionally violating any local, state, federal, national or international law, including, but not limited to, rules, guidelines, and/or regulations decreed by the U.S. Securities and Exchange Commission, in addition to any rules of any nation or other securities exchange, that would include without limitation, the New York Stock Exchange, the American Stock Exchange, or the NASDAQ, and any regulations having the force of law;"
+msgstr "violar intencionalmente o no cualquier ley local, estatal, federal, nacional o internacional, incluidas, entre otras, reglas, directrices y / o regulaciones decretadas por la Comisión de Bolsa y Valores de EE. UU., además de las reglas de cualquier país u otra bolsa de valores, que incluiría, entre otros, la Bolsa de Valores de Nueva York, la Bolsa de Valores de los Estados Unidos, o el NASDAQ, y cualquier reglamentación que tenga fuerza de ley;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "providing informational support or resources, concealing and/or disguising the character, location, and or source to any organization delegated by the United States government as a 'foreign terrorist organization' in accordance to Section 219 of the Immigration Nationality Act;"
+msgstr "proporcionando soporte o recursos informativos, ocultando y / o disfrazando el personaje, la ubicación o la fuente a cualquier organización delegada por el gobierno de los Estados Unidos como 'organización terrorista extranjera' de acuerdo con la Sección 219 de la Ley de Nacionalidad de Inmigración;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "'stalking' or with the intent to otherwise harass another individual; and/or"
+msgstr "'acoso' o con la intención de hostigar a otra persona, y / o "
+
+#: ../application/index/terms-of-service.phtml
+msgid "collecting or storing of any personal data relating to any other member or user in connection with the prohibited conduct and/or activities which have been set forth in the aforementioned paragraphs."
+msgstr "la recopilación o el almacenamiento de cualquier dato personal relacionado con cualquier otro miembro o usuario en relación con la conducta y / o actividades prohibidas que se han establecido en los párrafos antes mencionados."
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites herein reserves the right to pre-screen, refuse and/or delete any content currently available through our Services. In addition, we reserve the right to remove and/or delete any such content that would violate the TOS or which would otherwise be considered offensive to other visitors, users and/or members."
+msgstr "David's Web Sites aquí se reserva el derecho de revisar, rechazar y / o eliminar cualquier contenido disponible actualmente a través de nuestros Servicios. Además, nos reservamos el derecho de eliminar y / o eliminar cualquier contenido que viole los Términos de servicio o que de lo contrario se consideraría ofensivo para otros visitantes, usuarios y / o miembros."
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites herein reserves the right to access, preserve and/or disclose member account information and/or content if it is requested to do so by law or in good faith belief that any such action is deemed reasonably necessary for:"
+msgstr "David's Web Sites aquí se reserva el derecho de acceder, preservar y / o divulgar información y / o contenido de la cuenta del miembro si así lo exige la ley o de buena fe creen que dicha acción se considera razonablemente necesaria para:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "compliance with any legal process;"
+msgstr "cumplimiento con cualquier proceso legal;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "enforcement of the TOS; responding to any claim that therein contained content is in violation of the rights of any third party;"
+msgstr "cumplimiento de los TDS, responder a cualquier reclamo de que el contenido contenido en el mismo infringe los derechos de un tercero;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "responding to requests for customer service; or"
+msgstr "respondiendo a solicitudes de servicio al cliente; o"
+
+#: ../application/index/terms-of-service.phtml
+msgid "protecting the rights, property or the personal safety of David's Web Sites, its visitors, users and members, including the general public."
+msgstr "proteger los derechos, la propiedad o la seguridad personal de David's Web Sites, sus visitantes, usuarios y miembros, incluido el público en general."
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites herein reserves the right to include the use of security components that may permit digital information or material to be protected, and that such use of information and/or material is subject to usage guidelines and regulations established by David's Web Sites or any other content providers supplying content services to David's Web Sites. You are hereby prohibited from making any attempt to override or circumvent any of the embedded usage rules in our Services. Furthermore, unauthorized reproduction, publication, distribution, or exhibition of any information or materials supplied by our Services, despite whether done so in whole or in part, is expressly prohibited."
+msgstr "David's Web Sites se reserva el derecho de incluir el uso de componentes de seguridad que permitan la protección de la información o material digital, y que dicho uso de la información y / o material esté sujeto a las pautas y regulaciones de uso establecidas por David's Web Sites o cualquier otro proveedor de contenido que suministre servicios de contenido a David's Web Sites. Por la presente, se le prohíbe anular o eludir cualquiera de las reglas de uso integradas en nuestros Servicios. Además, la reproducción, publicación, distribución o exhibición no autorizada de cualquier información o material suministrada por nuestros Servicios, a pesar de que se haga en forma total o parcial, está expresamente prohibida."
+
+#: ../application/index/terms-of-service.phtml
+msgid "INTERSTATE COMMUNICATION"
+msgstr "COMUNICACIÓN INTERESTATAL"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Upon registration, you hereby acknowledge that by using"
+msgstr "Al registrarse, usted reconoce que al usar"
+
+#: ../application/index/terms-of-service.phtml
+msgid " to send electronic communications, which would include, but are not limited to, email, searches, instant messages, uploading of files, photos and/or videos, you will be causing communications to be sent through our computer network. Therefore, through your use, and thus your agreement with this TOS, you are acknowledging that the use of this Service shall result in interstate transmissions."
+msgstr " para enviar comunicaciones electrónicas, que incluirían, entre otras, correo electrónico, búsquedas, mensajes instantáneos, carga de archivos, fotos y / o videos, usted hará que las comunicaciones se envíen a través de nuestra red de computadoras. su uso, y por lo tanto su acuerdo con este TOS, está reconociendo que el uso de este Servicio dará lugar a transmisiones interestatales."
+
+#: ../application/index/terms-of-service.phtml
+msgid "CAUTIONS FOR GLOBAL USE AND EXPORT AND IMPORT COMPLIANCE"
+msgstr "PRECAUCIONES PARA EL USO GLOBAL Y LA EXPORTACIÓN Y EL CUMPLIMIENTO DE LAS IMPORTACIONES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Due to the global nature of the internet, through the use of our network you hereby agree to comply with all local rules relating to online conduct and that which is considered acceptable Content. Uploading, posting and/or transferring of software, technology and other technical data may be subject to the export and import laws of the United States and possibly other countries. Through the use of our network, you thus agree to comply with all applicable export and import laws, statutes and regulations, including, but not limited to,  the Export Administration Regulations"
+msgstr "Debido a la naturaleza global de internet, a través del uso de nuestra red usted acepta cumplir con todas las reglas locales relacionadas con la conducta en línea y con lo que se considera contenido aceptable. Cargar, publicar y / o transferir software, tecnología y otros datos técnicos pueden estar sujetos a las leyes de exportación e importación de los Estados Unidos y posiblemente de otros países. A través del uso de nuestra red, usted acepta cumplir con todas las leyes, estatutos y reglamentos de exportación e importación aplicables, incluidos, entre otros, a las Regulaciones de Administración de Exportaciones"
+
+#: ../application/index/terms-of-service.phtml
+msgid "), as well as the sanctions control program of the United States"
+msgstr "), así como el programa de control de sanciones de los Estados Unidos"
+
+#: ../application/index/terms-of-service.phtml
+msgid "). Furthermore, you state and pledge that you:"
+msgstr "). Además, declaras y prometes que:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "are not on the list of prohibited individuals which may be identified on any government export exclusion report"
+msgstr "no están en la lista de personas prohibidas que pueden identificarse en cualquier informe de exclusión de exportaciones del gobierno"
+
+#: ../application/index/terms-of-service.phtml
+msgid " nor a member of any other government which may be part of an export-prohibited country identified in applicable export and import laws and regulations;"
+msgstr " ni un miembro de ningún otro gobierno que pueda ser parte de un país prohibido por la exportación identificado en las leyes y regulaciones de exportación e importación aplicables;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "agree not to transfer any software, technology or any other technical data through the use of our network Services to any export-prohibited country;"
+msgstr "acepta no transferir ningún software, tecnología o cualquier otro dato técnico a través del uso de nuestros Servicios de red a ningún país exportado;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "agree not to use our website network Services for any military, nuclear, missile, chemical or biological weaponry end uses that would be a violation of the U.S. export laws; and"
+msgstr "acepta no utilizar los servicios de red de nuestro sitio web para cualquier uso militar, nuclear, de misiles, armas químicas o biológicas que constituya una violación de las leyes de exportación de los EE. UU .; y"
+
+#: ../application/index/terms-of-service.phtml
+msgid "agree not to post, transfer nor upload any software, technology or any other technical data which would be in violation of the U.S. or other applicable export and/or import laws."
+msgstr "acuerda no publicar, transferir ni cargar ningún software, tecnología o cualquier otro dato técnico que infrinja las leyes de importación y / o exportación de EE. UU. u otras leyes aplicables."
+
+#: ../application/index/terms-of-service.phtml
+msgid "CONTENT PLACED OR MADE AVAILABLE FOR COMPANY SERVICES"
+msgstr "CONTENIDO COLOCADO O PUESTO DISPONIBLE PARA LOS SERVICIOS DE LA COMPAÑÍA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites shall not lay claim to ownership of any content submitted by any visitor, member, or user, nor make such content available for inclusion on our website Services. Therefore, you hereby grant and allow for David's Web Sites the below listed worldwide, royalty-free and non-exclusive licenses, as applicable:"
+msgstr "David's Web Sites no reclamará la propiedad de ningún contenido enviado por un visitante, miembro o usuario, ni harán que dicho contenido esté disponible para su inclusión en nuestro sitio web. Por lo tanto, usted otorga y autoriza David's Web Sites que figura a continuación. licencias mundiales, libres de regalías y no exclusivas, según corresponda:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "The content submitted or made available for inclusion on the publicly accessible areas of David's Web Sites' sites, the license provided to permit to use, distribute, reproduce, modify, adapt, publicly perform and/or publicly display said Content on our network Services is for the sole purpose of providing and promoting the specific area to which this content was placed and/or made available for viewing. This license shall be available so long as you are a member of David's Web Sites' sites, and shall terminate at such time when you elect to discontinue your membership."
+msgstr "El contenido enviado o disponible para su inclusión en las áreas de acceso público de sitios de David's Web Sites, la licencia provista para permitir el uso, distribución, reproducción, modificación, adaptación, presentación pública y / o exhibición pública de dicho contenido en nuestra red Servicios tiene el único propósito de proporcionar y promocionar el área específica en la que se colocó y / o puso a disposición este contenido. Esta licencia estará disponible siempre que sea miembro de los sitios de David's Web Sites y terminará a la el momento en que decide suspender su membresía."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Photos, audio, video and/or graphics submitted or made available for inclusion on the publicly accessible areas of David's Web Sites' sites, the license provided to permit to use, distribute, reproduce, modify, adapt, publicly perform and/or publicly display said Content on our network Services are for the sole purpose of providing and promoting the specific area in which this content was placed and/or made available for viewing. This license shall be available so long as you are a member of David's Web Sites' sites and shall terminate at such time when you elect to discontinue your membership."
+msgstr "Fotos, audio, video y / o gráficos enviados o puestos a disposición para su inclusión en las áreas de acceso público de sitios de David's Web Sites, la licencia provista para permitir el uso, distribución, reproducción, modificación, adaptación, ejecución pública y / o mostrar públicamente dicho contenido en nuestros servicios de red con el único propósito de proporcionar y promocionar el área específica en la que se colocó y / o puso a disposición este contenido. Esta licencia estará disponible siempre que sea miembro de sitios de David's Web Sites y terminará en el momento en que elija suspender su membresía."
+
+#: ../application/index/terms-of-service.phtml
+msgid "For any other content submitted or made available for inclusion on the publicly accessible areas of David's Web Sites' sites, the continuous, binding and completely sub-licensable license which is meant to permit to use, distribute, reproduce, modify, adapt, publish, translate, publicly perform and/or publicly display said content, whether in whole or in part, and the incorporation of any such Content into other works in any arrangement or medium current used or later developed."
+msgstr "Para cualquier otro contenido enviado o puesto a disposición para su inclusión en las áreas de acceso público de sitios de David's Web Sites, la licencia continua, vinculante y completamente sublicenciable que está destinada a permitir el uso, distribución, reproducción, modificación, adaptación, publicar, traducir, realizar públicamente y / o mostrar públicamente dicho contenido, ya sea en su totalidad o en parte, y la incorporación de dicho Contenido en otros trabajos en cualquier arreglo o corriente media usada o desarrollada posteriormente."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Those areas which may be deemed 'publicly accessible' areas of David's Web Sites' sites are those such areas of our network properties which are meant to be available to the general public, and which would include message boards and groups that are openly available to both users and members. However, those areas which are not open to the public, and thus available to members only, would include our mail system and instant messaging."
+msgstr "Aquellas áreas que pueden ser consideradas como áreas de acceso público de sitios de David's Web Sites son aquellas áreas de nuestras propiedades de red que están destinadas a estar disponibles para el público en general, y que incluirían paneles de mensajes y grupos que están disponibles abiertamente. tanto para los usuarios como para los miembros. Sin embargo, aquellas áreas que no están abiertas al público, y por lo tanto solo están disponibles para los miembros, incluirían nuestro sistema de correo y mensajería instantánea."
+
+#: ../application/index/terms-of-service.phtml
+msgid "CONTRIBUTIONS TO COMPANY WEBSITE"
+msgstr "CONTRIBUCIONES AL SITIO WEB DE LA COMPAÑÍA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites provides an area for our users and members to contribute feedback to our website. When you submit ideas, documents, suggestions and/or proposals ('Contributions') to our site, you acknowledge and agree that:"
+msgstr "David's Web Sites proporciona un área para que nuestros usuarios y miembros contribuyan con sus comentarios a nuestro sitio web. Cuando envía ideas, documentos, sugerencias y / o propuestas ('Contribuciones') a nuestro sitio, usted reconoce y acepta que:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "your contributions do not contain any type of confidential or proprietary information;"
+msgstr "tus contribuciones no contienen ningún tipo de información confidencial o patentada;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites shall not be liable or under any obligation to ensure or maintain confidentiality, expressed or implied, related to any Contributions;"
+msgstr "David's Web Sites no será responsables ni tienen la obligación de garantizar o mantener la confidencialidad, expresa o implícita, relacionada con cualquier Contribución;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites shall be entitled to make use of and/or disclose any such Contributions in any such manner as they may see fit;"
+msgstr "David's Web Sites tendrá derecho a hacer uso y / o divulgar tales Contribuciones de la manera que consideren conveniente;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the contributor's Contributions shall automatically become the sole property of David's Web Sites; and"
+msgstr "las contribuciones del colaborador pasarán automáticamente a ser propiedad exclusiva de David's Web Sites; y"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites is under no obligation to either compensate or provide any form of reimbursement in any manner or nature."
+msgstr "David's Web Sites no está obligados a compensar ni a proporcionar ninguna forma de reembolso de ninguna manera o naturaleza."
+
+#: ../application/index/terms-of-service.phtml
+msgid "INDEMNITY"
+msgstr "INDEMNIDAD"
+
+#: ../application/index/terms-of-service.phtml
+msgid "All users and/or members herein agree to insure and hold David's Web Sites, our subsidiaries, affiliates, agents, employees, officers, partners and/or licensors blameless or not liable for any claim or demand, which may include, but is not limited to, reasonable attorney fees made by any third party which may arise from any content a member or user of our site may submit, post, modify, transmit or otherwise make available through our Services, the use of David's Web Sites Services or your connection with these Services, your violations of the Terms of Service and/or your violation of any such rights of another person."
+msgstr "Todos los usuarios y / o miembros acuerdan asegurar y mantener intactos David's Web Sites, nuestras subsidiarias, afiliados, agentes, empleados, funcionarios, socios y / o licenciantes, o no ser responsables de ningún reclamo o demanda, que puede incluir, pero es no se limita a los honorarios razonables de abogados realizados por terceros que puedan surgir de cualquier contenido que un miembro o usuario de nuestro sitio pueda enviar, publicar, modificar, transmitir o poner a disposición a través de nuestros Servicios, el uso de los Servicios de David's Web Sites o su conexión con estos Servicios, sus violaciones de los Términos del Servicio y / o su violación de tales derechos de otra persona."
+
+#: ../application/index/terms-of-service.phtml
+msgid "COMMERCIAL REUSE OF SERVICES"
+msgstr "REUTILIZACIÓN COMERCIAL DE SERVICIOS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "The member or user herein agrees not to replicate, duplicate, copy, trade, sell, resell nor exploit for any commercial reason any part, use of, or access to David's Web Sites' sites."
+msgstr "El miembro o usuario aquí acepta no replicar, duplicar, copiar, comerciar, vender, revender ni explotar por ningún motivo comercial ninguna parte, uso o acceso a los sitios de David's Web Sites."
+
+#: ../application/index/terms-of-service.phtml
+msgid "USE AND STORAGE GENERAL PRACTICES"
+msgstr "PRÁCTICAS GENERALES DE USO Y ALMACENAMIENTO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You herein acknowledge that David's Web Sites may set up any such practices and/or limits regarding the use of our Services, without limitation of the maximum number of days that any email, message posting or any other uploaded content shall be retained by David's Web Sites, nor the maximum number of email messages that may be sent and/or received by any member, the maximum volume or size of any email message that may be sent from or may be received by an account on our Service, the maximum disk space allowable that shall be allocated on David's Web Sites' servers on the member's behalf, and/or the maximum number of times and/or duration that any member may access our Services in a given period of time. In addition, you also agree that David's Web Sites has absolutely no responsibility or liability for the removal or failure to maintain storage of any messages and/or other communications or content maintained or transmitted by our Services. You also herein acknowledge that we reserve the right to delete or remove any account that is no longer active for an extended period of time. Furthermore, David's Web Sites shall reserve the right to modify, alter and/or update these general practices and limits at our discretion."
+msgstr "Usted acepta que David's Web Sites puede establecer tales prácticas y / o límites con respecto al uso de nuestros servicios, sin limitación del número máximo de días que cualquier correo electrónico, publicación de mensajes o cualquier otro contenido cargado será retenido por David. Sitios web, ni la cantidad máxima de mensajes de correo electrónico que cualquier miembro puede enviar y / o recibir, el volumen o tamaño máximo de cualquier mensaje de correo electrónico que pueda ser enviado o recibido por una cuenta en nuestro Servicio, el disco máximo espacio permitido que se asignará en los servidores de David's Web Sites en nombre del miembro, y / o la cantidad máxima de veces y / o duración que cualquier miembro pueda acceder a nuestros servicios en un período de tiempo determinado. Además, también acepta que David's Web Sites no tiene ninguna responsabilidad u obligación legal por la eliminación o la falla en el almacenamiento de cualquier mensaje y / u otras comunicaciones o contenido mantenido o transmitido por nuestros Servicios. Usted también reconoce que estamos cumplir el derecho de eliminar o eliminar cualquier cuenta que ya no esté activa durante un período prolongado. Además, David's Web Sites se reservará el derecho de modificar, alterar y / o actualizar estas prácticas y límites generales a nuestro criterio."
+
+#: ../application/index/terms-of-service.phtml
+msgid "Any messenger service, which may include any web-based versions, shall allow you and the individuals with whom you communicate with the ability to save your conversations in your account located on David's Web Sites' servers. In this manner, you will be able to access and search your message history from any computer with internet access. You also acknowledge that others have the option to use and save conversations with you in their own personal account on"
+msgstr "Cualquier servicio de mensajería, que puede incluir cualquier versión basada en la web, le permitirá a usted y a las personas con quienes se comunica la posibilidad de guardar sus conversaciones en su cuenta ubicada en los servidores de David's Web Sites. De esta manera, usted estará puede acceder y buscar su historial de mensajes desde cualquier computadora con acceso a Internet. También reconoce que otros tienen la opción de usar y guardar conversaciones con usted en su propia cuenta personal"
+
+#: ../application/index/terms-of-service.phtml
+msgid ". It is your agreement to this TOS which establishes your consent to allow David's Web Sites to store any and all communications on its servers."
+msgstr ". Está de acuerdo con este TOS que establece su consentimiento para permitir que David's Web Sites almacene todas y cada una de las comunicaciones en sus servidores."
+
+#: ../application/index/terms-of-service.phtml
+msgid "MODIFICATIONS"
+msgstr "MODIFICACIONES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites shall reserve the right at any time it may deem fit, to modify, alter and or discontinue, whether temporarily or permanently, our service, or any part thereof, with or without prior notice. In addition, we shall not be held liable to you or to any third party for any such alteration, modification, suspension and/or discontinuance of our Services, or any part thereof."
+msgstr "David's Web Sites se reserva el derecho en cualquier momento que lo consideren oportuno, de modificar, alterar o interrumpir, ya sea temporal o permanentemente, nuestro servicio, o cualquier parte del mismo, con o sin previo aviso. Además, no lo haremos. seremos responsables ante usted o ante un tercero por dicha alteración, modificación, suspensión y / o interrupción de nuestros Servicios, o cualquier parte de los mismos."
+
+#: ../application/index/terms-of-service.phtml
+msgid "TERMINATION"
+msgstr "TERMINACIÓN"
+
+#: ../application/index/terms-of-service.phtml
+msgid "As a member of"
+msgstr "Como miembro de"
+
+#: ../application/index/terms-of-service.phtml
+msgid ", you may cancel or terminate your account, associated email address and/or access to our Services by submitting a cancellation or termination request to"
+msgstr ", puede cancelar o cancelar su cuenta, la dirección de correo electrónico asociada y / o acceder a nuestros Servicios mediante el envío de una solicitud de cancelación o cancelación"
+
+#: ../application/index/terms-of-service.phtml
+msgid "As a member, you agree that David's Web Sites may, without any prior written notice, immediately suspend, terminate, discontinue and/or limit your account, any email associated with your account, and access to any of our Services. The cause for such termination, discontinuance, suspension and/or limitation of access shall include, but is not limited to:"
+msgstr "Como miembro, acepta que David's Web Sites puede, sin previo aviso por escrito, suspender, finalizar, descontinuar y / o limitar su cuenta de inmediato, cualquier correo electrónico asociado con su cuenta y acceso a cualquiera de nuestros Servicios. para tal terminación, la interrupción, suspensión y / o limitación de acceso incluirá, pero no se limita a:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "any breach or violation of our TOS or any other incorporated agreement, regulation and/or guideline;"
+msgstr "cualquier incumplimiento o violación de nuestros TDS o cualquier otro acuerdo, regulación y / o pauta incorporada;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "by way of requests from law enforcement or any other governmental agencies;"
+msgstr "por medio de solicitudes de la aplicación de la ley o de cualquier otra agencia gubernamental;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the discontinuance, alteration and/or material modification to our Services, or any part thereof;"
+msgstr "la interrupción, alteración y / o modificación material a nuestros Servicios, o cualquier parte de ellos;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "unexpected technical or security issues and/or problems;"
+msgstr "problemas y / o problemas técnicos o de seguridad inesperados;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "any extended periods of inactivity;"
+msgstr "cualquier periodo extendido de inactividad;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "any engagement by you in any fraudulent or illegal activities; and/or"
+msgstr "cualquier participación suya en actividades fraudulentas o ilegales, y / o"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the nonpayment of any associated fees that may be owed by you in connection with your"
+msgstr "la falta de pago de cualquier tarifa asociada que deba usted en relación con su"
+
+#: ../application/index/terms-of-service.phtml
+msgid " account Services."
+msgstr " Servicios de cuenta"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Furthermore, you herein agree that any and all terminations, suspensions, discontinuances, and or limitations of access for cause shall be made at our sole discretion and that we shall not be liable to you or any other third party with regards to the termination of your account, associated email address and/or access to any of our Services."
+msgstr "Además, usted acepta que todas y cada una de las terminaciones, suspensiones, interrupciones y / o limitaciones de acceso por causa se realizarán a nuestro exclusivo criterio y que no seremos responsables ante usted ni ante ningún tercero con respecto a la terminación. de su cuenta, dirección de correo electrónico asociada y / o acceso a cualquiera de nuestros Servicios."
+
+#: ../application/index/terms-of-service.phtml
+msgid "The termination of your account with"
+msgstr "La terminación de su cuenta con"
+
+#: ../application/index/terms-of-service.phtml
+msgid " shall include any and/or all of the following:"
+msgstr " incluirá cualquiera y / o todo lo siguiente:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the removal of any access to all or part of the  Services  offered within"
+msgstr "la eliminación de cualquier acceso a todos o parte de los servicios ofrecidos dentro de"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the deletion of your password and any and all related information, files, and any such content that may be associated with or inside your account, or any part thereof; and"
+msgstr "la eliminación de su contraseña y de toda la información relacionada, archivos y cualquier contenido que pueda estar asociado o dentro de su cuenta, o cualquier parte de la misma, y"
+
+#: ../application/index/terms-of-service.phtml
+msgid "the barring of any further use of all or part of our Services."
+msgstr "la restricción de cualquier uso adicional de todos o parte de nuestros Servicios."
+
+#: ../application/index/terms-of-service.phtml
+msgid "ADVERTISERS"
+msgstr "ANUNCIANTES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Any correspondence or business dealings with, or the participation in any promotions of, advertisers located on or through our Services, which may include the payment and/or delivery of such related goods and/or Services, and any such other term, condition, warranty and/or representation associated with such dealings, are and shall be solely between you and any such advertiser. Moreover, you herein agree that David's Web Sites shall not be held responsible or liable for any loss or damage of any nature or manner incurred as a direct result of any such dealings or as a result of the presence of such advertisers on our website."
+msgstr "Cualquier correspondencia o trato comercial con, o la participación en cualquier promoción de anunciantes ubicados en oa través de nuestros Servicios, que puede incluir el pago y / o la entrega de dichos bienes y / o Servicios relacionados, y cualquier otro término, condición , garantía y / o representación asociada con tales transacciones, son y serán únicamente entre usted y cualquier anunciante. Además, usted acepta que David's Web Sites no se responsabilizará por ninguna pérdida o daño de cualquier naturaleza o forma incurrida como resultado directo de tales transacciones o como resultado de la presencia de dichos anunciantes en nuestro sitio web."
+
+#: ../application/index/terms-of-service.phtml
+msgid "LINKS"
+msgstr "LINKS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Either David's Web Sites or any third parties may provide links to other websites and/or resources. Thus, you acknowledge and agree that we are not responsible for the availability of any such external sites or resources, and as such, we do not endorse nor are we responsible or liable for any content, products, advertising or any other materials, on or available from such third party sites or resources. Furthermore, you acknowledge and agree that David's Web Sites shall not be responsible or liable, directly or indirectly, for any such damage or loss which may be a result of, caused or allegedly to be caused by or in connection with the use of or the reliance on any such content, goods or Services made available on or through any such site or resource."
+msgstr "O bien David's Web Sites o cualquier tercero puede proporcionar enlaces a otros sitios web y / o recursos. Por lo tanto, usted reconoce y acepta que no somos responsables de la disponibilidad de dichos sitios o recursos externos, y como tal, no lo hacemos ni somos responsables de ningún contenido, producto, publicidad o cualquier otro material disponible o disponible en dichos sitios o recursos de terceros. Además, usted reconoce y acepta que David's Web Sites no será responsable, directa o indirectamente, de ningún daño o pérdida que pueda ser el resultado de, causado o presuntamente causado por o en relación con el uso o la dependencia de dicho contenido, bienes o servicios disponibles en oa través de dicho sitio o recurso."
+
+#: ../application/index/terms-of-service.phtml
+msgid "PROPRIETARY RIGHTS"
+msgstr "DERECHOS DE PROPIEDAD PRIVADA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You do hereby acknowledge and agree that David's Web Sites' Services and any essential software that may be used in connection with our Services ('Software') shall contain proprietary and confidential material that is protected by applicable intellectual property rights and other laws. Furthermore, you herein acknowledge and agree that any Content which may be contained in any advertisements or information presented by and through our Services or by advertisers is protected by copyrights, trademarks, patents or other proprietary rights and laws. Therefore, except for that which is expressly permitted by applicable law or as authorized by David's Web Sites or such applicable licensor, you agree not to alter, modify, lease, rent, loan, sell, distribute, transmit, broadcast, publicly perform and/or created any plagiaristic works which are based on David's Web Sites Services (e.g. Content or Software), in whole or part."
+msgstr "Usted reconoce y acepta que los Servicios de David's Web Sites y cualquier software esencial que pueda usarse en relación con nuestros Servicios ('Software') contendrán material patentado y confidencial que esté protegido por los derechos de propiedad intelectual aplicables y otras leyes. Además, usted acepta y acuerda que cualquier Contenido que pueda estar contenido en cualquier publicidad o información presentada por y a través de nuestros Servicios o anunciantes está protegido por derechos de autor, marcas comerciales, patentes u otros derechos y leyes de propiedad. Por lo tanto, excepto por lo que se refiere a expresamente permitido por la ley aplicable o según lo autorice David's Web Sites o el licenciante correspondiente, usted acepta no alterar, modificar, arrendar, alquilar, prestar, vender, distribuir, transmitir, transmitir,realizar públicamente y / o crear cualquier obra de plagio que esté basada en los Servicios de David's Web Sites (por ejemplo, Contenido o Software), en todo o en parte."
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites herein has granted you personal, non-transferable and non-exclusive rights and/or license to make use of the object code or our Software on a single computer, as long as you do not, and shall not, allow any third party to duplicate, alter, modify, create or plagiarize work from, reverse engineer, reverse assemble or otherwise make an attempt to locate or discern any source code, sell, assign, sublicense, grant a security interest in and/or otherwise transfer any such right in the Software. Furthermore, you do herein agree not to alter or change the Software in any manner, nature or form, and as such, not to use any modified versions of the Software, including and without limitation, for the purpose of obtaining unauthorized access to our Services. Lastly, you also agree not to access or attempt to access our Services through any means other than through the interface which is provided by David's Web Sites for use in accessing our Services."
+msgstr "David's Web Sites en este documento le ha otorgado derechos y / o licencias personales, no transferibles y no exclusivos para hacer uso del código objeto o de nuestro software en una sola computadora, siempre y cuando no permita, y no permita, cualquier tercero para duplicar, alterar, modificar, crear o plagiar el trabajo, realizar ingeniería inversa, ensamblar inversamente o de alguna otra manera intentar localizar o discernir cualquier código fuente, vender, asignar, sublicenciar, otorgar un interés de seguridad y / o transferir de otra manera cualquier derecho de este tipo en el Software. Además, acuerda no alterar o cambiar el Software de ninguna manera, naturaleza o forma, y ​​como tal, no utilizar ninguna versión modificada del Software, incluidas, entre otras, para el propósito de obtener acceso no autorizado a nuestros Servicios.también acepta no acceder ni intentar acceder a nuestros Servicios por ningún medio que no sea a través de la interfaz proporcionada por David's Web Sites para su uso en el acceso a nuestros Servicios."
+
+#: ../application/index/terms-of-service.phtml
+msgid "WARRANTY DISCLAIMERS"
+msgstr "EXENCIONES DE GARANTÍA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "YOU HEREIN EXPRESSLY ACKNOWLEDGE AND AGREE THAT:"
+msgstr "USTED ACEPTA EXPRESAMENTE Y ACEPTA QUE:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "THE USE OF DAVID'S WEB SITES SERVICES AND SOFTWARE ARE AT THE SOLE RISK BY YOU. OUR SERVICES AND SOFTWARE SHALL BE PROVIDED ON AN 'AS IS' AND/OR 'AS AVAILABLE' BASIS. DAVID'S WEB SITES AND OUR SUBSIDIARIES, AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS AND LICENSORS EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES OF ANY KIND WHETHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO ANY IMPLIED WARRANTIES OF TITLE, MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT."
+msgstr "EL USO DE LOS SERVICIOS Y SOFTWARE DE DAVID'S WEB SITES CORRE POR SU CUENTA Y RIESGO. NUESTROS SERVICIOS Y SOFTWARE SE PROPORCIONARÁN 'TAL CUAL' Y / O 'SEGÚN DISPONIBILIDAD.' DAVID'S WEB SITES Y NUESTRAS SUBSIDIARIAS, AFILIADAS, OFICIALES, EMPLEADOS, AGENTES, SOCIOS Y LICENCIATARIOS NIEGAN EXPRESAMENTE CUALQUIER Y TODAS LAS GARANTÍAS DE CUALQUIER TIPO, YA SEAN EXPRESAS O IMPLÍCITAS, INCLUIDAS, ENTRE OTRAS, CUALQUIER GARANTÍA IMPLÍCITA DE TÍTULO, COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO EN PARTICULAR Y NO INFRACCIÓN."
+
+#: ../application/index/terms-of-service.phtml
+msgid "DAVID'S WEB SITES AND OUR SUBSIDIARIES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS AND LICENSORS MAKE NO SUCH WARRANTIES THAT (i) DAVID'S WEB SITES SERVICES OR SOFTWARE WILL MEET YOUR REQUIREMENTS; (ii) DAVID'S WEB SITES SERVICES OR SOFTWARE SHALL BE UNINTERRUPTED, TIMELY, SECURE OR ERROR-FREE; (iii) THAT SUCH RESULTS WHICH MAY BE OBTAINED FROM THE USE OF THE DAVID'S WEB SITES SERVICES OR SOFTWARE WILL BE ACCURATE OR RELIABLE; (iv) QUALITY OF ANY PRODUCTS, SERVICES, ANY INFORMATION OR OTHER MATERIAL WHICH MAY BE PURCHASED OR OBTAINED BY YOU THROUGH OUR SERVICES OR SOFTWARE WILL MEET YOUR EXPECTATIONS; AND (v) THAT ANY SUCH ERRORS CONTAINED IN THE SOFTWARE SHALL BE CORRECTED."
+msgstr "DAVID'S WEB SITES Y NUESTRAS SUBSIDIARIAS, OFICIALES, EMPLEADOS, AGENTES, SOCIOS Y LICENCIATARIOS NO OFRECEN TALES GARANTÍAS QUE (i) LOS SERVICIOS O SOFTWARE DE DAVID'S WEB SITES CUMPLAN CON SUS REQUISITOS; (ii) LOS SERVICIOS O SOFTWARE DE SITIOS WEB DE DAVID SERÁN ININTERRUMPIDOS, OPORTUNO, SEGURO O LIBRE DE ERRORES; (iii) QUE DICHOS RESULTADOS QUE PUEDAN OBTENERSE DEL USO DE LOS SERVICIOS O SOFTWARE DE SITIOS WEB DE DAVID SERÁN EXACTOS O CONFIABLES; (iv) CALIDAD DE CUALQUIER PRODUCTO, SERVICIO, CUALQUIER INFORMACIÓN U OTRO MATERIAL QUÉ PUEDE SER ADQUIRIDO U OBTENIDO POR USTED A TRAVÉS DE NUESTROS SERVICIOS O SOFTWARE CUMPLIRÁ SUS EXPECTATIVAS, Y (v) QUE CUALQUIERA DE ESOS ERRORES CONTENIDOS EN EL SOFTWARE DEBERÁN CORREGIRSE."
+
+#: ../application/index/terms-of-service.phtml
+msgid "ANY INFORMATION OR MATERIAL DOWNLOADED OR OTHERWISE OBTAINED BY WAY OF DAVID'S WEB SITES SERVICES OR SOFTWARE SHALL BE ACCESSED BY YOUR SOLE DISCRETION AND SOLE RISK, AND AS SUCH YOU SHALL BE SOLELY RESPONSIBLE FOR AND HEREBY WAIVE ANY AND ALL CLAIMS AND CAUSES OF ACTION WITH RESPECT TO ANY DAMAGE TO YOUR COMPUTER AND/OR INTERNET ACCESS, DOWNLOADING AND/OR DISPLAYING, OR FOR ANY LOSS OF DATA THAT COULD RESULT FROM THE DOWNLOAD OF ANY SUCH INFORMATION OR MATERIAL."
+msgstr "CUALQUIER INFORMACIÓN O MATERIAL DESCARGADO U OBTENIDO DE ALGUNA OTRA FORMA POR LOS SERVICIOS O SOFTWARE DE DAVID'S WEB SITES SE ACCEDERÁ POR SU ÚNICA DISCRECIÓN Y SU PROPIO RIESGO, Y COMO TAL SERÁ EL ÚNICO RESPONSABLE Y RENUNCIA A CUALQUIER RECLAMO Y CAUSA DE ACCIÓN CON RESPECTO A CUALQUIER DAÑO A SU COMPUTADORA Y / O ACCESO A INTERNET, DESCARGAS Y / O EXHIBICIONES, O POR CUALQUIER PÉRDIDA DE DATOS QUE PUEDA RESULTAR DE LA DESCARGA DE DICHA INFORMACIÓN O MATERIAL."
+
+#: ../application/index/terms-of-service.phtml
+msgid "NO ADVICE AND/OR INFORMATION, DESPITE WHETHER WRITTEN OR ORAL, THAT MAY BE OBTAINED BY YOU FROM DAVID'S WEB SITES OR BY WAY OF OR FROM OUR SERVICES OR SOFTWARE SHALL CREATE ANY WARRANTY NOT EXPRESSLY STATED IN THE TOS."
+msgstr "NINGUNA CONSEJOS Y / O INFORMACIÓN, A PESAR DE ESCRITO U ORAL, QUE PUEDA OBTENERLOS EN DAVID'S WEB SITES O A TRAVÉS DE NUESTROS SERVICIOS O SOFTWARE CREARÁ NINGUNA GARANTÍA QUE NO ESTÉ EXPRESAMENTE ESTABLECIDA EN LOS TOS."
+
+#: ../application/index/terms-of-service.phtml
+msgid "A SMALL PERCENTAGE OF SOME USERS MAY EXPERIENCE SOME DEGREE OF EPILEPTIC SEIZURE WHEN EXPOSED TO CERTAIN LIGHT PATTERNS OR BACKGROUNDS THAT MAY BE CONTAINED ON A COMPUTER SCREEN OR WHILE USING OUR SERVICES. CERTAIN CONDITIONS MAY INDUCE A PREVIOUSLY UNKNOWN CONDITION OR UNDETECTED EPILEPTIC SYMPTOM IN USERS WHO HAVE SHOWN NO HISTORY OF ANY PRIOR SEIZURE OR EPILEPSY. SHOULD YOU, ANYONE YOU KNOW OR ANYONE IN YOUR FAMILY HAVE AN EPILEPTIC CONDITION, PLEASE CONSULT A PHYSICIAN IF YOU EXPERIENCE ANY OF THE FOLLOWING SYMPTOMS WHILE USING OUR. SERVICES: DIZZINESS, ALTERED VISION, EYE OR MUSCLE TWITCHES, LOSS OF AWARENESS, DISORIENTATION, ANY INVOLUNTARY MOVEMENT, OR CONVULSIONS."
+msgstr "UN PEQUEÑO PORCENTAJE DE ALGUNOS USUARIOS PUEDE EXPERIMENTAR ALGUN GRADO DE ACUERDO EPILÉPTICO CUANDO ESTÁ EXPUESTO A CIERTOS PATRONES DE LUZ O ANTECEDENTES QUE PUEDEN CONTENER EN UNA PANTALLA DE COMPUTADOR O AL UTILIZAR NUESTROS SERVICIOS. CIERTAS CONDICIONES PUEDEN INDUCIR UNA CONDICIÓN PREVIAMENTE DESCONOCIDA O UN SÍNTOMA EPÍLTICO NO DETECTADO EN USUARIOS QUE NO HAN MUESTRADO NINGUNA HISTORIA DE ANTECEDENTES O EPILEPSIA. SI ALGUIEN QUE CONOZCA O ALGUIEN DE SU FAMILIA TIENE UNA CONDICIÓN EPILÉPTICA, CONSULTE A UN MÉDICO SI EXPERIMENTA ALGUNO DE LOS SIGUIENTES SÍNTOMAS DURANTE EL USO DE NUESTROS SERVICIOS: MAREO, ALTERADOS TWITCHES DE VISIÓN, OJOS O MÚSCULOS, PÉRDIDA DE CONOCIMIENTO, DESORIENTACIÓN, CUALQUIER MOVIMIENTO INVOLUNTARIO O CONVULSIONES."
+
+#: ../application/index/terms-of-service.phtml
+msgid "LIMITATION OF LIABILITY"
+msgstr "LIMITACIÓN DE RESPONSABILIDAD"
+
+#: ../application/index/terms-of-service.phtml
+msgid "YOU EXPLICITLY ACKNOWLEDGE, UNDERSTAND AND AGREE THAT DAVID'S WEB SITES AND OUR SUBSIDIARIES, AFFILIATES, OFFICERS, EMPLOYEES, AGENTS, PARTNERS AND LICENSORS SHALL NOT BE LIABLE TO YOU FOR ANY PUNITIVE, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING, BUT NOT LIMITED TO, DAMAGES WHICH MAY BE RELATED TO THE LOSS OF ANY PROFITS, GOODWILL, USE, DATA AND/OR OTHER INTANGIBLE LOSSES, EVEN THOUGH WE MAY HAVE BEEN ADVISED OF SUCH POSSIBILITY THAT SAID DAMAGES MAY OCCUR, AND RESULT FROM:"
+msgstr "USTED RECONOCE EXPLÍCITAMENTE, ENTIENDE Y ACEPTA QUE DAVID'S WEB SITES Y NUESTRAS SUBSIDIARIAS, AFILIADAS, OFICIALES, EMPLEADOS, AGENTES, SOCIOS Y LICENCIATARIOS NO SERÁN RESPONSABLES ANTE USTED POR DAÑOS PUNITIVOS, INDIRECTOS, INCIDENTALES, ESPECIALES, RESULTANTES O EJEMPLARES, INCLUYENDO , PERO NO LIMITADO A, DAÑOS QUE PUEDAN ESTAR RELACIONADOS CON LA PÉRDIDA DE CUALQUIER GANANCIA, PAGO, USO, DATOS Y / O OTRAS PÉRDIDAS INTANGIBLES, AUNQUE PODRÍAMOS HABER SIDO ADVERTIDOS DE LA POSIBILIDAD DE DICHOS DAÑOS Y RESULTADO DE: "
+
+#: ../application/index/terms-of-service.phtml
+msgid "THE USE OR INABILITY TO USE OUR SERVICE;"
+msgstr "EL USO O INCAPACIDAD DE UTILIZAR NUESTRO SERVICIO;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "THE COST OF PROCURING SUBSTITUTE GOODS AND SERVICES;"
+msgstr "EL COSTO DE LA ADQUISICIÓN DE BIENES Y SERVICIOS SUSTITUTOS;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "UNAUTHORIZED ACCESS TO OR THE ALTERATION OF YOUR TRANSMISSIONS AND/OR DATA;"
+msgstr "ACCESO NO AUTORIZADO A O LA ALTERACIÓN DE SUS TRANSMISIONES Y / O DATOS;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "STATEMENTS OR CONDUCT OF ANY SUCH THIRD PARTY ON OUR SERVICE;"
+msgstr "DECLARACIONES O CONDUCTA DE CUALQUIERA DE DICHO TERCERO EN NUESTRO SERVICIO;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "AND ANY OTHER MATTER WHICH MAY BE RELATED TO OUR SERVICE."
+msgstr "Y CUALQUIER OTRO ASUNTO QUE PUEDA ESTAR RELACIONADO CON NUESTRO SERVICIO."
+
+#: ../application/index/terms-of-service.phtml
+msgid "RELEASE"
+msgstr "RELEASE"
+
+#: ../application/index/terms-of-service.phtml
+msgid "In the event you have a dispute, you agree to release David's Web Sites (and its officers, directors, employees, agents, parent subsidiaries, affiliates, co-branders, partners and any other third parties) from claims, demands and damages (actual and consequential) of every kind and nature, known and unknown, suspected or unsuspected, disclosed and undisclosed, arising out of or in any way connected to such dispute."
+msgstr "En el caso de que tenga una disputa, acepta liberar David's Web Sites (y su funcionarios, directores, empleados, agentes, filiales matrices, filiales, coproductores, socios y cualquier otro tercero) de reclamos, demandas y daños (real y consecuente) de todo tipo y naturaleza, conocidos y desconocidos, sospechados o insospechados, divulgados y no divulgados, que surjan o estén relacionados de alguna manera con dicha disputa."
+
+#: ../application/index/terms-of-service.phtml
+msgid "SPECIAL ADMONITION RELATED TO FINANCIAL MATTERS"
+msgstr "ADMONICIÓN ESPECIAL RELACIONADA CON ASUNTOS FINANCIEROS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Should you intend to create or to join any service, receive or request any such news, messages, alerts or other information from our Services concerning companies, stock quotes, investments or securities, please review the above Sections Warranty Disclaimers and Limitations of Liability again. In addition, for this particular type of information, the phrase 'Let the investor beware' is appropriate. David's Web Sites' content is provided primarily for informational purposes, and no content that shall be provided or included in our Services is intended for trading or investing purposes. David's Web Sites and our licensors shall not be responsible or liable for the accuracy, usefulness or availability of any information transmitted and/or made available by way of our Services, and shall not be responsible or liable for any trading and/or investment decisions based on any such information."
+msgstr "Si tiene la intención de crear o unirse a cualquier servicio, recibir o solicitar tales noticias, mensajes, alertas u otra información de nuestros Servicios sobre compañías, cotizaciones bursátiles, inversiones o valores, por favor revise las Secciones anteriores Garantía Limitaciones y Limitaciones de Responsabilidad De nuevo, para este tipo particular de información, la frase "Deje que el inversor se preocupe" es apropiada. El contenido de David's Web Sites se proporciona principalmente con fines informativos, y ningún contenido que debe proporcionarse o incluirse en nuestros Servicios está destinado a con fines comerciales o de inversión. David's Web Sites y nuestros licenciantes no serán responsables de la precisión, utilidad o disponibilidad de la información transmitida y / o disponible a través de nuestros Servicios.y no será responsable de ninguna decisión de negociación y / o inversión basada en dicha información."
+
+#: ../application/index/terms-of-service.phtml
+msgid "EXCLUSION AND LIMITATIONS"
+msgstr "EXCLUSIÓN Y LIMITACIONES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "THERE ARE SOME JURISDICTIONS WHICH DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR THE LIMITATION OF EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES. THEREFORE, SOME OF THE ABOVE LIMITATIONS OF SECTIONS WARRANTY DISCLAIMERS AND LIMITATION OF LIABILITY MAY NOT APPLY TO YOU."
+msgstr "HAY ALGUNAS JURISDICCIONES QUE NO PERMITEN LA EXCLUSIÓN DE DETERMINADAS GARANTÍAS O LA LIMITACIÓN DE LA EXCLUSIÓN DE RESPONSABILIDAD POR DAÑOS INCIDENTALES O CONSECUENCIALES. POR LO TANTO, ALGUNAS DE LAS LIMITACIONES ANTERIORES DE LAS GARANTÍAS EXENCIONES DE GARANTÍA Y LIMITACIÓN DE RESPONSABILIDAD PUEDEN NO SER APLICABLES A USTED."
+
+#: ../application/index/terms-of-service.phtml
+msgid "THIRD PARTY BENEFICIARIES"
+msgstr "BENEFICIARIOS DE TERCEROS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You herein acknowledge, understand and agree, unless otherwise expressly provided in this TOS, that there shall be no third-party beneficiaries to this agreement."
+msgstr "Usted en este documento reconoce, comprende y acepta, a menos que se establezca expresamente lo contrario en este TOS, que no habrá terceros beneficiarios de este acuerdo."
+
+#: ../application/index/terms-of-service.phtml
+msgid "NOTICE"
+msgstr "AVISO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites may furnish you with notices, including those with regards to any changes to the TOS, including but not limited to email, regular mail, MMS or SMS, text messaging, postings on our website Services, or other reasonable means currently known or any which may be herein after developed. Any such notices may not be received if you violate any aspects of the TOS by accessing our Services in an unauthorized manner. Your acceptance of this TOS constitutes your agreement that you are deemed to have received any and all notices that would have been delivered had you accessed our Services in an authorized manner."
+msgstr "David's Web Sites puede proporcionarle avisos, incluso aquellos relacionados con cambios en los TOS, incluidos, entre otros, correo electrónico, correo regular, MMS o SMS, mensajes de texto, publicaciones en nuestro sitio web o cualquier otro medio razonable actualmente. conocido o cualquiera de los que se pueden desarrollar en el futuro. Es posible que no se reciban dichos avisos si usted viola alguno de los aspectos de los Términos de servicio al acceder a nuestros Servicios de forma no autorizada. Su aceptación de estos Términos de servicio constituye su aceptación de que se ha recibido y todas las notificaciones que se habrían enviado si hubiera accedido a nuestros Servicios de manera autorizada."
+
+#: ../application/index/terms-of-service.phtml
+msgid "TRADEMARK INFORMATION"
+msgstr "INFORMACIÓN DE MARCA REGISTRADA"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You herein acknowledge, understand and agree that all of the David's Web Sites trademarks, copyright, trade name, service marks, and other David's Web Sites logos and any brand features, and/or product and service names are trademarks and as such, are and shall remain the property of David's Web Sites. You herein agree not to display and/or use in any manner the David's Web Sites logo or marks without obtaining David's Web Sites' prior written consent."
+msgstr "Usted acepta, comprende y acepta que todas las marcas registradas de David's Web Sites, su copyright, nombre comercial, marcas de servicio y otros logotipos de David's Web Sites y cualquier característica de marca, y / o los nombres de productos y servicios son marcas registradas y, como tales, son y seguirán siendo propiedad de David's Web Sites. En este documento, usted acepta no mostrar y / o usar de ninguna manera el logotipo o las marcas de David's Web Sites sin obtener el consentimiento previo por escrito de David's Web Sites."
+
+#: ../application/index/terms-of-service.phtml
+msgid "COPYRIGHT OR INTELLECTUAL PROPERTY INFRINGEMENT CLAIMS NOTICE &amp; PROCEDURES"
+msgstr "RECLAMOS DE INFRACCIÓN DE DERECHOS DE AUTOR O PROPIEDAD INTELECTUAL AVISO Y PROCEDIMIENTOS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "David's Web Sites will always respect the intellectual property of others, and we ask that all of our users do the same. With regards to appropriate circumstances and at its sole discretion, David's Web Sites may disable and/or terminate the accounts of any user who violates our TOS and/or infringes the rights of others. If you feel that your work has been duplicated in such a way that would constitute copyright infringement, or if you believe your intellectual property rights have been otherwise violated, you should provide to us the following information:"
+msgstr "David's Web Sites siempre respetará la propiedad intelectual de otros, y le pedimos a todos nuestros usuarios que hagan lo mismo. Con respecto a las circunstancias apropiadas ya su entera discreción, David's Web Sites puede deshabilitar y / o dar de baja las cuentas de cualquier usuario que viola nuestros TDS y / o infringe los derechos de los demás. Si considera que su trabajo se ha duplicado de manera que constituiría una infracción de derechos de autor, o si cree que sus derechos de propiedad intelectual han sido violados, debe proporcionar a nosotros la siguiente información:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "The electronic or the physical signature of the individual that is authorized on behalf of the owner of the copyright or other intellectual property interest;"
+msgstr "La firma electrónica o física del individuo que está autorizada en nombre del propietario del derecho de autor u otro interés de propiedad intelectual;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "A description of the copyrighted work or other intellectual property that you believe has been infringed upon;"
+msgstr "Una descripción del trabajo protegido por derechos de autor u otra propiedad intelectual que usted cree que ha sido violada;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "A description of the location of the site which you allege has been infringing upon your work;"
+msgstr "Una descripción de la ubicación del sitio que alega ha estado infringiendo su trabajo;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Your physical address, telephone number, and email address;"
+msgstr "Su dirección física, número de teléfono y dirección de correo electrónico;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "A statement, in which you state that the alleged and disputed use of your work is not authorized by the copyright owner, its agents or the law;"
+msgstr "Una declaración, en la cual usted declara que el uso presunto y disputado de su trabajo no está autorizado por el propietario de los derechos de autor, sus agentes o la ley;"
+
+#: ../application/index/terms-of-service.phtml
+msgid "And finally, a statement, made under penalty of perjury, that the aforementioned information in your notice is truthful and accurate, and that you are the copyright or intellectual property owner, representative or agent authorized to act on the copyright or intellectual property owner's behalf."
+msgstr "Y finalmente, una declaración, hecha bajo pena de perjurio, de que la información antes mencionada en su aviso es veraz y precisa, y que usted es el propietario o representante de derechos de autor intelectual, representante o agente autorizado para actuar sobre los derechos de autor o la propiedad intelectual favor."
+
+#: ../application/index/terms-of-service.phtml
+msgid "The David's Web Sites Agent for notice of claims of copyright or other intellectual property infringement can be contacted as follows:"
+msgstr "El Agente de David's Web Sites para recibir notificaciones de reclamaciones de derechos de autor u otras infracciones de propiedad intelectual puede contactarse de la siguiente manera:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Mailing Address:"
+msgstr "Dirección postal:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Telephone:"
+msgstr "Teléfono:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Email:"
+msgstr "Correo electrónico:"
+
+#: ../application/index/terms-of-service.phtml
+msgid "CLOSED CAPTIONING"
+msgstr "CAPTIONING CERRADO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "BE IT KNOWN, that David's Web Sites complies with all applicable Federal Communications Commission rules and regulations regarding the closed captioning of video content. For more information, please visit our website at"
+msgstr "SEA CONOCER, que David's Web Sites cumple con todas las reglas y regulaciones aplicables de la Comisión Federal de Comunicaciones con respecto a los subtítulos del contenido de video. Para obtener más información, visite nuestro sitio web en"
+
+#: ../application/index/terms-of-service.phtml
+msgid "GENERAL INFORMATION"
+msgstr "INFORMACIÓN GENERAL"
+
+#: ../application/index/terms-of-service.phtml
+msgid "ENTIRE AGREEMENT"
+msgstr "ACUERDO COMPLETO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "This TOS constitutes the entire agreement between you and David's Web Sites and shall govern the use of our Services, superseding any prior version of this TOS between you and us with respect to David's Web Sites Services. You may also be subject to additional terms and conditions that may apply when you use or purchase certain other David's Web Sites Services, affiliate Services, third-party content or third-party software."
+msgstr "Este TOS constituye el acuerdo completo entre usted y David's Web Sites y regirá el uso de nuestros servicios, reemplazando cualquier versión anterior de este TOS entre usted y nosotros con respecto a los servicios de David's Web Sites. También puede estar sujeto a términos adicionales. y las condiciones que pueden aplicarse cuando utiliza o compra ciertos otros servicios de David's Web Sites, servicios de afiliados, contenido de terceros o software de terceros."
+
+#: ../application/index/terms-of-service.phtml
+msgid "CHOICE OF LAW AND FORUM"
+msgstr "ELECCIÓN DE LEY Y FORO"
+
+#: ../application/index/terms-of-service.phtml
+msgid "It is at the mutual agreement of both you and David's Web Sites with regard to the TOS that the relationship between the parties shall be governed by the laws of the state of Maryland without regard to its conflict of law provisions and that any and all claims, causes of action and/or disputes, arising out of or relating to the TOS, or the relationship between you and David's Web Sites, shall be filed within the courts having jurisdiction within the County of Montgomery, Maryland or the U.S. District Court located in said state. You and David's Web Sites agree to submit to the jurisdiction of the courts as previously mentioned, and agree to waive any and all objections to the exercise of jurisdiction over the parties by such courts and to venue in such courts."
+msgstr "Es de mutuo acuerdo entre usted y David's Web Sites con respecto a los TOS que la relación entre las partes se regirá por las leyes del estado de Maryland sin tener en cuenta sus disposiciones sobre conflictos de leyes y que todas y cada una los reclamos, causas de acción y / o disputas que surjan de los TOS o la relación entre usted y David's Web Sites se presentará dentro de los tribunales que tengan jurisdicción dentro del Condado de Montgomery, Maryland o el Tribunal de Distrito de EE. UU. En dicho estado, usted y David Web Sites acuerdan someterse a la jurisdicción de los tribunales como se mencionó anteriormente, y acuerdan renunciar a todas y cada una de las objeciones al ejercicio de la jurisdicción sobre las partes por dichos tribunales y el lugar en dichos tribunales."
+
+#: ../application/index/terms-of-service.phtml
+msgid "WAIVER AND SEVERABILITY OF TERMS"
+msgstr "RENUNCIA Y DIVISIBILIDAD DE TÉRMINOS"
+
+#: ../application/index/terms-of-service.phtml
+msgid "At any time, should David's Web Sites fail to exercise or enforce any right or provision of the TOS, such failure shall not constitute a waiver of such right or provision. If any provision of this TOS is found by a court of competent jurisdiction to be invalid, the parties nevertheless agree that the court should endeavor to give effect to the parties' intentions as reflected in the provision, and the other provisions of the TOS remain in full force and effect."
+msgstr "En cualquier momento, si David's Web Sites no ejerce o hacen cumplir cualquier derecho o disposición de los TOS, dicha falla no constituirá una renuncia a tal derecho o disposición. Si cualquier disposición de este TOS es encontrada por un tribunal de jurisdicción competente para ser inválidas, las partes, sin embargo, acuerdan que el tribunal debe esforzarse por dar efecto a las intenciones de las partes, tal como se refleja en la disposición, y las otras disposiciones de los TOS siguen en plena vigencia y efecto."
+
+#: ../application/index/terms-of-service.phtml
+msgid "NO RIGHT OF SURVIVORSHIP NON-TRANSFERABILITY"
+msgstr "NO HAY DERECHO A LA SOBREVIVENCIA NO TRANSFERIBLE"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You acknowledge, understand and agree that your account is non-transferable and any rights to your ID and/or contents within your account shall terminate upon your death. Upon receipt of a copy of a death certificate, your account may be terminated and all contents therein permanently deleted."
+msgstr "Usted reconoce, entiende y acepta que su cuenta no es transferible y cualquier derecho sobre su ID y / o contenido dentro de su cuenta terminará cuando usted fallezca. Al recibir una copia de un certificado de defunción, su cuenta puede ser cancelada y todos los contenidos allí eliminados permanentemente."
+
+#: ../application/index/terms-of-service.phtml
+msgid "STATUTE OF LIMITATIONS"
+msgstr "ESTATUTO DE LIMITACIONES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "You acknowledge, understand and agree that regardless of any statute or law to the contrary, any claim or action arising out of or related to the use of our Services or the TOS must be filed within 5 year(s) after said claim or cause of action arose or shall be forever barred."
+msgstr "Usted reconoce, comprende y acepta que independientemente de cualquier estatuto o ley en contrario, cualquier reclamo o acción que surja o esté relacionado con el uso de nuestros Servicios o los Términos de Servicio se debe presentar dentro de los 5 años posteriores a dicho reclamo o causa de la acción surgió o será prohibida por siempre."
+
+#: ../application/index/terms-of-service.phtml
+msgid "VIOLATIONS"
+msgstr "VIOLACIONES"
+
+#: ../application/index/terms-of-service.phtml
+msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
+msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
+
 #: ../view/layout/layout.phtml:
 msgid "by"
 msgstr "por"
