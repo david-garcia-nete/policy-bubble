@@ -12,6 +12,7 @@ use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 use Doctrine\ORM\Mapping\Driver\AnnotationDriver;
 use Zend\Mvc\I18n\Router\TranslatorAwareTreeRouteStack;
+use Zend\I18n\Translator\Resources;
 
 return [
     'router' => [
@@ -335,6 +336,16 @@ return [
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
+            ],
+            [
+                'type'     => 'phpArray',
+                'base_dir' => Resources::getBasePath(),
+                'pattern'  => Resources::getPatternForValidator()
+            ],
+            [
+                'type'     => 'gettext',
+                'base_dir' => Resources::getBasePath(),
+                'pattern'  => Resources::getPatternForCaptcha()
             ],
         ],
     ],

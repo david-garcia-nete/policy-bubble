@@ -3,6 +3,7 @@ namespace Application\Service;
 use Zend\Session\Container;
 use Application\Service\GeoPlugin;
 use Zend\Http\Header\SetCookie;
+use Zend\Validator\AbstractValidator;
 
 /**
  * The TranslationManager service is responsible for setting the language when
@@ -59,6 +60,8 @@ class TranslationManager
         $translator
             ->setLocale($lang)
             ->setFallbackLocale('en_US');
+
+        AbstractValidator::setDefaultTranslator($translator);
     }
     
     public function getGeoLanguage(&$object)
