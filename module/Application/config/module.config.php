@@ -336,17 +336,7 @@ return [
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
-            ],
-            [
-                'type'     => 'phpArray',
-                'base_dir' => Resources::getBasePath(),
-                'pattern'  => Resources::getPatternForValidator()
-            ],
-            [
-                'type'     => 'phpArray',
-                'base_dir' => Resources::getBasePath(),
-                'pattern'  => Resources::getPatternForCaptcha()
-            ],
+            ]
         ],
     ],
 ];

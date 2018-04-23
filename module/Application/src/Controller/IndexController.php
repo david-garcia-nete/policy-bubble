@@ -251,7 +251,7 @@ class IndexController extends AbstractActionController
                     
                     $elements[$key] = $value;
                 }
-                var_dump($elements); die;
+                //var_dump($elements); die;
                 $form->setMessages($elements);
             }               
         } 
