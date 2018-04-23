@@ -20,6 +20,8 @@ msgstr ""
 #: ../application/index/disclosure-policy.phtml
 #: ../application/index/terms-of-service.phtml
 #: ../application/index/analysis.phtml
+#: ../application/index/contact-us.phtml
+
 msgid "Home"
 msgstr "Inicio"
 
@@ -1083,6 +1085,46 @@ msgstr "Regiones"
 #: ../application/index/analysis.phtml
 msgid "Cities"
 msgstr "Ciudades"
+
+#: ../application/index/contact-us.phtml
+msgid "Contact US"
+msgstr "Contacta con Nosotros"
+
+#: ../application/index/contact-us.phtml
+msgid "name@example.com"
+msgstr "nombre@ejemplo.com"
+
+#: ../application/index/contact-us.phtml
+msgid "Your E-mail"
+msgstr "Su Correo Electrónico"
+
+#: ../application/index/contact-us.phtml
+msgid "Type subject here"
+msgstr "Escriba asunto aquí"
+
+#: ../application/index/contact-us.phtml
+msgid "Subject"
+msgstr "Asunto"
+
+#: ../application/index/contact-us.phtml
+msgid "Type message text here"
+msgstr "Escriba el texto del mensaje aquí"
+
+#: ../application/index/contact-us.phtml
+msgid "Message Body"
+msgstr "Cuerpo del Mensaje"
+
+#: ../application/index/contact-us.phtml
+msgid "Human Check"
+msgstr "Comprobación Humana"
+
+#: ../application/index/contact-us.phtml
+msgid "Please fill out the following form to contact us.  We appreciate your feedback."
+msgstr "Completa el siguiente formulario para contactarnos. Agradecemos tus comentarios."
+
+#: ../application/index/contact-us.phtml
+msgid "Enter the letters above as you see them."
+msgstr "Ingrese las letras de arriba como las ve."
 
 #: ../view/layout/layout.phtml:
 msgid "by"

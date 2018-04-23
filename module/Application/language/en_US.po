@@ -19,6 +19,7 @@ msgstr ""
 #: ../application/index/disclosure-policy.phtml
 #: ../application/index/terms-of-service.phtml
 #: ../application/index/analysis.phtml
+#: ../application/index/contact-us.phtml
 msgid "Home"
 msgstr ""
 
@@ -1080,6 +1081,46 @@ msgstr ""
 
 #: ../application/index/analysis.phtml
 msgid "Cities"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Contact US"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "name@example.com"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Your E-mail"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Type subject here"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Subject"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Type message text here"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Message Body"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Human Check"
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Please fill out the following form to contact us.  We appreciate your feedback."
+msgstr ""
+
+#: ../application/index/contact-us.phtml
+msgid "Enter the letters above as you see them."
 msgstr ""
 
 #: ../view/layout/layout.phtml:
