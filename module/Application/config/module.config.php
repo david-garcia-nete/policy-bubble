@@ -343,7 +343,7 @@ return [
                 'pattern'  => Resources::getPatternForValidator()
             ],
             [
-                'type'     => 'gettext',
+                'type'     => 'phpArray',
                 'base_dir' => Resources::getBasePath(),
                 'pattern'  => Resources::getPatternForCaptcha()
             ],

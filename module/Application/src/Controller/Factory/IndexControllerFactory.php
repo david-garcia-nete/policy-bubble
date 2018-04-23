@@ -19,9 +19,10 @@ class IndexControllerFactory implements FactoryInterface
         $membershipManager = $container->get(MembershipManager::class);
         $sessionContainer = $container->get('PayPal');
         $translationManager = $container->get(TranslationManager::class);
+        $translator = $container->get('MvcTranslator');
         
         // Instantiate the controller and inject dependencies
         return new IndexController($entityManager, $mailSender, $membershipManager, 
-                $sessionContainer, $translationManager);
+                $sessionContainer, $translationManager, $translator);
     }
 }
