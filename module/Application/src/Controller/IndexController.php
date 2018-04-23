@@ -213,10 +213,10 @@ class IndexController extends AbstractActionController
                 $email = $data['email'];
                 $subject = $data['subject'];
                 $body = 'From: ' . $email . ' ' . $data['body'];
-                // $header = 'From: ' . $data['email'];
+                $header = 'From: Policy Bubble';
                 
                 // Send E-mail
-                if(!mail('david.garcia.nete@gmail.com', $subject, $body)) {
+                if(!mail('david.garcia.nete@gmail.com', $subject, $body, $header)) {
                 /*if(!$this->mailSender->sendMail('david.garcia.nete@gmail.com', $email, 
                         $subject, $body)) {*/
                     // In case of error, redirect to "Error Sending Email" page

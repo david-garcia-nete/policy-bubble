@@ -20,6 +20,8 @@ msgstr ""
 #: ../application/index/terms-of-service.phtml
 #: ../application/index/analysis.phtml
 #: ../application/index/contact-us.phtml
+#: ../application/index/send-error.phtml
+#: ../application/index/thank-you.phtml
 msgid "Home"
 msgstr ""
 
@@ -1084,6 +1086,8 @@ msgid "Cities"
 msgstr ""
 
 #: ../application/index/contact-us.phtml
+#: ../application/index/send-error.phtml
+#: ../application/index/thank-you.phtml
 msgid "Contact Us"
 msgstr ""
 
@@ -1125,6 +1129,22 @@ msgstr ""
 
 #: ../application/index/contact-us.phtml
 msgid "Enter the letters above as you see them."
+msgstr ""
+
+#: ../application/index/send-error.phtml
+msgid "Error Sending Email!"
+msgstr ""
+
+#: ../application/index/send-error.phtml
+msgid "Sorry, but we had an unexpected problem when trying to deliver your message.  Please try again later."
+msgstr ""
+
+#: ../application/index/thank-you.phtml
+msgid "Thank You!"
+msgstr ""
+
+#: ../application/index/thank-you.phtml
+msgid "We will respond to the E-mail address you have provided."
 msgstr ""
 
 #: ../view/layout/layout.phtml:
