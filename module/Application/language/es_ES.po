@@ -1087,7 +1087,7 @@ msgid "Cities"
 msgstr "Ciudades"
 
 #: ../application/index/contact-us.phtml
-msgid "Contact US"
+msgid "Contact Us"
 msgstr "Contacta con Nosotros"
 
 #: ../application/index/contact-us.phtml
@@ -1105,6 +1105,10 @@ msgstr "Escriba asunto aquí"
 #: ../application/index/contact-us.phtml
 msgid "Subject"
 msgstr "Asunto"
+
+#: ../application/index/contact-us.phtml
+msgid "Your Phone"
+msgstr "Tu Teléfono"
 
 #: ../application/index/contact-us.phtml
 msgid "Type message text here"

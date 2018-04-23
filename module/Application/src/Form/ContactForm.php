@@ -86,7 +86,7 @@ class ContactForm extends Form
             'name' => 'captcha',
             'attributes' => [],
             'options' => [
-                'label' => 'Human check',
+                'label' => 'Human Check',
                 'captcha' => [
                     'class' => 'Image',
                     'imgDir' => './public/img/captcha',
