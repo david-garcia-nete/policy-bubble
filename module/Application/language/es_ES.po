@@ -1058,7 +1058,7 @@ msgstr "Por favor informe todas y cada una de las violaciones de este TOS a Davi
 
 #: ../application/index/analysis.phtml
 msgid "Number of:"
-msgstr ""
+msgstr "Número  de:"
 
 #: ../application/index/analysis.phtml
 msgid "Users"
