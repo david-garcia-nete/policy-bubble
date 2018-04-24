@@ -5,7 +5,7 @@ $this->mainMenu()->setActiveItemId('login');
 
 $form->get('email')->setAttributes([
     'class'=>'form-control', 
-    'placeholder'=>'Email address',
+    'placeholder'=>$this->translate('Email address'),
     'required' => true,
     'autofocus' => true
     ])
@@ -15,7 +15,7 @@ $form->get('email')->setAttributes([
 
 $form->get('password')->setAttributes([
     'class'=>'form-control', 
-    'placeholder'=>'Password',
+    'placeholder'=>$this->translate('Password'),
     'required' => true,
     ])
     ->setLabelAttributes([
@@ -26,11 +26,14 @@ $form->get('password')->setAttributes([
 <div class="row">
     <div class="col-md-offset-4 col-md-3">
         <form class="form-signin" method="post">
-            <h2 class="form-signin-heading">Please sign in</h2>
+            <h2 class="form-signin-heading">
+                <?= $this->translate('Please sign in') ?>
+            </h2>
             <?php if ($isLoginError): ?>
             <div class="alert alert-warning" role="alert">
-                Incorrect login and/or password. 
-                <a href="<?= $this->url('reset-password') ?>">Forgot password?</a>
+               <?= $this->translate('Incorrect login and/or password.') ?> 
+                <a href="<?= $this->url('reset-password') ?>">
+                <?= $this->translate('Forgot password?') ?></a>
             </div>
             <?php endif; ?>
             <?= $this->formLabel($form->get('email')); ?>
@@ -45,11 +48,15 @@ $form->get('password')->setAttributes([
             <br>
             <?= $this->formElement($form->get('redirect_url')); ?>
             <?= $this->formElement($form->get('csrf')) ?>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">
+                <?= $this->translate('Sign in') ?>
+            </button>
         </form>
         <br>
-        <a href="<?php echo $this->url('registration'); ?>">User Registration</a> |
-        <a href="<?php echo $this->url('reset-password', ['action'=>'resetPassword']); ?>">Forgot Password</a>
+        <a href="<?php echo $this->url('registration'); ?>"><?= $this->translate('User Registration') ?></a> |
+        <a href="<?php echo $this->url('reset-password', ['action'=>'resetPassword']); ?>">
+            <?= $this->translate('Forgot Password') ?>
+        </a>
           
     </div>
 </div>

@@ -1059,6 +1059,34 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/view/user/auth/login.phtml
+msgid "Email address"
+msgstr "Dirección de correo electrónico"
+
+#: /User/view/user/auth/login.phtml
+msgid "Password"
+msgstr "Contraseña"
+
+#: /User/view/user/auth/login.phtml
+msgid "Incorrect login and/or password."
+msgstr "Nombre de usuario y / o contraseña incorrectos."
+
+#: /User/view/user/auth/login.phtml
+msgid "Please sign in"
+msgstr "Por favor inicie sesión"
+
+#: /User/view/user/auth/login.phtml
+msgid "Forgot password?"
+msgstr "¿Olvidó su contraseña?"
+
+#: /User/view/user/auth/login.phtml
+msgid "User Registration"
+msgstr "Registro de Usuario"
+
+#: /User/view/user/auth/login.phtml
+msgid "Forgot Password"
+msgstr "Olvidó Contraseña"
+
 #: ../application/index/analysis.phtml
 msgid "Number of:"
 msgstr "Número  de:"
@@ -1325,35 +1353,35 @@ msgstr "terminosdeservicio"
 msgid "analysis"
 msgstr "analisis"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "login"
 msgstr "login"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "logout"
 msgstr "cierredesesion"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "not-authorized"
 msgstr "no-autorizado"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "reset-password"
 msgstr "restablecer-la-contrasena"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "users"
 msgstr "usuarios"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "roles"
 msgstr "papeles"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "permissions"
 msgstr "permisos"
 
-#: /Users/config/module.config.php
+#: /User/config/module.config.php
 msgid "registration"
 msgstr "inscripcion"
 
