@@ -66,16 +66,16 @@ class IndexController extends AbstractActionController
     private $translationManager;
     
     /**
-     * Translator.
-     * @var Zend\I18n\Translator\Translator
+     * Form Manager.
+     * @var Application\Service\FormManager
      */
-    private $translator;
+    private $formManager;
     
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $mailSender, $membershipManager, 
-            $sessionContainer, $translationManager, $translator) 
+            $sessionContainer, $translationManager, $formManager) 
     {
        $this->entityManager = $entityManager;
        $this->mailSender = $mailSender;
@@ -83,7 +83,7 @@ class IndexController extends AbstractActionController
        $this->sessionContainer = $sessionContainer;
        $this->localConfig = new Config(include './config/autoload/local.php');
        $this->translationManager = $translationManager;
-       $this->translator = $translator;
+       $this->formManager = $formManager;
     }
     
     
@@ -235,24 +235,9 @@ class IndexController extends AbstractActionController
                 return $this->redirect()->toRoute('application', 
                         ['action'=>'thankYou']);
             }else{
-                $elements  = $form->getMessages();
-                //elements is an array of elements. each element has an array of messages
-                // first we traverse the elements
-                foreach($elements as $key=>$value){
-                    
-                    //now we have an array
-                    // we will traverse this array.  We will translate each message
-                   
-                    foreach($value as $key2=>$value2){
-                        $translatedMessage = $this->translator->translate($value2);
-                        //now se set the message to the translated one
-                        $value[$key2] = $translatedMessage;
-                    }
-                    
-                    $elements[$key] = $value;
-                }
-                //var_dump($elements); die;
-                $form->setMessages($elements);
+                
+                $form = $this->formManager->translateErrorMessages($form);
+                
             }               
         } 
         
