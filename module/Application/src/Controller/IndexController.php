@@ -111,7 +111,11 @@ class IndexController extends AbstractActionController
                 
                 // Redirect to "Home" page
                 return $this->redirect()->toRoute('home');
-            }               
+            } else{
+                
+                $form = $this->formManager->translateErrorMessages($form);
+                
+            }                
         }
         
         $lang = $this->getRequest()->getCookie()->xuage;
