@@ -13,7 +13,7 @@ return [
             'login' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/{login}',
+                    'route'    => '/login',
                     'defaults' => [
                         'controller' => Controller\AuthController::class,
                         'action'     => 'login',
@@ -23,7 +23,7 @@ return [
             'logout' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/{logout}',
+                    'route'    => '/logout',
                     'defaults' => [
                         'controller' => Controller\AuthController::class,
                         'action'     => 'logout',
@@ -33,7 +33,7 @@ return [
             'not-authorized' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/{not-authorized}',
+                    'route'    => '/not-authorized',
                     'defaults' => [
                         'controller' => Controller\AuthController::class,
                         'action'     => 'notAuthorized',
@@ -43,7 +43,7 @@ return [
             'reset-password' => [
                 'type' => Segment::class,
                 'options' => [
-                    'route'    => '/{reset-password}',
+                    'route'    => '/reset-password',
                     'defaults' => [
                         'controller' => Controller\UserController::class,
                         'action'     => 'resetPassword',
@@ -53,7 +53,7 @@ return [
             'users' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/{users}[/:action[/:id]]',
+                    'route'    => '/users[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[a-zA-Z0-9_-]*',
@@ -67,7 +67,7 @@ return [
             'roles' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/{roles}[/:action[/:id]]',
+                    'route'    => '/roles[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*',
@@ -81,7 +81,7 @@ return [
             'permissions' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/{permissions}[/:action[/:id]]',
+                    'route'    => '/permissions[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[0-9]*',
@@ -95,7 +95,7 @@ return [
             'registration' => [
                 'type'    => Segment::class,
                 'options' => [
-                    'route'    => '/{registration}[/:action[/:id]]',
+                    'route'    => '/registration[/:action[/:id]]',
                     'constraints' => [
                         'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
                         'id' => '[a-zA-Z0-9_-]*',
