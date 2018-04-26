@@ -1091,6 +1091,30 @@ msgstr "Nombre de la Ciudad"
 msgid "All Posts"
 msgstr "Todas las Publicaciones"
 
+#: ../application/blog/index.phtml
+msgid "Published:"
+msgstr "Publicado:"
+
+#: ../application/blog/index.phtml
+msgid "Tags:"
+msgstr "Etiquetas:"
+
+#: ../application/blog/index.phtml
+msgid "Country:"
+msgstr "País:"
+
+#: ../application/blog/index.phtml
+msgid "Region:"
+msgstr "Región:"
+
+#: ../application/blog/index.phtml
+msgid "City:"
+msgstr "Ciudad:"
+
+#: ../application/blog/index.phtml
+msgid "Author:"
+msgstr "Autor:"
+
 #: /User/view/user/registration/index.phtml
 msgid "Full Name"
 msgstr "Nombre Completo"

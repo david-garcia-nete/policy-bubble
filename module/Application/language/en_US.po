@@ -1089,6 +1089,30 @@ msgstr ""
 msgid "All Posts"
 msgstr ""
 
+#: ../application/blog/index.phtml
+msgid "Published:"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Tags:"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Country:"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Region:"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "City:"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Author:"
+msgstr ""
+
 #: /User/view/user/registration/index.phtml
 msgid "Full Name"
 msgstr ""

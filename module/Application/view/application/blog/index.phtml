@@ -101,18 +101,18 @@ if(
     </h3>
     
     <p>
-        Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
-        | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
+        <?= $this->translate('Published:') ?> <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
+        | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p> 
     
     <p>
-        Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
-        | Region: <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
-        | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
+        <?= $this->translate('Country:') ?> <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
+        | <?= $this->translate('Region:') ?> <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
+        | <?= $this->translate('City:') ?> <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
     </p>  
     
     <p>
-    Author: <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
+    <?= $this->translate('Author:') ?> <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 
