@@ -1059,6 +1059,22 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/view/user/registration/index.phtml
+msgid "Full Name"
+msgstr "Nombre Completo"
+
+#: /User/view/user/registration/index.phtml
+msgid "John Doe"
+msgstr "Juan Doe"
+
+#: /User/view/user/registration/index.phtml
+msgid "Choose Password"
+msgstr "Elegir Contraseña"
+
+#: /User/view/user/registration/index.phtml
+msgid "Type password here (6 characters at minimum)"
+msgstr "Escriba la contraseña aquí (6 caracteres como mínimo)"
+
 #: /User/view/user/auth/login.phtml
 msgid "Email address"
 msgstr "Dirección de correo electrónico"

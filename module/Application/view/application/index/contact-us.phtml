@@ -35,7 +35,10 @@ $form->get('body')->setAttributes(array(
 $form->get('captcha')->setAttributes(array(
     'label'=>$this->translate('Human Check') 
     ));
-$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 
+    'value'=>$this->translate('Submit')]);
+
 $form->prepare();
 
 ?>
