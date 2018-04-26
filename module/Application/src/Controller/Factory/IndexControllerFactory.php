@@ -6,7 +6,7 @@ use Application\Service\MailSender;
 use Application\Service\MembershipManager;
 use Application\Controller\IndexController;
 use Application\Service\TranslationManager;
-use Application\Service\FormManager;
+
 /**
  * This is the factory for IndexController. Its purpose is to instantiate the
  * controller and inject dependencies into it.
@@ -20,10 +20,9 @@ class IndexControllerFactory implements FactoryInterface
         $membershipManager = $container->get(MembershipManager::class);
         $sessionContainer = $container->get('PayPal');
         $translationManager = $container->get(TranslationManager::class);
-        $formManager = $container->get(FormManager::class);
         
         // Instantiate the controller and inject dependencies
         return new IndexController($entityManager, $mailSender, $membershipManager, 
-                $sessionContainer, $translationManager, $formManager);
+                $sessionContainer, $translationManager);
     }
 }

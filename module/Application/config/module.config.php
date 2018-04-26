@@ -263,7 +263,6 @@ return [
     'service_manager' => [
         'factories' => [
             Service\NavManager::class => Service\Factory\NavManagerFactory::class,
-            Service\FormManager::class => Service\Factory\FormManagerFactory::class,
             Service\RbacAssertionManager::class => Service\Factory\RbacAssertionManagerFactory::class,
             Service\PostManager::class => Service\Factory\PostManagerFactory::class,
             Service\MembershipManager::class => Service\Factory\MembershipManagerFactory::class,

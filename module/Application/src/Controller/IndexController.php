@@ -66,16 +66,10 @@ class IndexController extends AbstractActionController
     private $translationManager;
     
     /**
-     * Form Manager.
-     * @var Application\Service\FormManager
-     */
-    private $formManager;
-    
-    /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $mailSender, $membershipManager, 
-            $sessionContainer, $translationManager, $formManager) 
+            $sessionContainer, $translationManager) 
     {
        $this->entityManager = $entityManager;
        $this->mailSender = $mailSender;
@@ -83,7 +77,6 @@ class IndexController extends AbstractActionController
        $this->sessionContainer = $sessionContainer;
        $this->localConfig = new Config(include './config/autoload/local.php');
        $this->translationManager = $translationManager;
-       $this->formManager = $formManager;
     }
     
     
@@ -111,11 +104,7 @@ class IndexController extends AbstractActionController
                 
                 // Redirect to "Home" page
                 return $this->redirect()->toRoute('home');
-            } else{
-                
-                $form = $this->formManager->translateErrorMessages($form);
-                
-            }                
+            }               
         }
         
         $lang = $this->getRequest()->getCookie()->xuage;
@@ -238,11 +227,7 @@ class IndexController extends AbstractActionController
                 // Redirect to "Thank You" page
                 return $this->redirect()->toRoute('application', 
                         ['action'=>'thankYou']);
-            }else{
-                
-                $form = $this->formManager->translateErrorMessages($form);
-                
-            }               
+            }              
         } 
         
         // Pass form variable to view
