@@ -1,9 +1,9 @@
 <?php
-$this->headTitle('Blog');
+$this->headTitle($this->translate('Blog'));
 $this->mainMenu()->setActiveItemId('blog');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Blog'=>$this->url('blog')
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Blog')=>$this->url('blog')
             ]);
 
 $form = $this->form;
