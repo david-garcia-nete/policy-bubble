@@ -1059,6 +1059,38 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/blog/index.phtml
+msgid "comma, separated, list, of, tags"
+msgstr "lista, de, etiquetas, separadas, por, comas"
+
+#: ../application/blog/index.phtml
+msgid "Country"
+msgstr "País"
+
+#: ../application/blog/index.phtml
+msgid "Country Name"
+msgstr "Nombre del País"
+
+#: ../application/blog/index.phtml
+msgid "Region"
+msgstr "Región"
+
+#: ../application/blog/index.phtml
+msgid "Region Name"
+msgstr "Nombre de la Región"
+
+#: ../application/blog/index.phtml
+msgid "City"
+msgstr "Ciudad"
+
+#: ../application/blog/index.phtml
+msgid "City Name"
+msgstr "Nombre de la Ciudad"
+
+#: ../application/blog/index.phtml
+msgid "All Posts"
+msgstr "Todas las Publicaciones"
+
 #: /User/view/user/registration/index.phtml
 msgid "Full Name"
 msgstr "Nombre Completo"

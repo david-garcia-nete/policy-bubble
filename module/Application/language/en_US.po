@@ -1057,6 +1057,38 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: ../application/blog/index.phtml
+msgid "comma, separated, list, of, tags"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Country"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Country Name"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Region"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Region Name"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "City"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "City Name"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "All Posts"
+msgstr ""
+
 #: /User/view/user/registration/index.phtml
 msgid "Full Name"
 msgstr ""

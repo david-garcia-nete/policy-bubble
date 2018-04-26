@@ -10,21 +10,26 @@ $form = $this->form;
 $form->setAttribute('action', $this->url('blog'));
 $form->get('tags')->setAttributes(array(
     'class'=>'form-control', 
-    'placeholder'=>'comma, separated, list, of, tags'
+    'placeholder'=>$this->translate('comma, separated, list, of, tags'),
+    'label'=>$this->translate('Tags') 
     ));
 $form->get('country')->setAttributes(array(
     'class'=>'form-control', 
-    'placeholder'=>'Country Name'
+    'placeholder'=>$this->translate('Country Name'),
+    'label'=>$this->translate('Country')  
     ));
 $form->get('region')->setAttributes(array(
     'class'=>'form-control', 
-    'placeholder'=>'Region Name'
+    'placeholder'=>$this->translate('Region Name'),
+    'label'=>$this->translate('Region')  
     ));
 $form->get('city')->setAttributes(array(
     'class'=>'form-control', 
-    'placeholder'=>'City Name'
+    'placeholder'=>$this->translate('City Name'),
+    'label'=>$this->translate('City')
     ));
-$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 
+    'value'=>$this->translate('Submit')]);
 $form->prepare();
 ?>
 
@@ -79,7 +84,7 @@ if(
      
 ?>
 
-<h1>All Posts</h1>
+<h1><?= $this->translate('All Posts') ?></h1>
     
 <?php endif; ?>
 
