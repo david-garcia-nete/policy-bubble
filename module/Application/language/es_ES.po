@@ -2928,9 +2928,6 @@ msgstr "Londres"
 msgid "Los Angeles"
 msgstr "Los Ángeles"
 
-msgid "Luxembourg"
-msgstr "Luxemburgo"
-
 msgid "Mecca"
 msgstr "La Meca"
 
@@ -2945,9 +2942,6 @@ msgstr "Nueva Delhi"
 
 msgid "New Orleans"
 msgstr "Nueva Orleans"
-
-msgid "New York"
-msgstr "Nueva York"
 
 msgid "Panama City"
 msgstr "Ciudad de Panamá"
@@ -3077,9 +3071,6 @@ msgstr "London"
 msgid "Los Ángeles"
 msgstr "Los Angeles"
 
-msgid "Luxemburgo"
-msgstr "Luxembourg"
-
 msgid "La Meca"
 msgstr "Mecca"
 
@@ -3094,9 +3085,6 @@ msgstr "New Delhi"
 
 msgid "Nueva Orleans"
 msgstr "New Orleans"
-
-msgid "Nueva York"
-msgstr "New York"
 
 msgid "Ciudad de Panamá"
 msgstr "Panama City"
@@ -3130,9 +3118,6 @@ msgstr "The Hague"
 
 msgid "Tokio"
 msgstr "Tokyo"
-
-msgid "Túnez"
-msgstr "Tunis"
 
 msgid "Viena"
 msgstr "Vienna"
@@ -3183,9 +3168,6 @@ msgstr "Distrito Federal de Columbia"
 
 msgid "Florida"
 msgstr "Florida"
-
-msgid "Georgia"
-msgstr "Georgia"
 
 msgid "Hawaii"
 msgstr "Hawái"

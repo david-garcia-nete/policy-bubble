@@ -3074,9 +3074,6 @@ msgstr ""
 msgid "Los Angeles"
 msgstr ""
 
-msgid "Luxembourg"
-msgstr ""
-
 msgid "Mecca"
 msgstr ""
 
@@ -3223,9 +3220,6 @@ msgstr ""
 msgid "Los Ángeles"
 msgstr ""
 
-msgid "Luxemburgo"
-msgstr ""
-
 msgid "La Meca"
 msgstr ""
 
@@ -3277,9 +3271,6 @@ msgstr ""
 msgid "Tokio"
 msgstr ""
 
-msgid "Túnez"
-msgstr ""
-
 msgid "Viena"
 msgstr ""
 
@@ -3328,9 +3319,6 @@ msgid "District of Columbia"
 msgstr ""
 
 msgid "Florida"
-msgstr ""
-
-msgid "Georgia"
 msgstr ""
 
 msgid "Hawaii"
@@ -3391,9 +3379,6 @@ msgid "Nevada"
 msgstr ""
 
 msgid "New Jersey"
-msgstr ""
-
-msgid "New York"
 msgstr ""
 
 msgid "New Hampshire"
@@ -3495,9 +3480,6 @@ msgid "Misuri"
 msgstr ""
 
 msgid "Nueva Jersey"
-msgstr ""
-
-msgid "Nueva York"
 msgstr ""
 
 msgid "Nuevo Hampshire"
