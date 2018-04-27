@@ -99,14 +99,32 @@ if(
             <?= $this->escapeHtml($post->getTitle()); ?>
         </a>    
     </h3>
+        
+    <?php
+
+    $time = strtotime($post->getDateCreated());
+    $day = date('j', $time);
+    $month = date('F', $time);
+    $translatedMonth = $this->translate($month);
+    $year = date('Y', $time);
+    $date = "$day $translatedMonth $year"
+
+    ?>
     
     <p>
-        <?= $this->translate('Published:') ?> <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
+        <?= $this->translate('Published:') ?> <?= $this->escapeHtml($date); ?> 
         | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p> 
     
+    <?php
+        
+    $country = $post->getGeography()->getCountryName();
+    $translatedCountry = $this->translate($country);
+
+    ?>
+    
     <p>
-        <?= $this->translate('Country:') ?> <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
+        <?= $this->translate('Country:') ?> <?= $this->escapeHtml($translatedCountry); ?> 
         | <?= $this->translate('Region:') ?> <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
         | <?= $this->translate('City:') ?> <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
     </p>  
