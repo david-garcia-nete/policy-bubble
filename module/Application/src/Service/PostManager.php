@@ -219,11 +219,11 @@ class PostManager
                             ->findChildPosts($post);
         $responseCount = count($responsePosts);
         if ($responseCount == 0)
-            return 'No responses';
+            return $this->translator->translate('No responses');
         else if ($responseCount == 1) 
-            return '1 response';
+            return $this->translator->translate('1 response');
         else
-            return $responseCount . ' responses';
+            return $responseCount . $this->translator->translate(' responses');
     }
     /**
      * This method adds a new comment to post.

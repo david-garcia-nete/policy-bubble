@@ -1113,6 +1113,38 @@ msgstr ""
 msgid "Author:"
 msgstr ""
 
+#: ../application/blog/index.phtml
+msgid "Add new response"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "<p>Response to: None"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "There are no images to display."
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Popular Tags"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "My Favorite Tags"
+msgstr ""
+
+#: ../application/src/Service/PostManger.php
+msgid "No responses"
+msgstr ""
+
+#: ../application/src/Service/PostManger.php
+msgid "1 response"
+msgstr ""
+
+#: ../application/src/Service/PostManger.php
+msgid " responses"
+msgstr ""
+
 #: /User/view/user/registration/index.phtml
 msgid "Full Name"
 msgstr ""
