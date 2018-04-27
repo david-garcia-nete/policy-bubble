@@ -1308,7 +1308,7 @@ msgstr "Leer"
 #: ../application/index/index.phtml ../src/Service/NavManager.php:
 #: ../application/index/analysis.phtml
 msgid "Posts"
-msgstr "Correo"
+msgstr "Publicación"
 
 #: ../application/index/index.phtml
 msgid "Tell how policies are affecting your area."
