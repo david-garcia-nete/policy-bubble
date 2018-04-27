@@ -30,13 +30,21 @@ class PostManager
     private $geoPlugin;
     
     /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
+    
+    /**
      * Constructor.
      */
-    public function __construct($entityManager, $membershipManager, $geoPlugin)
+    public function __construct($entityManager, $membershipManager, $geoPlugin, 
+            $translator)
     {
         $this->entityManager = $entityManager;
         $this->membershipManager = $membershipManager;
         $this->geoPlugin = $geoPlugin;
+        $this->translator = $translator;
     }
     
     /**
@@ -429,9 +437,11 @@ class PostManager
         if (strlen($data['country'])>0){
             $inputCount++;
         }
+        
+        $translatedCountry = $this->translator->translate($data['country']);
 
         $geographies = $this->entityManager->getRepository(Geography::class)
-                        ->findBy(['countryName'=>$data['country']]);
+                        ->findBy(['countryName'=>$translatedCountry]);
         $postIds = array();
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();

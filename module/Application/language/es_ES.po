@@ -2525,10 +2525,7 @@ msgid "Brasil"
 msgstr "Brazil"
 
 msgid "Brunéi" 
-msgstr "Brunei"               
-
-msgid "Burkina Faso"
-msgstr "Burkina Faso"                
+msgstr "Brunei"                              
 
 msgid "Camboya"
 msgstr "Cambodia"        
@@ -2837,7 +2834,7 @@ msgid "Reino Unido"
 msgstr "United Kingdom"         
 
 msgid "Estados Unidos" 
-msgstr "United States of America"               
+msgstr "United States"               
 
 msgid "Uzbekistán"
 msgstr "Uzbekistan"         

@@ -2126,9 +2126,6 @@ msgstr ""
 msgid "Bulgaria"
 msgstr "" 
 
-msgid "Burkina Faso"
-msgstr "" 
-
 msgid "Burundi"
 msgstr "" 
 

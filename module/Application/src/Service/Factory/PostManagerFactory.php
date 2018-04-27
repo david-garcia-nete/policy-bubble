@@ -16,8 +16,10 @@ class PostManagerFactory implements FactoryInterface
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
         $membershipManager = $container->get(MembershipManager::class);
         $geoPlugin = $container->get(GeoPlugin::class);
+        $translator = $container->get('MvcTranslator');
         
         // Instantiate the service and inject dependencies
-        return new PostManager($entityManager, $membershipManager, $geoPlugin);
+        return new PostManager($entityManager, $membershipManager, $geoPlugin,
+                 $translator);
     }
 }
