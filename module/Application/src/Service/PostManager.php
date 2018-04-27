@@ -466,8 +466,10 @@ class PostManager
             $inputCount++;
         }     
         
+        $translatedCity = $this->translator->translate($data['city']);
+        
         $geographies = $this->entityManager->getRepository(Geography::class)
-                        ->findBy(['city'=>$data['city']]);
+                        ->findBy(['city'=>$translatedCity]);
         $postIds = array();
         foreach($geographies as $geography){
             $postIds[] = $geography->getPost()->getId();

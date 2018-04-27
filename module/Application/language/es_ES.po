@@ -2840,4 +2840,306 @@ msgid "Uzbekistán"
 msgstr "Uzbekistan"         
 
 msgid "Zimbabue"
-msgstr "Zimbabwe"         
+msgstr "Zimbabwe"  
+
+// Cities
+
+msgid "Addis Ababa"
+msgstr "Addis Abeba"
+
+msgid "Adelaide"
+msgstr "Adelaida"
+
+msgid "Alexandria"
+msgstr "Alejandría"
+
+msgid "Algiers"
+msgstr "Argel"
+
+msgid "Athens"
+msgstr "Atenas"
+
+msgid "Baghdad"
+msgstr "Bagdad"
+
+msgid "Beijing"
+msgstr "Pekín"
+
+msgid "Belgrade"
+msgstr "Belgrado"
+
+msgid "Berlin"
+msgstr "Berlín"
+
+msgid "Berne"
+msgstr "Berna"
+
+msgid "Bethlehem"
+msgstr "Belén"
+
+msgid "Bogota"
+msgstr "Bogotá"
+
+msgid "Bucharest"
+msgstr "Bucarest"
+
+msgid "Cairo"
+msgstr "El Cairo"
+
+msgid "Calcutta"
+msgstr "Calcuta"
+
+msgid "Cape Town"
+msgstr "Ciudad del Cabo"
+
+msgid "Copenhagen"
+msgstr "Copenhague"
+
+msgid "Damascus"
+msgstr "Damasco"
+
+msgid "Dublin"
+msgstr "Dublín"
+
+msgid "Geneva"
+msgstr "Ginebra"
+
+msgid "Havana"
+msgstr "La Habana"
+
+msgid "Istanbul"
+msgstr "Estambul"
+
+msgid "Jakarta"
+msgstr "Djakarta"
+
+msgid "Jerusalem"
+msgstr "Jerusalén"
+
+msgid "Johannesburg"
+msgstr "Johanesburgo"
+
+msgid "Lisbon"
+msgstr "Lisboa"
+
+msgid "London"
+msgstr "Londres"
+
+msgid "Los Angeles"
+msgstr "Los Ángeles"
+
+msgid "Luxembourg"
+msgstr "Luxemburgo"
+
+msgid "Mecca"
+msgstr "La Meca"
+
+msgid "Mexico City"
+msgstr "Ciudad de México"
+
+msgid "Moscow"
+msgstr "Moscú"
+
+msgid "New Delhi"
+msgstr "Nueva Delhi"
+
+msgid "New Orleans"
+msgstr "Nueva Orleans"
+
+msgid "New York"
+msgstr "Nueva York"
+
+msgid "Panama City"
+msgstr "Ciudad de Panamá"
+
+msgid "Paris"
+msgstr "París"
+
+msgid "Philadelphia"
+msgstr "Filadelfia"
+
+msgid "Pittsburgh"
+msgstr "Pittsburgo"
+
+msgid "Prague"
+msgstr "Praga"
+
+msgid "Reykjavik"
+msgstr "Reikiavik"
+
+msgid "Rome"
+msgstr "Roma"
+
+msgid "Seoul"
+msgstr "Seúl"
+
+msgid "Stockholm"
+msgstr "Estocolmo"
+
+msgid "The Hague"
+msgstr "La Haya"
+
+msgid "Tokyo"
+msgstr "Tokio"
+
+msgid "Tunis"
+msgstr "Túnez"
+
+msgid "Vienna"
+msgstr "Viena"
+
+msgid "Warsaw"
+msgstr "Varsovia"
+
+// Reverse Translation of Cities for search
+
+msgid "Addis Abeba"
+msgstr "Addis Ababa"
+
+msgid "Adelaida"
+msgstr "Adelaide"
+
+msgid "Alejandría"
+msgstr "Alexandria"
+
+msgid "Argel"
+msgstr "Algiers"
+
+msgid "Atenas"
+msgstr "Athens"
+
+msgid "Bagdad"
+msgstr "Baghdad"
+
+msgid "Pekín"
+msgstr "Beijing"
+
+msgid "Belgrado"
+msgstr "Belgrade"
+
+msgid "Berlín"
+msgstr "Berlin"
+
+msgid "Berna"
+msgstr "Berne"
+
+msgid "Belén"
+msgstr "Bethlehem"
+
+msgid "Bogotá"
+msgstr "Bogota"
+
+msgid "Bucarest"
+msgstr "Bucharest"
+
+msgid "El Cairo"
+msgstr "Cairo"
+
+msgid "Calcuta"
+msgstr "Calcutta"
+
+msgid "Ciudad del Cabo"
+msgstr "Cape Town"
+
+msgid "Copenhague"
+msgstr "Copenhagen"
+
+msgid "Damasco"
+msgstr "Damascus"
+
+msgid "Dublín"
+msgstr "Dublin"
+
+msgid "Ginebra"
+msgstr "Geneva"
+
+msgid "La Habana"
+msgstr "Havana"
+
+msgid "Estambul"
+msgstr "Istanbul"
+
+msgid "Djakarta"
+msgstr "Jakarta"
+
+msgid "Jerusalén"
+msgstr "Jerusalem"
+
+msgid "Johanesburgo"
+msgstr "Johannesburg"
+
+msgid "Lisboa"
+msgstr "Lisbon"
+
+msgid "Londres"
+msgstr "London"
+
+msgid "Los Ángeles"
+msgstr "Los Angeles"
+
+msgid "Luxemburgo"
+msgstr "Luxembourg"
+
+msgid "La Meca"
+msgstr "Mecca"
+
+msgid "Ciudad de México
+msgstr "Mexico City"
+
+msgid "Moscú"
+msgstr "Moscow"
+
+msgid "Nueva Delhi"
+msgstr "New Delhi"
+
+msgid "Nueva Orleans"
+msgstr "New Orleans"
+
+msgid "Nueva York"
+msgstr "New York"
+
+msgid "Ciudad de Panamá"
+msgstr "Panama City"
+
+msgid "París"
+msgstr "Paris"
+
+msgid "Filadelfia"
+msgstr "Philadelphia"
+
+msgid "Pittsburgo"
+msgstr "Pittsburgh"
+
+msgid "Praga"
+msgstr "Prague"
+
+msgid "Reikiavik"
+msgstr "Reykjavik"
+
+msgid "Roma"
+msgstr "Rome"
+
+msgid "Seúl"
+msgstr "Seoul"
+
+msgid "Estocolmo"
+msgstr "Stockholm"
+
+msgid "La Haya"
+msgstr "The Hague"
+
+msgid "Tokio"
+msgstr "Tokyo"
+
+msgid "Túnez"
+msgstr "Tunis"
+
+msgid "Viena"
+msgstr "Vienna"
+
+msgid "Varsovia"
+msgstr "Warsaw"             
+        
+
+
+       

@@ -2985,7 +2985,303 @@ msgid "Uzbekistán"
 msgstr ""                
 
 msgid "Zimbabue"
-msgstr ""                
-        
+msgstr ""   
+
+// Cities
 
 
+msgid "Addis Ababa"
+msgstr ""
+
+msgid "Adelaide"
+msgstr ""
+
+msgid "Alexandria"
+msgstr ""
+
+msgid "Algiers"
+msgstr ""
+
+msgid "Athens"
+msgstr ""
+
+msgid "Baghdad"
+msgstr ""
+
+msgid "Beijing"
+msgstr ""
+
+msgid "Belgrade"
+msgstr ""
+
+msgid "Berlin"
+msgstr ""
+
+msgid "Berne"
+msgstr ""
+
+msgid "Bethlehem"
+msgstr ""
+
+msgid "Bogota"
+msgstr ""
+
+msgid "Bucharest"
+msgstr ""
+
+msgid "Cairo"
+msgstr ""
+
+msgid "Calcutta"
+msgstr ""
+
+msgid "Cape Town"
+msgstr ""
+
+msgid "Copenhagen"
+msgstr ""
+
+msgid "Damascus"
+msgstr ""
+
+msgid "Dublin"
+msgstr ""
+
+msgid "Geneva"
+msgstr ""
+
+msgid "Havana"
+msgstr ""
+
+msgid "Istanbul"
+msgstr ""
+
+msgid "Jakarta"
+msgstr ""
+
+msgid "Jerusalem"
+msgstr ""
+
+msgid "Johannesburg"
+msgstr ""
+
+msgid "Lisbon"
+msgstr ""
+
+msgid "London"
+msgstr ""
+
+msgid "Los Angeles"
+msgstr ""
+
+msgid "Luxembourg"
+msgstr ""
+
+msgid "Mecca"
+msgstr ""
+
+msgid "Mexico City"
+msgstr ""
+
+msgid "Moscow"
+msgstr ""
+
+msgid "New Delhi"
+msgstr ""
+
+msgid "New Orleans"
+msgstr ""
+
+msgid "New York"
+msgstr ""
+
+msgid "Panama City"
+msgstr ""
+
+msgid "Paris"
+msgstr ""
+
+msgid "Philadelphia"
+msgstr ""
+
+msgid "Pittsburgh"
+msgstr ""
+
+msgid "Prague"
+msgstr ""
+
+msgid "Reykjavik"
+msgstr ""
+
+msgid "Rome"
+msgstr ""
+
+msgid "Seoul"
+msgstr ""
+
+msgid "Stockholm"
+msgstr ""
+
+msgid "The Hague"
+msgstr ""
+
+msgid "Tokyo"
+msgstr ""
+
+msgid "Tunis"
+msgstr ""
+
+msgid "Vienna"
+msgstr ""
+
+msgid "Warsaw"
+msgstr ""
+
+// Reverse translations of cities for seach
+
+msgid "Addis Abeba"
+msgstr ""
+
+msgid "Adelaida"
+msgstr ""
+
+msgid "Alejandría"
+msgstr ""
+
+msgid "Argel"
+msgstr ""
+
+msgid "Atenas"
+msgstr ""
+
+msgid "Bagdad"
+msgstr ""
+
+msgid "Pekín"
+msgstr ""
+
+msgid "Belgrado"
+msgstr ""
+
+msgid "Berlín"
+msgstr ""
+
+msgid "Berna"
+msgstr ""
+
+msgid "Belén"
+msgstr ""
+
+msgid "Bogotá"
+msgstr ""
+
+msgid "Bucarest"
+msgstr ""
+
+msgid "El Cairo"
+msgstr ""
+
+msgid "Calcuta"
+msgstr ""
+
+msgid "Ciudad del Cabo"
+msgstr ""
+
+msgid "Copenhague"
+msgstr ""
+
+msgid "Damasco"
+msgstr ""
+
+msgid "Dublín"
+msgstr ""
+
+msgid "Ginebra"
+msgstr ""
+
+msgid "La Habana"
+msgstr ""
+
+msgid "Estambul"
+msgstr ""
+
+msgid "Djakarta"
+msgstr ""
+
+msgid "Jerusalén"
+msgstr ""
+
+msgid "Johanesburgo"
+msgstr ""
+
+msgid "Lisboa"
+msgstr ""
+
+msgid "Londres"
+msgstr ""
+
+msgid "Los Ángeles"
+msgstr ""
+
+msgid "Luxemburgo"
+msgstr ""
+
+msgid "La Meca"
+msgstr ""
+
+msgid "Ciudad de México
+msgstr ""
+
+msgid "Moscú"
+msgstr ""
+
+msgid "Nueva Delhi"
+msgstr ""
+
+msgid "Nueva Orleans"
+msgstr ""
+
+msgid "Nueva York"
+msgstr ""
+
+msgid "Ciudad de Panamá"
+msgstr ""
+
+msgid "París"
+msgstr ""
+
+msgid "Filadelfia"
+msgstr ""
+
+msgid "Pittsburgo"
+msgstr ""
+
+msgid "Praga"
+msgstr ""
+
+msgid "Reikiavik"
+msgstr ""
+
+msgid "Roma"
+msgstr ""
+
+msgid "Seúl"
+msgstr ""
+
+msgid "Estocolmo"
+msgstr ""
+
+msgid "La Haya"
+msgstr ""
+
+msgid "Tokio"
+msgstr ""
+
+msgid "Túnez"
+msgstr ""
+
+msgid "Viena"
+msgstr ""
+
+msgid "Varsovia"
+msgstr ""

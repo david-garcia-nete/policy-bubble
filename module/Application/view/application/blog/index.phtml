@@ -120,13 +120,15 @@ if(
         
     $country = $post->getGeography()->getCountryName();
     $translatedCountry = $this->translate($country);
+    $city = $post->getGeography()->getCity();
+    $translatedCity = $this->translate($city);
 
     ?>
     
     <p>
         <?= $this->translate('Country:') ?> <?= $this->escapeHtml($translatedCountry); ?> 
         | <?= $this->translate('Region:') ?> <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
-        | <?= $this->translate('City:') ?> <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
+        | <?= $this->translate('City:') ?> <?= $this->escapeHtml($translatedCity); ?>  
     </p>  
     
     <p>
