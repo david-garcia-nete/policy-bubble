@@ -3140,6 +3140,241 @@ msgstr "Vienna"
 msgid "Varsovia"
 msgstr "Warsaw"             
         
+// States
+
+msgid "Alabama"
+msgstr "Alabama"
+
+msgid "Alaska"
+msgstr "Alaska"
+
+msgid "Arizona"
+msgstr "Arizona"
+
+msgid "Arkansas"
+msgstr "Arkansas"
+
+msgid "California"
+msgstr "California"
+
+msgid "North Carolina"
+msgstr "Carolina del Norte"
+
+msgid "South Carolina"
+msgstr "Carolina del Sur"
+
+msgid "Colorado"
+msgstr "Colorado"
+
+msgid "Connecticut"
+msgstr "Conécticut"
+
+msgid "North Dakota"
+msgstr "Dakota del Norte"
+
+msgid "South Dakota"
+msgstr "Dakota del Sur"
+
+msgid "Delaware"
+msgstr "Delaware"
+
+msgid "District of Columbia"
+msgstr "Distrito Federal de Columbia"
+
+msgid "Florida"
+msgstr "Florida"
+
+msgid "Georgia"
+msgstr "Georgia"
+
+msgid "Hawaii"
+msgstr "Hawái"
+
+msgid "Idaho"
+msgstr "Ídaho"
+
+msgid "Illinois"
+msgstr "Ilinóis"
+
+msgid "Indiana"
+msgstr "Indiana"
+
+msgid "Iowa"
+msgstr "Iowa"
+
+msgid "Rhode Island"
+msgstr "Isla de Rode"
+
+msgid "Kansas"
+msgstr "Kansas"
+
+msgid "Kentucky"
+msgstr "Kentucky"
+
+msgid "Louisiana"
+msgstr "Luisiana"
+
+msgid "Maine"
+msgstr "Maine"
+
+msgid "Maryland"
+msgstr "Máriland"
+
+msgid "Massachusetts"
+msgstr "Masachusets"
+
+msgid "Michigan"
+msgstr "Míchigan"
+
+msgid "Minnesota"
+msgstr "Minesota"
+
+msgid "Mississippi"
+msgstr "Misisipi"
+
+msgid "Missouri"
+msgstr "Misuri"
+
+msgid "Montana"
+msgstr "Montana"
+
+msgid "Nebraska"
+msgstr "Nebraska"
+
+msgid "Nevada"
+msgstr "Nevada"
+
+msgid "New Jersey"
+msgstr "Nueva Jersey"
+
+msgid "New York"
+msgstr "Nueva York"
+
+msgid "New Hampshire"
+msgstr "Nuevo Hampshire"
+
+msgid "New Mexico"
+msgstr "Nuevo México"
+
+msgid "Ohio"
+msgstr "Ohio"
+
+msgid "Oklahoma"
+msgstr "Oklahoma"
+
+msgid "Oregon"
+msgstr "Oregón"
+
+msgid "Pennsylvania"
+msgstr "Pensilvania"
+
+msgid "Texas"
+msgstr "Texas"
+
+msgid "Tennessee"
+msgstr "Tenesí"
+
+msgid "Utah"
+msgstr "Utah"
+
+msgid "Vermont"
+msgstr "Vermont"
+
+msgid "Virginia"
+msgstr "Virginia"
+
+msgid "West Virginia"
+msgstr "Virginia Occidental"
+
+msgid "Washington"
+msgstr "Wáshington"
+
+msgid "Wisconsin"
+msgstr "Wisconsin"
+
+msgid "Wyoming"
+msgstr "Wyoming"
+
+// States in reverse for search
+
+msgid "Carolina del Norte"
+msgstr "North Carolina"
+
+msgid "Carolina del Sur"
+msgstr "South Carolina"
+
+msgid "Conécticut"
+msgstr "Connecticut"
+
+msgid "Dakota del Norte"
+msgstr "North Dakota"
+
+msgid "Dakota del Sur"
+msgstr "South Dakota"
+
+msgid "Distrito Federal de Columbia"
+msgstr "District of Columbia"
+
+msgid "Hawái"
+msgstr "Hawaii"
+
+msgid "Ídaho"
+msgstr "Idaho"
+
+msgid "Ilinóis"
+msgstr "Illinois"
+
+msgid "Isla de Rode"
+msgstr "Rhode Island"
+
+msgid "Luisiana"
+msgstr "Louisiana"
+
+msgid "Máriland"
+msgstr "Maryland"
+
+msgid "Masachusets"
+msgstr "Massachusetts"
+
+msgid "Míchigan"
+msgstr "Michigan"
+
+msgid "Minesota"
+msgstr "Minnesota"
+
+msgid "Misisipi"
+msgstr "Mississippi"
+
+msgid "Misuri"
+msgstr "Missouri"
+
+msgid "Nueva Jersey"
+msgstr "New Jersey"
+
+msgid "Nueva York"
+msgstr "New York"
+
+msgid "Nuevo Hampshire"
+msgstr "New Hampshire"
+
+msgid "Nuevo México"
+msgstr "New Mexico"
+
+msgid "Oregón"
+msgstr "Oregon"
+
+msgid "Pensilvania"
+msgstr "Pennsylvania"
+
+msgid "Tenesí"
+msgstr "Tennessee"
+
+msgid "Virginia Occidental"
+msgstr "West Virginia"
+
+msgid "Wáshington"
+msgstr "Washington"
+
 
 
        
