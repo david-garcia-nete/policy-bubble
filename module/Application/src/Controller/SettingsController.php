@@ -82,12 +82,19 @@ class SettingsController extends AbstractActionController
      */
     private $translator;
     
+    /**
+     * User manager.
+     * @var User\Service\UserManager 
+     */
+    private $userManager;
+    
     
     /**
      * Constructor. Its purpose is to inject dependencies into the controller.
      */
     public function __construct($entityManager, $settingsManager, $authManager, 
-            $postManager, $imageManager, $videoManager, $audioManager, $mailSender, $sessionContainer, $translator) 
+            $postManager, $imageManager, $videoManager, $audioManager, 
+            $mailSender, $sessionContainer, $translator, $userManager) 
     {
        $this->entityManager = $entityManager;
        $this->settingsManager = $settingsManager;
@@ -99,6 +106,7 @@ class SettingsController extends AbstractActionController
        $this->mailSender = $mailSender;
        $this->sessionContainer = $sessionContainer;
        $this->translator = $translator;
+       $this->userManager = $userManager;
     }  
 
     public function indexAction()
@@ -123,7 +131,8 @@ class SettingsController extends AbstractActionController
         }
         
         return new ViewModel([
-            'user' => $user
+            'user' => $user,
+            'userManager' => $this->userManager
         ]);
     }
     

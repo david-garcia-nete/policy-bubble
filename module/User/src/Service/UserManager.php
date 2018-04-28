@@ -31,13 +31,21 @@ class UserManager
     private $permissionManager;
     
     /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
+    
+    /**
      * Constructs the service.
      */
-    public function __construct($entityManager, $roleManager, $permissionManager) 
+    public function __construct($entityManager, $roleManager, $permissionManager, 
+            $translator) 
     {
         $this->entityManager = $entityManager;
         $this->roleManager = $roleManager;
         $this->permissionManager = $permissionManager;
+        $this->translator = $translator;
     }
     
     /**
@@ -417,7 +425,20 @@ class UserManager
         return true;
     }
     
-    
+    /**
+     * Returns date as a string.
+     */
+    public function getUserCreationDateAsString($user) 
+    {
+        $time = strtotime($user->getDateCreated());
+        $day = date('j', $time);
+        $month = date('F', $time);
+        $translatedMonth = $this->translator->translate($month);
+        $year = date('Y', $time);
+        $date = "$day $translatedMonth $year";
+        
+        return $date;
+    }
     
 }
 

@@ -1057,6 +1057,34 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: ../application/settings/index.phtml
+msgid "ID:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "Date Created:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "Full Name:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "E-mail:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "Language:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "Password:"
+msgstr ""
+
+#: ../application/settings/index.phtml
+msgid "Account Status:"
+msgstr ""
+
 #: ../application/post/manage.phtml
 msgid "Manage My Posts"
 msgstr ""

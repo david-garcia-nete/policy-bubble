@@ -10,6 +10,7 @@ use Application\Service\PostManager;
 use Application\Service\ImageManager;
 use Application\Service\VideoManager;
 use Application\Service\AudioManager;
+use User\Service\UserManager;
 
 /**
  * This is the factory for SettingsController. Its purpose is to instantiate the
@@ -29,10 +30,12 @@ class SettingsControllerFactory implements FactoryInterface
         $mailSender = $container->get(MailSender::class);
         $sessionContainer = $container->get('Language');
         $translator = $container->get('MvcTranslator');
+        $userManager = $container->get(UserManager::class);
         
         // Instantiate the controller and inject dependencies
         return new SettingsController($entityManager, $settingsManager, 
                 $authManager, $postManager, $imageManager, 
-                $videoManager, $audioManager, $mailSender, $sessionContainer, $translator);
+                $videoManager, $audioManager, $mailSender, $sessionContainer, 
+                $translator, $userManager);
     }
 }

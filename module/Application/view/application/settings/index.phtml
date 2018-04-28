@@ -1,76 +1,82 @@
 <?php
-$this->headTitle('Settings');
+$this->headTitle($this->translate('Settings'));
 
 $this->mainMenu()->setActiveItemId('settings');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Settings'=>$this->url('settings'),
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Settings')=>$this->url('settings'),
             ]);
 ?>
 
-<h2>Settings</h2>
+<h2><?= $this->translate('Settings') ?></h2>
 
 <div class="row">
     <div class="col-md-6">
         <table class="table table-striped table-bordered">
              <tr>
-                <th>ID:</th>
+                <th><?= $this->translate('ID:') ?></th>
                 <td><?= $this->escapeHtml($user->getId()) ?></td>
                 <td></td>
             </tr>
             <tr>
-                <th>Date Created:</th>
-                <td><?= $this->escapeHtml($user->getDateCreated()) ?>&nbsp;UTC</td>
+                <th><?= $this->translate('Date Created:') ?></th>
+                <td><?= $this->escapeHtml($userManager->getUserCreationDateAsString($user) 
+                .' '. date('H:i:s', strtotime($user->getDateCreated()))) ?>&nbsp;UTC</td>
                 <td></td>
             </tr>
             <tr>
-                <th>Full Name:</th>
+                <th><?= $this->translate('Full Name:') ?></th>
                 <td><?= $this->escapeHtml($user->getFullName()) ?></td>
                 <td>
                     <a class="btn btn-info" href="<?php echo 
                         $this->url('settings', ['action' => 'fullName']); ?>">
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                        &nbsp;<?= $this->translate('Edit') ?>
                     </a>
                 </td>
             </tr>
             <tr>
-                <th>E-mail:</th>
+                <th><?= $this->translate('E-mail:') ?></th>
                 <td><?= $this->escapeHtml($user->getEmail()) ?></td>
                  <td>
                     <a class="btn btn-info" href="<?php echo 
                         $this->url('settings', ['action' => 'email']); ?>">
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                        &nbsp;<?= $this->translate('Edit') ?>
                     </a>
                 </td>
             </tr>
             <tr>
-                <th>Language:</th>
+                <th><?= $this->translate('Language:') ?></th>
                 <td><?= $this->escapeHtml($user->getLanguageAsString()) ?></td>
                 <td>
                     <a class="btn btn-info" href="<?php echo 
                         $this->url('settings', ['action' => 'language']); ?>">
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                        &nbsp;<?= $this->translate('Edit') ?>
                     </a>
                 </td>
             </tr> 
             <tr>
-                <th>Password:</th>
+                <th><?= $this->translate('Password:') ?></th>
                 <td></td>
                 <td>
                     <a class="btn btn-info" href="<?php echo 
                         $this->url('settings', ['action' => 'password']); ?>">
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                        &nbsp;<?= $this->translate('Edit') ?>
                     </a>
                 </td>
             </tr>   
             <tr>
-                <th>Account Status:</th>
+                <th><?= $this->translate('Account Status:') ?></th>
                 <td></td>
                 <td>
                     <a class="btn btn-info" href="<?php echo 
                         $this->url('settings', ['action' => 'accountStatus']); ?>">
-                        <span class="glyphicon glyphicon-pencil" ></span> Edit
+                        <span class="glyphicon glyphicon-pencil" ></span>
+                        &nbsp;<?= $this->translate('Edit') ?>
                     </a>
                 </td>
             </tr>
