@@ -1109,6 +1109,10 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
+#: ../application/post/manage.phtml
+msgid "There is no image to display."
+msgstr ""
+
 #: ../application/blog/index.phtml
 msgid "comma, separated, list, of, tags"
 msgstr ""

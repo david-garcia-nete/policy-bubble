@@ -1099,6 +1099,10 @@ msgstr "Público"
 msgid "Unknown"
 msgstr "Desconocido"
 
+#: ../application/post/manage.phtml
+msgid "There is no image to display."
+msgstr "No hay imagen para mostrar."
+
 #: ../application/blog/index.phtml
 msgid "comma, separated, list, of, tags"
 msgstr "lista, de, etiquetas, separadas, por, comas"
