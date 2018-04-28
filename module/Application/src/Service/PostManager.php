@@ -185,11 +185,26 @@ class PostManager
     public function getPostStatusAsString($post) 
     {
         switch ($post->getStatus()) {
-            case Post::STATUS_DRAFT: return 'Private';
-            case Post::STATUS_PUBLISHED: return 'Public';
+            case Post::STATUS_DRAFT: return $this->translator->translate('Private');
+            case Post::STATUS_PUBLISHED: return $this->translator->translate('Public');
         }
         
-        return 'Unknown';
+        return $this->translator->translate('Unknown');
+    }
+    
+    /**
+     * Returns date as a string.
+     */
+    public function getPostDateAsString($post) 
+    {
+        $time = strtotime($post->getDateCreated());
+        $day = date('j', $time);
+        $month = date('F', $time);
+        $translatedMonth = $this->translator->translate($month);
+        $year = date('Y', $time);
+        $date = "$day $translatedMonth $year";
+        
+        return $date;
     }
     
     /**

@@ -1047,6 +1047,58 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/post/manage.phtml
+msgid "Manage My Posts"
+msgstr "Administrar Mis Publicaciones"
+
+#: ../application/post/manage.phtml
+msgid "New Post"
+msgstr "Nueva Publicación"
+
+#: ../application/post/manage.phtml
+msgid "ID"
+msgstr "ID"
+
+#: ../application/post/manage.phtml
+msgid "Post Title"
+msgstr "Título de Publicación"
+
+#: ../application/post/manage.phtml
+msgid "Image"
+msgstr "Imagen"
+
+#: ../application/post/manage.phtml
+msgid "Date Created"
+msgstr "Fecha de Creación"
+
+#: ../application/post/manage.phtml
+msgid "Status"
+msgstr "Estado"
+
+#: ../application/post/manage.phtml
+msgid "Actions"
+msgstr "Acciones"
+
+#: ../application/post/manage.phtml
+msgid "Edit"
+msgstr "Editar"
+
+#: ../application/post/manage.phtml
+msgid "Delete"
+msgstr "Eliminar"
+
+#: ../application/post/manage.phtml
+msgid "Private"
+msgstr "Privado"
+
+#: ../application/post/manage.phtml
+msgid "Public"
+msgstr "Público"
+
+#: ../application/post/manage.phtml
+msgid "Unknown"
+msgstr "Desconocido"
+
 #: ../application/blog/index.phtml
 msgid "comma, separated, list, of, tags"
 msgstr "lista, de, etiquetas, separadas, por, comas"

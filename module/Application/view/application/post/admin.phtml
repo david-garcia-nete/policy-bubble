@@ -1,30 +1,30 @@
 <?php
-$this->headTitle('Manage Posts');
+$this->headTitle($this->translate('Manage Posts'));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Posts'=>$this->url('posts'),
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Posts')=>$this->url('posts'),
             ]);
 ?>
 
-<h1>Manage My Posts</h1>
+<h1><?= $this->translate('Manage My Posts') ?></h1>
 
 <p>
 <a class="btn btn-default" href="
     <?= $this->url('posts', ['action'=>'add']); ?>">
-    New Post
+    <?= $this->translate('New Post') ?>
 </a>
 </p>
 
 <table class="table table-striped">
 
    <tr>
-        <th>ID</th>
-        <th>Post Title</th>
-        <th>Image</th>
-        <th>Date Created</th>
-        <th>Status</th> 
-        <th>Actions</th>        
+        <th><?= $this->translate('ID') ?></th>
+        <th><?= $this->translate('Post Title') ?></th>
+        <th><?= $this->translate('Image') ?></th>
+        <th><?= $this->translate('Date Created') ?></th>
+        <th><?= $this->translate('Status') ?></th> 
+        <th><?= $this->translate('Actions') ?></th>        
     </tr>
     
     <?php foreach ($posts as $post): ?>
@@ -46,7 +46,7 @@ $this->pageBreadcrumbs()->setItems([
     <?php if(count($files)==0): ?>
 
     <p>
-      <i>There is no image to display.</i>
+      <i></i>
     </p>
 
     <?php else: ?>
@@ -60,21 +60,20 @@ $this->pageBreadcrumbs()->setItems([
         <?php endforeach; ?>
     
 
-    <?php endif; ?>
-
-    
-            
+    <?php endif; ?>      
         </td>
-        <td><?= $this->escapeHtml($post->getDateCreated()); ?>&nbsp;UTC</td>
+              
+        <td><?= $this->escapeHtml($postManager->getPostDateAsString($post) 
+                .' '. date('H:i:s', strtotime($post->getDateCreated()))); ?>&nbsp;UTC</td>
         <td><?= $this->escapeHtml($postManager->getPostStatusAsString($post)); ?></td>        
         <td>
             <a class="btn btn-info" href="<?= $this->url('posts', 
                     ['action'=>'edit', 'id'=>$post->getId()]); ?>">
-                <span class="glyphicon glyphicon-pencil" ></span> Edit
+                <span class="glyphicon glyphicon-pencil" ></span>&nbsp;<?= $this->translate('Edit') ?> 
             </a>
             <a class="btn btn-danger" href="<?= $this->url('posts',
                     ['action'=>'delete', 'id'=>$post->getId()]); ?>">
-                <span class="glyphicon glyphicon-remove"></span> Delete
+                <span class="glyphicon glyphicon-remove"></span>&nbsp;<?= $this->translate('Delete') ?> 
             </a>
         </td>    
     </tr>

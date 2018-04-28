@@ -99,20 +99,9 @@ if(
             <?= $this->escapeHtml($post->getTitle()); ?>
         </a>    
     </h3>
-        
-    <?php
-
-    $time = strtotime($post->getDateCreated());
-    $day = date('j', $time);
-    $month = date('F', $time);
-    $translatedMonth = $this->translate($month);
-    $year = date('Y', $time);
-    $date = "$day $translatedMonth $year"
-
-    ?>
-    
+         
     <p>
-        <?= $this->translate('Published:') ?> <?= $this->escapeHtml($date); ?> 
+        <?= $this->translate('Published:') ?> <?= $this->escapeHtml($postManager->getPostDateAsString($post)); ?> 
         | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
     </p> 
     
