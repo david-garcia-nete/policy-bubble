@@ -1047,6 +1047,14 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/view/user/auth/not-authorized.phtml
+msgid "Not Authorized"
+msgstr "No Autorizado"
+
+#: /User/view/user/auth/not-authorized.phtml
+msgid "Sorry, you have no permission to see this page."
+msgstr "Lo siento, no tienes permiso para ver esta página."
+
 #: ../application/settings/index.phtml
 msgid "ID:"
 msgstr "ID:"
