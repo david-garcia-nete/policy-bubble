@@ -1057,6 +1057,50 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: /User/view/user/registration/message.phtml
+msgid "Thank You"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "A registration confirmation link has been sent to your email address."
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "Your registration has been confirmed successfully."
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "Return to"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "login page"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "A user with that email already exists."
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "Please return"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "here"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "and try to register again with a different email."
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "Invalid reset key or it may have expired. Please return"
+msgstr ""
+
+#: /User/view/user/registration/message.phtml
+msgid "and try to register again."
+msgstr ""
+
 #: /User/view/user/auth/not-authorized.phtml
 msgid "Not Authorized"
 msgstr ""

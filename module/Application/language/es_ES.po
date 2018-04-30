@@ -1047,6 +1047,50 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/view/user/registration/message.phtml
+msgid "Thank You"
+msgstr "Gracias"
+
+#: /User/view/user/registration/message.phtml
+msgid "A registration confirmation link has been sent to your email address."
+msgstr "Se ha enviado un enlace de confirmación de registro a su dirección de correo electrónico."
+
+#: /User/view/user/registration/message.phtml
+msgid "Your registration has been confirmed successfully."
+msgstr "Su registro ha sido confirmado exitosamente."
+
+#: /User/view/user/registration/message.phtml
+msgid "Return to"
+msgstr "Veulva a"
+
+#: /User/view/user/registration/message.phtml
+msgid "login page"
+msgstr "página de inicio de sesión"
+
+#: /User/view/user/registration/message.phtml
+msgid "A user with that email already exists."
+msgstr "Ya existe un usuario con ese correo electrónico."
+
+#: /User/view/user/registration/message.phtml
+msgid "Please return"
+msgstr "Por favor vuelva"
+
+#: /User/view/user/registration/message.phtml
+msgid "here"
+msgstr "aquí"
+
+#: /User/view/user/registration/message.phtml
+msgid "and try to register again with a different email."
+msgstr "e intente registrarse nuevamente con un correo electrónico diferente."
+
+#: /User/view/user/registration/message.phtml
+msgid "Invalid reset key or it may have expired. Please return"
+msgstr "Clave de restablecimiento inválida o puede haber expirado. Por favor vuelva"
+
+#: /User/view/user/registration/message.phtml
+msgid "and try to register again."
+msgstr "y trate de registrarse nuevamente."
+
 #: /User/view/user/auth/not-authorized.phtml
 msgid "Not Authorized"
 msgstr "No Autorizado"
