@@ -403,8 +403,7 @@ class SettingsController extends AbstractActionController
                     $this->audioManager->removePost($post->getId());  
                 }
                 
-                $user->setEmail('');
-                $user->setStatus(User::STATUS_RETIRED);
+                $this->entityManager->remove($user);
                 $this->entityManager->flush();
                 $this->authManager->logout();
                 
