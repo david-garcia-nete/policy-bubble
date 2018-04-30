@@ -1047,6 +1047,26 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/view/user/user/message.phtml
+msgid "Reset Password"
+msgstr "Restablecer Contraseña"
+
+#: /User/view/user/user/message.phtml
+msgid "A password reset link has been sent to your email address."
+msgstr "Se ha enviado un enlace de restablecimiento de contraseña a su dirección de correo electrónico."
+
+#: /User/view/user/user/message.phtml
+msgid "There is no user with such an email."
+msgstr "No hay un usuario con ese correo electrónico."
+
+#: /User/view/user/user/message.phtml
+msgid "Your new password has been set successfully."
+msgstr "Su nueva contraseña ha sido establecida exitosamente."
+
+#: /User/view/user/user/message.phtml
+msgid "and try reset your password again."
+msgstr "e intente restablecer su contraseña nuevamente."
+
 #: /User/view/user/registration/message.phtml
 msgid "Thank You"
 msgstr "Gracias"

@@ -1057,6 +1057,26 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: /User/view/user/user/message.phtml
+msgid "Reset Password"
+msgstr ""
+
+#: /User/view/user/user/message.phtml
+msgid "A password reset link has been sent to your email address."
+msgstr ""
+
+#: /User/view/user/user/message.phtml
+msgid "There is no user with such an email."
+msgstr ""
+
+#: /User/view/user/user/message.phtml
+msgid "Your new password has been set successfully."
+msgstr ""
+
+#: /User/view/user/user/message.phtml
+msgid "and try reset your password again."
+msgstr ""
+
 #: /User/view/user/registration/message.phtml
 msgid "Thank You"
 msgstr ""
