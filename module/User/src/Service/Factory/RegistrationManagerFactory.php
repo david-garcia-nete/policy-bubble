@@ -16,7 +16,8 @@ class RegistrationManagerFactory
     public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {        
         $entityManager = $container->get('doctrine.entitymanager.orm_default');
+        $translator = $container->get('MvcTranslator');
 
-        return new RegistrationManager($entityManager);
+        return new RegistrationManager($entityManager, $translator);
     }
 }

@@ -249,14 +249,14 @@ class UserManager
         
         $this->entityManager->flush();
         
-        $subject = 'Password Reset';
+        $subject = $this->translator->translate('Password Reset');
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
         $passwordResetUrl = 'https://' . $httpHost . '/users/set-password?token=' . $token;
         
-        $body = "Please follow the link below to reset your password:\n";
+        $body = $this->translator->translate("Please follow the link below to reset your password:\n");
         $body .= "$passwordResetUrl\n";
-        $body .= "If you haven't asked to reset your password, please ignore this message.\n";
+        $body .= $this->translator->translate("If you haven't asked to reset your password, please ignore this message.\n");
         
         $header = 'From: Policy Bubble';
         
@@ -280,14 +280,14 @@ class UserManager
         
         $this->entityManager->flush();
         
-        $subject = 'Registration';
+        $subject = $this->translator->translate('Registration');
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
         $registrationConfirmationUrl = 'https://' . $httpHost . '/registration/confirm-registration?token=' . $token;
         
-        $body = "Please follow the link below to confirm your registration:\n";
+        $body = $this->translator->translate("Please follow the link below to confirm your registration:\n");
         $body .= "$registrationConfirmationUrl\n";
-        $body .= "If you haven't asked to register your email, please ignore this message.\n";
+        $body .= $this->translator->translate("If you haven't asked to register your email, please ignore this message.\n");
         
         $header = 'From: Policy Bubble';
         

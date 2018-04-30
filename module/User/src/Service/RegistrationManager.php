@@ -15,14 +15,21 @@ class RegistrationManager
      * Doctrine entity manager.
      * @var Doctrine\ORM\EntityManager
      */
-    private $entityManager;  
+    private $entityManager;
+    
+    /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
 
     /**
      * Constructs the service.
      */
-    public function __construct($entityManager) 
+    public function __construct($entityManager, $translator) 
     {
         $this->entityManager = $entityManager;
+        $this->translator = $translator;
     }
     
     /**
@@ -108,14 +115,14 @@ class RegistrationManager
         
         $this->entityManager->flush();
         
-        $subject = 'Registration';
+        $subject = $this->translator->translate('Registration');
             
         $httpHost = isset($_SERVER['HTTP_HOST'])?$_SERVER['HTTP_HOST']:'localhost';
         $registrationConfirmationUrl = 'https://' . $httpHost . '/registration/confirm-registration?token=' . $token;
         
-        $body = "Please follow the link below to confirm your registration:\n";
+        $body = $this->translator->translate("Please follow the link below to confirm your registration:\n");
         $body .= "$registrationConfirmationUrl\n";
-        $body .= "If you haven't asked to register your email, please ignore this message.\n";
+        $body .= $this->translator->translate("If you haven't asked to register your email, please ignore this message.\n");
         
         $header = 'From: Policy Bubble';
         

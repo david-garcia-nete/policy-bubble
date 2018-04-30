@@ -1047,6 +1047,33 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: /User/src/Service/UserManager.php
+msgid "Password Reset"
+msgstr "Restablecer Contraseña"
+
+#: /User/src/Service/UserManager.php
+msgid "Please follow the link below to reset your password:\n"
+msgstr "Siga el enlace a continuación para restablecer su contraseña:\n"
+
+#: /User/src/Service/UserManager.php
+msgid "If you haven't asked to reset your password, please ignore this message.\n"
+msgstr "Si no ha solicitado restablecer su contraseña, ignore este mensaje.\n"
+
+#: /User/src/Service/UserManager.php
+#: /User/src/Service/RegistrationManager.php
+msgid "Registration"
+msgstr "Registro"
+
+#: /User/src/Service/UserManager.php
+#: /User/src/Service/RegistrationManager.php
+msgid "Please follow the link below to confirm your registration:\n"
+msgstr "Siga el enlace a continuación para confirmar su registro:\n"
+
+#: /User/src/Service/UserManager.php
+#: /User/src/Service/RegistrationManager.php
+msgid "If you haven't asked to register your email, please ignore this message.\n"
+msgstr "Si no ha solicitado registrar su correo electrónico, ignore este mensaje.\n"
+
 #: /User/view/user/user/set-password.phtml
 msgid "Set New Password"
 msgstr "Establecer Nueva Contraseña"
