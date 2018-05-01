@@ -2,15 +2,15 @@
 $this->headTitle($post->getTitle());
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Posts'=>$this->url('posts'),
-            'View Post'=>''
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Posts')=>$this->url('posts'),
+            $this->translate('View Post')=>''
             ]);
 ?>
 
 <a href="
     <?= $this->url('blog', ['action'=>'index']); ?>">
-    &larr; To blog
+    &larr; <?= $this->translate('To blog') ?>
 </a>
 
 <h1>
@@ -18,18 +18,29 @@ $this->pageBreadcrumbs()->setItems([
 </h1>
 
 <p>
-    Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($post->getDateCreated()))); ?> 
-    | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
+    <?= $this->translate('Published:') ?> <?= $this->escapeHtml($postManager->getPostDateAsString($post)); ?> 
+    | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
 </p>
 
+    <?php
+        
+    $country = $post->getGeography()->getCountryName();
+    $translatedCountry = $this->translate($country);
+    $region = $post->getGeography()->getRegion();
+    $translatedRegion = $this->translate($region);
+    $city = $post->getGeography()->getCity();
+    $translatedCity = $this->translate($city);
+
+    ?>
+
  <p>
-    Country: <?= $this->escapeHtml($post->getGeography()->getCountryName()); ?> 
-    | Region: <?= $this->escapeHtml($post->getGeography()->getRegion()); ?>  
-    | City: <?= $this->escapeHtml($post->getGeography()->getCity()); ?>  
+    Country: <?= $this->escapeHtml($translatedCountry); ?> 
+    | Region: <?= $this->escapeHtml($translatedRegion); ?>  
+    | City: <?= $this->escapeHtml($translatedCity); ?>  
 </p> 
 
  <p>
-    Author: <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
+    <?= $this->translate('Author:') ?> <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 
@@ -42,7 +53,7 @@ $this->pageBreadcrumbs()->setItems([
     <?= $this->escapeHtml($responseCountString); ?> | 
     <a href="<?= $this->url('posts', ['action'=>'add'], ['query' => 
                     ['id' => $post->getId()]]); ?>">
-        Add new response
+        <?= $this->translate('Add new response') ?>
     </a>
 </p>
 
@@ -50,13 +61,13 @@ $this->pageBreadcrumbs()->setItems([
 $parentPosts = $post->getParentPosts();
 foreach ($parentPosts as $parent):
     ?>
-    <p>Response to:<a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
+    <p><?= $this->translate('Response to:') ?><a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
             <?= $this->escapeHtml($parent->getTitle()); ?>
         </a>   
     </p>
 <?php endforeach; 
 if(count($parentPosts)<1)
-    echo '<p>Response to: None';
+    echo $this->translate('<p>Response to: None');
 ?>
 
 <p>    
@@ -68,7 +79,7 @@ if(count($parentPosts)<1)
 <?php if(count($files)==0): ?>
 
 <p>
-  <i>There are no images to display.</i>
+  <i><?= $this->translate('There are no images to display.') ?></i>
 </p>
 
 <?php else: ?>
@@ -92,7 +103,7 @@ if(count($parentPosts)<1)
 <?php if(count($videos)==0): ?>
 
 <p>
-  <i>There is no video to display.</i>
+  <i><?= $this->translate('There is no video to display.') ?></i>
 </p>
 
 <?php else: ?>
@@ -105,7 +116,7 @@ if(count($parentPosts)<1)
                         
             <video width="320" height="240" controls>
                 <source src="<?= $video ?>" >
-            Your browser does not support the video tag.
+            <?= $this->translate('Your browser does not support the video tag.') ?>
             </video>             
 
         </div>
@@ -120,7 +131,7 @@ if(count($parentPosts)<1)
 <?php if(count($audioFiles)==0): ?>
 
 <p>
-  <i>There is no audio file to display.</i>
+   <i><?= $this->translate('There is no audio file to display.') ?></i>
 </p>
 
 <?php else: ?>
@@ -133,7 +144,7 @@ if(count($parentPosts)<1)
                         
             <audio controls>
                 <source src="<?= $audio ?>" >
-            Your browser does not support the audio tag.
+            <?= $this->translate('Your browser does not support the audio tag.') ?>
             </audio>             
 
         </div>
@@ -154,7 +165,7 @@ if(count($parentPosts)<1)
     <a class="btn btn-default" href="
         <?= $this->url('posts', ['action'=>'add'], ['query' => 
                     ['id' => $post->getId()]]); ?>">
-        Leave Response
+        <?= $this->translate('Leave Response') ?>
     </a>
     </p>
     </div>
@@ -174,15 +185,15 @@ if(count($parentPosts)<1)
     </h3>
     
     <p>
-        Published: <?= $this->escapeHtml(date('jS \of F Y', strtotime($childPost->getDateCreated()))); ?> 
-        | Tags: <?= $this->escapeHtml($postManager->convertTagsToString($childPost)); ?>   
+        <?= $this->translate('Published:') ?> <?= $this->escapeHtml($postManager->getPostDateAsString($childPost)); ?> 
+        | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($childPost)); ?>   
     </p>    
         
     <p class="responses-header">
         <?= $this->escapeHtml($postManager->getResponseCountStr($childPost)); ?> | 
         <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$childPost->getId()],
                 ['fragment'=>'response']); ?>">
-            Add new response
+            <?= $this->translate('Add new response') ?>
         </a>
     </p>
 
@@ -199,7 +210,7 @@ if(count($parentPosts)<1)
     <?php if(count($childFiles)==0): ?>
 
     <p>
-      <i>There are no images to display.</i>
+      <i><?= $this->translate('There are no images to display.') ?></i>
     </p>
 
     <?php else: ?>

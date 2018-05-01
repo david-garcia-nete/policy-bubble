@@ -144,7 +144,7 @@ if(
     $parentPosts = $post->getParentPosts();
     foreach ($parentPosts as $parent):
         ?>
-        <p>Response to:<a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
+        <p><?= $this->translate('Response to:') ?><a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
                 <?= $this->escapeHtml($parent->getTitle()); ?>
             </a>   
         </p>
