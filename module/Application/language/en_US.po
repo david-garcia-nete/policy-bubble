@@ -1057,6 +1057,38 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: ../application/post/view.phtml
+msgid "View Post"
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "To blog"
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "Response to:"
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "There is no video to display."
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "Your browser does not support the video tag."
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "There is no audio file to display."
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "Your browser does not support the audio tag."
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "Leave Response"
+msgstr ""
+
 #: /User/src/Service/UserManager.php
 msgid "Password Reset"
 msgstr ""

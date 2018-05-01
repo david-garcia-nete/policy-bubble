@@ -34,9 +34,9 @@ $this->pageBreadcrumbs()->setItems([
     ?>
 
  <p>
-    Country: <?= $this->escapeHtml($translatedCountry); ?> 
-    | Region: <?= $this->escapeHtml($translatedRegion); ?>  
-    | City: <?= $this->escapeHtml($translatedCity); ?>  
+    <?= $this->translate('Country:') ?> <?= $this->escapeHtml($translatedCountry); ?> 
+    | <?= $this->translate('Region:') ?> <?= $this->escapeHtml($translatedRegion); ?>  
+    | <?= $this->translate('City:') ?> <?= $this->escapeHtml($translatedCity); ?>  
 </p> 
 
  <p>
