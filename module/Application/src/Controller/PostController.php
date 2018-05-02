@@ -298,7 +298,7 @@ class PostController extends AbstractActionController
         $postId = (int)$this->params()->fromRoute('id', -1);
         
         // Create form.
-        $form = new PostForm($step, $postId);
+        $form = new PostForm($step, $postId, $this->translator);
         
         // Validate input parameter
         if ($postId<0) {

@@ -14,7 +14,7 @@ class PostForm extends Form
     /**
      * Constructor.     
      */
-    public function __construct($step, $id)
+    public function __construct($step, $id, $translator)
     {
         
         // Check input.
@@ -32,7 +32,7 @@ class PostForm extends Form
         // Set binary content encoding.
         $this->setAttribute('enctype', 'multipart/form-data');
                 
-        $this->addElements($step);
+        $this->addElements($step, $translator);
         $this->addInputFilter($step, $id);  
         
     }
@@ -40,7 +40,7 @@ class PostForm extends Form
     /**
      * This method adds elements to form (input fields and submit button).
      */
-    protected function addElements($step) 
+    protected function addElements($step, $translator) 
     {
         if ($step==1) {
                 
@@ -90,8 +90,8 @@ class PostForm extends Form
                 'options' => [
                     'label' => 'Status',
                     'value_options' => [
-                        Post::STATUS_PUBLISHED => 'Public',
-                        Post::STATUS_DRAFT => 'Private',
+                        Post::STATUS_PUBLISHED => $translator->translate('Public'),
+                        Post::STATUS_DRAFT => $translator->translate('Private'),
                     ]
                 ],
             ]);
