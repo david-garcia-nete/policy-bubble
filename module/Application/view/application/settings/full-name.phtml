@@ -1,25 +1,26 @@
 <?php
-$this->headTitle('Full Name');
+$this->headTitle($this->translate('Full Name'));
 
 $this->mainMenu()->setActiveItemId('settings');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Settings' => $this->url('settings'),
-            'Full Name' => $this->url('settings', ['action' => 'fullName']),
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Settings')=>$this->url('settings'),
+            $this->translate('Full Name')=>$this->url('settings', ['action' => 'fullName']),
             ]);
 
 $form->get('full_name')->setAttributes([
     'class'=>'form-control', 
-    'placeholder'=>'John Doe'
+    'placeholder'=>$this->translate('John Doe')
     ]);
 
-$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 
+    'value'=>$this->translate('Submit')]);
 
 $form->prepare();
 ?>
 
-<h1>Settings</h1>
+<h1><?= $this->translate('Settings') ?></h1>
 
 <div class="row">
     <div class="col-md-6">

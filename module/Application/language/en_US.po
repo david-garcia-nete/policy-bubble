@@ -3916,5 +3916,17 @@ msgstr ""
 msgid "Too few files, minimum '%min%' post videos are expected.  '%existCount%' exist and '%selectCount%' are selected."
 msgstr ""
 
+#: ../application/settings/account-status.phtml
+msgid "Account Status"
+msgstr ""
+
+#: ../application/settings/account-status.phtml
+msgid "To settings menu"
+msgstr ""
+
+#: ../application/settings/account-status.phtml
+msgid "Warning:  All of your posts and your account will be deleted."
+msgstr ""
+
 
 

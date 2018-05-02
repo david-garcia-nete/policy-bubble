@@ -3770,3 +3770,14 @@ msgstr "Demasiados archivos, se permite el video máximo de la publicación '%ma
 msgid "Too few files, minimum '%min%' post videos are expected.  '%existCount%' exist and '%selectCount%' are selected."
 msgstr "Se esperan muy pocos archivos, mínimo '%min%' de videos de publicación. '%existCount%' existe y '%selectCount%' están seleccionados."
 
+#: ../application/settings/account-status.phtml
+msgid "Account Status"
+msgstr "Estado de la Cuenta"
+
+#: ../application/settings/account-status.phtml
+msgid "To settings menu"
+msgstr "Menú de configuraciónes"
+
+#: ../application/settings/account-status.phtml
+msgid "Warning:  All of your posts and your account will be deleted."
+msgstr "Advertencia: Se borrarán todas sus publicaciones y su cuenta."

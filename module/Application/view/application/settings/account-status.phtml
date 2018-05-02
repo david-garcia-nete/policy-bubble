@@ -1,25 +1,26 @@
 <?php
-$this->headTitle('Account Status');
+$this->headTitle($this->translate('Account Status'));
 
 $this->mainMenu()->setActiveItemId('settings');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Settings' => $this->url('settings'),
-            'Account Status' => $this->url('settings', ['action' => 'accountStatus']),
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Settings')=>$this->url('settings'),
+            $this->translate('Account Status') => $this->url('settings', ['action' => 'accountStatus']),
             ]);
 
-$form->get('submit')->setAttributes(array('class'=>'btn btn-danger'));
+$form->get('submit')->setAttributes(['class'=>'btn btn-danger', 
+    'value'=>$this->translate('Submit')]);
 
 $form->prepare();
 ?>
 
 <a href="
     <?= $this->url('settings'); ?>">
-    &larr; To settings menu
+    &larr; <?= $this->translate('To settings menu') ?>
 </a>
 
-<h1>Settings</h1>
+<h1><?= $this->translate('Settings') ?></h1>
 
 <div class="row">
     <div class="col-md-6">
@@ -29,7 +30,7 @@ $form->prepare();
         <?= $this->formElement($form->get('submit')); ?>
         </div>
         
-        <div class="hint">Warning:  All of your posts and your account will be deleted.</div>
+        <div class="hint"><?= $this->translate('Warning:  All of your posts and your account will be deleted.') ?></div>
         
         <?= $this->formElement($form->get('csrf')); ?>
         
