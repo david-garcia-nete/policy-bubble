@@ -3898,3 +3898,21 @@ msgstr ""
 msgid "Wáshington"
 msgstr ""
 
+msgid "Too many files, maximum '%max%' post audio file is allowed."
+msgstr ""
+
+msgid "Too few files, minimum '%min%' post audio files are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr ""
+
+msgid "Too many files, maximum '%max%' post photos are allowed.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr ""
+
+msgid "Too few files, minimum '%min%' post photos are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr ""
+
+msgid "Too many files, maximum '%max%' post video is allowed."
+msgstr ""
+
+msgid "Too few files, minimum '%min%' post videos are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr ""
+

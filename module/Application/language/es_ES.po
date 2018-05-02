@@ -3752,6 +3752,22 @@ msgstr "West Virginia"
 msgid "Wáshington"
 msgstr "Washington"
 
+msgid "Too many files, maximum '%max%' post audio file is allowed."
+msgstr "Demasiados archivos, se permite un máximo de '%max%' archivo de audio de la publicación."
 
+msgid "Too few files, minimum '%min%' post audio files are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr "Se esperan muy pocos archivos, se esperan archivos de audio '%min%' mínimo. '%existeCount%' existe y '%selectCount%' están seleccionados."
+
+msgid "Too many files, maximum '%max%' post photos are allowed.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr "Demasiados archivos, se permiten las fotos máximas de '%max%'. '%existCount%' existe y '%selectCount%' están seleccionados."
+
+msgid "Too few files, minimum '%min%' post photos are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr "Se esperan muy pocos archivos, mínimo '%min%' de fotos de publicación. '%existCount%' existe y '%selectCount%' están seleccionados."
+
+msgid "Too many files, maximum '%max%' post video is allowed."
+msgstr "Demasiados archivos, se permite el video máximo de la publicación '%max%'."
+
+msgid "Too few files, minimum '%min%' post videos are expected.  '%existCount%' exist and '%selectCount%' are selected."
+msgstr "Se esperan muy pocos archivos, mínimo '%min%' de videos de publicación. '%existCount%' existe y '%selectCount%' están seleccionados."
 
        

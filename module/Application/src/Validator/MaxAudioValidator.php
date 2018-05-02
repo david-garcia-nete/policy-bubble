@@ -22,7 +22,7 @@ class MaxAudioValidator extends AbstractValidator
      */
     protected $messageTemplates = [
         self::TOO_MANY => "Too many files, maximum '%max%' post audio file is allowed.",
-        self::TOO_FEW  => "Too few files, minimum '%min%'  post audio files are expected.  '%existCount%' exist and '%selectCount%' are selected.",
+        self::TOO_FEW  => "Too few files, minimum '%min%' post audio files are expected.  '%existCount%' exist and '%selectCount%' are selected.",
     ];
 
     /**

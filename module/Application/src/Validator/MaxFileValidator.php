@@ -22,7 +22,7 @@ class MaxFileValidator extends AbstractValidator
      */
     protected $messageTemplates = [
         self::TOO_MANY => "Too many files, maximum '%max%' post photos are allowed.  '%existCount%' exist and '%selectCount%' are selected.",
-        self::TOO_FEW  => "Too few files, minimum '%min%'  post photos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
+        self::TOO_FEW  => "Too few files, minimum '%min%' post photos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
     ];
 
     /**
