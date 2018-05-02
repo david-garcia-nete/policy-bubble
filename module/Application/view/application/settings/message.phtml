@@ -1,54 +1,54 @@
 <?php
-$this->headTitle('Thank You');
+$this->headTitle($this->translate('Thank You'));
 
 $this->mainMenu()->setActiveItemId('home');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Settings' => $this->url('settings')
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Settings')=>$this->url('settings'),
             ]);
 ?>
 
 <div class="row">
 <div class="col-md-5">
-<h1>Settings</h1>
+<h1><?= $this->translate('Settings') ?></h1>
 
 <?php if ($id=='sent'): ?>
 <p>
-    An email confirmation link has been sent to your email address.
+    <?= $this->translate('An email confirmation link has been sent to your email address.') ?>
 </p>
 
 <?php elseif ($id=='confirmed'): ?>
 <p>
-    Your email has been confirmed successfully.
+    <?= $this->translate('Your email has been confirmed successfully.') ?>
 </p>
 <p>
-    Return to <a href="<?= $this->url('settings'); ?>">settings page</a>.
+    <?= $this->translate('Return to') ?> <a href="<?= $this->url('settings'); ?>"><?= $this->translate('settings page') ?></a>.
 </p>
 
 <?php elseif ($id=='exists'): ?>
 <p>
-    A user with that email already exists.
+    <?= $this->translate('A user with that email already exists.') ?>
 </p>
 <p>
-    Please return <a href="<?= $this->url('settings', ['action'=>'email']); ?>">here</a> 
-    and try to update again with a different email.
+    <?= $this->translate('Please return') ?> <a href="<?= $this->url('settings', ['action'=>'email']); ?>"><?= $this->translate('here') ?></a> 
+    <?= $this->translate('and try to update again with a different email.') ?>
 </p>
 
 <?php elseif ($id=='failed'): ?>
 
 <p>
-    Invalid reset key or it may have expired. Please return 
-    <a href="<?= $this->url('settings', ['action'=>'index']); ?>">here</a> and try to update again.
+    <?= $this->translate('Invalid reset key or it may have expired. Please return') ?> 
+    <a href="<?= $this->url('settings', ['action'=>'index']); ?>"><?= $this->translate('here') ?></a> <?= $this->translate('and try to update again.') ?>
 </p>
 
 <?php elseif ($id=='passwordUpdated'): ?>
 
 <p>
-    Your password has been updated successfully.
+    <?= $this->translate('Your password has been updated successfully.') ?>
 </p>
 <p>
-    Return to <a href="<?= $this->url('settings'); ?>">settings page</a>.
+    <?= $this->translate('Return to') ?> <a href="<?= $this->url('settings'); ?>"><?= $this->translate('settings page') ?></a>.
 </p>
 <?php endif; ?>
 </div>

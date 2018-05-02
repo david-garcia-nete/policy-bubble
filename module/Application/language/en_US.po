@@ -3932,5 +3932,42 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+#: ../application/settings/message.phtml
+msgid "An email confirmation link has been sent to your email address."
+msgstr ""
+
+#: ../application/settings/message.phtml
+msgid "Your email has been confirmed successfully."
+msgstr ""
+
+#: ../application/settings/message.phtml
+msgid "settings page"
+msgstr ""
+
+#: ../application/settings/message.phtml
+msgid "and try to update again with a different email."
+msgstr ""
+
+#: ../application/settings/message.phtml
+msgid "and try to update again."
+msgstr ""
+
+#: ../application/settings/message.phtml
+msgid "Your password has been updated successfully."
+msgstr ""
+
+#: ../src/Service/SettingsManager.php
+msgid "Reset Email"
+msgstr ""
+
+#: ../src/Service/SettingsManager.php
+msgid "Please follow the link below to reset your email:\n"
+msgstr ""
+
+#: ../src/Service/SettingsManager.php
+msgid "If you haven't asked to reset your email, please ignore this message.\n"
+msgstr ""
+
+
 
 

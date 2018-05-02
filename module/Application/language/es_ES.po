@@ -3785,3 +3785,43 @@ msgstr "Advertencia: Se borrarán todas sus publicaciones y su cuenta."
 #: ../application/settings/language.phtml
 msgid "Language"
 msgstr "Idioma"
+
+#: ../application/settings/message.phtml
+msgid "An email confirmation link has been sent to your email address."
+msgstr "Se ha enviado un enlace de confirmación por correo electrónico a su dirección de correo electrónico."
+
+#: ../application/settings/message.phtml
+msgid "Your email has been confirmed successfully."
+msgstr "Su correo electrónico ha sido confirmado exitosamente."
+
+#: ../application/settings/message.phtml
+msgid "settings page"
+msgstr "página de configuraciónes"
+
+#: ../application/settings/message.phtml
+msgid "and try to update again with a different email."
+msgstr "e intente actualizar nuevamente con un correo electrónico diferente."
+
+#: ../application/settings/message.phtml
+msgid "and try to update again."
+msgstr "e intenta actualizar nuevamente."
+
+#: ../application/settings/message.phtml
+msgid "Your password has been updated successfully."
+msgstr "Su contraseña ha sido actualizada exitosamente."
+
+#: ../src/Service/SettingsManager.php
+msgid "Reset Email"
+msgstr "Restablecer Correo Electrónico"
+
+#: ../src/Service/SettingsManager.php
+msgid "Please follow the link below to reset your email:\n"
+msgstr "Por favor, siga el siguiente enlace para restablecer su correo electrónico:\n"
+
+#: ../src/Service/SettingsManager.php
+msgid "If you haven't asked to reset your email, please ignore this message.\n"
+msgstr "Si no ha solicitado restablecer su correo electrónico, ignore este mensaje.\n"
+
+
+
+
