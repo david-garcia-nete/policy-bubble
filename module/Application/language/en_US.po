@@ -3928,5 +3928,9 @@ msgstr ""
 msgid "Warning:  All of your posts and your account will be deleted."
 msgstr ""
 
+#: ../application/settings/language.phtml
+msgid "Language"
+msgstr ""
+
 
 

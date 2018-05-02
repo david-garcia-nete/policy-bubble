@@ -1,24 +1,25 @@
 <?php
-$this->headTitle('Language');
+$this->headTitle($this->translate('Language'));
 
 $this->mainMenu()->setActiveItemId('settings');
 
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Settings' => $this->url('settings'),
-            'Language' => $this->url('settings', ['action' => 'language']),
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Settings')=>$this->url('settings'),
+            $this->translate('Language') => $this->url('settings', ['action' => 'language']),
             ]);
 
 $form->get('language')->setAttributes([
     'class'=>'form-control'
     ]);
 
-$form->get('submit')->setAttributes(array('class'=>'btn btn-primary'));
+$form->get('submit')->setAttributes(['class'=>'btn btn-primary', 
+    'value'=>$this->translate('Submit')]);
 
 $form->prepare();
 ?>
 
-<h1>Settings</h1>
+<h1><?= $this->translate('Settings') ?></h1>
 
 <div class="row">
     <div class="col-md-4">

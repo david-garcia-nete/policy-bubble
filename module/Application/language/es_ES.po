@@ -3781,3 +3781,7 @@ msgstr "Menú de configuraciónes"
 #: ../application/settings/account-status.phtml
 msgid "Warning:  All of your posts and your account will be deleted."
 msgstr "Advertencia: Se borrarán todas sus publicaciones y su cuenta."
+
+#: ../application/settings/language.phtml
+msgid "Language"
+msgstr "Idioma"
