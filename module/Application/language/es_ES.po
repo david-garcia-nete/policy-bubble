@@ -1071,6 +1071,14 @@ msgstr "Se permiten formatos PNG y JPG"
 msgid "Image file"
 msgstr "Archivo de Imagen"
 
+#: ../application/post/add2.phtml
+msgid "Remove"
+msgstr "Eliminar"
+
+#: ../application/post/add2.phtml
+msgid "View"
+msgstr "Ver"
+
 #: ../application/post/edit1.phtml
 msgid "Edit Post - Step 1"
 msgstr "Editar Publicación - Paso 1"

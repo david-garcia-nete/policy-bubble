@@ -115,7 +115,7 @@ $form->prepare();
                             ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
                                 'id'=>$user->getId()]]); ?>" 
 
-                            class="btn btn-default" role="button">Remove</a>
+                            class="btn btn-default" role="button"><?= $this->translate('Remove') ?></a>
                             
                 </span>
                 
@@ -126,7 +126,7 @@ $form->prepare();
                             ['action'=>'addFile'], ['query'=>['name'=>$file, 
                                 'id'=>$user->getId()]]); ?>" 
 
-                            class="btn btn-default" role="button">View</a>
+                            class="btn btn-default" role="button"><?= $this->translate('View') ?></a>
 
                 </span>
 

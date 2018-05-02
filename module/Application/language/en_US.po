@@ -1081,6 +1081,14 @@ msgstr ""
 msgid "Image file"
 msgstr ""
 
+#: ../application/post/add2.phtml
+msgid "Remove"
+msgstr ""
+
+#: ../application/post/add2.phtml
+msgid "View"
+msgstr ""
+
 #: ../application/post/edit1.phtml
 msgid "Edit Post - Step 1"
 msgstr ""
