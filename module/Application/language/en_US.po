@@ -1855,6 +1855,14 @@ msgstr ""
 msgid "The requested controller was unable to dispatch the request."
 msgstr ""
 
+#: ../view/error/404.phtml:
+msgid "The requested middleware was unable to dispatch the request."
+msgstr ""
+
+#: ../view/error/404.phtml:
+msgid "<li>There may be more exceptions, but we do not have enough memory to process it.</li>"
+msgstr ""
+
 #: ../view/error/404.phtml:13
 msgid "The requested controller could not be mapped to an existing controller class."
 msgstr ""

@@ -1829,6 +1829,14 @@ msgstr "Ha ocurrido un error 404"
 msgid "The requested controller was unable to dispatch the request."
 msgstr "El controlador solicitado no pudo ejecutar la petición."
 
+#: ../view/error/404.phtml:10
+msgid "The requested middleware was unable to dispatch the request."
+msgstr "El middleware solicitado no pudo enviar la solicitud."
+
+#: ../view/error/404.phtml:
+msgid "<li>There may be more exceptions, but we do not have enough memory to process it.</li>"
+msgstr "<li> Puede haber más excepciones, pero no tenemos suficiente memoria para procesarlo.</li>"
+
 msgid "The requested controller could not be mapped to an existing controller class."
 msgstr "El controlador solicitado no se pudo mapear con una clase de controlador existente."
 

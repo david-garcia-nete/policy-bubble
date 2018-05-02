@@ -22,7 +22,7 @@ class AddMaxVideoValidator extends AbstractValidator
      */
     protected $messageTemplates = [
         self::TOO_MANY => "Too many files, maximum '%max%' post video is allowed.",
-        self::TOO_FEW  => "Too few files, minimum '%min%'  post photos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
+        self::TOO_FEW  => "Too few files, minimum '%min%'  post videos are expected.  '%existCount%' exist and '%selectCount%' are selected.",
     ];
 
     /**
