@@ -3770,4 +3770,3 @@ msgstr "Demasiados archivos, se permite el video máximo de la publicación '%ma
 msgid "Too few files, minimum '%min%' post videos are expected.  '%existCount%' exist and '%selectCount%' are selected."
 msgstr "Se esperan muy pocos archivos, mínimo '%min%' de videos de publicación. '%existCount%' existe y '%selectCount%' están seleccionados."
 
-       
