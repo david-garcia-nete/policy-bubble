@@ -8,7 +8,7 @@ $this->pageBreadcrumbs()->setItems([
             ]);
 $form = $this->form;
 $form->get('file')->setAttributes([
-    'label'=>$this->translate('Image file')     
+    'label'=>$this->translate('Image files')     
     ]);
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
 $form->get('submit')->setValue($this->translate('Continue'));
@@ -28,6 +28,7 @@ $form->prepare();
     <?= $this->translate('Please fill out the following form and press the') ?>
      <i><?= $this->translate('Continue') ?></i> 
     <?= $this->translate('button.  To finish, do not select files.  Resize to square if photos appear sideways.') ?>  
+
 </p>
 
 
@@ -48,7 +49,7 @@ $form->prepare();
 
             <?= $this->formElementErrors($form->get('file')); ?>
 
-            <div class="hint"><?= $this->translate('PNG and JPG formats are allowed') ?></div>
+            <div class="hint"><?= $this->translate('(PNG and JPG formats are allowed)') ?></div>
 
         </div>
 

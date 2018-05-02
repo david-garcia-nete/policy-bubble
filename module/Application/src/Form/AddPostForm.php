@@ -108,7 +108,7 @@ class AddPostForm extends Form
                     'multiple' => 'true'
                 ],
                 'options' => [
-                    'label' => 'Image file',
+                    'label' => 'Image files',
                 ],
             ]);      
         }

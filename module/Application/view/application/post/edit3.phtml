@@ -1,15 +1,17 @@
 <?php
-$this->headTitle('Edit Post');
+$this->headTitle($this->translate('Edit Post'));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Posts'=>$this->url('posts'),    
-            'Edit Post'=>''
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Posts')=>$this->url('posts'),    
+            $this->translate('Edit Post')=>''
             ]);
 $form = $this->form;
-
+$form->get('video')->setAttributes([
+    'label'=>$this->translate('Video file')     
+    ]);
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
-$form->get('submit')->setValue('Continue');
+$form->get('submit')->setValue($this->translate('Continue'));
 
 $form->prepare();
 
@@ -17,14 +19,15 @@ $form->prepare();
 
 
 
-<h1>Edit Post - Step 3</h1>
+<h1><?= $this->translate('Edit Post - Step 3') ?></h1>
 
 
 
 <p>
 
-    Please fill out the following form and press the <i>Continue</i> button.  
-    To finish, do not select files.
+    <?= $this->translate('Please fill out the following form and press the') ?>
+     <i><?= $this->translate('Continue') ?></i> 
+    <?= $this->translate('button.  To finish, do not select a file.') ?>  
 
 </p>
 
@@ -46,7 +49,7 @@ $form->prepare();
 
             <?= $this->formElementErrors($form->get('video')); ?>
             
-            <div class="hint">(MP4, OGG and Quicktime formats are allowed)</div>
+            <div class="hint"><?= $this->translate('(MP4, OGG and Quicktime formats are allowed)') ?></div>
 
         </div>
 
@@ -72,7 +75,7 @@ $form->prepare();
 
 <p>
 
-    <i>There is no video to display.</i>
+    <i><?= $this->translate('There is no video to display.') ?></i>
 
 </p>
 
@@ -96,7 +99,7 @@ $form->prepare();
                         
             <video width="320" height="240" controls>
                 <source src="/video/post/<?= $post->getId()?>/<?= $file ?>" >
-            Your browser does not support the video tag.
+            <?= $this->translate('Your browser does not support the video tag.') ?>
             </video>             
 
             <div class="caption">
@@ -110,7 +113,7 @@ $form->prepare();
                             ['action'=>'removeTemp'], ['query'=>['name'=>$file, 
                                 'id'=>$post->getId()]]); ?>" 
 
-                            class="btn btn-default" role="button">Remove</a>
+                            class="btn btn-default" role="button"><?= $this->translate('Remove') ?></a>
 
                 </span>
                 

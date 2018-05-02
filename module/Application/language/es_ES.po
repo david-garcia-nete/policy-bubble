@@ -1047,6 +1047,22 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/post/edit3.phtml
+msgid "Edit Post - Step 3"
+msgstr "Editar Publicación - Paso 3"
+
+#: ../application/post/add3.phtml
+msgid "Add Post - Step 3"
+msgstr "Agregar Publicación - Paso 3"
+
+#: ../application/post/add3.phtml
+msgid "Video file"
+msgstr "Archivo de video"
+
+#: ../application/post/add3.phtml
+msgid "(MP4, OGG and Quicktime formats are allowed)"
+msgstr "(Los formatos MP4, OGG y Quicktime están permitidos)"
+
 #: ../application/post/edit1.phtml
 msgid "Edit Post - Step 2"
 msgstr "Editar Publicación - Paso 2"
@@ -1068,12 +1084,12 @@ msgid "button.  To finish, do not select files.  Resize to square if photos appe
 msgstr "Para finalizar, no seleccione archivos. Cambie el tamaño a la forma cuadrada si las fotos aparecen de lado."
 
 #: ../application/post/add2.phtml
-msgid "PNG and JPG formats are allowed"
-msgstr "Se permiten formatos PNG y JPG"
+msgid "(PNG and JPG formats are allowed)"
+msgstr "(Se permiten formatos PNG y JPG)"
 
 #: ../application/post/add2.phtml
-msgid "Image file"
-msgstr "Archivo de Imagen"
+msgid "Image files"
+msgstr "Archivos de Imagen"
 
 #: ../application/post/add2.phtml
 msgid "Remove"
