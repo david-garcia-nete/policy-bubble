@@ -49,13 +49,19 @@ class PostController extends AbstractActionController
      * @var Zend\Session\Container
      */
     private $sessionContainer;
+    
+    /**
+     * Translator.
+     * @var Zend\I18n\Translator\Translator
+     */
+    private $translator;
 
     
     /**
      * Constructor is used for injecting dependencies into the controller.
      */
     public function __construct($entityManager, $postManager, $imageManager, 
-            $videoManager, $audioManager, $sessionContainer) 
+            $videoManager, $audioManager, $sessionContainer, $translator) 
     {
         $this->entityManager = $entityManager;
         $this->postManager = $postManager;
@@ -63,6 +69,7 @@ class PostController extends AbstractActionController
         $this->videoManager = $videoManager;
         $this->audioManager = $audioManager;
         $this->sessionContainer = $sessionContainer;
+        $this->translator = $translator;
     }
     
     /**
@@ -104,7 +111,7 @@ class PostController extends AbstractActionController
         $files = null;
                
         // Create the form.
-        $form = new AddPostForm($step, $user->getId());
+        $form = new AddPostForm($step, $user->getId(), $this->translator);
         
         // Check whether this post is a POST request.
         if ($this->getRequest()->isPost()) {

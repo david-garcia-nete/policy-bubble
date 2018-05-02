@@ -1057,6 +1057,42 @@ msgstr ""
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr ""
 
+#: ../application/post/add1.phtml
+msgid "Add Post"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Add Post - Step 1"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Please fill out the following form and click the *Next Step* button."
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Title"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Enter post title here"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Content"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Type content here"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Separate tags with comma."
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Next Step"
+msgstr ""
+
 #: ../application/post/view.phtml
 msgid "View Post"
 msgstr ""

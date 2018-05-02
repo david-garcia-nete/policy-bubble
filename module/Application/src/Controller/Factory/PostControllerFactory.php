@@ -22,9 +22,10 @@ class PostControllerFactory implements FactoryInterface
         $videoManager = $container->get(VideoManager::class);
         $audioManager = $container->get(AudioManager::class);
         $sessionContainer = $container->get('Posts');
+        $translator = $container->get('MvcTranslator');
         
         // Instantiate the controller and inject dependencies
         return new PostController($entityManager, $postManager, $imageManager, 
-                $videoManager, $audioManager, $sessionContainer);
+                $videoManager, $audioManager, $sessionContainer, $translator);
     }
 }

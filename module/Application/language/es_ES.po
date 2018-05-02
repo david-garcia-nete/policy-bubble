@@ -1047,6 +1047,42 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/post/add1.phtml
+msgid "Add Post"
+msgstr "Agregar Publicación"
+
+#: ../application/post/add1.phtml
+msgid "Add Post - Step 1"
+msgstr "Agregar Publicación - Paso 1"
+
+#: ../application/post/add1.phtml
+msgid "Please fill out the following form and click the *Next Step* button."
+msgstr "Complete el siguiente formulario y haga clic en el botón *Siguiente Paso*"
+
+#: ../application/post/add1.phtml
+msgid "Title"
+msgstr "Título"
+
+#: ../application/post/add1.phtml
+msgid "Enter post title here"
+msgstr "Ingrese el título del post aquí"
+
+#: ../application/post/add1.phtml
+msgid "Content"
+msgstr "Contenido"
+
+#: ../application/post/add1.phtml
+msgid "Type content here"
+msgstr "Escriba el contenido aquí"
+
+#: ../application/post/add1.phtml
+msgid "Separate tags with comma."
+msgstr "Separe las etiquetas con comas."
+
+#: ../application/post/add1.phtml
+msgid "Next Step"
+msgstr "Siguiente Paso"
+
 #: ../application/post/view.phtml
 msgid "View Post"
 msgstr "Ver Publicación"
