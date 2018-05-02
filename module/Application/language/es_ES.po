@@ -1047,6 +1047,22 @@ msgstr "VIOLACIONES"
 msgid "Please report any and all violations of this TOS to David's Web Sites as follows:"
 msgstr "Por favor informe todas y cada una de las violaciones de este TOS a David's Web Sites de la siguiente manera:"
 
+#: ../application/post/edit4.phtml
+msgid "Edit Post - Step 4"
+msgstr "Editar Publicación - Paso 4"
+
+#: ../application/post/add4.phtml
+msgid "Add Post - Step 4"
+msgstr "Agregar Publicación - Paso 4"
+
+#: ../application/post/add4.phtml
+msgid "Audio file"
+msgstr "Archivo de audio"
+
+#: ../application/post/add4.phtml
+msgid "(MP3, OGG and M4A formats are allowed)"
+msgstr "(Se permiten formatos MP3, OGG y M4A)"
+
 #: ../application/post/edit3.phtml
 msgid "Edit Post - Step 3"
 msgstr "Editar Publicación - Paso 3"
@@ -1061,7 +1077,7 @@ msgstr "Archivo de video"
 
 #: ../application/post/add3.phtml
 msgid "(MP4, OGG and Quicktime formats are allowed)"
-msgstr "(Los formatos MP4, OGG y Quicktime están permitidos)"
+msgstr "(Se permiten formatos MP4, OGG y Quicktime)"
 
 #: ../application/post/edit1.phtml
 msgid "Edit Post - Step 2"

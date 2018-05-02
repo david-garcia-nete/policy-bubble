@@ -1,15 +1,17 @@
 <?php
-$this->headTitle('Add Post');
+$this->headTitle($this->translate('Add Post'));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
-            'Home'=>$this->url('home'),
-            'Posts'=>$this->url('posts'),    
-            'Add Post'=>''
+            $this->translate('Home')=>$this->url('home'),
+            $this->translate('Posts')=>$this->url('posts'),    
+            $this->translate('Add Post')=>''
             ]);
 $form = $this->form;
-
+$form->get('audio')->setAttributes([
+    'label'=>$this->translate('Audio file')     
+    ]);
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
-$form->get('submit')->setValue('Continue');
+$form->get('submit')->setValue($this->translate('Continue'));
 
 $form->prepare();
 
@@ -17,14 +19,14 @@ $form->prepare();
 
 
 
-<h1>Add Post - Step 4</h1>
-
+<h1><?= $this->translate('Add Post - Step 4') ?></h1>
 
 
 <p>
 
-    Please fill out the following form and press the <i>Continue</i> button.  
-    To finish, do not select files.
+    <?= $this->translate('Please fill out the following form and press the') ?>
+     <i><?= $this->translate('Continue') ?></i> 
+    <?= $this->translate('button.  To finish, do not select a file.') ?>  
 
 </p>
 
@@ -46,7 +48,7 @@ $form->prepare();
 
             <?= $this->formElementErrors($form->get('audio')); ?>
 
-            <div class="hint">(MP3, OGG and M4A formats are allowed)</div>
+            <div class="hint"><?= $this->translate('(MP3, OGG and M4A formats are allowed)') ?></div>
 
         </div>
 
@@ -72,7 +74,7 @@ $form->prepare();
 
 <p>
 
-    <i>There is no audio file to display.</i>
+    <i><?= $this->translate('There is no audio file to display.') ?></i>
 
 </p>
 
@@ -96,7 +98,7 @@ $form->prepare();
                         
             <audio controls>
                 <source src="/audio/user/<?= $user->getId()?>/<?= $file ?>" >
-            Your browser does not support the audio tag.
+            <?= $this->translate('Your browser does not support the audio tag.') ?>
             </audio>             
 
             <div class="caption">
@@ -110,7 +112,7 @@ $form->prepare();
                             ['action'=>'removeAddTemp'], ['query'=>['name'=>$file, 
                                 'id'=>$user->getId()]]); ?>" 
 
-                            class="btn btn-default" role="button">Remove</a>
+                            class="btn btn-default" role="button"><?= $this->translate('Remove') ?></a>
 
                 </span>
                 
