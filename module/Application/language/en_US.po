@@ -70,7 +70,7 @@ msgid "Usage"
 msgstr ""
 
 #: ../application/index/about.phtml
-msgid "After joining Policy Bubble you will have a post administration page for creating, editing and deleting posts.  You can filter the blog on topics that interest you.  There is an analysis page that policy makers and constituents can use to improve how laws are made."
+msgid "After joining Policy Bubble you will have a post administration page for creating, editing and deleting posts.  Posts may be kept private or made public.  You can filter the blog on topics that interest you.  There is an analysis page that policy makers and constituents can use to improve how laws are made."
 msgstr ""
 
 #: ../application/index/about.phtml
