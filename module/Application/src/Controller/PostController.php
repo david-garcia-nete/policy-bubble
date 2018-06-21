@@ -383,7 +383,8 @@ class PostController extends AbstractActionController
                 // Get the list of already saved files.
                 $files = $this->imageManager->getTempFiles($postId, 
                         $this->sessionContainer->userChoices['step2Dirty']);
-                $fileTitles = $this->imageManager->getTempFileTitles($postId);
+                $fileTitles = $this->imageManager->getTempFileTitles($postId, 
+                        $this->sessionContainer->userChoices['step2Dirty']);
                 $this->sessionContainer->userChoices['step2Dirty'] = true;  
             }
             

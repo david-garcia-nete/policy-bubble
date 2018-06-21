@@ -107,14 +107,14 @@ class ImageManager
                 $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
                 // Get the actual presigned-url
-                $files[] = (string) $request->getUri();
+                $files[$object['Tagging']] = (string) $request->getUri();
 
             }
 
         } else {
             
             foreach ($objects as $object){
-                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                $files[$object['Tagging']] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
             }
             
         }    
@@ -200,6 +200,8 @@ class ImageManager
                 unlink($file); // delete file
             }    
             
+            $files = array();
+            
             // Copy all files
             $objects = $this->s3client->getIterator('ListObjects', [
                 'Bucket' =>  $this->s3bucket,
@@ -215,7 +217,7 @@ class ImageManager
                     'SaveAs' => $tempDir . $parts[$count-1]
                 ]);
             }
-
+            
         }
         
         // Scan the directory and create the list of uploaded files.
@@ -238,7 +240,7 @@ class ImageManager
      * Returns the array of temp file titles.
      * @return array List of uploaded file titles.
      */
-    public function getTempFileTitles($id) 
+    public function getTempFileTitles($id, $dirty) 
     {
         // The directory where we plan to save uploaded files.
         
@@ -251,6 +253,34 @@ class ImageManager
             }
         }
         
+        if (!$dirty){
+            
+            // Delete all files
+            $paths = glob($tempDir . '*'); // get all file names
+            foreach($paths as $file){ // iterate files
+                if(is_file($file))
+                unlink($file); // delete file
+            }    
+            
+            $files = array();
+            
+            // Copy all files
+            $objects = $this->s3client->getIterator('ListObjects', [
+                'Bucket' =>  $this->s3bucket,
+                'Prefix' =>  $id
+            ]);
+
+            foreach ($objects as $object){
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                $this->s3client->getObject([
+                    'Bucket' => $this->s3bucket,
+                    'Key' => $object['Key'],
+                    'SaveAs' => $tempDir . $parts[$count-1]
+                ]);
+            }
+            
+        }
         
         // Scan the directory and create the list of uploaded files.
         $filesTitles = array();        
@@ -261,7 +291,10 @@ class ImageManager
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
-            $filesTitles[$name] = $entry;
+            $handle = fopen($entry, 'r');
+            $data = fread($handle,filesize($entry));
+            fclose($handle);
+            $filesTitles[$name] = $data;
         }
         
         // Return the list of uploaded files.
