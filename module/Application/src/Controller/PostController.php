@@ -293,6 +293,7 @@ class PostController extends AbstractActionController
         
         // Create image holder.
         $files = null;
+        $fileTitles = null;
         
         // Get post ID.
         $postId = (int)$this->params()->fromRoute('id', -1);
@@ -382,6 +383,7 @@ class PostController extends AbstractActionController
                 // Get the list of already saved files.
                 $files = $this->imageManager->getTempFiles($postId, 
                         $this->sessionContainer->userChoices['step2Dirty']);
+                $fileTitles = $this->imageManager->getTempFileTitles($postId);
                 $this->sessionContainer->userChoices['step2Dirty'] = true;  
             }
             
@@ -408,6 +410,7 @@ class PostController extends AbstractActionController
         // Render the view template.
         $viewModel = new ViewModel([
             'files' => $files,
+            'filesTitles' => $fileTitles,
             'form' => $form,
             'post' => $post
         ]);

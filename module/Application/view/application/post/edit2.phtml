@@ -101,7 +101,7 @@ $form->prepare();
 
 
 
-        <?php foreach($files as $file): ?>  
+        <?php foreach($files as $name => $file): ?>  
 
 
 
@@ -118,7 +118,8 @@ $form->prepare();
 
             <div class="caption">
 
-                                
+                <h3><?php echo $fileTitles[$name]; ?></h3> 
+       
                 <br>
                 
                  <span>

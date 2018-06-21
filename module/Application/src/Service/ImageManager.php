@@ -225,12 +225,47 @@ class ImageManager
             
             if($entry=='.' || $entry=='..')
                 continue; // Skip current dir and parent dir.
-            
-            $files[] = $entry;
+            $name = explode('.', $entry);
+            $name = $name[0];
+            $files[$name] = $entry;
         }
         
         // Return the list of uploaded files.
         return $files;
+    }
+    
+    /**
+     * Returns the array of temp file titles.
+     * @return array List of uploaded file titles.
+     */
+    public function getTempFileTitles($id) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $tempDir = $this->saveToDir . 'post/' .  $id . '/titles/';
+        if(!is_dir($tempDir)) {
+            if(!mkdir($tempDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+        
+        
+        // Scan the directory and create the list of uploaded files.
+        $filesTitles = array();        
+        $handle  = opendir($tempDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            $name = explode('.', $entry);
+            $name = $name[0];
+            $filesTitles[$name] = $entry;
+        }
+        
+        // Return the list of uploaded files.
+        return $filesTitles;
     }
     
     /**
@@ -243,7 +278,7 @@ class ImageManager
                 // The directory where we plan to save uploaded files.
                 // Check whether the directory already exists, and if not,
                 // create the directory.
-                $tempDir = $this->saveToDir . 'post/' .  $id . '/';
+                $tempDir = $this->saveToDir . 'post/' .  $id . '/titles/';
                 if(!is_dir($tempDir)) {
                     if(!mkdir($tempDir, 0755, true)) {
                         throw new \Exception('Could not create directory for uploads: '. error_get_last());
