@@ -360,7 +360,7 @@ class PostManager
     {
         $fileExists = false;
         if (array_key_exists('file', $data)) {
-            if ($data['file'][0]['size'] > 0) {
+            if ($data['file']['size'] > 0) {
                 $fileExists = true;
             }
         }

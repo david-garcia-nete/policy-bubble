@@ -229,6 +229,7 @@ class ImageManager
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
+            if(!is_dir($tempDir . '/' . $entry))
             $files[$name] = $entry;
         }
         closedir($handle);
@@ -284,7 +285,7 @@ class ImageManager
         }
         
         // Scan the directory and create the list of uploaded files.
-        $fileTitles = array();        
+        $fileTitles = array(); 
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
@@ -292,9 +293,9 @@ class ImageManager
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
-            $handle = fopen($entry, 'r');
-            $data = fread($handle,filesize($entry));
-            fclose($handle);
+            $fileHandle = fopen($tempDir . $entry, 'r');
+            $data = fread($fileHandle,filesize($tempDir . $entry));
+            fclose($fileHandle);
             $fileTitles[$name] = $data;
         }
         closedir($handle);
@@ -309,7 +310,7 @@ class ImageManager
     public function createTitleFile($id, $data) 
     {
         if (array_key_exists('file', $data)) {
-            if ($data['file'][0]['size'] > 0) {
+            if ($data['file']['size'] > 0) {
                 // The directory where we plan to save uploaded files.
                 // Check whether the directory already exists, and if not,
                 // create the directory.
@@ -320,7 +321,7 @@ class ImageManager
                     }
                 }
                 
-                $name = $data['file'][0]['size'];
+                $name = $data['file']['name'];
                 $name = explode('.', $name);
                 $name = $name[0] . '.txt';      
                 $file = $tempDir . $name;
@@ -360,7 +361,7 @@ class ImageManager
             $name = explode('.', $entry);
             $name = $name[0];
             $fileHandle = fopen($entry, 'r');
-            $data = fread($fileHandle,filesize($entry));
+            $data = fread($fileHandle,filesize($tempDir . $entry));
             fclose($fileHandle);
             $filesTitles[$name] = $data;
         }
