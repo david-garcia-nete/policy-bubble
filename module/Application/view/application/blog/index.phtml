@@ -174,7 +174,8 @@ if(
     <div class="row">
       <div class="col-sm-6 col-md-12">
 
-        <?php foreach($files as $file): ?>  
+        <?php foreach($files as $title => $file): ?>
+            <h3><?= $title ?></h3>
             <a target="_blank" href="<?= $file ?>" class="btn btn-default" role="button">             
                 <img width="240" src="<?= $file ?>">    
             </a>

@@ -149,7 +149,7 @@ class ImageManager
                 $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
                 // Get the actual presigned-url
-                $files[] = (string) $request->getUri();
+                $files[$object['Tagging']] = (string) $request->getUri();
                 $i++;
                 if ($i>=$count){
                     return $files;
@@ -160,7 +160,7 @@ class ImageManager
             
             $i=0;
             foreach ($objects as $object){
-                $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                $files[$object['Tagging']] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
                 $i++;
                 if ($i>=$count){
                     return $files;
@@ -231,6 +231,7 @@ class ImageManager
             $name = $name[0];
             $files[$name] = $entry;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
         return $files;
@@ -267,7 +268,7 @@ class ImageManager
             // Copy all files
             $objects = $this->s3client->getIterator('ListObjects', [
                 'Bucket' =>  $this->s3bucket,
-                'Prefix' =>  $id
+                'Prefix' =>  $id . '/titles'
             ]);
 
             foreach ($objects as $object){
@@ -283,7 +284,7 @@ class ImageManager
         }
         
         // Scan the directory and create the list of uploaded files.
-        $filesTitles = array();        
+        $fileTitles = array();        
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
@@ -294,11 +295,12 @@ class ImageManager
             $handle = fopen($entry, 'r');
             $data = fread($handle,filesize($entry));
             fclose($handle);
-            $filesTitles[$name] = $data;
+            $fileTitles[$name] = $data;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
-        return $filesTitles;
+        return $fileTitles;
     }
     
     /**
@@ -345,8 +347,25 @@ class ImageManager
             $this->s3client->deleteObject(['Bucket' => $this->s3bucket, 'Key' => $object['Key']]);
         }
         
-        // Copy all files
-        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
+        // Copy all title files
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/titles/';
+        
+        // Scan the directory and create the list of uploaded files.
+        $fileTitles = array();        
+        $handle  = opendir($tempDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            $name = explode('.', $entry);
+            $name = $name[0];
+            $fileHandle = fopen($entry, 'r');
+            $data = fread($fileHandle,filesize($entry));
+            fclose($fileHandle);
+            $filesTitles[$name] = $data;
+        }
+        closedir($handle);
+        
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
@@ -354,7 +373,7 @@ class ImageManager
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => $post->getId() . '/' . $file,
+                        'Key' => $post->getId() . '/titles/' . $file,
                         'Body' => fopen($tempDir . $file, 'rb'),
                         'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read'
                     ]);                    
@@ -368,6 +387,35 @@ class ImageManager
         // Remove temp dir
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
+        
+        // Copy all files
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
+        $dir = opendir($tempDir);  
+        while(false !== ( $file = readdir($dir)) ) { 
+            if (( $file != '.' ) && ( $file != '..' )) {      
+                //copy($tempDir . $file, $permDir . $file);
+                $name = explode('.', $file);
+                $name = $name[0];
+                try{
+                    $this->s3client->putObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => $post->getId() . '/' . $file,
+                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
+                        'Tagging' => $fileTitles[$name]
+                    ]);                    
+                } catch(S3Exception $e){
+                    die ("There was an error uploading that file.");
+                }
+            } 
+        }  
+        closedir($dir);
+
+        // Remove temp dir
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
+        
+        
     }
     
     /**
@@ -406,6 +454,7 @@ class ImageManager
             
             $files[] = $entry;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
         return $files;

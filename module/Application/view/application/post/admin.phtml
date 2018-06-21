@@ -53,7 +53,8 @@ $this->pageBreadcrumbs()->setItems([
 
     
 
-        <?php foreach($files as $file): ?>  
+        <?php foreach($files as $title => $file): ?> 
+            <h3><?= $title ?></h3>
             <a target="_blank" href="<?= $file ?>" class="btn btn-default" role="button">             
                 <img width="240" src="<?= $file ?>">    
             </a>

@@ -226,6 +226,7 @@ class VideoManager
             
             $files[] = $entry;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
         return $files;
@@ -307,6 +308,7 @@ class VideoManager
             
             $files[] = $entry;
         }
+        closedir($handle);
         
         // Return the list of uploaded files.
         return $files;
