@@ -234,6 +234,35 @@ class ImageManager
     }
     
     /**
+     * Creates the temp image title file.
+     */
+    public function createTitleFile($id, $data) 
+    {
+        if (array_key_exists('file', $data)) {
+            if ($data['file'][0]['size'] > 0) {
+                // The directory where we plan to save uploaded files.
+                // Check whether the directory already exists, and if not,
+                // create the directory.
+                $tempDir = $this->saveToDir . 'post/' .  $id . '/';
+                if(!is_dir($tempDir)) {
+                    if(!mkdir($tempDir, 0755, true)) {
+                        throw new \Exception('Could not create directory for uploads: '. error_get_last());
+                    }
+                }
+                
+                $name = $data['file'][0]['size'];
+                $name = explode('.', $name);
+                $name = $name[0] . '.txt';      
+                $file = $tempDir . $name;
+                $handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
+                $data = $data['file_title'];
+                fwrite($handle, $data);
+                fclose($handle);
+            }
+        }
+    }
+    
+    /**
      * Saves the temp file to the permanent folder
      */
     public function saveTempFiles($post) 

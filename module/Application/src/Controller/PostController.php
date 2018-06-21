@@ -340,6 +340,9 @@ class PostController extends AbstractActionController
                 if($fileExists == false){
                     $step ++;
                     $this->sessionContainer->userChoices["step"] = $step;
+                }else{
+                    // Create the title file.
+                    $this->imageManager->createTitleFile($postId, $data);
                 }
                 
                 // If we completed both steps.
