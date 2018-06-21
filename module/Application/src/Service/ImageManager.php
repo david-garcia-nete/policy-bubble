@@ -407,7 +407,9 @@ class ImageManager
                             'Key' => $post->getId() . '/' . $file,
                             'Body' => $fileHandle,
                             'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
-                            'Tagging' => $fileTitles[$name]
+                            'Metadata' => [     
+                                'title' => $fileTitles[$name]
+                            ]
                         ]);                    
                     } catch(S3Exception $e){
                         die ("There was an error uploading that file.");
