@@ -411,7 +411,7 @@ class PostController extends AbstractActionController
         // Render the view template.
         $viewModel = new ViewModel([
             'files' => $files,
-            'filesTitles' => $fileTitles,
+            'fileTitles' => $fileTitles,
             'form' => $form,
             'post' => $post
         ]);
