@@ -360,7 +360,7 @@ class ImageManager
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
-            $fileHandle = fopen($entry, 'r');
+            $fileHandle = fopen($tempDir . $entry, 'r');
             $data = fread($fileHandle,filesize($tempDir . $entry));
             fclose($fileHandle);
             $filesTitles[$name] = $data;
@@ -371,23 +371,25 @@ class ImageManager
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
                 //copy($tempDir . $file, $permDir . $file);
+                $fileHandle = fopen($tempDir . $file, 'rb');
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
                         'Key' => $post->getId() . '/titles/' . $file,
-                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'Body' => $fileHandle,
                         'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
                 }
+                fclose($fileHandle);
             } 
         }  
         closedir($dir);
 
         // Remove temp dir
-        array_map('unlink', glob($tempDir . '*.*'));
-        rmdir($tempDir);
+        //array_map('unlink', glob($tempDir . '*.*'));
+        //rmdir($tempDir);
         
         // Copy all files
         $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
@@ -397,22 +399,29 @@ class ImageManager
                 //copy($tempDir . $file, $permDir . $file);
                 $name = explode('.', $file);
                 $name = $name[0];
-                try{
-                    $this->s3client->putObject([
-                        'Bucket' => $this->s3bucket,
-                        'Key' => $post->getId() . '/' . $file,
-                        'Body' => fopen($tempDir . $file, 'rb'),
-                        'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
-                        'Tagging' => $fileTitles[$name]
-                    ]);                    
-                } catch(S3Exception $e){
-                    die ("There was an error uploading that file.");
-                }
+                if(!is_dir($tempDir . $file)){
+                    $fileHandle = fopen($tempDir . $file, 'rb');
+                    try{
+                        $this->s3client->putObject([
+                            'Bucket' => $this->s3bucket,
+                            'Key' => $post->getId() . '/' . $file,
+                            'Body' => $fileHandle,
+                            'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
+                            'Tagging' => $fileTitles[$name]
+                        ]);                    
+                    } catch(S3Exception $e){
+                        die ("There was an error uploading that file.");
+                    }
+                    fclose($fileHandle);
+                }    
             } 
         }  
         closedir($dir);
 
-        // Remove temp dir
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/titles/';
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
+        $tempDir = $this->saveToDir . 'post/' . $post->getId() . '/';
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
         

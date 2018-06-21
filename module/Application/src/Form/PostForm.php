@@ -128,19 +128,7 @@ class PostForm extends Form
         }
         
         else if ($step==3) {
-            
-            // Add "title" field
-            $this->add([        
-                'type'  => 'text',
-                'name' => 'video_title',
-                'attributes' => [
-                    'id' => 'video_title'
-                ],
-                'options' => [
-                    'label' => 'Video title',
-                ],
-            ]);
-            
+             
             // Add "file" field.
             $this->add([
                 'type'  => 'file',
@@ -155,19 +143,7 @@ class PostForm extends Form
         }
         
         else if ($step==4) {
-            
-            // Add "title" field
-            $this->add([        
-                'type'  => 'text',
-                'name' => 'audio_title',
-                'attributes' => [
-                    'id' => 'audio_title'
-                ],
-                'options' => [
-                    'label' => 'Audio title',
-                ],
-            ]);
-            
+    
             // Add "file" field.
             $this->add([
                 'type'  => 'file',
@@ -276,7 +252,7 @@ class PostForm extends Form
             
             $inputFilter->add([
                     'name'     => 'file_title',
-                    'required' => true,
+                    'required' => false,
                     'filters'  => [
                         ['name' => 'StringTrim'],
                         ['name' => 'StripTags'],
@@ -341,26 +317,7 @@ class PostForm extends Form
         }
         
         if ($step==3) {
-            
-            $inputFilter->add([
-                    'name'     => 'video_title',
-                    'required' => true,
-                    'filters'  => [
-                        ['name' => 'StringTrim'],
-                        ['name' => 'StripTags'],
-                        ['name' => 'StripNewlines'],
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'StringLength',
-                            'options' => [
-                                'min' => 1,
-                                'max' => 1024
-                            ],
-                        ],
-                    ],
-                ]);
-            
+               
             // Add validation rules for the "file" field.	 
             $inputFilter->add([
                     'type'     => 'Zend\InputFilter\FileInput',
@@ -406,26 +363,7 @@ class PostForm extends Form
         }
         
         if ($step==4) {
-            
-            $inputFilter->add([
-                    'name'     => 'audio_title',
-                    'required' => true,
-                    'filters'  => [
-                        ['name' => 'StringTrim'],
-                        ['name' => 'StripTags'],
-                        ['name' => 'StripNewlines'],
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'StringLength',
-                            'options' => [
-                                'min' => 1,
-                                'max' => 1024
-                            ],
-                        ],
-                    ],
-                ]);
-            
+                 
             // Add validation rules for the "file" field.	 
             $inputFilter->add([
                     'type'     => 'Zend\InputFilter\FileInput',
