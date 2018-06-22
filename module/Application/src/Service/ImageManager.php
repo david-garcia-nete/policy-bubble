@@ -98,23 +98,30 @@ class ImageManager
         if($post->getStatus() == Post::STATUS_DRAFT){
 
             foreach ($objects as $object){
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                if ($count == 2){
 
-                $cmd = $this->s3client->getCommand('GetObject', [
-                    'Bucket' => $this->s3bucket,
-                    'Key'    => $object['Key']
-                ]);
+                    $cmd = $this->s3client->getCommand('GetObject', [
+                        'Bucket' => $this->s3bucket,
+                        'Key'    => $object['Key']
+                    ]);
 
-                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+                    $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
-                // Get the actual presigned-url
-                $files[$object['Tagging']] = (string) $request->getUri();
-
+                    // Get the actual presigned-url
+                    $files[] = (string) $request->getUri();
+                }
             }
 
         } else {
             
             foreach ($objects as $object){
-                $files[$object['Tagging']] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                if ($count == 2){
+                    $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                }        
             }
             
         }    
@@ -141,30 +148,38 @@ class ImageManager
         
             $i=0;
             foreach ($objects as $object){
-                $cmd = $this->s3client->getCommand('GetObject', [
-                    'Bucket' => $this->s3bucket,
-                    'Key'    => $object['Key']
-                ]);
+                $parts = explode('/', $object['Key']);
+                $partsCount = count($parts);
+                if ($partsCount == 2){
+                    $cmd = $this->s3client->getCommand('GetObject', [
+                        'Bucket' => $this->s3bucket,
+                        'Key'    => $object['Key']
+                    ]);
 
-                $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
+                    $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
-                // Get the actual presigned-url
-                $files[$object['Tagging']] = (string) $request->getUri();
-                $i++;
-                if ($i>=$count){
-                    return $files;
-                }
+                    // Get the actual presigned-url
+                    $files[] = (string) $request->getUri();
+                    $i++;
+                    if ($i>=$count){
+                        return $files;
+                    }
+                }    
             }
             
         } else {
             
             $i=0;
             foreach ($objects as $object){
-                $files[$object['Tagging']] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
-                $i++;
-                if ($i>=$count){
-                    return $files;
-                }
+                $parts = explode('/', $object['Key']);
+                $partsCount = count($parts);
+                if ($partsCount == 2){
+                    $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $i++;
+                    if ($i>=$count){
+                        return $files;
+                    }
+                }    
             }
             
         }    
