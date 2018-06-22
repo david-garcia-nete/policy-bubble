@@ -336,7 +336,7 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..')
+            if($entry=='.' || $entry=='..' || filesize($tempDir . $entry)==0)
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
@@ -403,7 +403,7 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..')
+            if($entry=='.' || $entry=='..'  || filesize($tempDir . $entry)==0)
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0];
