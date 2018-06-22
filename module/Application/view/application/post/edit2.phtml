@@ -107,9 +107,8 @@ $form->prepare();
 
         <div class="img-thumbnail">
 
-            
-
-            <img src="<?= $this->url('images', ['action'=>'file'], 
+            <img title = "<?= $fileTitles[$name] ?>" 
+                 src="<?= $this->url('images', ['action'=>'file'], 
 
                     ['query'=>['name'=>$file, 'id'=>$post->getId(),  
                         'thumbnail'=>true]]); ?>">
@@ -117,8 +116,6 @@ $form->prepare();
             
 
             <div class="caption">
-
-                <h3><?php echo $fileTitles[$name]; ?></h3> 
        
                 <br>
                 

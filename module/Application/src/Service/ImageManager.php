@@ -170,7 +170,13 @@ class ImageManager
                     $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
                     // Get the actual presigned-url
-                    $files[] = (string) $request->getUri();
+                    $result = $this->s3client->headObject([
+                        'Bucket' => $this->s3bucket, 
+                        'Key' => $object['Key']
+                    ]);
+                    $metadata = $result->get('Metadata');
+                    $title = $metadata['title'];
+                    $files[$title] = (string) $request->getUri();
                     $i++;
                     if ($i>=$count){
                         return $files;
@@ -185,7 +191,13 @@ class ImageManager
                 $parts = explode('/', $object['Key']);
                 $partsCount = count($parts);
                 if ($partsCount == 2){
-                    $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $result = $this->s3client->headObject([
+                        'Bucket' => $this->s3bucket, 
+                        'Key' => $object['Key']
+                    ]);
+                    $metadata = $result->get('Metadata');
+                    $title = $metadata['title'];
+                    $files[$title] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
                     $i++;
                     if ($i>=$count){
                         return $files;
