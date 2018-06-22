@@ -393,7 +393,7 @@ class ImageManager
             $fileHandle = fopen($tempDir . $entry, 'r');
             $data = fread($fileHandle,filesize($tempDir . $entry));
             fclose($fileHandle);
-            $filesTitles[$name] = $data;
+            $fileTitles[$name] = $data;
         }
         closedir($handle);
         
@@ -438,7 +438,7 @@ class ImageManager
                             'Body' => $fileHandle,
                             'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
                             'Metadata' => [     
-                                'title' => 'test'//$fileTitles[$name]
+                                'title' => $fileTitles[$name]
                             ]
                         ]);                    
                     } catch(S3Exception $e){
