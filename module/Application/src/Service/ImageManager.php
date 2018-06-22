@@ -275,7 +275,7 @@ class ImageManager
             if($entry=='.' || $entry=='..')
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
-            $name = $name[0];
+            $name = $name[0] . '.' . $name[1];
             if(!is_dir($tempDir . '/' . $entry))
             $files[$name] = $entry;
         }
@@ -339,7 +339,7 @@ class ImageManager
             if($entry=='.' || $entry=='..' || filesize($tempDir . $entry)==0)
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
-            $name = $name[0];
+            $name = $name[0] . '.' . $name[1];
             $fileHandle = fopen($tempDir . $entry, 'r');
             $data = fread($fileHandle,filesize($tempDir . $entry));
             fclose($fileHandle);
@@ -370,7 +370,7 @@ class ImageManager
                 
                 $name = $data['file']['name'];
                 $name = explode('.', $name);
-                $name = $name[0] . '.txt';      
+                $name = $name[0] . '.' . $name[1] . '.txt';      
                 $file = $tempDir . $name;
                 $handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
                 $data = $data['file_title'];
@@ -406,7 +406,7 @@ class ImageManager
             if($entry=='.' || $entry=='..'  || filesize($tempDir . $entry)==0)
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
-            $name = $name[0];
+            $name = $name[0] . '.' . $name[1];
             $fileHandle = fopen($tempDir . $entry, 'r');
             $data = fread($fileHandle,filesize($tempDir . $entry));
             fclose($fileHandle);
@@ -445,7 +445,7 @@ class ImageManager
             if (( $file != '.' ) && ( $file != '..' )) {      
                 //copy($tempDir . $file, $permDir . $file);
                 $name = explode('.', $file);
-                $name = $name[0];
+                $name = $name[0] . '.' . $name[1];
                 if(!is_dir($tempDir . $file)){
                     $fileHandle = fopen($tempDir . $file, 'rb');
                     try{
