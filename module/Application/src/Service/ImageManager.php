@@ -109,8 +109,13 @@ class ImageManager
 
                     $request = $this->s3client->createPresignedRequest($cmd, '+1 hour');
 
-                    // Get the actual presigned-url
-                    $files[] = (string) $request->getUri();
+                    $result = $this->s3client->headObject([
+                        'Bucket' => $this->s3bucket, 
+                        'Key' => $object['Key']
+                    ]);
+                    $metadata = $result->get('Metadata');
+                    $title = $metadata['title'];
+                    $files[$title] = (string) $request->getUri();
                 }
             }
 
