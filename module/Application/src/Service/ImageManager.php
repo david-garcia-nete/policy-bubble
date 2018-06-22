@@ -120,7 +120,13 @@ class ImageManager
                 $parts = explode('/', $object['Key']);
                 $count = count($parts);
                 if ($count == 2){
-                    $files[] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $result = $this->s3client->headObject([
+                        'Bucket' => $this->s3bucket, 
+                        'Key' => $object['Key']
+                    ]);
+                    $metadata = $result->get('Metadata');
+                    $title = $metadata['title'];
+                    $files[$title] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
                 }        
             }
             
@@ -432,7 +438,7 @@ class ImageManager
                             'Body' => $fileHandle,
                             'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
                             'Metadata' => [     
-                                'title' => $fileTitles[$name]
+                                'title' => 'test'//$fileTitles[$name]
                             ]
                         ]);                    
                     } catch(S3Exception $e){
