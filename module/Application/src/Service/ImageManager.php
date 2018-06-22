@@ -184,7 +184,7 @@ class ImageManager
         
         // Check whether the directory already exists, and if not,
         // create the directory.
-        $tempDir = $this->saveToDir . 'post/' .  $id . '/';
+        $tempDir = $this->saveToDir . 'post/' . $id . '/titles/';
         if(!is_dir($tempDir)) {
             if(!mkdir($tempDir, 0755, true)) {
                 throw new \Exception('Could not create directory for uploads: '. error_get_last());
@@ -200,8 +200,6 @@ class ImageManager
                 unlink($file); // delete file
             }    
             
-            $files = array();
-            
             // Copy all files
             $objects = $this->s3client->getIterator('ListObjects', [
                 'Bucket' =>  $this->s3bucket,
@@ -211,16 +209,27 @@ class ImageManager
             foreach ($objects as $object){
                 $parts = explode('/', $object['Key']);
                 $count = count($parts);
-                $this->s3client->getObject([
-                    'Bucket' => $this->s3bucket,
-                    'Key' => $object['Key'],
-                    'SaveAs' => $tempDir . $parts[$count-1]
-                ]);
+                if ($count == 2){
+                    $tempDir = $this->saveToDir . 'post/' .  $id . '/';
+                    $this->s3client->getObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => $object['Key'],
+                        'SaveAs' => $tempDir . $parts[$count-1]
+                    ]);
+                }else{
+                    $tempDir = $this->saveToDir . 'post/' . $id . '/titles/';
+                    $this->s3client->getObject([
+                        'Bucket' => $this->s3bucket,
+                        'Key' => $object['Key'],
+                        'SaveAs' => $tempDir . $parts[$count-1]
+                    ]);
+                }    
             }
             
         }
         
         // Scan the directory and create the list of uploaded files.
+        $tempDir = $this->saveToDir . 'post/' .  $id . '/';
         $files = array();        
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
