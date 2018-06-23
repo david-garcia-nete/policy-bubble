@@ -114,8 +114,14 @@ class ImageManager
                         'Key' => $object['Key']
                     ]);
                     $metadata = $result->get('Metadata');
-                    $title = $metadata['title'];
-                    $files[$title] = (string) $request->getUri();
+                    $filename = $parts[$count-1];
+                    if(array_key_exists('title', $metadata)){
+                        $title = $metadata['title'];
+                    }else{
+                        $title = ''; 
+                    }
+                    $files[$filename]['url'] = (string) $request->getUri();
+                    $files[$filename]['title'] = $title;
                 }
             }
 
@@ -130,8 +136,14 @@ class ImageManager
                         'Key' => $object['Key']
                     ]);
                     $metadata = $result->get('Metadata');
-                    $title = $metadata['title'];
-                    $files[$title] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $filename = $parts[$count-1];
+                    if(array_key_exists('title', $metadata)){
+                        $title = $metadata['title'];
+                    }else{
+                        $title = ''; 
+                    }
+                    $files[$filename]['url'] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $files[$filename]['title'] = $title;
                 }        
             }
             
@@ -175,8 +187,15 @@ class ImageManager
                         'Key' => $object['Key']
                     ]);
                     $metadata = $result->get('Metadata');
-                    $title = $metadata['title'];
-                    $files[$title] = (string) $request->getUri();
+                    $filename = $parts[$count-1];
+                    if(array_key_exists('title', $metadata)){
+                        $title = $metadata['title'];
+                    }else{
+                        $title = ''; 
+                    }
+                    $files[$filename]['url'] = (string) $request->getUri();
+                    $files[$filename]['title'] = $title;
+                    
                     $i++;
                     if ($i>=$count){
                         return $files;
@@ -196,8 +215,15 @@ class ImageManager
                         'Key' => $object['Key']
                     ]);
                     $metadata = $result->get('Metadata');
-                    $title = $metadata['title'];
-                    $files[$title] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $filename = $parts[$count-1];
+                    if(array_key_exists('title', $metadata)){
+                        $title = $metadata['title'];
+                    }else{
+                        $title = ''; 
+                    }
+                    $files[$filename]['url'] = $this->s3client->getObjectUrl($this->s3bucket, $object['Key']);
+                    $files[$filename]['title'] = $title;
+                    
                     $i++;
                     if ($i>=$count){
                         return $files;
@@ -336,14 +362,18 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..' || filesize($tempDir . $entry)==0)
+            if($entry=='.' || $entry=='..')
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0] . '.' . $name[1];
-            $fileHandle = fopen($tempDir . $entry, 'r');
-            $data = fread($fileHandle,filesize($tempDir . $entry));
-            fclose($fileHandle);
-            $fileTitles[$name] = $data;
+            if(filesize($tempDir . $entry)==0){
+                $fileTitles[$name] = '';
+            }else{
+                $fileHandle = fopen($tempDir . $entry, 'r');
+                $data = fread($fileHandle,filesize($tempDir . $entry));
+                fclose($fileHandle);
+                $fileTitles[$name] = $data;
+            }
         }
         closedir($handle);
         
@@ -403,14 +433,18 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..'  || filesize($tempDir . $entry)==0)
+            if($entry=='.' || $entry=='..')
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0] . '.' . $name[1];
-            $fileHandle = fopen($tempDir . $entry, 'r');
-            $data = fread($fileHandle,filesize($tempDir . $entry));
-            fclose($fileHandle);
-            $fileTitles[$name] = $data;
+            if(filesize($tempDir . $entry)==0){
+                $fileTitles[$name] = '';
+            }else{
+                $fileHandle = fopen($tempDir . $entry, 'r');
+                $data = fread($fileHandle,filesize($tempDir . $entry));
+                fclose($fileHandle);
+                $fileTitles[$name] = $data;
+            }
         }
         closedir($handle);
         
