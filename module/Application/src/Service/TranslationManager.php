@@ -45,7 +45,7 @@ class TranslationManager
         if (!$lang) {
             // Some people might not have this cookie set. 
             // Set a desfault language so this function does not show a warning.   
-            $lang = $event->getRequest()->getCookie('xuage', 'en_US');
+            $lang = $event->getRequest()->getCookie()->xuage;
         }
         
         // If language is not set in the user settings or logged out drop down.
