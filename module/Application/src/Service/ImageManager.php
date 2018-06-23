@@ -298,11 +298,10 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..')
+            if($entry=='.' || $entry=='..' || is_dir($tempDir . '/' . $entry))
                 continue; // Skip current dir and parent dir.
             $name = explode('.', $entry);
             $name = $name[0] . '.' . $name[1];
-            if(!is_dir($tempDir . '/' . $entry))
             $files[$name] = $entry;
         }
         closedir($handle);
