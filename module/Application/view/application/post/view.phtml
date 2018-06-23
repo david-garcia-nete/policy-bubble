@@ -87,9 +87,9 @@ if(count($parentPosts)<1)
 <div class="row">
   <div class="col-sm-6 col-md-12">
 
-    <?php foreach($files as $title => $file): ?> 
-        <a target="_blank" href="<?= $file ?>" class="btn btn-default" role="button">             
-            <img width="240" alt="<?= $title ?>" title="<?= $title ?>" src="<?= $file ?>">    
+    <?php foreach($files as $file): ?> 
+        <a target="_blank" href="<?= $file['url'] ?>" class="btn btn-default" role="button">             
+            <img width="240" alt="<?= $file['title'] ?>" title="<?= $file['title'] ?>" src="<?= $file['url'] ?>">    
         </a>
              
     <?php endforeach; ?>
@@ -218,9 +218,9 @@ if(count($parentPosts)<1)
     <div class="row">
       <div class="col-sm-6 col-md-12">
 
-        <?php foreach($childFiles as $title => $childFile): ?>
-            <a target="_blank" href="<?= $childFile ?>" class="btn btn-default" role="button">             
-            <img width="240" alt="<?= $title ?>" title="<?= $title ?>" src="<?= $childFile ?>">    
+        <?php foreach($childFiles as $childFile): ?>
+            <a target="_blank" href="<?= $childFile['url'] ?>" class="btn btn-default" role="button">             
+            <img width="240" alt="<?= $childFile['title'] ?>" title="<?= $childFile['title'] ?>" src="<?= $childFile['url'] ?>">    
         </a>
         <?php endforeach; ?>
       </div>
