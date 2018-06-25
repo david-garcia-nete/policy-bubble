@@ -26,6 +26,11 @@ class Post
      * @ORM\Column(name="title")  
      */
     protected $title;
+    
+    /** 
+     * @ORM\Column(name="description")  
+     */
+    protected $description;
 
     /** 
      * @ORM\Column(name="content")  
@@ -149,7 +154,24 @@ class Post
     public function setStatus($status) 
     {
         $this->status = $status;
-    }   
+    } 
+    
+    /**
+     * Returns post description.
+     */
+    public function getDescription() 
+    {
+       return $this->description; 
+    }
+    
+    /**
+     * Sets post description.
+     * @param type $description
+     */
+    public function setDescription($description) 
+    {
+        $this->description = $description;
+    }
     
     /**
      * Returns post content.
