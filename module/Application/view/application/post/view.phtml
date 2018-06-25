@@ -21,8 +21,8 @@ $this->pageBreadcrumbs()->setItems([
 </h1>
 
 <p>
-    <?= $this->translate('Published:') ?> <?= $this->escapeHtml($postManager->getPostDateAsString($post)); ?> 
-    | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
+    <b><?= $this->translate('Published:') ?></b> <?= $this->escapeHtml($postManager->getPostDateAsString($post)); ?> 
+    | <b><?= $this->translate('Tags:') ?></b> <?= $this->escapeHtml($postManager->convertTagsToString($post)); ?>   
 </p>
 
     <?php
@@ -37,13 +37,13 @@ $this->pageBreadcrumbs()->setItems([
     ?>
 
  <p>
-    <?= $this->translate('Country:') ?> <?= $this->escapeHtml($translatedCountry); ?> 
-    | <?= $this->translate('Region:') ?> <?= $this->escapeHtml($translatedRegion); ?>  
-    | <?= $this->translate('City:') ?> <?= $this->escapeHtml($translatedCity); ?>  
+    <b><?= $this->translate('Country:') ?></b> <?= $this->escapeHtml($translatedCountry); ?> 
+    | <b><?= $this->translate('Region:') ?></b> <?= $this->escapeHtml($translatedRegion); ?>  
+    | <b><?= $this->translate('City:') ?></b> <?= $this->escapeHtml($translatedCity); ?>  
 </p> 
 
  <p>
-    <?= $this->translate('Author:') ?> <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
+    <b><?= $this->translate('Author:') ?></b> <a href="<?= $this->url('blog', ['action'=>'index', 'user'=>$post->getUser()->getId()]); ?>">                   
         
                     <span >
                         <?= $this->escapeHtml($post->getUser()->getFullName()); ?> 
@@ -53,7 +53,7 @@ $this->pageBreadcrumbs()->setItems([
 </p> 
 
 <p class="responses-header">
-    <?= $this->escapeHtml($responseCountString); ?> | 
+    <b><?= $this->escapeHtml($responseCountString); ?></b> | 
     <a href="<?= $this->url('posts', ['action'=>'add'], ['query' => 
                     ['id' => $post->getId()]]); ?>">
         <?= $this->translate('Add new response') ?>
@@ -64,17 +64,17 @@ $this->pageBreadcrumbs()->setItems([
 $parentPosts = $post->getParentPosts();
 foreach ($parentPosts as $parent):
     ?>
-    <p><?= $this->translate('Response to:') ?><a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
+    <p><b><?= $this->translate('Response to:') ?></b><a href="<?= $this->url('posts', ['action' => 'view', 'id' => $parent->getId()]); ?>">
             <?= $this->escapeHtml($parent->getTitle()); ?>
         </a>   
     </p>
 <?php endforeach; 
 if(count($parentPosts)<1)
-    echo $this->translate('<p>Response to: None');
+    echo $this->translate('<p><b>Response to:</b> None');
 ?>
     
 <p>    
-    <?= $this->translate('Description:') ?>
+    <b><?= $this->translate('Description:') ?></b>
 </p>
 
 <p>    
@@ -82,7 +82,7 @@ if(count($parentPosts)<1)
 </p>
 
 <p>    
-    <?= $this->translate('Content:') ?>
+    <b><?= $this->translate('Content:') ?></b>
 </p>
 
 <p>    
@@ -200,20 +200,24 @@ if(count($parentPosts)<1)
     </h3>
     
     <p>
-        <?= $this->translate('Published:') ?> <?= $this->escapeHtml($postManager->getPostDateAsString($childPost)); ?> 
-        | <?= $this->translate('Tags:') ?> <?= $this->escapeHtml($postManager->convertTagsToString($childPost)); ?>   
+        <b><?= $this->translate('Published:') ?></b> <?= $this->escapeHtml($postManager->getPostDateAsString($childPost)); ?> 
+        | <b><?= $this->translate('Tags:') ?></b> <?= $this->escapeHtml($postManager->convertTagsToString($childPost)); ?>   
     </p>    
         
     <p class="responses-header">
-        <?= $this->escapeHtml($postManager->getResponseCountStr($childPost)); ?> | 
+        <b><?= $this->escapeHtml($postManager->getResponseCountStr($childPost)); ?></b> | 
         <a href="<?= $this->url('posts', ['action'=>'view', 'id'=>$childPost->getId()],
                 ['fragment'=>'response']); ?>">
             <?= $this->translate('Add new response') ?>
         </a>
     </p>
-
+    
     <p>    
-        <?= $this->escapeHtml($childPost->getContent()); ?>
+        <b><?= $this->translate('Description:') ?></b>
+    </p>
+    
+    <p>    
+        <?= substr(nl2br($this->escapeHtml($childPost->getDescription())), 0, 500) ?> &hellip;
     </p>
     
     <?php 
