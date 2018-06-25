@@ -1096,16 +1096,24 @@ msgid "Continue"
 msgstr "Continuar"
 
 #: ../application/post/add2.phtml
-msgid "button.  To finish, do not select files.  Resize to square if photos appear sideways."
-msgstr "Para finalizar, no seleccione archivos. Cambie el tamaño a la forma cuadrada si las fotos aparecen de lado."
+msgid "button.  To finish, do not select a file.  Resize to square if the photo appears sideways."
+msgstr "Para finalizar, no seleccione un archivo. Cambie el tamaño a la forma cuadrada si la foto aparece de lado."
 
 #: ../application/post/add2.phtml
 msgid "(PNG and JPG formats are allowed)"
 msgstr "(Se permiten formatos PNG y JPG)"
 
 #: ../application/post/add2.phtml
-msgid "Image files"
-msgstr "Archivos de Imagen"
+msgid "Image file"
+msgstr "Archivo de imagen"
+
+#: ../application/post/add2.phtml
+msgid "Image title"
+msgstr "Título de la imagen"
+
+#: ../application/post/add2.phtml
+msgid "Enter image title here"
+msgstr "Introduce el título de la imagen aquí"
 
 #: ../application/post/add2.phtml
 msgid "Remove"

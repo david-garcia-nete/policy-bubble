@@ -100,6 +100,19 @@ class PostForm extends Form
         }
         
         else if ($step==2) {
+
+            // Add "file" field.
+            $this->add([
+                'type'  => 'file',
+                'name' => 'file',
+                'attributes' => [                
+                    'id' => 'file',
+                    'multiple' => false
+                ],
+                'options' => [
+                    'label' => 'Image file',
+                ],
+            ]);   
             
             // Add "title" field
             $this->add([        
@@ -113,18 +126,6 @@ class PostForm extends Form
                 ],
             ]);
             
-            // Add "file" field.
-            $this->add([
-                'type'  => 'file',
-                'name' => 'file',
-                'attributes' => [                
-                    'id' => 'file',
-                    'multiple' => false
-                ],
-                'options' => [
-                    'label' => 'Image files',
-                ],
-            ]);      
         }
         
         else if ($step==3) {
