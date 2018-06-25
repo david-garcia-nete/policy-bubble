@@ -99,7 +99,7 @@ class IndexController extends AbstractActionController
                 $data = $form->getData();
                 $locale = $data['language'];
                 
-                $cookie = new SetCookie(xuage, $locale);
+                $cookie = new SetCookie('xuage', $locale);
                 $this->getResponse()->getHeaders()->addHeader($cookie);
                 
                 // Redirect to "Home" page

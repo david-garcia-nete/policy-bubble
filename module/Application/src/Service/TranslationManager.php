@@ -79,7 +79,7 @@ class TranslationManager
             $geoplugin->locate();
             if (array_key_exists($geoplugin->countryCode, $this->countryLanguage)){
                 $lang = $this->countryLanguage[$geoplugin->countryCode];
-                $cookie = new SetCookie(geoLanguage, $lang);
+                $cookie = new SetCookie('geoLanguage', $lang);
                 $object->getResponse()->getHeaders()->addHeader($cookie);
             }
         }else{
