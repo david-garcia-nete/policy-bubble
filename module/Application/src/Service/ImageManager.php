@@ -380,6 +380,72 @@ class ImageManager
         return $fileTitles;
     }
     
+    public function getAddTempFileTitles($id, $dirty) 
+    {
+        // The directory where we plan to save uploaded files.
+        
+        // Check whether the directory already exists, and if not,
+        // create the directory.
+        $tempDir = $this->saveToDir . 'user/' . $id . '/titles/';
+        if(!is_dir($tempDir)) {
+            if(!mkdir($tempDir, 0755, true)) {
+                throw new \Exception('Could not create directory for uploads: '. error_get_last());
+            }
+        }
+        
+        if (!$dirty){
+            
+            // Delete all files
+            $paths = glob($tempDir . '*'); // get all file names
+            foreach($paths as $file){ // iterate files
+                if(is_file($file))
+                unlink($file); // delete file
+            }    
+            
+            $files = array();
+            
+            // Copy all files
+            $objects = $this->s3client->getIterator('ListObjects', [
+                'Bucket' =>  $this->s3bucket,
+                'Prefix' =>  $id . '/titles'
+            ]);
+
+            foreach ($objects as $object){
+                $parts = explode('/', $object['Key']);
+                $count = count($parts);
+                $this->s3client->getObject([
+                    'Bucket' => $this->s3bucket,
+                    'Key' => $object['Key'],
+                    'SaveAs' => $tempDir . $parts[$count-1]
+                ]);
+            }
+            
+        }
+        
+        // Scan the directory and create the list of uploaded files.
+        $fileTitles = array(); 
+        $handle  = opendir($tempDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            $name = explode('.', $entry);
+            $name = $name[0] . '.' . $name[1];
+            if(filesize($tempDir . $entry)==0){
+                $fileTitles[$name] = '';
+            }else{
+                $fileHandle = fopen($tempDir . $entry, 'r');
+                $data = fread($fileHandle,filesize($tempDir . $entry));
+                fclose($fileHandle);
+                $fileTitles[$name] = $data;
+            }
+        }
+        closedir($handle);
+        
+        // Return the list of uploaded files.
+        return $fileTitles;
+    }
+    
     /**
      * Creates the temp image title file.
      */
@@ -391,6 +457,35 @@ class ImageManager
                 // Check whether the directory already exists, and if not,
                 // create the directory.
                 $tempDir = $this->saveToDir . 'post/' .  $id . '/titles/';
+                if(!is_dir($tempDir)) {
+                    if(!mkdir($tempDir, 0755, true)) {
+                        throw new \Exception('Could not create directory for uploads: '. error_get_last());
+                    }
+                }
+                
+                $name = $data['file']['name'];
+                $name = explode('.', $name);
+                $name = $name[0] . '.' . $name[1] . '.txt';      
+                $file = $tempDir . $name;
+                $handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
+                $data = $data['file_title'];
+                fwrite($handle, $data);
+                fclose($handle);
+            }
+        }
+    }
+    
+    /**
+     * Creates the temp image title file.
+     */
+    public function createAddTitleFile($id, $data) 
+    {
+        if (array_key_exists('file', $data)) {
+            if ($data['file']['size'] > 0) {
+                // The directory where we plan to save uploaded files.
+                // Check whether the directory already exists, and if not,
+                // create the directory.
+                $tempDir = $this->saveToDir . 'user/' . $id . '/titles/';
                 if(!is_dir($tempDir)) {
                     if(!mkdir($tempDir, 0755, true)) {
                         throw new \Exception('Could not create directory for uploads: '. error_get_last());
@@ -516,6 +611,7 @@ class ImageManager
      */
     public function getAddTempFiles($id, $dirty) 
     {
+        
         // The directory where we plan to save uploaded files.
         
         // Check whether the directory already exists, and if not,
@@ -541,10 +637,11 @@ class ImageManager
         $handle  = opendir($tempDir);
         while (false !== ($entry = readdir($handle))) {
             
-            if($entry=='.' || $entry=='..')
+            if($entry=='.' || $entry=='..' || is_dir($tempDir . '/' . $entry))
                 continue; // Skip current dir and parent dir.
-            
-            $files[] = $entry;
+            $name = explode('.', $entry);	
+            $name = $name[0] . '.' . $name[1];	            
+            $files[$name] = $entry;
         }
         closedir($handle);
         
@@ -569,26 +666,80 @@ class ImageManager
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . 'user/' . $userId . '/';
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/titles';
+        // Scan the directory and create the list of uploaded files.
+        $fileTitles = array();        
+        $handle  = opendir($tempDir);
+        while (false !== ($entry = readdir($handle))) {
+            
+            if($entry=='.' || $entry=='..')
+                continue; // Skip current dir and parent dir.
+            $name = explode('.', $entry);
+            $name = $name[0] . '.' . $name[1];
+            if(filesize($tempDir . $entry)==0){
+                $fileTitles[$name] = '';
+            }else{
+                $fileHandle = fopen($tempDir . $entry, 'r');
+                $data = fread($fileHandle,filesize($tempDir . $entry));
+                fclose($fileHandle);
+                $fileTitles[$name] = $data;
+            }
+        }
+        closedir($handle);
+        
         $dir = opendir($tempDir);  
         while(false !== ( $file = readdir($dir)) ) { 
             if (( $file != '.' ) && ( $file != '..' )) {      
                 //copy($tempDir . $file, $permDir . $file);
+                $fileHandle = fopen($tempDir . $file, 'rb');
                 try{
                     $this->s3client->putObject([
                         'Bucket' => $this->s3bucket,
-                        'Key' => $post->getId() . '/' . $file,
-                        'Body' => fopen($tempDir . $file, 'rb'),
+                        'Key' => $post->getId() . '/titles/' . $file,
+                        'Body' => $fileHandle,
                         'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read'
                     ]);                    
                 } catch(S3Exception $e){
                     die ("There was an error uploading that file.");
                 }
+                fclose($fileHandle);
             } 
         }  
         closedir($dir);
 
-        // Remove temp dir
+        // Copy all files
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/';
+        $dir = opendir($tempDir);  
+        while(false !== ( $file = readdir($dir)) ) { 
+            if (( $file != '.' ) && ( $file != '..' )) {      
+                //copy($tempDir . $file, $permDir . $file);
+                $name = explode('.', $file);
+                $name = $name[0] . '.' . $name[1];
+                if(!is_dir($tempDir . $file)){
+                    $fileHandle = fopen($tempDir . $file, 'rb');
+                    try{
+                        $this->s3client->putObject([
+                            'Bucket' => $this->s3bucket,
+                            'Key' => $post->getId() . '/' . $file,
+                            'Body' => $fileHandle,
+                            'ACL' => $post->getStatus() == Post::STATUS_DRAFT ? 'private' : 'public-read',
+                            'Metadata' => [     
+                                'title' => $fileTitles[$name]
+                            ]
+                        ]);                    
+                    } catch(S3Exception $e){
+                        die ("There was an error uploading that file.");
+                    }
+                    fclose($fileHandle);
+                }    
+            } 
+        }  
+        closedir($dir);
+
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/titles/';
+        array_map('unlink', glob($tempDir . '*.*'));
+        rmdir($tempDir);
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/';
         array_map('unlink', glob($tempDir . '*.*'));
         rmdir($tempDir);
         

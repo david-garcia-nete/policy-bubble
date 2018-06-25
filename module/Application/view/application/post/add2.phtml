@@ -10,6 +10,11 @@ $form = $this->form;
 $form->get('file')->setAttributes([
     'label'=>$this->translate('Image file')     
     ]);
+$form->get('file_title')->setAttributes([
+    'class'=>'form-control', 
+    'placeholder'=>$this->translate('Enter image title here'),
+    'label'=>$this->translate('Image title')     
+    ]);
 $form->get('submit')->setAttributes(['class'=>'btn btn-primary']);
 $form->get('submit')->setValue($this->translate('Continue'));
 
@@ -52,6 +57,14 @@ $form->prepare();
             <div class="hint"><?= $this->translate('(PNG and JPG formats are allowed)') ?></div>
 
         </div>
+        
+        <div class="form-group">
+            <?= $this->formLabel($form->get('file_title')); ?>
+            
+            <?= $this->formElement($form->get('file_title')); ?>
+            
+            <?= $this->formElementErrors($form->get('file_title')); ?>                  
+        </div>
 
                 
 
@@ -91,14 +104,15 @@ $form->prepare();
 
 
 
-        <?php foreach($files as $file): ?>  
+        <?php foreach($files as $name => $file): ?>  
 
 
         <div class="img-thumbnail">
 
             
 
-            <img src="<?= $this->url('images', ['action'=>'addFile'], 
+            <img title = "<?= $fileTitles[$name] ?>" 
+                 src="<?= $this->url('images', ['action'=>'addFile'], 
 
                     ['query'=>['name'=>$file, 'id'=>$user->getId(),  
                         'thumbnail'=>true]]); ?>">

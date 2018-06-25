@@ -251,25 +251,6 @@ class PostForm extends Form
         
         if ($step==2) {
             
-            $inputFilter->add([
-                    'name'     => 'file_title',
-                    'required' => false,
-                    'filters'  => [
-                        ['name' => 'StringTrim'],
-                        ['name' => 'StripTags'],
-                        ['name' => 'StripNewlines'],
-                    ],                
-                    'validators' => [
-                        [
-                            'name'    => 'StringLength',
-                            'options' => [
-                                'min' => 1,
-                                'max' => 1024
-                            ],
-                        ],
-                    ],
-                ]);
-            
             // Add validation rules for the "file" field.	 
             $inputFilter->add([
                     'type'     => 'Zend\InputFilter\FileInput',
@@ -314,7 +295,27 @@ class PostForm extends Form
                             ]
                         ]
                     ],   
-                ]); 
+                ]);
+            
+            $inputFilter->add([
+                    'name'     => 'file_title',
+                    'required' => false,
+                    'filters'  => [
+                        ['name' => 'StringTrim'],
+                        ['name' => 'StripTags'],
+                        ['name' => 'StripNewlines'],
+                    ],                
+                    'validators' => [
+                        [
+                            'name'    => 'StringLength',
+                            'options' => [
+                                'min' => 1,
+                                'max' => 1024
+                            ],
+                        ],
+                    ],
+                ]);
+            
         }
         
         if ($step==3) {

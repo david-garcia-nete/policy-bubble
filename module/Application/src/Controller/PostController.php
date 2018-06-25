@@ -109,6 +109,7 @@ class PostController extends AbstractActionController
         
         // Create image holder.
         $files = null;
+        $fileTitles = null;
                
         // Create the form.
         $form = new AddPostForm($step, $user->getId(), $this->translator);
@@ -139,6 +140,9 @@ class PostController extends AbstractActionController
                 if($fileExists == false){
                     $step ++;
                     $this->sessionContainer->addUserChoices['addStepCount'] = $step;
+                } else{
+                    // Create the title file.
+                    $this->imageManager->createAddTitleFile($user->getId(), $data);
                 }
                 
                 if ($step>4) {
@@ -170,6 +174,8 @@ class PostController extends AbstractActionController
             // Get the list of already saved files.
             $files = $this->imageManager->getAddTempFiles($user->getId(), 
                     $this->sessionContainer->addUserChoices['addStep2Dirty']);
+            $fileTitles = $this->imageManager->getAddTempFileTitles($user->getId(), 
+                    $this->sessionContainer->userChoices['step2Dirty']);
             $this->sessionContainer->addUserChoices['addStep2Dirty'] = true;  
         }
 
@@ -194,6 +200,7 @@ class PostController extends AbstractActionController
         // Render the view template.
         $viewModel = new ViewModel([
             'files' => $files,
+            'fileTitles' => $fileTitles,
             'form' => $form,
             'user' => $user
         ]);

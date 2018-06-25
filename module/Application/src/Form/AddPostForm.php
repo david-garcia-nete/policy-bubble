@@ -105,12 +105,25 @@ class AddPostForm extends Form
                 'name' => 'file',
                 'attributes' => [                
                     'id' => 'file',
-                    'multiple' => 'true'
+                    'multiple' => 'false'
                 ],
                 'options' => [
-                    'label' => 'Image files',
+                    'label' => 'Image file',
                 ],
-            ]);      
+            ]); 
+            
+            // Add "title" field
+            $this->add([        
+                'type'  => 'text',
+                'name' => 'file_title',
+                'attributes' => [
+                    'id' => 'file_title'
+                ],
+                'options' => [
+                    'label' => 'Image title',
+                ],
+            ]);
+
         }
         
         else if ($step==3) {
@@ -280,7 +293,27 @@ class AddPostForm extends Form
                             ]
                         ]
                     ],   
-                ]); 
+                ]);
+            
+            $inputFilter->add([
+                    'name'     => 'file_title',
+                    'required' => false,
+                    'filters'  => [
+                        ['name' => 'StringTrim'],
+                        ['name' => 'StripTags'],
+                        ['name' => 'StripNewlines'],
+                    ],                
+                    'validators' => [
+                        [
+                            'name'    => 'StringLength',
+                            'options' => [
+                                'min' => 1,
+                                'max' => 1024
+                            ],
+                        ],
+                    ],
+                ]);
+            
         }
         
         if ($step==3) {
