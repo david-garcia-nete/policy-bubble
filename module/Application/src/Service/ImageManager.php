@@ -666,7 +666,7 @@ class ImageManager
         }
         
         // Copy all files
-        $tempDir = $this->saveToDir . 'user/' . $userId . '/titles';
+        $tempDir = $this->saveToDir . 'user/' . $userId . '/titles/';
         // Scan the directory and create the list of uploaded files.
         $fileTitles = array();        
         $handle  = opendir($tempDir);
