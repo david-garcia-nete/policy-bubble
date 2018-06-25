@@ -1152,6 +1152,14 @@ msgid "Enter post title here"
 msgstr "Ingrese el título del post aquí"
 
 #: ../application/post/add1.phtml
+msgid "Description"
+msgstr "Descripción"
+
+#: ../application/post/add1.phtml
+msgid "Write a short description here"
+msgstr "Escriba una breve descripción aquí"
+
+#: ../application/post/add1.phtml
 msgid "Content"
 msgstr "Contenido"
 
@@ -1471,8 +1479,16 @@ msgid "Add new response"
 msgstr "Agregar nueva respuesta"
 
 #: ../application/blog/index.phtml
-msgid "<p>Response to: None"
-msgstr "<p>Respuesta a: Ninguna"
+msgid "<p><b>Response to:</b> None</p>"
+msgstr "<p><b>Respuesta a:</b> Ninguna</p>"
+
+#: ../application/blog/index.phtml
+msgid "Description:"
+msgstr "Descripción:"
+
+#: ../application/post/view.phtml
+msgid "Content:"
+msgstr "Contenido:"
 
 #: ../application/blog/index.phtml
 msgid "There are no images to display."

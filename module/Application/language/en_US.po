@@ -1162,6 +1162,14 @@ msgid "Enter post title here"
 msgstr ""
 
 #: ../application/post/add1.phtml
+msgid "Description"
+msgstr ""
+
+#: ../application/post/add1.phtml
+msgid "Write a short description here"
+msgstr ""
+
+#: ../application/post/add1.phtml
 msgid "Content"
 msgstr ""
 
@@ -1481,7 +1489,15 @@ msgid "Add new response"
 msgstr ""
 
 #: ../application/blog/index.phtml
-msgid "<p>Response to: None"
+msgid "<p><b>Response to:</b> None</p>"
+msgstr ""
+
+#: ../application/blog/index.phtml
+msgid "Description:"
+msgstr ""
+
+#: ../application/post/view.phtml
+msgid "Content:"
 msgstr ""
 
 #: ../application/blog/index.phtml
