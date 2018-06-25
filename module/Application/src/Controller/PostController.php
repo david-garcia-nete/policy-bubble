@@ -376,6 +376,7 @@ class PostController extends AbstractActionController
             if ($step==1) {
                 $data = [
                     'title' => $post->getTitle(),
+                    'description' => $post->getDescription(),
                     'content' => $post->getContent(),
                     'tags' => $this->postManager->convertTagsToString($post),
                     'status' => $post->getStatus()

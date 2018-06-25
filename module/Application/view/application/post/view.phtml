@@ -1,5 +1,8 @@
 <?php
 $this->headTitle($post->getTitle());
+$this->headMeta()->appendName('description', $post->getDescription());
+$this->headMeta()->appendName('author', $post->getUser()->getFullName());
+$this->headMeta()->appendName('keywords', $postManager->convertTagsToString($post));
 $this->mainMenu()->setActiveItemId('posts');
 $this->pageBreadcrumbs()->setItems([
             $this->translate('Home')=>$this->url('home'),
@@ -69,6 +72,18 @@ foreach ($parentPosts as $parent):
 if(count($parentPosts)<1)
     echo $this->translate('<p>Response to: None');
 ?>
+    
+<p>    
+    <?= $this->translate('Description:') ?>
+</p>
+
+<p>    
+    <?= nl2br($this->escapeHtml($post->getDescription())) ?>
+</p>
+
+<p>    
+    <?= $this->translate('Content:') ?>
+</p>
 
 <p>    
     <?= nl2br($this->escapeHtml($post->getContent())) ?>

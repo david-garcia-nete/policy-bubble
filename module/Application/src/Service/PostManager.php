@@ -56,6 +56,7 @@ class PostManager
         // Create new Post entity.
         $post = new Post();
         $post->setTitle($data['title']);
+        $post->setDescription($data['description']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
         $post->setUser($user);
@@ -113,6 +114,7 @@ class PostManager
     public function updatePost($post, $data) 
     {
         $post->setTitle($data['title']);
+        $post->setDescription($data['description']);
         $post->setContent($data['content']);
         $post->setStatus($data['status']);
         

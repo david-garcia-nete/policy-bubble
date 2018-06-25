@@ -55,6 +55,18 @@ class PostForm extends Form
                     'label' => 'Title',
                 ],
             ]);
+            
+            // Add "description" field
+            $this->add([
+                'type'  => 'textarea',
+                'name' => 'description',
+                'attributes' => [                
+                    'id' => 'description'
+                ],
+                'options' => [
+                    'label' => 'Description',
+                ],
+            ]);
 
             // Add "content" field
             $this->add([
@@ -198,6 +210,23 @@ class PostForm extends Form
                         ],
                     ],
                 ]);
+            
+            $inputFilter->add([
+                    'name'     => 'description',
+                    'required' => true,
+                    'filters'  => [                    
+                        ['name' => 'StripTags'],
+                    ],                
+                    'validators' => [
+                        [
+                            'name'    => 'StringLength',
+                            'options' => [
+                                'min' => 1,
+                                'max' => 4096
+                            ],
+                        ],
+                    ],
+                ]);   
 
             $inputFilter->add([
                     'name'     => 'content',
@@ -210,7 +239,7 @@ class PostForm extends Form
                             'name'    => 'StringLength',
                             'options' => [
                                 'min' => 1,
-                                'max' => 4096
+                                'max' => 65535
                             ],
                         ],
                     ],
