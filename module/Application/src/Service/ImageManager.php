@@ -150,7 +150,9 @@ class ImageManager
         }    
                
         // Return the list of uploaded files.
+        natcasesort($files);
         return $files;
+        
     }
     
     /**
@@ -198,7 +200,9 @@ class ImageManager
                     
                     $i++;
                     if ($i>=$count){
+                        natcasesort($files);
                         return $files;
+                        
                     }
                 }    
             }
@@ -226,7 +230,9 @@ class ImageManager
                     
                     $i++;
                     if ($i>=$count){
+                        natcasesort($files);
                         return $files;
+                        
                     }
                 }    
             }
@@ -234,7 +240,9 @@ class ImageManager
         }    
                
         // Return the list of uploaded files.
+        natcasesort($files);
         return $files;
+        
    
     }
     
@@ -307,7 +315,9 @@ class ImageManager
         closedir($handle);
         
         // Return the list of uploaded files.
+        natcasesort($files);
         return $files;
+        
     }
     
     /**
@@ -648,7 +658,9 @@ class ImageManager
         closedir($handle);
         
         // Return the list of uploaded files.
+        natcasesort($files);
         return $files;
+        
     }
     
     /**

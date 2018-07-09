@@ -1106,7 +1106,7 @@ msgid "Continue"
 msgstr ""
 
 #: ../application/post/add2.phtml
-msgid "button.  To finish, do not select a file.  Resize to square if the photo appears sideways.  Image titles will not be shown on mobile devices but they will help with search engine optimization."
+msgid "button.  To finish, do not select a file.  Resize to square if the photo appears sideways.  Image titles will not be shown on mobile devices but they will help with search engine optimization.  Images are sorted by file name, not title."
 msgstr ""
 
 #: ../application/post/add2.phtml
