@@ -469,6 +469,7 @@ class ImageManager
                 $file = $tempDir . $name;
                 $handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
                 $data = $data['file_title'];
+                $data = htmlspecialchars ($data);
                 fwrite($handle, $data);
                 fclose($handle);
             }
@@ -498,6 +499,7 @@ class ImageManager
                 $file = $tempDir . $name;
                 $handle = fopen($file, 'w') or die('Cannot open file:  '.$file);
                 $data = $data['file_title'];
+                $data = htmlspecialchars ($data);
                 fwrite($handle, $data);
                 fclose($handle);
             }
