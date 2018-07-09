@@ -1096,8 +1096,8 @@ msgid "Continue"
 msgstr "Continuar"
 
 #: ../application/post/add2.phtml
-msgid "button.  To finish, do not select a file.  Resize to square if the photo appears sideways."
-msgstr "Para finalizar, no seleccione un archivo. Cambie el tamaño a la forma cuadrada si la foto aparece de lado."
+msgid "button.  To finish, do not select a file.  Resize to square if the photo appears sideways.  Image titles will not be shown on mobile devices but they will help with search engine optimization."
+msgstr "Para finalizar, no seleccione un archivo. Cambie el tamaño a la forma cuadrada si la foto aparece de lado. Los títulos de las imágenes no se mostrarán en los dispositivos móviles, pero ayudarán con la optimización del motor de búsqueda."
 
 #: ../application/post/add2.phtml
 msgid "(PNG and JPG formats are allowed)"
