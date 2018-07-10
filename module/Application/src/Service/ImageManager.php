@@ -826,6 +826,11 @@ class ImageManager
         $temp = $this->saveToDir . 'post/' . $postId . '/' . $fileName;
 
         unlink($temp); // delete file
+        
+        // The directory where we plan to save uploaded files.
+        $temp = $this->saveToDir . 'post/' . $postId . '/titles/' . $fileName . '.txt';
+
+        unlink($temp); // delete file
     }
     
     /**
@@ -839,6 +844,11 @@ class ImageManager
         //
         // The directory where we plan to save uploaded files.
         $temp = $this->saveToDir . 'user/' . $userId . '/' . $fileName;
+
+        unlink($temp); // delete file
+        
+         // The directory where we plan to save uploaded files.
+        $temp = $this->saveToDir . 'user/' . $userId . '/' . $fileName . '.txt';
 
         unlink($temp); // delete file
     }
