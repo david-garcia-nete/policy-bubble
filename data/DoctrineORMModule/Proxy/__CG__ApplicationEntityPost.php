@@ -64,10 +64,10 @@ class Post extends \Application\Entity\Post implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'title', 'content', 'status', 'dateCreated', 'comments', 'tags', 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'parentPosts', 'childPosts', 'geography'];
+            return ['__isInitialized__', 'id', 'title', 'description', 'content', 'status', 'dateCreated', 'comments', 'tags', 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'parentPosts', 'childPosts', 'geography'];
         }
 
-        return ['__isInitialized__', 'id', 'title', 'content', 'status', 'dateCreated', 'comments', 'tags', 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'parentPosts', 'childPosts', 'geography'];
+        return ['__isInitialized__', 'id', 'title', 'description', 'content', 'status', 'dateCreated', 'comments', 'tags', 'user', '' . "\0" . 'Application\\Entity\\Post' . "\0" . 'parentPosts', 'childPosts', 'geography'];
     }
 
     /**
@@ -241,6 +241,28 @@ class Post extends \Application\Entity\Post implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setStatus', [$status]);
 
         return parent::setStatus($status);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', []);
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription($description)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', [$description]);
+
+        return parent::setDescription($description);
     }
 
     /**
