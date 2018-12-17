@@ -52,16 +52,16 @@ $this->pageBreadcrumbs()->setItems(array(
 ?> 
 </h4>
 
-<h3><?= $this->translate('Public Tags') ?></h3>
+<h3><?= $this->translate('Distinct Public Tags') ?></h3>
 
 <h4>
 <?php
     echo count( $this->entityManager->getRepository(Post::class)
-                    ->findPublishedTags());
+                    ->findDistinctPublishedTags());
 ?> 
 </h4>
 
-<h3><?= $this->translate('Public Countries') ?></h3>
+<h3><?= $this->translate('Distinct Public Countries') ?></h3>
 
 <h4>
 <?php
@@ -70,7 +70,7 @@ $this->pageBreadcrumbs()->setItems(array(
 ?> 
 </h4>
 
-<h3><?= $this->translate('Public Regions') ?></h3>
+<h3><?= $this->translate('Distinct Public Regions') ?></h3>
 
 <h4>
 <?php
@@ -79,7 +79,7 @@ $this->pageBreadcrumbs()->setItems(array(
 ?> 
 </h4>
 
-<h3><?= $this->translate('Public Cities') ?></h3>
+<h3><?= $this->translate('Distinct Public Cities') ?></h3>
 
 <h4>
 <?php

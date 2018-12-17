@@ -258,7 +258,7 @@ class PostRepository extends EntityRepository
      * @return array
      */
     
-     public function findPublishedTags()
+     public function findDistinctPublishedTags()
     {
         $entityManager = $this->getEntityManager();
         

@@ -1607,20 +1607,20 @@ msgid "Public Responses"
 msgstr "Respuestas Públicas"
 
 #: ../application/index/analysis.phtml
-msgid "Public Tags"
-msgstr "Etiquetas Públicas"
+msgid "Distinct Public Tags"
+msgstr "Distintas Etiquetas Públicas"
 
 #: ../application/index/analysis.phtml
-msgid "Public Countries"
-msgstr "Países Públicos"
+msgid "Distinct Public Countries"
+msgstr "Distintos Países Públicos"
 
 #: ../application/index/analysis.phtml
-msgid "Public Regions"
-msgstr "Regiones Públicas"
+msgid "Distinct Public Regions"
+msgstr "Distintas Regiones Públicas"
 
 #: ../application/index/analysis.phtml
-msgid "Public Cities"
-msgstr "Ciudades Públicas"
+msgid "Distinct Public Cities"
+msgstr "Distintas Ciudades Públicas"
 
 #: ../application/index/contact-us.phtml ../application/index/send-error.phtml
 #: ../application/index/thank-you.phtml

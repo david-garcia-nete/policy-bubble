@@ -1617,19 +1617,19 @@ msgid "Public Responses"
 msgstr ""
 
 #: ../application/index/analysis.phtml
-msgid "Public Tags"
+msgid "Distinct Public Tags"
 msgstr ""
 
 #: ../application/index/analysis.phtml
-msgid "Public Countries"
+msgid "Distinct Public Countries"
 msgstr ""
 
 #: ../application/index/analysis.phtml
-msgid "Public Regions"
+msgid "Distinct Public Regions"
 msgstr ""
 
 #: ../application/index/analysis.phtml
-msgid "Public Cities"
+msgid "Distinct Public Cities"
 msgstr ""
 
 #: ../application/index/contact-us.phtml
