@@ -1375,6 +1375,10 @@ msgid "ID"
 msgstr "ID"
 
 #: ../application/post/manage.phtml
+msgid "Global ID"
+msgstr "ID Global"
+
+#: ../application/post/manage.phtml
 msgid "Post Title"
 msgstr "Título de Publicación"
 
@@ -1560,11 +1564,23 @@ msgstr "Olvidó Contraseña"
 
 #: ../application/index/analysis.phtml
 msgid "Number of:"
-msgstr "Número  de:"
+msgstr "Número de:"
 
 #: ../application/index/analysis.phtml
 msgid "Users"
 msgstr "Usuarios"
+
+#: ../application/index/analysis.phtml
+msgid "User Accounts"
+msgstr "Cuentas de Usuario"
+
+#: ../application/index/analysis.phtml
+msgid "Public Posts"
+msgstr "Publicaciones Públicas"
+
+#: ../application/index/analysis.phtml
+msgid "Private Posts"
+msgstr "Publicaciones Privadas"
 
 #: ../application/index/analysis.phtml
 msgid "Responses"
@@ -1585,6 +1601,26 @@ msgstr "Regiones"
 #: ../application/index/analysis.phtml
 msgid "Cities"
 msgstr "Ciudades"
+
+#: ../application/index/analysis.phtml
+msgid "Public Responses"
+msgstr "Respuestas Públicas"
+
+#: ../application/index/analysis.phtml
+msgid "Public Tags"
+msgstr "Etiquetas Públicas"
+
+#: ../application/index/analysis.phtml
+msgid "Public Countries"
+msgstr "Países Públicos"
+
+#: ../application/index/analysis.phtml
+msgid "Public Regions"
+msgstr "Regiones Públicas"
+
+#: ../application/index/analysis.phtml
+msgid "Public Cities"
+msgstr "Ciudades Públicas"
 
 #: ../application/index/contact-us.phtml ../application/index/send-error.phtml
 #: ../application/index/thank-you.phtml
@@ -1719,7 +1755,7 @@ msgstr "Leer"
 #: ../application/index/index.phtml ../src/Service/NavManager.php:
 #: ../application/index/analysis.phtml
 msgid "Posts"
-msgstr "Publicación"
+msgstr "Publicaciones"
 
 #: ../application/index/index.phtml
 msgid "Tell how policies are affecting your area."

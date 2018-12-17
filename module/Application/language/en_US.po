@@ -1385,6 +1385,10 @@ msgid "ID"
 msgstr ""
 
 #: ../application/post/manage.phtml
+msgid "Global ID"
+msgstr ""
+
+#: ../application/post/manage.phtml
 msgid "Post Title"
 msgstr ""
 
@@ -1577,6 +1581,18 @@ msgid "Users"
 msgstr ""
 
 #: ../application/index/analysis.phtml
+msgid "User Accounts"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Posts"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Private Posts"
+msgstr ""
+
+#: ../application/index/analysis.phtml
 msgid "Responses"
 msgstr ""
 
@@ -1594,6 +1610,26 @@ msgstr ""
 
 #: ../application/index/analysis.phtml
 msgid "Cities"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Responses"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Tags"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Countries"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Regions"
+msgstr ""
+
+#: ../application/index/analysis.phtml
+msgid "Public Cities"
 msgstr ""
 
 #: ../application/index/contact-us.phtml
