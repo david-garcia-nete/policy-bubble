@@ -5,6 +5,8 @@ use Application\Entity\Comment;
 use Application\Entity\Tag;
 use Application\Entity\Geography;
 use Zend\Filter\StaticFilter;
+use GeoIp2\Database\Reader;
+
 /**
  * The PostManager service is responsible for adding new posts, updating existing
  * posts, adding tags to post, etc.
@@ -80,6 +82,9 @@ class PostManager
         
         // Create new Geography entity.
         $geography = new Geography();
+        
+        
+        
         $this->geoPlugin->locate();
         $geography->setPost($post);
         $geography->setRequest($this->geoPlugin->request);
@@ -100,6 +105,14 @@ class PostManager
         $geography->setCurrencySymbol($this->geoPlugin->currencySymbol);
         $geography->setCurrencySymbolUtf8($this->geoPlugin->currencySymbolUtf8);
         $geography->setCurrencyConverter($this->geoPlugin->currencyConverter);
+        
+        
+        $reader = new Reader('/usr/local/share/GeoIP/GeoIP2-City.mmdb');
+        $record = $reader->city($_SERVER['REMOTE_ADDR']);
+        $geography->setCity($record->city->name);
+        $geography->setRegion($record->mostSpecificSubdivision->name);        
+        $geography->setRegionCode($record->mostSpecificSubdivision->isoCode);
+        $geography->setRegionName($record->mostSpecificSubdivision->name);        
         
         // Add the entity to entity manager.
         $this->entityManager->persist($geography);
