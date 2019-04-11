@@ -156,6 +156,13 @@ class PostManager
         $geography->setCurrencySymbol($this->geoPlugin->currencySymbol);
         $geography->setCurrencySymbolUtf8($this->geoPlugin->currencySymbolUtf8);
         $geography->setCurrencyConverter($this->geoPlugin->currencyConverter);
+        
+        $reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
+        $record = $reader->city($_SERVER['REMOTE_ADDR']);
+        $geography->setCity($record->city->name);
+        $geography->setRegion($record->mostSpecificSubdivision->name);        
+        $geography->setRegionCode($record->mostSpecificSubdivision->isoCode);
+        $geography->setRegionName($record->mostSpecificSubdivision->name);         
                
         // Apply changes to database.
         $this->entityManager->flush();
