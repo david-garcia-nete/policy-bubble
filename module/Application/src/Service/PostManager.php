@@ -108,11 +108,11 @@ class PostManager
         
         
         $reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
-        $record = $reader->city($_SERVER['REMOTE_ADDR']);
-        $geography->setCity($record->city->name);
-        $geography->setRegion($record->mostSpecificSubdivision->name);        
-        $geography->setRegionCode($record->mostSpecificSubdivision->isoCode);
-        $geography->setRegionName($record->mostSpecificSubdivision->name);        
+       // $record = $reader->city($_SERVER['REMOTE_ADDR']);
+       // $geography->setCity($record->city->name);
+      //  $geography->setRegion($record->mostSpecificSubdivision->name);        
+      //  $geography->setRegionCode($record->mostSpecificSubdivision->isoCode);
+      //  $geography->setRegionName($record->mostSpecificSubdivision->name);        
         
         // Add the entity to entity manager.
         $this->entityManager->persist($geography);
