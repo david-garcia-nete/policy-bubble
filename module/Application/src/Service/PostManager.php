@@ -107,7 +107,7 @@ class PostManager
         $geography->setCurrencyConverter($this->geoPlugin->currencyConverter);
         
         
-        $reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
+       // $reader = new Reader('/usr/local/share/GeoIP/GeoLite2-City.mmdb');
        // $record = $reader->city($_SERVER['REMOTE_ADDR']);
        // $geography->setCity($record->city->name);
       //  $geography->setRegion($record->mostSpecificSubdivision->name);        
