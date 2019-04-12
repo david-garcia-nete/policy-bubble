@@ -1,4 +1,4 @@
-# Policy Bubble - ZendSkeletonApplication
+# Policy Bubble
 
 ## Introduction
 
