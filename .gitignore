@@ -4,7 +4,7 @@ config/development.config.php
 data/cache/*
 !data/cache/.gitkeep
 phpunit.xml
-/nbproject/private/
+/nbproject/
 public/img/captcha/*
 data/upload/*
 data/image/*
