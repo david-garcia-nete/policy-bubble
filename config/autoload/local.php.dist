@@ -34,7 +34,7 @@ return [
                     'secret' => '<secret>'
                 ],
                 'region' => '<region>',
-                'version' => '<version>'
+                'version' => 'latest'
         ],
         's3imageBucket' => '<s3imageBucket>',
         's3videoBucket' => '<s3videoBucket>',
