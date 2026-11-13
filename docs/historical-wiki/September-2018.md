@@ -1,0 +1,1 @@
+*(Editorial note: the September 2018 entry contained only personal notes and notes about unrelated employment. It has been removed. No Policy Bubble development was recorded this month beyond a note to resume work on PB later.)*

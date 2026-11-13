@@ -1,0 +1,1 @@
+It has come to my attention that my AWS account has been compromised and closed.  Also AWS service is not as thorough as I want it to be.  Rather than waste time and complain, I'm just going to create a new account and a new url.  Maybe policyrubble.com  I may have to wait for Amazon to contact me on the basic support plan.  

@@ -1,0 +1,18 @@
+= Thoughts - completed =
+
+I just noticed that I can't advance the audio in PB.  What is going on here?  Actually I can.  Maybe it was because I was editing.  Yes.  It happens when I edit.  Why is that?  Perhaps it is because it is not being served from a url.  It is being served from a server location.  I won't worry about this too much.  If it really bugs me I will investigate more in the future.  Perhaps I can do some tests.  
+
+I was thinking about changing the name of Policy Bubble to Politica Burbuja in Spanish.  It would be good to claim thay url.  politicaburbuja.com.  Also David's Web Sites should be Sitios Web de David or something like that.  I just need to try new names because I have sent the link to a lot of people.  People get intimidated when the Web site is something they've never seen before.  Policy Bubble just doesn't ring to Spanish speakers.  Then if it is successful in the Spanish world then maybe the English version will be called Poltica Burbuja.  Or maybe that should just the name.  
+
+How can I start updating the name?  Well this really interferes with the name.  
+
+I think a serial number would be good for policy bubble.  after all, programs that require serial numbers and or logins are really smart programs.  Unfortunately most of my programs have been online.  Can't I have more programs.
+
+= Looks =
+
+The bullets on the privacy policy are out of line on a mobile phone.  Also on the about page I say user's but it should be users'.  Also the text size is different on the three policy pages.  I need to make the formatting the same.  I cannot ssh into the server.  I add my new IP to the security group but I still can't.  What is going on?  It says it is timing out. Maybe the network is blocking outbound ssh connections.  Well if I allow traffic from anywhere it works.  I will probably just remove this when I'm done.  It's weird that using my IP doesn't work.  I have even tried using cidr notation.  I won't worry about it too much.
+
+However I don't think this is what I should be doing right now.  No one really cares about those things.
+
+*(Editorial note: a section copied from an unrelated employment wiki has been removed here.)*
+

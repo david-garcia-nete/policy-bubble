@@ -1,0 +1,578 @@
+Wow.  Lots of great ideas.  I listened to audio books son SEO, Blogging and Billion Dollar Apps.  A friend offered to help recruit testers.  I need to allow users to change their display name, email, and close the account.  Then I can use apache cordova to make iphone and andriod versions of PB.  Maybe I should let user create unique user names as well so they can have something they can remember rather than number in their url. I still don't want stupid names in the urls.  This site is supposed to be serious.  Maybe later. It's not really a priority.  
+
+I think I have forgotten something important about policy bubble.  You are supposed to find the best policies.  They were supposed to bubble up to the top.  I can do this on the analysis page.  What will make them bubble.  Originally it was supposed to be votes.  I have since then used responses to count as votes because we don't want people with few votes to feel bad if they have a good policy.  So responses let people add their input.  If there is a lot responses it must be a hot policy.  
+
+I was thinking that it is kind of hard to create certain reports when I am the only users. However now that I may have some testers it got me thinking that I can use the test database user accounts with my email and create posts and then edit the locations so that it seems like I have users from different locations.  Then I can create reports and visualization that show the most popular tags by state, that show the most active users by state or show the most popular tags by user.  There are many possibilities.  I think for the app to have stickiness I should create a least one of these reports.  However I really want to get the app out there and test what I already have.  I could let users download the database tables and use tableau to create reports.  I don't want to reinvent the wheel but it good to have these reports and visualization in the app so they are all in one place and the site can provide analysis.
+
+I should start with the most popular tags by region report.  That could be a simple table that has the existing regions as rows and the most popular tags in the second column.  I could create a viz that is regions with most tags.  Regions with most posts.  d3 is responsive so there should be no problem as long as the chart is not crazy big.
+
+I need to create a list of reports, viz's and widgets I could create and decide which one to implement.  
+
+I am thinking I should enable paypal again but I should make the subscription yearly.  Also I should make the free level 100 post per year.  Bronze $20 and 200 posts per year.  Silver $30 - 300 posts per year.  Gold $40 - 400 posts per year. That is a little more friendly.  Well we will see.  I don't have any users!  The good news is that I could do this if I wanted to.  
+
+I could easily talk to my users and ask them how much they are willing to pay for me to work on it full time.  I could tell them how much I am willing to accept and we could have a deal.  
+
+Should I put the settings update pages in the user module?  I think I should because I don't want to clutter up the application module.  It is pretty cluttered already and will be more cluttered when I expand the analysis page.
+
+I am also thinking of updating the routes for the settings page.  Actually I will keep the settings pages in the application module but I may create a settings controller and make he settings page route root/settings.
+
+I have a clear plan.  I need to implement it now.  I just plan to do one field update each day.  Why does the user have to type the password twice when they register?  Honestly as long as they have the email their account will be activated and they even change their password.  
+
+I really think I should enable the membership again just to prevent spam.  What what level do I think that spam may be created?  I think that anyone that posts more than once a day is spamming.  However I really need to see how users react when it is free!  Right now one one uses the site and it is free. haha.  I should ask the testers what they think about the pricing.
+
+Now I need to do the edit email address function.
+
+I am getting confused between all the methods with confirm registration and confirm password reset.  They are different.  Which ones should I copy and alter?  Well what are the steps I need to do?
+
+When submitting the form I need to check if the email exists.  If it does I will say the email exists.  If not I will say email confirmation sent.  When they check their email it will have a link.  When they click the link it will verify that this is their link and if it is it will update the email.  If not it will say invalid link.  That's it.  So just look and the registration and password reset functions and decide which ones are best to achieve this.
+
+hmm  It seems I am following more the route to reset the email towards the end of the use case.  There are a lot of functions in the user module.  Should I put the email reset functions there as well.  Basically I don't need a settings manager.  I think I should.  Well if the UserController is calling then I should.  However I can also use the settings controller.  Yes.  I am going to move the set email function to the settings controller.  
+
+I have run into a bit of a problem.  Once they confirm their email how am I going to send the email?  Perhaps I can put it into the link.  I really think I should store the new email in the user record.  That way the user can't enter someones email in the url query and block a valid user by changing their email to that user.  
+
+I finished all the code to reset the user email.  I just need to test.  I will do that tomorrow because it is late.
+
+This morning I just want to test the change email function to see if it is working.   
+
+Everything worked except one minor thing.  The nav amanger gets the user email from the auth adapter.  It fails because it says there is not user with email when the nav manager tries to get the user record for the old email that was put into the auth adapter.  Perhaps I can just update the email in the auth adapter.  
+
+What should I do?  Should I log the user out?  I can say please log in with new email.  However it is kind of lame to ask users to do things that the computer can do.  Why don't I just log out. Then log in.  
+
+It looks like I need the user's password if I am going to log the user back in again.  Well for now the user will have to log back in their self.  Maybe later I can alter the code to use their current password.  I am going to commit this and move on. 
+
+I need to make sure that if I don't delete the users transactions I should not use this info against the privacy policy.  I would get in trouble like Facebook did.  For now I am just going to leave it but I don't think it violates the policy.  Just a note.  
+
+I am trying to think what I should tell the user.  I don't want to say one thing and do something else.  I need to tell them what the algorithm does. I need to say something like.  All of your posts will be set to draft status.  Or I should just say all of your posts will be deleted.  This is just a temp function.  I will update it later. So I am going to say all of your posts will be deleted.  I won't mention the other stuff now.  I will come back to this later though.  I just want to provide basic functionality for a user to shut down their account.  
+
+Done
+
+= Secure Email =
+
+It has become apparent that I will need encrypted email. If users can reset their passwords and email using a link sent via email then this message could be sniffed and sent back by an attacker if the message is not encrypted.  
+
+https://www.upcloud.com/support/secure-postfix-using-lets-encrypt/
+
+This looks like a great article.  It would have the added benefit of having an email @policybubble.com.  I will do this after I finish and merge the settings branch and before I ask testers to try the site.  Also I need to find out how I am currently sending email and disable that.   
+
+However is this really necessary?  I mean if I send a confirmation email and someone intercepts it and clicks the link I mean they still won't have that user's email.  The point is just to make sure people don't register with other people's email.  What about the password reset.  You still need to know the old password to reset the password.  What about the email reset.  You still need to have the email to reset the email.  I mean is someone resets their email they are going to check their email immediately.  I should work on this if I feel like it.  It's a good thing I noticed that email is not encrypted however now that I finished the settings page I will like I need to do other things like update the about page photos so I will come back to this if I feel like it.  
+
+Well I updated the images.  Now I am thinking I should do the email think because the images look pretty crappy.  Maybe it's because I know something is lacking.  Also I would like to use apache cordova.  However I should fix this security whole before anything else.  However users will not know.  I think this is a nonfunctional test.  There is no reason I cannot begin the functional testing.  There are a lot of non functional things I would change.  However if I am going to solicit users I can't say well it's not completely secure.  They will loose their trust in me.  If it really not secure?  Well if sniffers intercept the messages they could activate an email that the user does not have.  If someone sees their email has been used then trust will be lost in the site.  
+
+https://easyengine.io/tutorials/linux/ubuntu-postfix-gmail-smtp/
+
+I think this is the one I used.  Well I really don't feel like doing this right now.  I am going to do this later.
+
+Well I really screwed up the test server trying to get it to send email with @policybubble.com but the sender would still be named after the old Gmail address at @policybubble.com.  That looks even more stupid.  In the future I really need something like mail@policybubble.com.  However I should be fine.  I don't have that many users right now.  Maybe I will do this later.  I may bork the test sever again but I should create a snapshot this time.
+
+Now I also want to say that email through gmail is secure.  The article above uses TLS.  Now I just need to wait a little while to set https on the new test server because I tried more than 5 times in an hour.
+
+You know what I am going to stick with gmail for now.  It's kind of cool.
+
+= Apache Cordova =
+
+https://auth0.com/blog/converting-your-web-app-to-mobile/
+
+I am not going to work on this now.  This is a big step.
+
+I think I should take a lesson from Mark Zuckerburgs successful facemash.  He gathered info on other people and put it into his platform.  He also had business logic to interact with this data.  So I need to put data into my system and allow users to interact with that data.  Perhaps I can gather information from similar blogs and post it mine.  I can say hey.  This is great.  However I cannot steal their media.  User have to consent to giving media.  I can approach them and say if you give me your media I will provide you with an interaction platform.  So I need to find entities that have media but don't have interaction.  Basically I need to do a jobs search.  I need to find people that need what I have.  
+
+
+I am just thinking about a few feature I could add next.  I could put the site in Spanish.  However I have been thinking of adding some sort of voting/rating/review system like youtube or amazon has.  My original plan for policy bubble was that the best policies could bubble to the top.  Perhaps instead of stars I could have bubbles.  OOOOO  and the user could select how many bubbles they want to give.  Also I could say how many views the page has.  I could give comments in addition to responses.  I need to take it one step at a time.  
+
+There could be a button that says write a review.  Really I could have a review system just like amazon.  They could select the stars.  Think this would be simple but right now I need to decide what is most important.  Should I add view counts?  Thumbs up/down?  Comments?  Stars/bubbles?  A mix of these such as stars/comments?  I already allow users to posts posts as responses to other posts.  Is this a good strategy?  Perhaps I can ask users what they think would be most useful.  However I think the most basics would be page views,  thumbs up/down.  However this is not the time.
+
+I am watching these testimonies of Mark Zuckerberg in congress.  Perhaps I could go to elected representatives and propose this site to them as a way to get feedback from constituents.  
+
+Looking at the facebook history I see that it is a directory.  Policy bubble is not a directory.  If people want to find info on a policy wikipedia would be better. 
+
+I am watching these hearings and I am seeing there is growing need to stop bad actors on the internet and content review.  Perhaps I can build a tool for content review.  Until then I could just blog about it.  
+
+I really need to take a look at this site and see how local politics works.
+
+http://mgaleg.maryland.gov/webmga/frm1st.aspx?tab=home
+
+I need to find all the info I can about my reps from the world, country, state, city, and neighborhood level and see if what they are doing is what they should be doing and post this on policy bubble.  The beauty of this is I can build any app I wish there to help with this.  This would really improve policy.
+
+= Spanish =
+
+https://www.youtube.com/watch?v=-RuqVDdC1cI
+
+https://stackoverflow.com/questions/42647039/set-language-from-menu
+
+I will probably use the method in the link above.  I will need to update the privacy policy to say we are using cookies.  Anyway This is good because I can put a language drop down in the top menu.  Probably on the right side.  That way users can switch the language at any time.  So I am going to finish translating the site and switching between languages in the config file.  Then I will implement this.  Or maybe I can implement it first.  That way I can use it for testing.  
+
+https://stackoverflow.com/questions/24956272/zend-framework-2-how-to-make-a-language-switcher
+
+This is a good one too.  Actually I like this more because I don't have to use cookies.  Well maybe the session cookie is a cookie.  I think I should update the privacy policy to say I use cookies. 
+
+https://codeutopia.net/blog/2007/11/22/localize-your-site-in-3-easy-steps/
+
+This is a good one too.  Actually I don't know what is the best way.   Can I use the session if the user is not logged in?  I think creating a cookie is better because these users won't have a session if they are logged in.  
+
+I think I should not get too worried about the details.  I should just do the simplest one first.   This one is the most recent so I will do it.
+
+https://stackoverflow.com/questions/42647039/set-language-from-menu
+
+I need to disable full error messages in production.  
+
+Well I finished the language selector so now I just need to finish translating all the strings. I did try the route translation and it only works for segment routes.  I'm not sure if it is a good idea to change my literal routs to segment routes but it may not hurt.  After all contactus and contactarnos are two different pages.  
+
+Now I am getting a problem with pushing to git hub.  Perhaps it is an error on their part.  Ah.  It is working now. So I am going to translate all the routes as well. 
+
+I just need to do the translations now. I can even change some wording in English if I want to.  For example instead of blog and can say news.  What a sigh of relief.  Now it's a new site! Instead of posts I can say article!  This will help the site to evolve a bit.  I look forward to it.  
+
+I decided to get rid of the world image because it look terrible on the mobile phone.  Also I put the selector on the right side for the desktop version.  Also the cookie does not work on mobile.  Well I tried the detect from browser thing but it didn't work.  I think I will just let them set the language until they create an account they can set it permanently.  There are many ways to do this but I am not going to fret.  I am going to keep going and translate the strings. 
+
+So what I can do is when the user logs in I can put their user language setting in the session.  That way the database will only be called once and it will last as long as the user is logged in.  Also I can do it if the user sets their language for the first time.  Then in the bootstrap I can check for the cookie and if the cookie doesn't exists I can check for the session variable.  If the session variable doesn't exist then I can do the default.  This articles shows how to store the language in the session.
+
+Also it would not be a bad idea to check if the user is logged and and not display the home page language drop down if they are.  Also is they are not logged in I can get their ip and use geolocation to find their country.  Then I can set the language based on that.  That way people from El Salvador won’t be greeted in English when they first go to the site.
+
+Also I need to add validators to the post status fields.
+
+I am starting to get confused with my code.  Well I just need to clear out one variable if the user is not logged in.  However after I sign in the language may be still set to the signed out language.  I need to be sure to empty this as well.
+
+Well everything seems to be working but if I sign in I have to refresh the page to see my saved language.  OK.  Everything is working now.  The only thing is that I would still like to use geo location to set the default fallback language.  
+
+Now I need to 
+
+http://www.geoplugin.com/webservices/php
+
+https://www.science.co.il/language/Locale-codes.php
+
+https://dev.maxmind.com/geoip/legacy/codes/iso3166/
+
+Use the geopluin in the bootstrap if the user settings are not set.  I can create another cookie so the geoplugin is only used once.  I can get the country code and then use an array I create using the links above to set the language.  Of course I will still have english as the ultimate fall back but this will help when people from el salvador try to use the app.
+
+The module.php file is getting pretty big.  I might want to put this code into a translation manager in the future.
+
+Well I did just that and it is working.  Now I need to just create the country to language array and to the lookup and set the cookie.  I am almost done but I am going to go home now.
+
+Well I got the geolocation language fallback to work but the select list was not showing the same language so I put the code in the index controller as well.  It is not the neatest thing but it works.  Maybe in the future I will understand it better and I can put the code in one place.  Perhaps just the index controller.  
+
+Until then I should refactor the code the best I can.
+
+Great!!!!  I finished the language preference logic including geo location and select lists whether signed in or not.  Now I just need to translate the view and grow the country list for Spanish and English countries.    
+
+Now I am going to create the list of Spanish country codes.
+
+Argentina
+Bolivia
+Chile
+Colombia
+Costa Rica
+Cuba
+Dominican Republic
+Ecuador
+El Salvador
+Equatorial Guinea
+Guatemala
+Honduras
+Mexico
+Nicaragua
+Panama
+Paraguay
+Peru
+Spain
+Uruguay
+Venezuela
+
+I need to get the translator into the nav manager.  I am trying to do this by using the configuration I already have rather than duplicating it but I think duplicating it might be ok.  Let me try.
+
+I am having trouble getting the translator to the nav manager by any means possible.  This is tough.  I will come back to this later.
+
+I think I should create a stack overflow for this.  As I recreate the problem with an example I will probably find a solution.  If I cannot then someone else will. 
+
+Should I translate the admin pages?  Not yet.  I can do that when I have my first Spanish admin.  On the other hand it would be useful to have it ready.  What if it is my company policy that all admin must speak English?  Pretty much that's how it is so unless that changes I don't need to translate the admin pages. However I may do it for completeness.  I am also thinking about the membership pages.  Since those have been decommissioned I will not worry about them.  
+
+Also it would be weird to see menu items half spanish and half english. Maybe I will just translate the admin menu.  Nothing more.  If I feel like doing the pages I can.  I can do them last if I want. 
+
+It looks like there is a problem translating long strings.  What if I put them on one line?  Yes that works.
+
+Perhaps I should put the translate form in the layout if the user is not logged in.  That way if they are on the about page they could see the translator. I think that is a bit of overkill though.  The settings options are not not on every page for a reason.  It would be annoying.  Same with the logged out translator.  After the routes change when the language is change thus taking you to another page.  It is very confusing.  In fact the about page cannot be found if you are in Spanish mode.   That is if you put the url into address bar.  I am going to go home now. 
+
+Also I should remove the american phone validator from the feedback form.
+
+I fixed some issues with the contact form.  I should clean it up later but now it is working.
+
+I'm not sure if I should do translate the contact form or the privacy policy next.  Well with the contact form there are going to be some surprises.  I think I should do the stuff that is not going to stress me out first.  Also it would be cool to see those polices in Spanish.  Then I can do the contact form.  On the other hand I do like to get the difficult stuff out of the way.  I like to solve problems.  Why don't I do the contact form so I have enough room in the translation file to experiment.  Then I can go to the big stuff.  Well there are going to be more and more surprises in the blog page and the other dynamic pages.  I should do the non dynamic stuff and then do all the dynamic stuff together.    
+
+I was just thinking that https://policybubble.com/privacypolicy will not provide the privacy policy in Mexico.  I think that is ok. It is better than https://policybubble.com/privacypolicy/es.  However I may consider this in the future.  It is not a big deal right now.
+
+I finish translating the terms of service.  That was a big one!  The rest should be a little more piecemeal.  Anyway I noticed that after I log in and change the language I need to refresh before the language takes effect.  It is really late and I am not going to worry about this too much now but I should definitely take a look at it later.  
+
+I need to set the Language variable in the session container in the settings language action after updae as well as set it to null on logout.  I do this in the nav manager but I need to do it right when it happens.  I wonder what will happen if I remove the functionality from the nav manager.  If it happens right when the event occurs then I might not need it.  I will do this tomorrow.  It will be simple to include the session container in the factories.  
+
+https://www.youtube.com/watch?v=cUNX3azkZyk
+
+Look at the sophistication of the early version of facebook.  I mean there are a lot more fields to fill in than policy bubbles has.  Also the logic of the site is quite different.  I have good stuff but I need it to be addictive.  I need to people to run back.  If I went on the news I would want people to see something similar.
+
+Algorithm:  People need to create policies.  I needs to be like amazon creates products and facebooks creates profiles.  Also the way that people interact.  Pages need to link together in a meaningful way.
+
+Fields:  People will need to be able to describe the policies well.  Amazon products and facebook profiles have many fields to describe.  I need to look up the attributes a of policy.   
+
+I think my site can help poor people bring attention to their city.  I should not worry.  I need people to test the site.
+
+Policy bubble might be at the level of facemash.  I need to get a bunch of users and see how they interact.  Then I can go on the next big thing. 
+
+It does look quite neat though and it is very serious so I should not worry.  It already looks quite similar to the biggest net companies like amazon, facebook and twitter.  I just need to make it more sophisticated over time.  I plan to filter the main blog on the tags the user likes.  That way they can get personal with what people are saying about their policy interests.  Also I will probably add view counts.  However I think it is great how it is now.  There is already ways to see what you want and know the popularity, relevance, and recency of a post.  I just need to work on the posts more to make them more robust.  Real policy solcitions need to be found on this site.  Data visualizations would be useful.  I will probably go this route.  
+
+The good thing it that I have taken a class in surveys analysis.  You really need to go out there yourself and get this information from people.  Then you do the reports.  It will be a cycle of reasearch, reporting, updating the software, marketing.  This is the product I am creating.  Public opinion data, economic analysis,  debates  etc.  The pages will evolve to support this type of research.  Now need to go to bed.
+
+I really should put policies in the site.  In Public Policy o101 we got policy documents.  Such as government publication on climate change.  I need to pull all those documents from my old university account and put them in the site.  That way the site can evolve to support this type of sophisticated information.  Then when other people intact the beauty of the site will show.
+
+For example if I put all the info I know about climate change in one blog post, talk about it etc.  I could challenge other groups to say what they know.  Then we can analyze our input.  
+
+I think for the very least I need to interview people.  Lots of people.  Get their input and provide conclusions.  These conclusions can appear on the analysis page.  They don't have to be data visualizations. I really need to wait and see what will happen.  
+
+OK.  I am going to fix these to change the language immediately. Well I put  $this->sessionContainer->Language = $data['language']; in the settings controller but when I save it says 
+
+A 404 error occurred
+Page not found.
+The requested URL could not be matched by routing.
+
+No Exception available
+
+I already knew there were issues with going to an English route when in Spanish mode but that was though the address bar.  I thought that when return $this->redirect()->toRoute('settings'); was executed it would translate it.  I suppose when the bootstrap checks for the session variable it sets the translator this this variable.  Does this happen before or after routing.  It's true that the difference between on bootstrap and on dispatch is significant.   onboostrap happens before routing.  On dispatch happens after.  So I should just add an on dispatch method.  
+
+What I can do is translate the route and then dispatch.  
+
+I decided to put the commented out markup for the membership page into the manager because I don't want people to think I am going to charge them if I am not. 
+
+Well I may have some code redundancy.  I don't think I need to use the nav manager to interface with the session Language anymore.  However I wonder how the app knows my language when I log in? I set it in the auth adapter.
+
+So now that everything is working I think I can remove redundant code.  I am just going to leave it how it is though.  I need to think more about why I have what I have.  I just got it working.  I am going to wait before I make it the most efficient code. It needs to be very clear to me what I am doing.
+
+Now I am going to translate the analysis page.  This one will be an easy one to translate. 
+
+I am going to do the contact us page next because it is the next page in the nav bar.       
+
+I just realized that I need to translate the form error messages. 
+
+https://docs.zendframework.com/zend-validator/messages/#using-pre-translated-validation-messages 
+
+https://zendframework.github.io/zend-i18n-resources/usage/   
+
+https://samsonasik.wordpress.com/2012/10/15/zend-framework-2-translate-validator-messages/
+
+https://docs.zendframework.com/zend-mvc-i18n/services/
+
+http://www.king-foo.com/2013/06/get-your-error-messages-translated-in-zf2-2/
+
+http://www.webvrijheid.nl/zend-framework-2-form-validation-error-messages-translated/
+
+https://blog.weckx.net/en/translating-zf2-validation-messages/
+
+https://code.i-harness.com/en/q/d4d938
+
+https://www.google.com/search?q=zend+translate+form+error+messages&rlz=1C1CHBF_enUS774US774&ei=SVHdWr7JLsivggfnhpiYCw&start=0&sa=N&biw=1396&bih=702
+
+I think I am going to have to follow the advice of samsonasik.  I should create a trasnlator for each form and then include it as the valid tor options.  I will do this tomorrow.  
+
+I might even have to create a form factory.
+
+What I can do is inject the glbal translator into the controller and then pass it to the form.  
+
+This is making me stressed out.  It looks like I am setting up the global translator correctly but I cannot set up the abstract validator correctly.  
+
+I think I should do a stack overflow for this.  I just want to know how I can use the pre-translated-validation-messages https://docs.zendframework.com/zend-validator/messages/#using-pre-translated-validation-messages
+
+I could upload the form demo and install the translator and then try to use it to to translate the error messages.  
+
+I am trying to create the stack overflow and I am running into more problem.  My example won't run this.
+
+
+public function onBootstrap(MvcEvent $event)
+    {
+        $application = $event->getApplication();
+        $serviceManager = $application->getServiceManager();
+        $translator = $serviceManager->get('MvcTranslator');
+    }
+
+I get 
+
+Fatal error: Uncaught Zend\ServiceManager\Exception\ServiceNotFoundException: Unable to resolve service "MvcTranslator" to a factory; are you certain you provided it during configuration? in C:\Apache24\htdocs\formdemo\vendor\zendframework\zend-servicemanager\src\ServiceManager.php on line 681
+
+
+This is bugging me.  Nothing is working like it is supposed to.  I don't want to spend all day on this with no progress.
+
+What should I do?  Maybe I can hop back over to PB and try to get it work.  At least the translator is working there.  Why does AbstractValidator::setDefaultTranslator($translator);  Now work?
+
+Another thing that bugs me is  this.
+
+$inputFilter->add([
+                'name'     => 'email',
+                'required' => true,
+                'filters'  => [
+                    ['name' => 'StringTrim'],                    
+                ],                
+                'validators' => [
+                    [
+                        'name' => 'EmailAddress',
+                        'options' => [
+                            'allow' => \Zend\Validator\Hostname::ALLOW_DNS,
+                            'useMxCheck'    => false,                            
+                        ],
+                    ],
+                ],
+            ]);
+
+The required true part is not a validator.  How am I supposed to translate that?  I should have at least test a bad email to see if the validators I did set with a translator would work. 
+
+Perhaps I can call the forms get messages, loop though them and translate them and then set the messages.  Let me just try this.
+
+ {
+     ["email"] => array(1) {
+         ["isEmpty"] => string(36)
+         "Value is required and can't be empty"
+     }["subject"] => array(1) {
+         ["isEmpty"] => string(36)
+         "Value is required and can't be empty"
+     }["body"] => array(1) {
+         ["isEmpty"] => string(36)
+         "Value is required and can't be empty"
+     }["captcha"] => array(1) {
+         ["badCaptcha"] => string(22)
+         "Captcha value is wrong"
+     }["csrf"] => array(1) {
+         ["notSame"] => string(59)
+         "The form submitted did not originate from the expected site"
+     }
+ }
+
+This is the var_dump for the form get messages.
+
+Well now this code is not working.  The translator is not working. What is wrong with the translator?
+
+The translator works for 'Home' but it does not work for the other messages.  Why not?  But even when it works for home the algorithm does not update the message.  
+
+array(6) {
+    ["email"] => array(1) {
+        ["isEmpty"] => string(36)
+        "Value is required and can't be empty"
+    }["subject"] => array(1) {
+        ["isEmpty"] => string(36)
+        "Value is required and can't be empty"
+    }["body"] => array(1) {
+        ["isEmpty"] => string(36)
+        "Value is required and can't be empty"
+    }["captcha"] => array(1) {
+        ["badCaptcha"] => string(22)
+        "Captcha value is wrong"
+    }["isEmpty"] => array(1) {
+        ["isEmpty"] => string(6)
+        "Inicio"
+    }["badCaptcha"] => array(1) {
+        ["badCaptcha"] => string(6)
+        "Inicio"
+    }
+}
+
+$elements  = $form->getMessages();
+                foreach($elements as $key => $element1){
+                    foreach($element1 as $key => $message){
+                        $message = $this->translator->translate('Home');
+                        
+                        $element[$key] = $message;
+                    }
+                    $elements[$key] = $element;
+                }
+                var_dump($elements); die;
+                $form->setMessages($elements);
+
+This really sucks without a debugger.  I am getting the above array with the above code.
+
+Why can't I get the debugger to work?  It just doesn't want to. Why can't I install this on my local machine?  
+
+I can't do this without the debugger.  I am going to install this on my local machine.
+
+OK.  I got the incio to appear for all the elements.  However the translation of the error messages is the only thing that is not working.  Why is it not working?
+
+So I decided to just copy the translations and put them in my file but I am getting compile errors because there are a lot of duplicates.  How can I delete the duplicates.  
+
+Finally I translated the error messages!  OMG.  That was so much work but it could have been worse.  
+
+I will also need to add my error messages from my custom validators to the language files.
+
+OK.  I translated the error messages.  When I come back to this I need to clean up.  I need to make sure I really have all the error messages.  Also I should clean up the comments in the language file.  Some comments don't have values.  
+
+Also I should move the routines to translate the error messages into a form manager.  The translation manager will not do because that one should not have a injected translator.  
+
+Also I have that translator resources package installed which does not really help me much.  However I should keep it.  In the feature I could write a build script to see if it has changed and update my definitions accordingly.  Or I could get rid of it.  I think the former is better because those definitions may change.
+
+It's Tuesday morning.  I just want to fix these issues real quick and finish the contact us page.
+
+OK. I checked the file and I think I removed the duplicates correctly.  I am going to keep the comments how they are because I want it to be obvious I removed duplicates.  Now I am going to move the code into a form manager.
+
+Alright I put the code into the form manager.  Everything is looking good on this page.  It looks like I need SSL for the s3 bucket to work.  That means I cannot work on the blog pages on localhost unless I set up an ssl certificate.  Maybe I can update the settings though.  
+
+I just had to add this to the local config for s3
+
+'scheme' => 'http',
+
+When I come back to this I am going to continue translating the pages.  Now that I have a good framework for translating form error messages I am in good hands.  I may finish this branch in the comings days.
+
+I am going to translate another page. 
+
+I am going to do the sign in page next.  I don't want to commit to the blog page because then I will want to finish it and I spent all day yesterday trying to get form error translation working.
+
+In order to make the app mobile friendly I will need to make the captcha image smaller so it is centered.  I will also need to make the post manage page a table with one or two columns.  If it had one column for example the info for each row would appear vertically with <br> tags perhaps.  Currently the rows go horizontally with is not mobile friendly.  It would have the added benefit of providing more space for other things on that page in the future.  Perhaps a separate info box.
+
+I will work on this after I finish the translation branch.
+
+Also there is a problem.  When I want to go to the page and I need to sign in it says not found after I sign in if the page is a different language.  I am thinking more and more that I should not translate the routes.  I just don't like that urls are not found if the language does not have a correct translation.  I will probably remove this feature.
+
+Also the configuration page it not very mobile friendly.  I will work on these issues.  I think restricting all tables to two columns should do the trick. 
+
+I suppose I could put the language selector on every page for logged out users.  When they hit submit it could send them back to the page they were on.  However this is not a priority right now.  This is as simple as putting the form in the layout rather than the index.  The question is how will I get the page where it is coming from.  I will do this later.
+   
+Some of the error messages are not translating.  What is going on?  I think the wild cards are not working.  OK.  All I had to do was inject the translator into the controller and pass it to the form and use it in the validator options.  I wonder if I still need my form manager.  Let me just see.
+
+AbstractValidator::setDefaultTranslator($translator);  This actually works in the bootstrap now.  The reason it wasn't working before is because the messages were not complied well. Now that they are in my gettext files this is working so I really don't need to update the controller or forms to translate the error messages.  I am going to remove what I have done earlier and finish translating all error messages with one commit.
+
+I am just wondering.  If I put the logged out translator into the footer where would it take you after you submit.  How does the login page know.
+
+// Remember the URL of the page the user tried to access. We will
+                // redirect the user to that URL after successful login.
+                $uri = $event->getApplication()->getRequest()->getUri();
+                // Make the URL relative (remove scheme, user info, host name and port)
+                // to avoid redirecting to other domain by a malicious user.
+                $uri->setScheme(null)
+                    ->setHost(null)
+                    ->setPort(null)
+                    ->setUserInfo(null);
+                $redirectUrl = $uri->toString();
+
+                // Redirect the user to the "Login" page.
+                return $controller->redirect()->toRoute('login', [], 
+                        ['query'=>['redirectUrl'=>$redirectUrl]]);
+
+This is in the on dispatch method.  So I could just put an on dispatch and check if its going to to the translator submission method.  If it is I could send the requested URI.  However the retested uri is nothing.  They want to stay on the same page.  How can I tell what page the are on.  
+
+$request = $this->getRequest();
+$request->getHeader('referer');
+
+I could just get the refferer in the controller and redirect back to the referrer.  However if I put the translate form in the footer I would still need to check if the user is logged in or not.  I suppose that the layout is a view so this should not be a problem.  Also when the user logs in I hid this form because I don't want to set it to the user language setting.  It's doesn't make sense for a logged in user to have two places to set their preferred language.   So right now I am just going to move this form into the footer and in the controller I can going to redirect to the referrer.  Is there anything else I need to do. 
+
+Well the weird thing is that the form needs to be set in the controller.  In fact all the code in index action is for this.  How can I control a form that is in the layout?
+https://akrabat.com/a-form-in-your-layout/
+http://www.michaelgallego.fr/blog/2012/10/06/how-to-replace-the-action-helper-in-zf-2-and-make-great-widgetized-content/
+
+It looks like I need to do some research.  I am not going to do the research now.
+
+I am just going to translate the registration page.  
+
+https://www.google.com/search?q=zend+form+in+layout&rlz=1C1GGRV_enUS751US752&oq=zend+form+in+la&aqs=chrome.1.69i57j0l5.3151j1j4&sourceid=chrome&ie=UTF-8
+
+I noticed that a lot of form elements are translating by themselves.  I guess that if a rendered php string exists it will be translated.  However for completion I am just going to translate everything the same way.  However I have decided not to translate the head title input.  I really just want to finish this branch.  Maybe I can come back later and but these strings through a translate function.
+
+I really don't think I am going to translate all the admin pages because I don't have any Spanish speaking admins.  I want to merge this branch as soon as I can and deploy it.  Also I may not do the footer translate form immediately. I can always do these things later.  So right now I can finish translating the entire user module if I just translate the two remaining message pages there.  Then I can translate the message pages in the application and then finish the pages for the blog, posts and settings.
+
+I am going to do this on a different day.  
+
+I will need to add the country names to the translation file and translate the output. Also month names I will translate.
+
+I can just explode the existing date string with spaces and translate the of part and the month part.  However I may want to change the date format just a bit to get 3 instead of 3rd.  Then I can just say x de xxx de xxxx for spanish and say x of xxx of xxxx.  Well we will see about that.  I need to go home now. 
+
+The country is not translating.  What is going on here?
+
+I think I should use entire region name not just the abbreviation.  This will avoid confusion especially in translation.  Actually I think I am going to skip translating the region and city right now.  These areas a really delicate and I am not even getting the full region name from geoplugin.  I think that once spanish user identify the country,  identifying the state and city within that country it really a matter of knowing the language of that country.  I can always come bacl to this.
+
+Well since geoplugin is using two letters for the region I don't think I will translate this.  I would love to and it's not hard but since geoplugin is not even going to use the full names I will save this for later.
+
+Let me do major cities though.  Actually I will skip the cities for now because I don't want to translate only part of the worlds cities.  That is completeness and I don't want people to think that policy bubble only cares about the biggest cities.  That is not true.
+
+Perhaps I should not translate the countries either because is spanish people search for Estados unidos they are not going to find anything.  That is because the database stores the english version.
+
+Well spanish users are not going to like that.  Perhaps I can store the translated version.  That makes a lot more sense.  I will do this to the best of my ability.  However that is dumb as well.  What if someone in English saves.  Then that doesn't count as a post in the US for spanish people?  I suppose it does not.  EEUU and USA are two different countries?
+
+Perhaps I should translate the search.  Well I think the geo search should use drop downs.  That way the search terms are not ambiguous and I can translate.  At least I should do it for the counties.  However I should do it in another branch.  For now I think I should stores the translated geolocations as if the user writes them their self.    After all.  If you are speaking spanish then EEUU is not the same as USA.  In fact USA means nothing.  Also if you are reading or listing to spanish the same applies.  This would be a good way to only show users posts in their language.  In fact I think I should do that.  Perhaps I should evel let users say where they are.  Well that is goin too far.  We want to use the technology we have.  So what I should do is store the local used in the post.  Then when I fetch the posts I will only get posts where the write locale matches the read locale.  Same thing with the search.  However I would like people to see posts in other languages.  Perhaps I should let users decide if they want to filter.  I can add a locale filter to the search. 
+
+Really I should just translate when writing to the database.  Even if I have to translate all the cities in the world.  However shouldn't I treat places like times?  April and Abril are the same thing.  What about Islamic calendars?  I am sure there is a way to convert.  So if I store April 30 2018 when I save and I display 30 abril 2018 shouldn't I be able to do that with countries?  The thing is that I would have to translate the search.  There is no date search right now but there could be.  So when the user searches I can return values for both.  However the problem is not getting the countries.  The problem is getting posts in a different language.  Should users get posts in all languages.  I think they should unless the put the locale filter on the search.  However if I am going to show the country as EEUU when the user wrote everything else in English that does not make sense.  Actually it does because the site it not letting users write this value and they know that.  It is also not letting them write the date.  So what I should do is write the values in english.  Translate them on display and in the search I should return results in all languages unless the user uses a locale filter.  This is pretty easy.  I already translated the countries in the blog view.  What I need to do though is update the search to translate the search back into English. In the future there will be more features but for not the search has to be directly translatable.
+
+That means EEUU will not translate to United States.  That is because PB only uses Unites States and Estados Unidos.  The problem now is translating from spanish to english in the search.  How am I going to do that?  A drop down would be pretty useful. For I could just create a service that has the country names in an array with the spanish version as the key.  Then I could just translate the search that way.  Or I can just say hey spanish people.  You need to use english for now.  That is not right though and it does not respect diversity.
+
+These arrays will need to have all the locations in the world.  These arrays will be in the views and the search.  For now I am going to not translate these values but maybe in another branch I will make it so that spanish speakers do not need to speak english for locations.  Or maybe I can put Unites States in the result and put Estados Unidos in the key.  Then I can say translate('Estados Unidos') and it will give united states.  
+
+So I am going to enable translation of the location in the view again.  In the search I am just going to reverse translate.  Easy peasy.
+
+For now I am just going to do countries.  I think Spanish people will be happy I put some thought into the algorithm.  They will also understand that countries have their own city names.  However when looking at the world as a whole from a spanish perspective you need to use spanish names for countries.  In the future I can do more translations.
+
+Well actually I should translate everything.  Even if it is just the major cities.  I will skip the regions because it appears PB is just using abbreviations.  I need to do the reverse translations now.  In the English file should I leave the translation blank or translate it back to English?  I don't think people should be allowed to search in spanish if they are using the Enlgish locale.  Also it provides uniformity to the file since all the entries have blank translations.  I am so happy that I have arrived at a solution for this important issue.  I think when people use the site they are going to realize Hey most of the posts from United States are in English.  Of course in the future I will let users filter posts from the USA to ones written in spanish if they want to.  I should start storing the locale soon so all posts can be categorized. In fact that may be the next branch I work on.  Or I can do it in this branch.  What if someone uses the spanish locale and writes in english.  Although that is unlikley it would be weird if someone chooses to filter on spanish and get a post written in english.  Therefore this might not be a good idea.  I will hold off on this.
+
+So I will do the revers translations in the search now.  Then I will translate the major cities. Then I can move on from this issue for good.  :) 
+
+I will need tu make PB completely tuteo or not tuteo.  Most likely not tuteo because everyone's opinion is their own and public policy is always formal.  However I will consult a native speaker on this.  
+
+Perhaps I wont translate the cities until I get more users.  It's really hard to tell until I know how the app is going to behave.  For example Mexico city.  That is not even in the list I have. I really don't need to worry about it right now.  Once I have a list I can just export it and translate it.  Now I have nothing.  
+
+Well now it appears that PB is giving the full region name.  Oh my gosh.  I am done!  Now I need to finish translating the blog page.  Translating the rest of the app should be easy.  By the way.  I may want to translate the admin pages because if the site grows quickly and I need admins from other languages I don't want to be bogged with translating that stuff.  However we will see.  Admin privileges are probably something I don't want to give out until the sire is making money.  Also I could translate these pages really quick.
+
+I finished translating the blog page and I have gotten a bit of a headache reading english posts with my locale set to spanish.  Perhaps it is a good idea to store the locale of the user in the post.  However.  Like I said.  The user knows that some data it written for them by PB and some is written by users.  If they want relevant content then they really should filter based on tags.  That is the real way to see stuff in your language no matter the location and language setting of the user.  
+
+Perhaps I should translate the admin pages because it might give me some perspective on how administration works across language boundaries.  Also I could say I am an equal opportunity employer.  That is important for business.  But seriously it would take me no time at all to translate those pages if I needed to.
+
+I should not worry too much about mixing tu and usted.  I think it is acceptable sometimes.  Plus a native speaker is going to review it.  I need to go home.  I think I can work on PB this weekend and finish quite a bit because I just have a bunch of little pages to translate.
+
+I just realized I need to translate the email messages as well.  This includes the emails that are sent and the confirmation messages.
+
+In the user/view/user folder I still need to translate the message, reset-password, and set-password pages.
+
+OK.  I translated these pages.  Now I need to translate the email messages and I should be done with the user module however it is late and I need to go to bed.  I will have to do this later.  After translating the emails I just need to translate a few pages in the application module.  
+
+I was testing the email translations.  I got
+
+An error occurred
+An error occurred during execution; please try again later.
+Additional information:
+Doctrine\DBAL\Exception\UniqueConstraintViolationException
+File:
+/var/www/html/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:70
+Message:
+An exception occurred while executing 'UPDATE user SET email = ?, status = ? WHERE id = ?' with params ["", 2, "5"]:
+
+SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '' for key 'email_idx'
+
+That is because I deleted two accounts.  When I delete accounts I set the email = "";  That is not good because in this case there are two with "".  Why did I no just remove the record the first time?
+
+I believe I have finished translating the user module.  Now I have a few more in the application module.  I may translate a few pages every day until it is done.  I should do the post view next.
+
+I need to remember to translate my validators as well.
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   

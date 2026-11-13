@@ -1,0 +1,255 @@
+I just realized that I can use PHP's chmod function  to change the access permissions of the files.  If somone tries to access a private file using the url PHP will give a file read error and I can provide a graceful error message to the user.   If the user wants to access the file the video would still need to be accessible.  How can I make it accessible only to the user?  Perhaps I can differentiate using the OS users.  Perhaps php can create linux user account for the user.  Can I use symbolic links?  If the file is private I could put the file in a private folder within the public folder.    So with a symbolic link you can put the real files in your folder.  Then you can create a link to them in another folder.  Well I know how to let only a user see the video.  Zend does that.  Perhaps I can put the file in the data directory and proivde a ../../ type path to it in the html video tag.  The src must be a url.    Perhaps I can chmod the file when the user and only the user wants to see it.  Or perhaps I can use a different apache user for the user.  I need to come back to this. 
+
+Perhaps I can make the the user authenicate with apache.  Perhaps I can put an .htaccess file in the video directory that limits access to localhost.  
+https://olegkrivtsov.github.io/using-zend-framework-3-book/html/en/Zend_Skeleton_Application/Blocking_Access_to_the_Website_by_IP_Address.html
+
+Require ip <your_ip_address>
+
+I am just wondering if I should have regular comments for posts like amazon does.  It would be nice for people to review the posts.  I am just not there yet.  I just realized that I don't need to lines at the bottom of the edit post upload images page after the photos gallery.  A double line is appearing there and I need to remove the <hr/> tag from the edit2.phtml page when I have time to work on PB.  Also the other pages may have this problem.  
+
+Let me start by making the video folder accessible to localhost only.  Also I will need to allow users to create private posts again.  I should find the commit where I undid that.  Also I was thinking about allowing users to add multiple videos to a post.  However I decided against that for size resons so I will not revisit that.  For now just lock non local access to videos and the enable private posts.  I can work on the user profile functionality after that.  I also I should remove the double line in the edit2.phtml page.  That is super easy.
+
+Well I am trying to log in and I can't.  I can't even reset my password or register a new user.  What is going on?  When I debug it says the form is invalid but there is no more info.  Maybe is is that session parameter I added to the php config.    Yes that was it.  I removed it from my config on my localhost which is fine.
+
+OK.  I removed the extra line.  Now I am going to make the video folder private.  Done.  Now I am going to allow posts to be private again.  I need to find the commit where I undid that.  
+
+Well I added the status option back in but if I log out and I can still see a draft post.  Did I forget to update the privileges?  It looks like I have no privilege for that.  I need to make a privelege, or logic, no one can view a draft post unless the user owns the post.  
+
+Well I added 
+
+if ($permission=='post.draft.own.view' 
+                && $params['post']->getUser()->getId()==$currentUser->getId()
+                && $params['post']->getStatus()==2)
+            return true;
+        
+        if ($permission=='post.draft.own.view' && $params['post']->getStatus()==1)
+            return true;
+            
+to    RbacAssertionManager.  If I am not logged in and I want to view a public post I get redirected to the login page.  Why is that?  Is that because I changed 
+
+['actions' => ['view'], 'allow' => '*'],
+
+to
+
+['actions' => ['view'], 'allow' => '+post.draft.own.view'],
+
+in the config file.  Perhaps when it sees that the user is not logged in and that it doesn't have * it says hey, you need to be logged in to see this post.  That was not my original plan.    The filterAccess method of the   User\Service\AuthManager  has logic for dealing with the configuration.  I can see why the user is being redirected to the login page.  How can I fix this.  I can say && !post.draft.own.view in order to avoid this.  Well I can still see the draft post.  It looks like it is giving me access no matter what.  
+
+Wow this is really a pain in the ass.  I have tried several things in the access filter.  
+
+if ($allow=='+post.draft.own.view')
+                        $permission = substr($allow, 1);
+                        if ($this->rbacManager->isGranted(null, $permission))
+                            return self::ACCESS_GRANTED; 
+                           
+if ($allow=='+post.draft.own.view')
+                        $permission = substr($allow, 1);
+                        if ($this->rbacManager->isGranted(null, $permission))
+                            return self::ACCESS_GRANTED; 
+                        else
+                            return self::ACCESS_DENIED;
+                            
+if ($allow=='+post.draft.own.view')
+                        // Anyone is allowed to see the page.  More checks added later.
+                        return self::ACCESS_GRANTED; 
+                        
+I am getting tired of fiddling around with this.   Instead of doing this in the access filter I should do this in the controller.  
+
+Well maybe I need to think about this.  I can just say in the controller that if the post is a draft and the user does not equal the user of the post then they should be redirected.  So what logic should I put in the controller.  
+
+// Only the post owner can see a draft post.
+        if(($post->getUser()->getId()!= $this->currentUser()->getId())&& $post->getStatus==1){
+            return $this->redirect()->toRoute('not-authorized'); 
+        }
+  
+  Well I can make drafts visible only to the owner.  What if I want to make posts viewable only to a group or a set of users?  That is functinality I would have to add later on.    I would have to allow users to be admins of their own posts.  That is they could add users to the posts.  It would be something like google docs or youtube videos.  They can wither be public, private or unlisted.  If they are private more user can be added.  So what I could do is I could display a link on the post for the owner that says invite users to this post.  This is getting very facebooky and might not be viable right now.  I really want public policy things right now.  Anyway that is a good option for private policy.  If an organization wants to use policy bubble within.  They could create an account and share posts within the organization.  They could also filter based on that organization.  However I am getting way ahead of myself.  There are many unanswered questions here.
+  
+  First of all what would be displayed in the news feed?  Just things for that organization?  That is possible.  Well then I would just have to add a setting to the news feed to filter on a particular group.  Also I would have to add permissions to that group.  So how would users add permissions to a group?  I think I am getting out of line with the goals of policy bubble.  Maybe I will create an offshoot of policy bubble called private bubble that will be taylor made for oganizations.  However policy bubble if a public policy web site.  This type of functionality is not needed right now.  If I do private bubble the privacy issues would have to be part of the core functionality. 
+  
+  For example with private bubble I could say hey.  This is a web site where issues can be created to improve policy making within an organization.  Your new feed will only have posts from users within your domain.   The admin could set up the domain.  Wow I am just getting way off track.  These are good thoughts but I don't have any good conclusions.  There are plenty of task managers for organizations.  I would be competing with them.  I am not sure why there are  not task managers for the whole world.  Maybe it was just never needed.  Anyway I am going to test this.  This is working.  I am going to commit this and work on the user functionality.
+
+# Profile Page
+  
+  OK.  So looking at last month's  notes I can see that I should add the user name to the post.  Well that is very easy.  What I really need to do is creat a profile page.  The problem is that I already have a profile page and a settings page.  What is the profile page going to look like?  I think that when you click on the user name.
+  
+  I feel bad that I have not completed the paypal thing and the search.  If I published the site right now. I would definitley need paypal, seach.  The user profile thing is not really necessary.  I think I should go back and not skip fowarwad.  Beleieve it or not but the search is not really necessary either.  Users can filter on the most popular tags.  So if I go back and implement paypal and publish policy bubble. I could then add a search and then work on the user profiles.  I really think each task will affect the one that comes after it.  Perhaps I want to include a search on highest paying posts for example.  That could really affects the sucess of the site so I am going to go back and not skip ahead.
+  
+# Paypal
+  
+  I am going to go back and work on the paypal functinality.  That is because I don't think I should skip of anything until later.  I need to address everything in order because everything is built on top of what comes previous.  OK.  I need to spin up an amazon server.  
+  
+  I have sshed to the server.  Now I need to configure it.  I need to install apache and php and mysql.  
+  
+  https://developernote.com/2017/10/configuring-sendmail-with-gmail-relay-on-ubuntu-16-04/
+
+It looks like the server is ready for people to start using it.  However I would like to implement the thing to limit the posts based on the subscriptions level.  I think I should keep the video size to 2 gb.  anything larger is just not nessary.  I am just afraid the site will crash.  Hell the instance is only 8gb.  I should probably start figuring out how I am going to store photos and videos in s3.  Also I should put the database in rds.  Also I should probably not send email through gmail.  Well I used simple solutions for everything.  Now that paypal has forced me to go public I need to go back and fix these things before moving forward.  I might even delete the instance.  However I should do paypal first because that's why I made this public.  Once it is done I can fix the other issues with going public.  Also I keep getting a session error and I have to delete all the sessions.  That needs to be fixed as well.  Also I should do ssl.  There is a lot to do with just the code I already have.  Perhaps I could pause the instance.  Well I want someone to review it first.  So I can see that there is a lot to do.  I am going to work on this later.
+
+One thing to think about is the popular tags.  If people pay to post more it may be that their tags are going to be the most popular.  Since policy bubble wants to solve real problems it would be good to have bronze, silver, and gold tag clouds.  That way people cloud see what tags are popular among the rich and poor.  Maybe if they are the same then we could see some progress.  Politics should be about the rick helping the poor so if that is not happening the policy bubble will make it clear.  It would be very easy to add these extra boxes.  I am a bit nervous about how the server can handle public traffic so it's good I published PB now.  I can address those issues with time.   So in short I need to deal with the money issues first.  Then I need to deal with the scalibility issues.
+
+It's Saturaday and I am at home.  I need to do the paypal thing now.  Let me set up my dev environment.  I will need to pull from github.  I have my deveopment environment set up now.  Now I need to work on the paypal issue.  What exactly am I going to do?  
+  
+https://youtu.be/8ArEzyCEKl4
+
+https://paypal.github.io/PayPal-PHP-SDK/
+  
+
+
+= Paypal = 
+
+I am trying to install PayPal-PHP-SDK.  I did it on my local machine which was a huge mistake.  Well I am not sure but I am having a helluva time trying to get it installed on the server.  I think I should just delete the whole folder and pull from github.  The problem is that when I updated the packages on the server I forgot to commit the composer.lock file.  After installing the paypal php sdk on my local machine the branches were different and now there is a conflict and I am having a very hard time.  What should I do?
+
+First let me see what the repo looks like on github.  
+
+Commits on Feb 25, 2018
+Add composer.lock from laptop
+
+root
+root committed 17 minutes ago
+e632226  
+Merge branch 'master' of https://github.com/david-garcia-nete/policy-…  …
+
+@david-garcia-nete
+david-garcia-nete committed 38 minutes ago
+4755047  
+Update packages on production server
+
+@david-garcia-nete
+david-garcia-nete committed 2 hours ago
+eb4b630  
+Install paypal/rest-api-sdk-php
+
+@david-garcia-nete
+david-garcia-nete committed 2 hours ago
+71b152d  
+Commits on Feb 23, 2018
+Add from header to email in usermanager
+
+@david-garcia-nete
+david-garcia-nete committed 2 days ago
+d2a8c96  
+Add from header to email in usermanager
+
+@david-garcia-nete
+david-garcia-nete committed 2 days ago
+
+
+It looks pretty messed up.  I should create a branch all both servers just incase I bork master somehow.  Alright, now what should I do?  Well it just git push and then git install.  It looks like everything is ok.  The paypal php sdk is installed on the server though composer.  Now let me just see if I can get everything on my laptop back to normal.  Yep.  Everything looks good.  I did composer update and I want to say that all the packages are installed and up to date on both servers.  Also they are synced with git so I am going to continue with the tutorial. :) 👍 
+
+This is a reminder that I will need to think about development on my laptop without the ability to connect to paypal.  I will need to check the development environment.  Well I am not there yet.  I should not worry. 
+
+I am thinking of using braintree because the useres will not have to make a paypal account.  It's ok that I already installed the paypal package.   I am not going to uninstall it yet.  I can easily uninstall it later.  Also it's not a big deal.  I am excited to start using Braintree.
+
+Ok.  I applied to Braintree and now I need to wait for them to approve it.  I am a little upset because I thought I could just start working with it.  I am questioning whether I should use it or not.  I didn't know there was so much red tape.  I can use paypal right now.  What if they don't approve me.  I would be wasting my time practicing with the braintree code.  Also I gave them the link to policy bubble.  I suppose that is ok.  I need to publicize it eventually. 
+
+So what should I do now?  Should I work with the Braintree code?  Is it worth the 2.5%?  Is it worth the hassle? I think anything that gives the user a better experience is better.
+
+On the other hand.  If smart people know I am using braintree they will know I am paying a middle man.  Paypall is completely free and user may like there is no middle man.  I am really feeling the effects of the middle man with Braintree.  I think I am going to cut them out.  I think I should sleep on this major decision.  I am going to get ready for bed.    
+
+Well think I should continue with paypal.  I mean think about it.  I am using gmail for the email.  I am using ec2 for the database and file storage.  I don't have ssl.  I think it's fitting I use paypal.  I don't even have a search bar.  Once the business get's tested and running I can upgrade everything and switch to Braintree.  I can't even believe I messed with them.  Well at least I learned something.  
+
+Well now I am thinking about the return URL.  Where should I return to?  Well when I finish posting I see the admin page and I see the post.  I need to think about where I am starting.  Right now anyone can go to the membership page but if they are not logged in I don't think they should see that page.  I should hide that button and page for logged in users only.  When a logged in user goes to the page the their membership row should be highlighted in yellow.  The membership page should say My Membership: Free.  When they are redirected back to the page it should say My Membership: Bronze or whatever they choose.  Pretty simple.  Also when the user posts if they have reached their limit it should take them to the membership page saying that they need to upgrade.  The membership page should say how many posts the user had made this month.  Something like Posts this Month: 2 of 3.  So when they post, if they run out it should take them to the membership page and say something like this somewhere.
+
+My Membership: Bronze
+My Posts this Month: 2 of 10
+
+It can say this at the top.  So the redirect page will be the membership page.  
+
+I need to add a membership field to the user table.  Done.  I also added the paypal transactions table.  Now I need to display the user's membership status on the member page.  While I'm at it I might want to post how many articles the user has posted this month.  
+
+I am having a hard time editing the files remotely.  Perhaps I should say chown ubuntu to all the source files.  
+
+An error occurred
+An error occurred during execution; please try again later.
+Additional information:
+Zend\ServiceManager\Exception\ServiceNotFoundException
+File:
+/var/www/html/vendor/zendframework/zend-servicemanager/src/ServiceManager.php:687
+Message:
+Unable to resolve service "Application\Service\MembershipManager" to a factory; are you certain you provided it during configuration?
+Stack trace:
+#0 /var/www/html/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(763): Zend\ServiceManager\ServiceManager->getFactory('Application\\Ser...')
+#1 /var/www/html/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(200): Zend\ServiceManager\ServiceManager->doCreate('Application\\Ser...')
+#2 /var/www/html/module/Application/src/Controller/Factory/IndexControllerFactory.php(18): Zend\ServiceManager\ServiceManager->get('Application\\Ser...')
+#3 /var/www/html/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(764): Application\Controller\Factory\IndexControllerFactory->__invoke(Object(Zend\ServiceManager\ServiceManager), 'Application\\Con...', NULL)
+#4 /var/www/html/vendor/zendframework/zend-servicemanager/src/ServiceManager.php(200): Zend\ServiceManager\ServiceManager->doCreate('Application\\Con...')
+#5 /var/www/html/vendor/zendframework/zend-servicemanager/src/AbstractPluginManager.php(141): Zend\ServiceManager\ServiceManager->get('Application\\Con...')
+#6 /var/www/html/vendor/zendframework/zend-mvc/src/DispatchListener.php(102): Zend\ServiceManager\AbstractPluginManager->get('Application\\Con...')
+#7 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#8 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(179): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent), Object(Closure))
+#9 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(332): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#10 /var/www/html/public/index.php(40): Zend\Mvc\Application->run()
+#11 {main}
+
+I am getting this error.  I don't know why the Index Controller Factory Can't get the membership manager.  Seriously what is going on here?  I have spent about 20 minutes or more looking at the code.  Well I put the app in dev mode using composer and now it is working.  I guess it got scared that I was going to look at the compiled config file and decided to work.  What happens if I turn off dev mode?  I get the same error.  Perhaps I don't have the right setting for production.  It was the config cache.  So I can leave it in production mode but with the config cache disabled.  
+
+I really think I should set the membership column as 1 for free users.  I will need to update the create user function to set this field as one when the user is created.  Done.  I just need to remember to update my other dev db so that all users have membership status of 1. 
+
+I am going to go to bed.  When I work on this again I am going to display the number of posts the user posted this month on the membership page and continue with the tutorial.  
+
+It is Tuesday morning and I am going to do a warm up with policy bubble.
+
+Now I just need to get the user's posts for this month.  I was thinking of using the where clause in a DQL query generator.  I will need to learn how to say where month equals this month in the query.  Maybe I should use php.  Also I will need to get the count as well.  I will do my best to use DQL but I may have to use PHP.  I will look at the DQL docs.  
+
+https://stackoverflow.com/questions/851236/where-clause-to-find-all-records-in-a-specific-month
+
+https://stackoverflow.com/questions/5347217/simplest-way-to-display-current-month-and-year-like-aug-2016-in-php
+
+https://stackoverflow.com/questions/25886829/select-count-in-doctrine-dql-with-left-join-manytomany-unidirectional-relation
+
+https://stackoverflow.com/questions/18826836/how-can-i-use-sqls-year-month-and-day-in-doctrine2
+
+https://github.com/beberlei/DoctrineExtensions
+
+https://stackoverflow.com/questions/23117061/how-to-implement-beberlei-doctrine-extensions-in-zend-framework-2?rq=1
+
+Great.  I got the membership level and the month user post count on the membership page.  Now I can continue with the tutorial.    I am going to get ready for bed but I just want to note that I am charging about $1 per post and the biggest part of the post is the video limit.  
+
+https://www.statisticbrain.com/average-cost-of-hard-drive-storage/
+
+This article says that storing 1 GB costs little so I need to keep that in mind when I am trying to make a profit.  This is a no brainer but I am just thinking about it again.
+
+OK.  I am going to continue with the tutorial later.
+
+An error occurred
+An error occurred during execution; please try again later.
+Additional information:
+PayPal\Exception\PayPalConnectionException
+File:
+/var/www/html/vendor/paypal/rest-api-sdk-php/lib/PayPal/Core/PayPalHttpConnection.php:202
+Message:
+Got Http response code 400 when accessing https://api.sandbox.paypal.com/v1/payments/payment.
+Stack trace:
+#0 /var/www/html/vendor/paypal/rest-api-sdk-php/lib/PayPal/Transport/PayPalRestCall.php(78): PayPal\Core\PayPalHttpConnection->execute('{"intent":"sale...')
+#1 /var/www/html/vendor/paypal/rest-api-sdk-php/lib/PayPal/Common/PayPalResourceModel.php(104): PayPal\Transport\PayPalRestCall->execute(Array, '/v1/payments/pa...', 'POST', '{"intent":"sale...', Array)
+#2 /var/www/html/vendor/paypal/rest-api-sdk-php/lib/PayPal/Api/Payment.php(576): PayPal\Common\PayPalResourceModel::executeCall('/v1/payments/pa...', 'POST', '{"intent":"sale...', NULL, Object(PayPal\Rest\ApiContext), Object(PayPal\Transport\PayPalRestCall))
+#3 /var/www/html/module/Application/src/Controller/IndexController.php(189): PayPal\Api\Payment->create(Object(PayPal\Rest\ApiContext))
+#4 /var/www/html/vendor/zendframework/zend-mvc/src/Controller/AbstractActionController.php(78): Application\Controller\IndexController->membershipAction()
+#5 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(179): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent), Object(Closure))
+#7 /var/www/html/vendor/zendframework/zend-mvc/src/Controller/AbstractController.php(106): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#8 /var/www/html/vendor/zendframework/zend-mvc/src/DispatchListener.php(138): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#9 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#10 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(179): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent), Object(Closure))
+#11 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(332): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#12 /var/www/html/public/index.php(40): Zend\Mvc\Application->run()
+#13 {main}
+
+I am getting this error.  This is unexpected.  What is going on here.  Why can't it access the URL?
+
+It is dying in the try catch not after the try catch.  Maybe it has something to do with how I am getting the total.
+
+Alright everything is working.  I can continue with the tutorial later.  
+
+
+
+
+
+   
+
+
+
+
+
+
+ 
+

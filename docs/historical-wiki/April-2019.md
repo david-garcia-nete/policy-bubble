@@ -1,0 +1,1 @@
+Well geoPlugin is not working.  When I edit a post I don't get a region or city.  I will need to look at alternatives for the geoLocation service.  Maybe https://www.php.net/manual/en/book.geoip.php  Alright I actually fixed this problem using https://github.com/maxmind/GeoIP2-php  The mmdb file is now in the PB data dir.  

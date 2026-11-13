@@ -1,0 +1,16 @@
+I noticed that I should explain on the edit, add image pages that the titles will not be shown on mobile devices but they will help with search optimization.  Also I need to strip single quote marks.  I will test for double quote marks later.  
+
+Also I'm not sure what determines the image order.  I need to test if it is the image file name.  Should I add a description that says images are sorted by file name not title.  Yes.  Maybe I should order them by the title though?   I can do that later.  The point is that I have a way of controlling the image order and I can give the image whatever title I want.  Ordering by title might actually be a bad idea because it would effect the description the user actually sees just to get the right order.  Again I will consider this later.  However it would be a lot more difficult.  Also titles are not required but image files are.  Therefore I am good like this.  This task is done.  
+
+Well I noticed that my old file titles don't go away.  I think that is because before the files get deleted in s3 before upload they actually get pulled down and stored in the temp dir.  So even if I delete them in s3 before uploading again the are going to be in tmp.
+
+Perhaps I can perhaps when I remove a temp file I don't remove the title file.  Yes.  That was the problem.  Now the files don't get stuck in s3.  
+
+
+== Save button, vcs, last updated ==
+
+I am going to add a save button on the add edit pages along side the continue button.  If the user clicks save it will not go to the next steps.  I just need to pass variables to the controller that can be used to skip to the save step with defaults for the media pages.  That means a user could add or edit a post and it will be like the pressed the continue button on the media pages.  Also I could have a checklist that says what media you would like to update.  The result could be compiled into a button that updates the session form and goes to the right pages.  Actually I could have an add video button, add photo button and add audio buttons that just takes the user to the the page.  When it the user presses continue it would go back to the first page and the first would show any media that exists.  Or the user could click save and the button would move the step to the correct step.  In this respect steps are not really steps but they are stages.  
+
+
+I put the remaining notes in PB and will probably bit all my notes there.  
+

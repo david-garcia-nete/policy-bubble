@@ -1,0 +1,2 @@
+The add response link in a response on a view post page should go to the same
+Place as the bigger add response button at the button of the article.  The add response link in a response on a view post page should not just go to the big add response button.  That is ridiculous.  However I left it as the sample code had it.  Or actually I’m not sure why I did that because Oleg had comments.  I need to review that but it needs to be changed.  

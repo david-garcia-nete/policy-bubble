@@ -1,0 +1,539 @@
+= PayPal =
+
+I finished the paypal tutorial.  I will need to make a few adjustments.  First of all I need to update the user table to the right membership level for the user.  By the way.  If someone pays $100 dollars for platinum membership and goes nuts and unsubscribes they should still be able to post 100 posts until the end of the month.  However I will work on those details later.  It is not a priority right now.
+
+I need to store the membership level in the session variable and or the database.  Also I would like to put the date of the transaction in the transaction table.  I could add the date created and date completed.  I think I should store the membership in the session.  Let me start with a minimalist approach.  What is the least I need and what is the shortest past to get it?  I need the membership level.  I can store it in the session.
+
+Alright.  It looks like I have the minimum I need to set the membership with paypal.  Let me test it.  Also if the user wants to pay again I need to say hey you already paid.  This is working.  I am going to commit.
+
+So what do I need to do now?  Instead of a subscription I am thinking I should just let users buy posts.  For example if they buy 100 posts they could take a year to use it if they want.  That would be easier for me as well.  I will need to think about these things.  I am going to take a break from this.  Well it's kind of hard to deviate from the original plan.  I will just need to remember to set up recurring payments.  
+
+Wow.  It looks like recurring payments costs money.  Perhaps I should just set the membership to free after a month and the user would have to pay each month for posts.  Wow.  I need to think about all this.  I could say on the membership page "Your membership will end at the end of the month."  I will need a script that sets all the users' membership to free at the start of the month.  Or I can just say Paid this month: Yes/No.  I could check the transaction table to see if there is a transaction for this month for that user. 
+
+Recurring payments is not free.  What I should do then is the following.  When the user posts I should check if there is a transaction for the month as well as check how many posts the user has posted this month.  If the posts are greater than what the transaction permits then I should take the user to the membership page.  On the membership page I should say at the top above My Membership: xxx  I should say Membership Expires After One Month.  Then I should look at the transaction table for this month to see the user's membership status, not the user table.  Simple as that.    
+
+I need to create a migrate script.  It should add three columns to the paypal transaction table.  membership, date_created, date_completed.  OK on the membership page I need to check the transaction table for this month for a transaction for the user.  I should get the latest completed transaction for this month.  If there is none then I should say free.  
+
+Alright.  The membership page is showing the membership based on the transaction table.  Now I need to make sure the correct info is being saved to this table.  
+
+Alright.  I am done on the membership page.  Now I just need to update the add new post method to check the post limit and redirect accordingly then I can go with live paypal credentials. 
+
+Alright I am going to update the add new post method to check the post limit and redirect accordingly.  How am I going to check the post limit?  Well first I need to get the posts for the month.  Also I may want to use the membership manager.  I could create a method called check post limit.  It could get the posts for the month and get the last completed membership payment in the transaction table.  If the count is greater than the limit redirect accordingly.
+
+I want to get the limit for the membership and then do a comparison.  Perhaps I can just create a dictionary in the method.  Alright I finished checking the post limit.  I just need to test it.  I also need to consider what will happen if the user has paid for bronze, reaches the limit and then pays for silver.  Does that mean that the user can only post 25 if they paid $35.  I will think about this later.   
+
+After I test this there will be some non functional and functional requirements I will need to address.  Let me test this now.  Now it's working. Now what should I do.  I think I should put the live credentials in and test it.  
+
+Well I am waiting for the live return url to take effect.  What should I do now.  Well there are some obvious nonfunctional requirements I need to take care of.  However those fixes are pretty easy.  I am more concerned about getting the site to function.  I want to get the wheels spinning.    I could start writing articles but I think a tag search bar would be pretty important.  However I think let me do the non functional requirements because if people start using the site I should be prepared.  Well before I get too much into the functional and nonfunctional requirements I need to think about the business logic as well.  I should probably start posting serious articles.  Then the functional requirements would be more obvious. 
+
+Well I posted y first serious article.  I noticed that the new lines are not being rendered.  Also I am wondering if the blog is going to show all the text?  I should limit what is displays and put a ... at the end.   
+
+I'm not sure why my audio files are not playing.  Even if I change the permissions they still don't work.  The videos are fine.  Also it works fine on my local machine.  Apparently it is the server config I made.  The video one is not working because I spelled it wrong.  So now I am wondering how I can block access to the folder. Apparently the solution is not to allow access to localhost only.  If I do that then localhost can't access.  Perhaps I can just change the file permissions.  However the owner has to access.  Well let me remove the config for now.  There has got to be some way to configure the server to do what I want it to do.  Perhaps I can put the files in a folder that is neither the public folder nor a route that is served by Zend framwork.    Perhaps I can do this on my local machine just to make sure it is working.  Where should I store the files.  I can store the audio and video folder one folder.  Well it is creating the folder but not the files.  What is going on.  Also I need to handle all error messages gracefully.  Perhaps I should create another wiki page with all the errors I have seen. For example logging in when already logged in.  Well I am tired.  I should really do this later.
+
+Also I wonder why I keep getting signed out.  Perhaps I can write the video to the public folder when the edit page is requested.  I am thinking of giving up on private videos again.  I am so sad that the require 127.0.0.1 did not work.  I am just going to have to admin my limitations.  I am going to skip this for now but I am going to leave the daft option.  This web site is for me and I don't really care if someone steals my draft videos.  Somone would have to guess the video names in order to access them.  There are other security measures can put in place to ensure that people are not guessing passwords and guessing urls.  It's called network monitoring.  I can simply set up snort.  In order to get more sophisticated video playback and privacy I would have to use java script.  Well maybe.  It true that when PB has more money security is going to improve because I can spend more time on it.  I am just going to do what I can for now and move one.  I am wondering why the session is ending so soon. It's not super important right now because it seems to last long enough.  I will admin that upgrading to php 7.2 made me a little nervous with the session.  I may need to upgrade on my dev machines.
+
+= Usage =
+
+For now I am going to try and get my paragraph spaces to appear.  Also I need to limit the text on the blog page.  So how I am going to get the new lines?  What do they look like in the database?  Perhaps I can debug this.  OK.  I fixed both problems.  What should I do now?  I was thinking about doing a search bar or adding user profile pages.  How would that benefit my first post or subsequent posts?  Well it is kind of odd that my first post talks about my life but there is no indicator of who I am.  Given the nature of my site it ca't be assumed that more and more posts are going to help others understand who I am.  In fact everyone's posts go to one place.  More sophisticated sites like facebook, amazon, and twitter use algorithms to filter the news feed based on selections the user has made.  I think I could filter based on tags the user has made.  As the user makes more and more tags the content would get more and more filtered.  That is a great idea but I don't want to do that right now.  I should allow the user to filter based on their tags.  Below the popular tags I could have a My Tags box so user could filter on things they are interested in.  However I think the user page is most important right now.  
+
+Well I am tempted to make a profile page but I don't want this site to be as centered around people as it is about policies.  I think posting one or two articles about yourself is good but the real meat of the site is going to come when policies take center stage.  This should not be a popularity contest.  It should be a site about solving politics problems with real evidence.  That being said if I want more and more people to use the site while keeping the site functional I should add the my tags box.  That way as people post more and more they can still the tags that are relevant to them.  Also users could even tag their names.  For example I could add a tag with my own name if I wanted to but I just think all this narcissist user profiles distract from the real problems in politics.  Anyway.  Let me add the my tags box.  That way I can start doing analysis.  I think the my tags box is great idea for making the site relevant. 
+
+I think after I do a my tags box the site will actually be quite useful.  I could start adding analytics.  However I think I should focus on some of those non functional requirements. Setting up ssl would not be a bad idea.  However I don't want users to get a false sense of security.  I don't think I should do ssl until I have snort in place or something similar.  Anyway I should add a button to the user settings page so that users can disable their accounts.  Well that is not necessary either because all posts are anonymous and it is really easy to delete a post.  So I am going to focus my attention on the my tags box and writing more articles and getting users.  I need to take it one step at a time.  I will create the my tags box and write another article.  Now I must go to sleep so I will have to do it tomorrow. It won't be that hard anyway.   
+
+I will need to remember that the my tags box should only appear if the user is logged in.  Also the functions that create it will need a user id so I will have to consider that as well.  I can just check if the user has an identity.  If not I can skip the code. 
+
+I am going to add the my post box as a programming exercise this morning and maybe posts another post.  
+
+I am a little confused about the existing tag cloud algorithm.  First of all I think it should cont the records using sql no php.  I may fix this but first I just want to get My Tag Cloud to work.  So what is the algorithm doing?  It is getting the cound of all the posts that have a tag.  Then it gets all the tags.  For each tag it counts the posts with that tag. If > 0 it adds the tag name to the tag cloud with the post count.  Then it normalizes the tag popularity.  So if I want to make a my tag cloud I will need to get all my posts.  Should I compare the popularity of my tags among my posts of among all posts.  I should do it with my tags.  So I think I should create a new method for readability.
+
+Unfortunately there are no id's associated with tags.  Well can they repeated.  Yes.  So I should just join the id in through the post tag and post table and get the tags where the user id in the post equals the user id.  I should probably practice this with raw sql first.   How will the query be?  Well dql makes it pretty easy because the posts carry the tags.
+
+I am almost done but I am thinking about this 
+
+$tags = $this->entityManager->getRepository(Tag::class)
+                ->findAllByUser($user);
+
+I will need to create a tag repo and join in the post table.  Done.  I am going to test now.
+
+I just realized that I should keep the membership button on the home page.  That way visitors will know that this site has potential.  However if the user is not logged in it should take them to the login page.  Or I could just leave it how it is.  Well it would be a good idea to keep too many people from joining who are going to leave the site when they realize they must pay.  Also with the my favorite tags I could maybe put a please log in prompt.  However I think the site is fine how it is.  If people post crap and I deal with it.  
+
+I was thinking about a few things I should do.  Another person is going to write their first article and I should allow the user to set their preferred language in the user settings page.  This will translate all the labels but the tag cloud can have both spanish and english.  
+
+Also I should limit the video to 1 GB.  Since I only have 8 GB on my micro instance that can fill up pretty quick.  Also I should add SSL because users will want to know that no one is sniffing their passwords. I can do the file limits pretty quick.  Also I can start looking at ssl but I will save the language option for latter.   
+
+Alright I requested the certificate.  I need to wait 30 minutes.
+
+https://www.youtube.com/watch?v=5ouIWJchfFA
+
+I think I should use an Amazon linux box because it will make doing ssl according to the video above much easier.
+
+While I am at it I might as well get PB ready for scaling.
+
+https://www.youtube.com/watch?v=xkSIBeS_M7w&list=PLfdtiltiRHWE0uv1ZEL5d3Jt4i3qU-607
+
+I am going to watch this tut on using s3 for streaming videos and storing files.  I think with will solve my worries about media storage since amazon makes it most cheap in s3.  Also I will set up and RDS.  I will also do the preferred language setting in the user setting page.
+
+Then I can focus on scaling.  It should be a lot easier if I use RDS, S3 and EC2.  :) :+1: 
+
+https://www.digitalocean.com/community/tutorials/how-to-secure-apache-with-let-s-encrypt-on-ubuntu-16-04
+
+Oh my gosh that was so easy.  
+
+OK now I need to store permanent files in S3.  I am going to follow the video playlist from code course.  I don't really want to mess up the production site so I am going to develop on my local machine.  Also I am going to create a new branch since I will be changing a bit of legacy code.  Where am I going to store the config for s3?  Let me come back to this.  It depends where I need to use it.  
+
+[Historical AWS credentials redacted.]
+
+Additional information:
+Aws\Exception\CredentialsException
+File:
+C:\Apache24\htdocs\policybubble2\vendor\aws\aws-sdk-php\src\Credentials\InstanceProfileProvider.php:88
+Message:
+Error retrieving credentials from the instance profile metadata server. (cURL error 7: Failed to connect to 169.254.169.254 port 80: Network unreachable (see http://curl.haxx.se/libcurl/c/libcurl-errors.html))
+Stack trace:
+#0 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(203): Aws\Credentials\InstanceProfileProvider->Aws\Credentials\{closure}(Object(GuzzleHttp\Exception\ConnectException))
+#1 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(156): GuzzleHttp\Promise\Promise::callHandler(2, Array, Array)
+#2 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\TaskQueue.php(47): GuzzleHttp\Promise\Promise::GuzzleHttp\Promise\{closure}()
+#3 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\guzzle\src\Handler\CurlMultiHandler.php(96): GuzzleHttp\Promise\TaskQueue->run()
+#4 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\guzzle\src\Handler\CurlMultiHandler.php(123): GuzzleHttp\Handler\CurlMultiHandler->tick()
+#5 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(246): GuzzleHttp\Handler\CurlMultiHandler->execute(true)
+#6 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(223): GuzzleHttp\Promise\Promise->invokeWaitFn()
+#7 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(267): GuzzleHttp\Promise\Promise->waitIfPending()
+#8 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(225): GuzzleHttp\Promise\Promise->invokeWaitList()
+#9 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(62): GuzzleHttp\Promise\Promise->waitIfPending()
+#10 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Coroutine.php(65): GuzzleHttp\Promise\Promise->wait()
+#11 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(246): GuzzleHttp\Promise\Coroutine->GuzzleHttp\Promise\{closure}(true)
+#12 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(223): GuzzleHttp\Promise\Promise->invokeWaitFn()
+#13 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(62): GuzzleHttp\Promise\Promise->waitIfPending()
+#14 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Coroutine.php(85): GuzzleHttp\Promise\Promise->wait(false)
+#15 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(273): GuzzleHttp\Promise\Coroutine->wait(false)
+#16 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(225): GuzzleHttp\Promise\Promise->invokeWaitList()
+#17 C:\Apache24\htdocs\policybubble2\vendor\guzzlehttp\promises\src\Promise.php(62): GuzzleHttp\Promise\Promise->waitIfPending()
+#18 C:\Apache24\htdocs\policybubble2\vendor\aws\aws-sdk-php\src\AwsClientTrait.php(58): GuzzleHttp\Promise\Promise->wait()
+#19 C:\Apache24\htdocs\policybubble2\vendor\aws\aws-sdk-php\src\AwsClientTrait.php(77): Aws\AwsClient->execute(Object(Aws\Command))
+#20 C:\Apache24\htdocs\policybubble2\module\Application\src\Service\ImageManager.php(240): Aws\AwsClient->__call('putObject', Array)
+#21 C:\Apache24\htdocs\policybubble2\module\Application\src\Controller\PostController.php(340): Application\Service\ImageManager->saveTempFiles(32)
+#22 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-mvc\src\Controller\AbstractActionController.php(78): Application\Controller\PostController->editAction()
+#23 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-eventmanager\src\EventManager.php(322): Zend\Mvc\Controller\AbstractActionController->onDispatch(Object(Zend\Mvc\MvcEvent))
+#24 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-eventmanager\src\EventManager.php(179): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent), Object(Closure))
+#25 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-mvc\src\Controller\AbstractController.php(106): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#26 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-mvc\src\DispatchListener.php(138): Zend\Mvc\Controller\AbstractController->dispatch(Object(Zend\Http\PhpEnvironment\Request), Object(Zend\Http\PhpEnvironment\Response))
+#27 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-eventmanager\src\EventManager.php(322): Zend\Mvc\DispatchListener->onDispatch(Object(Zend\Mvc\MvcEvent))
+#28 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-eventmanager\src\EventManager.php(179): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent), Object(Closure))
+#29 C:\Apache24\htdocs\policybubble2\vendor\zendframework\zend-mvc\src\Application.php(332): Zend\EventManager\EventManager->triggerEventUntil(Object(Closure), Object(Zend\Mvc\MvcEvent))
+#30 C:\Apache24\htdocs\policybubble2\public\index.php(40): Zend\Mvc\Application->run()
+#31 {main}
+
+It looks like curl is not working.  Maybe it is because I am using my local machine.  What if I put this branch on the server?  I really don't want to develop in production.  I wish I could make a copy of production for development.  I suppose it won't hurt to switch over the branch for a moment.  If it works on the server I need to rethink how I am going to develop on localhost.  Maybe I will only develop on servers.  Or maybe I can get curl to work on my local host. 
+
+Alright the buckets are working.  If I really want them to work on my local machine I will need to have an SSL connection.   
+
+https://commaster.net/content/how-setup-lets-encrypt-apache-windows
+
+Now I have a test server running that I can use for development.  I don't have to worry about whether s3 will work on my other development machine.  I can even use it at home and just turn it off when I am not developing.  Soooo I just need to make sure it has it's own bucket.  How can I do that?  Perhaps I can store the bucket in the local config and then retrieve it.  I could also store the paypal credentials there.  That will be my next project before I finish the s3 branch.   
+
+I can use zend config to grab from the config file.  OK.  Now I need to test it.  Since I am using the test site I will need to put in the right credentials.  It's working although I cannot view the file in s3.  I will need to see how to do that next.  But I should use the config for paypal as well.  It's not a good idea to store the keys in the code.  Also I am declaring the keys twice.  Also it changes based on the server.
+
+The config is done and working.  Now it's time to list the files.  I was not even able to view the file in s3 so I hope I have better luck when I list the files.  I was able to upload a file but I cannot see it if I don't list it. There are several places where the permanent images are displayed.  The blog, post manager, post view.  Let's start with the post view because it shows all the photos.  After this the blog view and post manager view will be easy.  The controller gets the permanent images using the image manager.  It uses the getsavedfiles function.  OK I got it working.  However it is bypassing the resize function.  Also the link to open the file in a new window is not working.  Well I can easily set the size of the image and open in a new window. Let's see if I can use the private bucket.  Yes it works.  I committed this.  I need to delete all the files in the perm dir in s3 before saving there.  How do I do that? I did the thumbnail and full size code.  Now I need to display the images on the blog and post manager pages.  Then I need to do the other media files.  Also I need to think about permissions.  The images are public now.  That's fine if the post is public but if it is a draft it should not be public.  Perhaps s3 will help me make images, videos, and audio private if I want them to.  Codecourse has mentioned setting a timer.  Perhaps I can set a timer for draft posts.  I will cross that bridge when I get there.  Now I need to display the images on the blog and post manager pages.  
+
+I also need to display the permanent files in the edit post form.  Actually I need to copy the s3 perm files to the temp dir.  I also need to delete the media files when the user deletes the post.  So right now I am working on the edit post step 2.  This function need to copy the perm files to the temp files.  How can I do that in s3.  It's 1am in the morning (although it feels like 12 am bc daylight savings was yesterday).  I am going to go to sleep now.  When I work on this again I need to finish the gettempfilesfunction.   I am going to save it with broken code.  However I put in some code that saves an s3 object to the local file system.  I can use that to copy the s3 perm files to the perm directory.
+
+Alright  finished the getTempFiles method of the image manager for s3.  Now what am I going to do?  I was going to make sure the images display on the blog.  Done.  Now what?  I need to just delete the files when the post is deleted.  Then I can do the timer thing for draft posts.  Then I can do the other media files.  Also need to do the add post methods.  
+
+Alright.  I finished all the image functions for s3 minus the timer thing.  It's late and need to go to bed.  The next time I work on this I just need to continue with the s3 code course tutorial. That is I need to see how to use tockens/timers for draft posts.  Then I can go on to the video streaming video.
+
+Looking ahead.  I just watched the tocken/timer video really quickly.  So what I am going to do is check if the post is a draft.  If it is I am going to save the file using private permissions.  When the user wants to look at their draft I will again check if it is a draft and if it is I will show the media with a timer.  That's it.
+
+Looking ahead to the cloudfront video it seems that it is not necessary but it improved performance.  I will be the judge of whether it is needed now or not.  It looks useful for later on if things work smoothly with out it.  Since I am trying to scale I should probably do it but I am not going to loose sleep over this.  In fact I should sleep now and think about what I just learned about cloudfront.
+
+Now I am going to do the token for the images.  I thought about cloud front.  It would be a good idea to put photos videos and audio into their own buckets.  Perhaps image.policybubble.com, video.policybubble.com, and audio.policybubble.com respectively. Later I see slow performance on video I could attach cloud front to the video bucket. Right now I am going to do the token for the images.  What I am going to do is check if the post is a draft.  If it is I am going to save the file using private permissions.  When the user wants to look at their draft I will again check if it is a draft and if it is I will show the media with a timer.  Actually I think this will be a little more complicated.  Perhaps the file should always be private.  Then, if the user has access to view the file on a page then it will be given a timer.  So actually it is going to be pretty simple.  I just need to always upload private and always display with a token.  The page view permissions are handled by the rbac so I don't need to worry about that here.  Daft posts will only be accessible by the user.  Simple.  Let's do it.
+
+I need to upload private and display timed everywhere.  Get to it.  I am going to use +480 minutes.  That is 8 hours.  Actually for images I think it is ok to do one minute because once it's downloaded it's done.  Well when I test this the image does not load.  OK this is working now but I think I should give the timer enough time.  What if the user views a post and wants to see the image larger after an hour?  I should set the limit to an hour at least.  That is when the user is logged out anyway.  Actually I should check if the post is private or public.  If it is private I should upload private and display private.  If not I should not do that.  
+
+Before I get confused let me specify which methods I need to update.  I need to update the ones that deal with private settings only.  I need to pass in the entire post rather than just the id and check the status and act accordingly.  
+
+Now I am just thinking about some things.  Now that I am going through all this trouble to make posts private what can I do with it?  I can let users add other users to private posts.  I can have a permission called invited post view.  So the code can check if this user has been invited to view.  If so the user can view the post.  Also I can create groups of users.  If the user is in the group then they can view the post as well.  That is really useful.  OK.  Back to work.  Done.  Now I am done with moving the images to s3!  yay!
+
+I think I should improve the name of the bucket though and the path within the bucket.  Let me do that now.  Then I can implement the changes for the other media files.  Maybe I will do the other media files another day.  It is getting late.  
+
+Alright the image manager is completely done.  Now I just need to make the video and audio managers looks just like them.  Then this branch will be done and I can continue posting articles on PB.  
+
+I the future I will need to let users get to any tag they want.  That means adding a tag search bar.  Also I can make the tags in the post view clickable.  I think I will do that next.  It makes sense that users should be able to search tags.  Also a tag search is the simplest search I can do.  I should probably do the tag search before making the tags clickable in the view but they should both be quite easy.  I am getting excited.
+
+As for the private posts.  It will be good to share private posts with users but all users are anonymous.  I will think about that later.  
+
+The tag search is clear though.      
+
+I made a lot of changes today.  More than I was expecting to.  I will need to test these changes and make sure they are working.
+
+I did some basic testing and everything seems to be working.  I am going to do some more testing before I merge the branch.
+
+I'm not sure why I am getting a folder called temp when I upload a video. That is so weird.  Well everything seems to be working now.  However I discovered that need to refine and test some more what happens to the child and parent post displays when a post switched between draft and published.  I don't have time for that right now so I will do it later.
+
+I will need to say response to.  If the user has made the post private after publishing it I should display a page that says this post has been made private.  Also I will have to use the post repo not the entity to get the child posts because I will need to add in the fact that the post must be published to count as a response.  What if a parent post is deleted.  I will have to say this post has been removed. I am getting An error occurred
+An error occurred during execution; please try again later.
+Additional information:
+Error
+File:
+/var/www/html/module/Application/src/Service/PostManager.php:155
+Message:
+Call to undefined method Application\Entity\Post::findChildPosts()
+Stack trace:
+#0 /var/www/html/module/Application/view/application/post/view.phtml(21): Application\Service\PostManager->getResponseCountStr(Object(Application\Entity\Post))
+#1 /var/www/html/vendor/zendframework/zend-view/src/Renderer/PhpRenderer.php(506): include('/var/www/html/m...')
+#2 /var/www/html/vendor/zendframework/zend-view/src/View.php(207): Zend\View\Renderer\PhpRenderer->render(NULL)
+#3 /var/www/html/vendor/zendframework/zend-view/src/View.php(236): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#4 /var/www/html/vendor/zendframework/zend-view/src/View.php(200): Zend\View\View->renderChildren(Object(Zend\View\Model\ViewModel))
+#5 /var/www/html/vendor/zendframework/zend-mvc/src/View/Http/DefaultRenderingStrategy.php(105): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#6 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\View\Http\DefaultRenderingStrategy->render(Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(171): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent))
+#8 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(367): Zend\EventManager\EventManager->triggerEvent(Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(348): Zend\Mvc\Application->completeRequest(Object(Zend\Mvc\MvcEvent))
+#10 /var/www/html/public/index.php(40): Zend\Mvc\Application->run()
+#11 {main}
+
+However the method clearly exists.  
+
+I also noticed that the response paginator is not working. I don't know if that is because the page is currently broken.  I am a bit tired and should probably go to bed and fix this tomorrow morning.  I tested it in production by making a response and the paginator does appear.  
+
+I am too tired to solve this problem.  This must be done in the morning.
+
+It's Thursday morning.  What is going on here?  I am trying to get the count of the published responses.  Well it looks like the s3 branch is done.  I should merge it.  What am I going to do after that?  I could keep posting and I could add the tag search bar.  I am going to do some testing before I merge this branch in.  Also I noticed that I can't even edit my own post when I am an admin.  Actually everything is working fine.  I think I can merge the branch.  I just had to add the post.own.edit permission to admin.  Also I think I should make an automated test that only users can see draft posts.  
+
+Well it has been merged to production.  Now I just need to continue posting and make the tag search bar.  
+
+I think I should start implementing the tag search now.  I just need to put a form with a text input on the page.  Then in the controller I can say if post and filter the results.  Also I should say filtered posts instead of all posts in the title.  Also I should say 'separated by commas' in the label so user know they can do that.  If there is no input it will display as all posts.
+
+I am going to start by making the form.
+
+= Tag search bar =
+
+The blog index action already searches for a tag parameter.  However I want to be able to filter on multiple tags.  So I will need to check for a post anyway.
+
+I am having the trouble getting that tag search bar to find posts that have one of the tags search.  For example I have two posts with the following tags.
+
+ test, this, now
+
+another, one, for, using
+
+If I search test, another Then both should show up.  Also I would like to do an exclusive search.  If you have 
+
+ test, this, now, yay
+
+another, one, for, using, yay
+
+and you search test, yay then only the first should show up.
+
+There are many ways I can do this.  Maybe I can filter existing results.  So start with all posts when you click on the blog button.  Then if you search you filter.  If you search again you filter.  These are all things to think about but I am too tired now.  I should definitely sleep on this.  Maybe I can release a very basic search and continue improving it. 
+
+Perhaps I can loop in the algorithm and filter until all tags are filtered.   I did some thinking about how I am going to do it.  I have done this before.  I need to use the post manager and loop through the tags.  I need to run the query for each tag and stores the ids in their own array.  Then I can merge the arrays using a php function to find the values in each array. array intersect.
+
+I can create an array called $results.  I can put the result array for each tag in an new index in $results.  Then I can loop though results.
+
+Well I finished but I am getting a weird test result.  When I type 'test, another' I get the post with test, this, now.  I'm not sure why this one is showing up.  I should probably give policy bubble a break though.  The good news is that PB is ready to support lots of users.  I can post articles and take a break from coding for a while.  This branch is done.  It works great.
+
+
+
+
+
+I asked a business contact to review policybubble.com.  Their feedback:
+
+> It’s a good start.
+>
+> You need to have an “About” pull down in the menu.  This is where you need to describe what you do and what the benefit is to your target client.    I would also suggest a demo of what they see once they are a member.   Once you get going you will need to have a “Testimonials” section
+
+= Analysis =
+
+I am going to start putting some data visualizations.  Should a create a new module?  Should I store the visualization pages in the application module?
+
+I created the phtml file but the svg is not getting recognized.  OK I got the example to work but I don't think another popular tag cloud is what I need right now.  After that feedback I started thinking about the data visualizations.  Given my career history I think it is pretty important.   I don't have much data though.  However I just need to plan what data visualizations will be useful and how I am going to get the data.  I though the blog was a good idea.  I just need some time to think.  I need to get away from PB for a while so I can look at the big picture.  I need to think about the data and everything.  
+
+
+I think one thing I should work on next is getting people to be able to share private posts with other users or groups.  That way if an organization wants to share policies they can keep things private.  I need to think about the best way to do that?  How do other sites keep posts private?  Well youtube has private and unlisted videos.  Assemba and tfs give a license to the application to an organizations.  Once they have the license they can create projects, groups and users and share content.  I think I may need to give admin privileges to users.  Something along these lines.  
+
+So for example you could create a policy project, invite users to that project and only those users could see the posts in the policy project.  Or maybe you could keep a post private.  Then when someone you want to goes to the page instead of saying access denied it would say add a password to view this post.  Honestly I don't know.
+
+All I know is that this is supposed to be a public opinion site and some things need to be built in from the beginning.  One thing I was thinking is the money issue.  Also I was thinking of add more fields to the post.  Perhaps I could add a field called dollar amount.  For example for a post on a border wall you could say this would cost 13 billion dollars.
+
+Well I really don't know.  Perhaps I should create a new policy bubble post.  I need to start blogging because I could just get visitors who are trying to learn.  I know a lot of things and maybe someone would google something I know and they would read it on policy bubble and learn it where they can't learn that anywhere else.  Policy bubble is supposed to be a source of educated facts so I might as well start putting educated facts there.  
+
+Also I need to put the best analysis of policies I can put.  For example I could put several perspectives on the border wall.  Again I should not touch issues I don't know about.  I should keep posting and get more experience with policy bubble.  I will know what to implement next if I keep on posting.  
+
+I have done some thinking.  What I need to do next is update the user settings page.  I need to puta link to a demographics form.  I also need to put a link to a delete account form.  Then in the post form I need to put a field called feeling.  The options would be a range of emotions.  Also I should save the membership level with the post.  Then I can run reports that say 60% or Hispanics feel happy about xxx xxxx tags that have a good membership and make less than 50000.  There are 700 total.  
+
+I am a little worried that people’s posts will get lost in the haystack.  Well that is up to the people to add plenty of tags. I could also run a report based on a previous one.  I could say of these 20 feel Max about xxx and are from xxx.  There are a lot of possibilities. Charging people to post not only helps me with my server costs. It also helps me know that people are not voting too much and it also shows how people behave at various income levels.
+
+I was also thinking about the fact that online surveys are in accurate because only people that are politically active will answer them.  However with social media accurate public opinions can be found online. However with fake news there may be a problem.  Perhaps charging people will discourage fake news.  Or perhaps articles could get high rating for having more citations.  Perhaps I can add a field called citations.  Then in the analysis you can filter based on the number of citations.  Also I could store in the post how many photos, videos, and audio a post has.  Surely it would be harder to find fake cations for fake news than for real news.  So what should I do right now?  I think I could update the about page to say what is coming soon. Or maybe I could just do it now.  This site is not going to be popular if there are not a lot a pages.  Once I implement these pages I will need to start posting.  These are all good ideas.  Maybe I could create a site called economic bubble, or a sub module, that aims to put the policies in policy bubble into an economic perspective. I should also put a field called ethical that determines whether this policy is ethical or not.  Perhaps I should say why I am charging for posts.  I could say that the money is used for server costs, development costs, economic analysis of policies and economic advancement of policies.  How will the money be used for economic advancement?  The most popular posts could have funding from policy bubble.  Perhaps the money could stay with the post or the tags.  Perhaps I should let users put more than one dollar towards a post!  Perhaps I could add a papal form to the post so that others could help the policy reach the goal.  Or perhaps the the money used from the response could go to the post.  So I could say if this is a response to none the money stays with the post.  Well that is not fair for the respondents.  They won't have money for their post.  So instead of a membership fee I could have the money go to a tax pool.  I could show the tax pool and say hey all of your policies have to share this money.  So if there are 1000 posts they would have to share 1000 dollars.  Wow that is pretty skimpy.  How about 1000 posts sharing 1 million dollars.  Or 10 k or 100 k.  How would I do that?  Again this is a public opinion site.  I think people will pay just to have their opinion heard.  So I could just say that the money is for server costs, development costs, and economic analysis of posts.  How is it for economic analysis of posts.  Basically I am trying to limit posting trash.  However I am trying to do that though citations.  However the money a user has is a kind of citation.  It means the user is working.  Again the citations is more important so I might not store the membership status with the post.  So I can say the money is for server costs and development costs. Basically server costs and development costs are the same so I can just say they money goes towards development of the site.  Maybe on the analysis I can say number of employees.  That is not a priority but it is a thought.
+
+https://www.surveymonkey.com/r/US-Demographics-Template?sm=57FG9XzLkYF%2bn2LlNcCJRwwQ6uJ4wXPLou92RTG6OVQ%3d
+
+Should I create a new table for the demographic info or should I add it to the user table?  I think I should add a new table. 
+
+I think I should put excel exports on PB so people can take the data and use it.  Well maybe not.  We will see what is better.
+
+I am going to sleep.  I can continue with these tasks tomorrow.  I'm not sure what I should do with the user name if I am never going to use it.  Maybe I should not ask for it during registration and maybe I should not display it.  Or maybe I can update it on the account status page.  Really I am not using it.  I should not worry about this too much. 
+
+In addition to providing ways for users to show that their policy beliefs are real I should also provide ways for them to show that their demographic information is real.  Perhaps they could get a signed certificate from a local office.  Perhaps policy bubble could offer signed certificates.  I will think more about this later.  Perhaps PB could verify the IP and say the IP has been verified.  
+
+I might abandon this branch and just save the geo location with the post.  
+
+https://github.com/jenzri-nizar/zf3-geolocation
+
+Perhaps I will add a location input to the search.  
+
+If I want to add geolocation I would just need to add some fields to the post.  I could also create another entity if I want to store all the geolocation such as longitude and latitude.  That might be good for creating google maps.  
+
+http://www.geoplugin.com/webservices/php
+https://www.psce.com/en/blog/2012/06/01/implementing-efficient-geo-ip-location-system-in-mysql/
+
+Well I think I should create a separate entity because there is so much useful information.  I was thinking I can filter the blog automatically by location like him yak does.  I created the migration file and the entity.  Now I just need to create the geolocationManager using the file from the web site.  I created the geoPlugin service.  Now I need to update the post manager to update the geographic table when a post is added or updated.  Then I need to display this into in the blog and post view pages.  Then I need to add a the fields to the search.
+
+I finished the code to save and and display the geography but I am having problems testing it.  First of all the post manager is not getting the geography for the post on update.  That is understandable because none has been created.  However even if the geography did exist $post->getGeogrpahy will not get it if I dont have the join annotation set for geography in the post entity.  Basically I need to create a post and then copy that geography for the other posts.  
+
+Well when I try to add a post I get 
+
+This page isn’t working
+policybubbletest.com is currently unable to handle this request.
+HTTP ERROR 500
+
+[Wed Mar 21 23:26:01.827422 2018] [php7:error] [pid 8437] [client <redacted IP>] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in /var/www/html/module/Application/src/Entity/Post.php on line 284, referer: https://policybubbletest.com/posts/add/0/2
+[Wed Mar 21 23:26:01.827503 2018] [php7:error] [pid 8437] [client <redacted IP>] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in Unknown on line 0, referer: https://policybubbletest.com/posts/add/0/2
+[Wed Mar 21 23:26:01.827562 2018] [php7:error] [pid 8437] [client <redacted IP>] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 262144 bytes) in Unknown on line 0, referer: https://policybubbletest.com/posts/add/0/2
+
+The error log says this which doesn't make sense.  It says 134217728 bytes exhausted (tried to allocate 262144 bytes).  But the limit is much greater that what was attempted.  What the heck?
+
+line 284 is where the post is set for the geography in the post entity: $geography->setPost($this); However I don't think the post even has a geography at this point.  I think there is an infinite loop going on here.  Let me fix that.  It seems to have worked but the region was not set.  OK the region is fixed.  Now I need to do the post update.  However just looking at the code I can see it is going to fail.  That is because the update function does
+
+ $geography = $post->getGeography();
+        $this->geoPlugin->locate();
+        $geography->setPost($post);
+
+However.  This is the solution.
+
+$geography = $this->entityManager->getRepository(Geography::class)
+                    ->findBy(['post'=>$post]);
+        $this->geoPlugin->locate();
+        $geography->setPost($post);
+
+Working.  Now I need to add the search fields.  Also I will need to update the analysis page to have the country count, region count and city count.  After this I think I should do the copyright. https://www.wikihow.com/Copyright-Software  OK I filled the copyright form out.  After I finish this branch I am going to pay, upload and submit.  I should probably do this every year.
+
+Now I need to add the search fields.  Also I will need to update the analysis page to have the country count, region count and city count. 
+
+I really need to think how I am going to do the geographic search.  Am I going to let users choose more than on place for each fields.  probably not.  Also the tags search get all the posts with certain tags.  I suppose it is ok because I am going to do the array intersect.  
+
+I need to figure out why the tag search still does not work well when one tag is searched.  Well I had to remove the code.  I tried checking the length of the results array and using this to decide about using the array intersect but it does not seem to help.
+
+I just need to think about what is going on here.  The 
+
+$result = call_user_func_array('array_intersect', $results);
+
+only get values that are in all arrays.  If there is on array with values the values are obviously not in all arrays.  I would like to do something else in this case but how to I know when this case exists.  How do I know that only one array in results has results?  I could set a flag and loop though.  If I discover that there is only one with count greater than 0 then I can just use this array.  How to I get this array?  I could just loop though it again and get the one greater than one. 
+
+Will also I decided not to add empty arrays.  It seems to allow me to search for one tag and even one tag and one country but not just one country.  If I var dump I see there is an array of ids.  Why didn't it use that array of IDs?  I doesnt make any sense.  I am going to leave.  Maybe I will get an aha moment.
+
+The search algorithm is getting all the right posts but when it is time to display them they do not display.  I should stop tyring to fix the search algorithm.  It is working great.  
+
+This does not make any sense.  I am getting 
+
+An error occurred
+An error occurred during execution; please try again later.
+Additional information:
+Error
+File:
+/var/www/html/module/Application/view/application/blog/index.phtml:102
+Message:
+Call to a member function getCountryName() on null
+Stack trace:
+#0 /var/www/html/vendor/zendframework/zend-view/src/Renderer/PhpRenderer.php(506): include()
+#1 /var/www/html/vendor/zendframework/zend-view/src/View.php(207): Zend\View\Renderer\PhpRenderer->render(NULL)
+#2 /var/www/html/vendor/zendframework/zend-view/src/View.php(236): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#3 /var/www/html/vendor/zendframework/zend-view/src/View.php(200): Zend\View\View->renderChildren(Object(Zend\View\Model\ViewModel))
+#4 /var/www/html/vendor/zendframework/zend-mvc/src/View/Http/DefaultRenderingStrategy.php(105): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#5 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\View\Http\DefaultRenderingStrategy->render(Object(Zend\Mvc\MvcEvent))
+#6 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(171): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(367): Zend\EventManager\EventManager->triggerEvent(Object(Zend\Mvc\MvcEvent))
+#8 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(348): Zend\Mvc\Application->completeRequest(Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/public/index.php(40): Zend\Mvc\Application->run()
+#10 {main}
+
+I deleted a geography because I saw two with postid 22.  I'm not sure if that is what is causing this.  I am also not sure why I am getting this error.  I should work on this tomorrow. 
+
+I think that what could be happening is that when I get the geography for a post on the front end the enity uses the anotation and sees that the georaphy is a one to one with the post.  The post must look in the geography table and find the geography that has the post in the post_id field.  It find the first one and returns.  This might now be the exact problem because it seem to be working but when I commented out most of the query to get the posts the geography stopped working.
+
+I just need to think about.  Maybe I will create a stack overflow of this. Well I fixed the search.  Now I just need to put the numbers on the analysis page.
+
+I need to remember to only get published geography counts.  How will I do that.  Maybe I can get the ids and then call get from id array.
+
+Actually the coutry count is stupid because all posts have a country!  I am going to merge this to production and then create a copyright.
+
+I need to remember to delete the geography when I delete a post.  Also I am not getting the region for Washington dc.  I should also remove the tags.  I will do this later.  Also the remember me button is not working on the login page.
+
+array (
+  'geoplugin_request' => '<redacted IP>',
+  'geoplugin_status' => 200,
+  'geoplugin_credit' => 'Some of the returned data includes GeoLite data created by MaxMind, available from http://www.maxmind.com.',
+  'geoplugin_city' => 'Washington',
+  'geoplugin_region' => 'DC',
+  'geoplugin_areaCode' => '202',
+  'geoplugin_dmaCode' => '511',
+  'geoplugin_countryCode' => 'US',
+  'geoplugin_countryName' => 'United States',
+  'geoplugin_continentCode' => 'NA',
+  'geoplugin_latitude' => '<redacted>',
+  'geoplugin_longitude' => '<redacted>',
+  'geoplugin_regionCode' => 'DC',
+  'geoplugin_regionName' => NULL,
+  'geoplugin_currencyCode' => 'USD',
+  'geoplugin_currencySymbol' => '$',
+  'geoplugin_currencySymbol_UTF8' => '$',
+  'geoplugin_currencyConverter' => '1',
+)
+
+Additional information:
+Zend\Paginator\Exception\RuntimeException
+File:
+/var/www/html/vendor/zendframework/zend-paginator/src/Paginator.php:634
+Message:
+Error producing an iterator
+Stack trace:
+#0 /var/www/html/module/Application/view/application/blog/index.phtml(88): Zend\Paginator\Paginator->getIterator()
+#1 /var/www/html/vendor/zendframework/zend-view/src/Renderer/PhpRenderer.php(506): include('/var/www/html/m...')
+#2 /var/www/html/vendor/zendframework/zend-view/src/View.php(207): Zend\View\Renderer\PhpRenderer->render(NULL)
+#3 /var/www/html/vendor/zendframework/zend-view/src/View.php(236): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#4 /var/www/html/vendor/zendframework/zend-view/src/View.php(200): Zend\View\View->renderChildren(Object(Zend\View\Model\ViewModel))
+#5 /var/www/html/vendor/zendframework/zend-mvc/src/View/Http/DefaultRenderingStrategy.php(105): Zend\View\View->render(Object(Zend\View\Model\ViewModel))
+#6 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(322): Zend\Mvc\View\Http\DefaultRenderingStrategy->render(Object(Zend\Mvc\MvcEvent))
+#7 /var/www/html/vendor/zendframework/zend-eventmanager/src/EventManager.php(171): Zend\EventManager\EventManager->triggerListeners(Object(Zend\Mvc\MvcEvent))
+#8 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(367): Zend\EventManager\EventManager->triggerEvent(Object(Zend\Mvc\MvcEvent))
+#9 /var/www/html/vendor/zendframework/zend-mvc/src/Application.php(348): Zend\Mvc\Application->completeRequest(Object(Zend\Mvc\MvcEvent))
+#10 /var/www/html/public/index.php(40): Zend\Mvc\Application->run()
+#11 {main}
+
+I get this if I search for a state that does not exist.
+
+Fixed.  I am going to do the copyright now.  I have finished most development.
+
+I just realized that if I search tags and city that does not exist I will still get a result.  I am not supposed to.  I need to keep debugging the search.  
+
+I just realized why I am getting two results when I search for test and DC on PBtest.  It's because if there is just one array it will display the results of that array.  I need to consider the fact that I will need to narrow down this array if one of the id's does not meet the criteria.  How am I going to do that?  Would I ruin previous functionality?  I could take these ids and say hey.  Yes.  I should pass the results of one query to the next in a trickle down effect.   
+
+I think it's good that the algorithm will exclude posts that don't match all the criteria but I hard coded it to include the results if there s one array.  That is great if just one field is searched but if two fields are searched and nothing is found in the other field then the array intersect should be used. 
+
+So I am having a dilemma with finding one array.  Sometimes it's what I want when I search on field and others it's not when I search two fields and one is wrong.  What about when I search tags?  If one tag matches but another does not does it do an intersection?  Well it's going to say the posts have to match all the criteria.  So what I could do is check if the user just entered one search field.  If so I can return the results of that search.  If not I can do the intersection.
+
+I can count the inputs.  If there is one input and one result array then I should send the array.  If there is two inputs and one array I should not.  I should also count the tags because they count too.  I am going to enable remote debugging because I am getting tired of echo die statements.
+
+Well I have tried hard to get the debugger to work with aws and I have gotten it it to work to some extent but I think at this point I should finish the search task with echo and die statements.  Then I can continue development on my local machine because I know xdebug works there.  I can create more buckets in aws and I can use local databases.  I don't really need a server that is internet accessible unless I am doing something that needs to call the server like paypal.  So I can give it a rest.
+
+No I need to figure out why the code for one input and one result is executing when I put in test and dc on the test server.  By the way.  One of the benefits of working locally is that I don't have to download files before editing them.  OK.  I did the search fix.  
+
+I am trying to think what I should do next on Policy Bubble.  I was thinking I could let the users put in any place they want to and just have the geolocation help them fill in the fields. However I also think it would be good for policy reasons to enforce the general area where the posts are coming from.  Even if the geo location is not 100% accurate it is relevant in the digital world.  Perhaps in deserted areas the nearest tech hub will result but I think ip geolocation is pretty reliable.
+
+Anyway perhaps I should post another article.   
+
+= Data =
+
+I said in my weekly update that I would focus on getting data in to the database by writing quality articles.  Organizations often have a strategic plan and a budget plan.  Perhaps I should create a PB strategic plan that is similar.  I could set measurements, goals, and analysis.  Also I can create the budget plan.  What measurements can I create?  Well this is an opinion site.  I could measure current public opinion.  I could write articles that state what the current public opinion is.  I could also set goals for public opinion.  I could say what public opinion wants.  I could work towards those goals somehow.
+
+Basically what I am trying to say is I should apply my professional database experience.  Other projects I have worked on had data.  Why don't I have data?  Where does data come from.  Perhaps I can read a book on collecting data or collecting public opinion data.
+
+I suppose instead of collecting public opinion data for just myself I could collect public opinion data for other people.  I should take my time with this.
+
+I noticed that posting about my own issues/problems/successes provides plenty data that others can use.
+
+= Users =
+
+As I write more and more articles I think it does make sense to allow users to find all articles published by me.  What I can do is display my user name and my user id on my posts.  Then when someone clicks that it will take them to the blog page and filter for my user.  I also noticed that if I take photos sideways policy bubble cannot fix that.  That would be something I could fix later on.  Also what if I go to the blog page for a user and I want to filter for this user?  Should I add another search field to the search?  I certainly can.  So if they click the user's name then it will filter based on that user.  Also I will add a user search field.
+
+Well the user search might not be important right now.  The thing is that users will be identified by an id.  Maybe I can say 14  David Garcia as my user.  However when you search for this I can say user number.  Also I need to think how the url will appear when a user link is clicked.
+
+By the way I think portrait photos are appearing on the side because of the html tag width.  I just put a message to say that if it appear sideways they should make it square.  Even the image gallery sample has the problem with these photos.
+
+I have been thinking about SEO.  This guide https://support.google.com/webmasters/answer/7451184?hl=en  says I should put the title in the title tag, the description in the description tag, and also I should give alt image names.  I plan to put the post title in the title tag, the post tags in the description tag.  I also plan to use the tags in the image alt.  Also video and audio.
+
+Also to the analysis page I plan to add the distinct country, region, and city counts as well as the response count.  I still think it is too early to create visualizations but I definitely have the dimensions. 
+
+Also I think the search could have the user id.  That would help with the analysis.  I could have a popular tags by user visualization for example.  However searching by user if is pretty cumbersome.  I should let users create a distinct user name.  However I think that focuses too much on the users than the policies.  It's not user bubble.  It's policy bubble.  These are things I can do in the future.  For now I should do the SEO and the analysis page updates. 
+
+This is really a pain making sure that the analysis counts are just for published posts.  However I think it will pay off in the end.  I can say these are for published posts and in the data visualizations I can link to the posts themselves.
+
+For the image alt tags I feel kind of bad for stuffing keywords in.  The SEO article said not to do that.  I think I will revert this just to have integrity in best practices.  Even if it means my images will not show up in image searches.  After all my sight is about polices not photography in and of itself.  Maybe later I will let users name their photos.  Or maybe google will find the images and associate the page title with it already.
+
+I realized that the entity I created for post hierarchy doesn't help me find published posts.  How can I find only the published child responses?  Well it's for sure I am going to need to the post entity and the postHierarchy entity but how should I use them?  Also how should I find the published distinct counties?  Maybe I can look at the tag count I already have.  Those are only published tags.  Done.  I think I can get the geographies in a similar manner.  OK I updated the analysis page.  This is done.  I also deployed the SEO stuff.
+
+Now I am thinking maybe I should allow users to update their user name.  
+
+However I think distinct user names are useful.  However I would like user to be able to change their user name whenever they want.  Maybe later I will let them choose a distinct url like Facebook does.  However I could say who are the most popular users by region just and display their regular name even if it is not a distinct.  So I should let users change their name.  Or maybe I shouldn't.  It is not very important right now.  
+
+I think I should filter the user count to those users who have posted.
+
+Yes.  I should work on the user settings page next.  I should at least let the user update their full name.  Also I should allow them to disable or delete their account.  
+
+Also I should work on making the email look more professional.  The project Gmail address just looks stupid.  It's ok if I use that email but that should not be the display name of the sender.  My other email accounts show a real person's name in the name column.
+
+
+Also I should focus on getting more users and not letting errors display so much info.
+
+I am listening to the SEO book and I have decided that my site would be much more popular if I made it free and tried to sell advertisements through popularity.  I am going to disable the PayPal code but I am not going to delete it.  I might need it later.  Also I keep getting session validation failed messages.  I really need to figure out what is going on with that.  They keep coming and going.  I took screenshots with my phone but I am going to have to debug and research and get to the bottom of this.  
+
+Perhaps it is the http user agent setting I have for the session.  Let me just try to remove this and see if it helps.  I might learn something about sessions.  Also I should add google analytics to PB.
+
+So I commented out the session validators and deleted the sessions files on the server according to this article.
+https://stackoverflow.com/questions/25512074/zf2-session-validation-failed-any-ideeas
+
+Hopefully it won't happen again.  As I learn more maybe I can enable the validators again.
+
+I am going to add google analytics and then work on the settings page.  I added google analytics.  Now I am just wondering what I should do about the user settings page I need to allow users to delete their accounts. 
+
+Maybe I should make the settings page like a form.  The user can update the fields and there will be validation. 
+
+= Privacy Policy =
+
+Following the advice of the blogging book I created a privacy policy and disclosure policy and I would like to put them on my site.  However the privacy policy says that user can update their information.  I think I should finish the user settings update branch and then deploy these together.
+
+I have been talking about making the settings page more robust.  I don't think I will do unique user names for now.  I don't want stupid usernames appearing on blog posts.  I think an id is enough and it is more policy like, like a social security number.  I should let them update their full name.
+
+If I let users update their email it will be like registering.  The email will need to be unique and they will need to confirm.  
+
+Also I was thinking of allowing users to disable their account somehow.  How does twitter do this?  Twitter will delete everything in 30 days after deactivation.  
+
+Well I think I should have three separate forms.  Also I think these forms should be in the user module.  The delete account form needs more elaboration:  the user record has a status field but it is not really used.  The settings page in this branch says account status, active, edit.  However that is kind of misleading because the account status is never really used. Maybe I can provide a disable option and a delete option.  If the user says disable then I can provide a universal check that does not show posts for disabled accounts.  Well I should take an incremental approach.  I don't even have any users besides me.  I should just let them update their name.  Actually I am going to skip this.  The site is so small that users can contact me to update their settings.  I am just going to put the privacy policy and disclosure policy now.
+
+
+  
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+     
+
+ 
+    
